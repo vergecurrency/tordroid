@@ -1,15 +1,15 @@
-package com.verge.core.util;
+package com.vergeandroid.core.util;
 
-import com.verge.core.coins.BitcoinMain;
-import com.verge.core.coins.BlackcoinMain;
-import com.verge.core.coins.CoinType;
-import com.verge.core.coins.DigitalcoinMain;
-import com.verge.core.coins.FeathercoinMain;
-import com.verge.core.coins.LitecoinMain;
-import com.verge.core.coins.NuBitsMain;
-import com.verge.core.coins.PeercoinMain;
-import com.verge.core.exceptions.AddressMalformedException;
-import com.verge.core.wallet.AbstractAddress;
+import com.vergeandroid.core.coins.BitcoinMain;
+import com.vergeandroid.core.coins.BlackcoinMain;
+import com.vergeandroid.core.coins.CoinType;
+import com.vergeandroid.core.coins.DigitalcoinMain;
+import com.vergeandroid.core.coins.FeathercoinMain;
+import com.vergeandroid.core.coins.LitecoinMain;
+import com.vergeandroid.core.coins.NuBitsMain;
+import com.vergeandroid.core.coins.PeercoinMain;
+import com.vergeandroid.core.exceptions.AddressMalformedException;
+import com.vergeandroid.core.wallet.AbstractAddress;
 
 import org.bitcoinj.core.Coin;
 import org.junit.Test;

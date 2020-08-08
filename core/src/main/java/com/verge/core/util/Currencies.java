@@ -1,4 +1,4 @@
-package com.verge.core.util;
+package com.vergeandroid.core.util;
 
 import com.google.common.collect.ImmutableMap;
 

@@ -1,4 +1,4 @@
-package com.verge.core;
+package com.vergeandroid.core;
 
 
 /*

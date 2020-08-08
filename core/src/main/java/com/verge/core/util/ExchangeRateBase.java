@@ -1,4 +1,4 @@
-package com.verge.core.util;
+package com.vergeandroid.core.util;
 
 /**
  * Copyright 2014 Andreas Schildbach
@@ -18,9 +18,9 @@ package com.verge.core.util;
  */
 
 
-import com.verge.core.coins.CoinType;
-import com.verge.core.coins.Value;
-import com.verge.core.coins.ValueType;
+import com.vergeandroid.core.coins.CoinType;
+import com.vergeandroid.core.coins.Value;
+import com.vergeandroid.core.coins.ValueType;
 
 import static com.google.common.base.Preconditions.checkArgument;
 import static com.google.common.base.Preconditions.checkState;

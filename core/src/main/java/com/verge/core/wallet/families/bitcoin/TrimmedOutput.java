@@ -1,4 +1,4 @@
-package com.verge.core.wallet.families.bitcoin;
+package com.vergeandroid.core.wallet.families.bitcoin;
 
 import org.bitcoinj.core.Coin;
 import org.bitcoinj.core.NetworkParameters;
@@ -8,7 +8,7 @@ import org.bitcoinj.core.TransactionOutput;
 
 import javax.annotation.Nullable;
 
-import static com.verge.core.Preconditions.checkNotNull;
+import static com.vergeandroid.core.Preconditions.checkNotNull;
 
 /**
  * @author John L. Jegutanis

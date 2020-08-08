@@ -16,7 +16,7 @@
  *
  */
 
-package com.verge.core.uri;
+package com.vergeandroid.core.uri;
 
 /**
  * <p>Exception to provide the following to {@link CoinURI}:</p>

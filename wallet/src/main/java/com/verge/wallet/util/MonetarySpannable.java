@@ -1,4 +1,4 @@
-package com.verge.wallet.util;
+package com.vergeandroid.wallet.util;
 
 /*
  * Copyright 2014 the original author or authors.
@@ -24,8 +24,8 @@ import android.text.SpannableString;
 import android.text.style.RelativeSizeSpan;
 import android.text.style.StyleSpan;
 
-import com.verge.core.util.MonetaryFormat;
-import com.verge.wallet.Constants;
+import com.vergeandroid.core.util.MonetaryFormat;
+import com.vergeandroid.wallet.Constants;
 
 import org.bitcoinj.core.Monetary;
 

@@ -1,6 +1,6 @@
-package com.verge.core.uri;
+package com.vergeandroid.core.uri;
 
-import com.verge.core.uri.CoinURIParseException;
+import com.vergeandroid.core.uri.CoinURIParseException;
 
 /**
  * <p>This exception occurs when a required field is detected (under the BIP21 rules) and fails

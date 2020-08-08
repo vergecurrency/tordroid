@@ -1,7 +1,7 @@
-package com.verge.core.coins.families;
+package com.vergeandroid.core.coins.families;
 
-import com.verge.core.messages.MessageFactory;
-import com.verge.core.wallet.families.clams.ClamsTxMessage;
+import com.vergeandroid.core.messages.MessageFactory;
+import com.vergeandroid.core.wallet.families.clams.ClamsTxMessage;
 
 import javax.annotation.Nullable;
 

@@ -1,4 +1,4 @@
-package com.verge.wallet.ui;
+package com.vergeandroid.wallet.ui;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -16,14 +16,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.verge.core.uri.CoinURI;
-import com.verge.core.uri.CoinURIParseException;
-import com.verge.core.wallet.WalletAccount;
-import com.verge.wallet.Constants;
-import com.verge.wallet.R;
-import com.verge.wallet.WalletApplication;
-import com.verge.wallet.util.Keyboard;
-import com.verge.wallet.util.WeakHandler;
+import com.vergeandroid.core.uri.CoinURI;
+import com.vergeandroid.core.uri.CoinURIParseException;
+import com.vergeandroid.core.wallet.WalletAccount;
+import com.vergeandroid.wallet.Constants;
+import com.vergeandroid.wallet.R;
+import com.vergeandroid.wallet.WalletApplication;
+import com.vergeandroid.wallet.util.Keyboard;
+import com.vergeandroid.wallet.util.WeakHandler;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -33,7 +33,7 @@ import javax.annotation.Nullable;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-import static com.verge.wallet.util.UiUtils.toastGenericError;
+import static com.vergeandroid.wallet.util.UiUtils.toastGenericError;
 
 /**
  * @author John L. Jegutanis

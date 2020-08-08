@@ -1,8 +1,8 @@
-package com.verge.core.wallet.families.bitcoin;
+package com.vergeandroid.core.wallet.families.bitcoin;
 
-import com.verge.core.coins.CoinType;
-import com.verge.core.exceptions.AddressMalformedException;
-import com.verge.core.wallet.AbstractAddress;
+import com.vergeandroid.core.coins.CoinType;
+import com.vergeandroid.core.exceptions.AddressMalformedException;
+import com.vergeandroid.core.wallet.AbstractAddress;
 
 import org.bitcoinj.core.Address;
 import org.bitcoinj.core.AddressFormatException;

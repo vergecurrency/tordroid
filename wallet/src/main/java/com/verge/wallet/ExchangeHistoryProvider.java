@@ -1,4 +1,4 @@
-package com.verge.wallet;
+package com.vergeandroid.wallet;
 
 import android.content.ContentProvider;
 import android.content.ContentValues;
@@ -9,19 +9,19 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteQueryBuilder;
 import android.net.Uri;
 
-import com.verge.core.coins.CoinID;
-import com.verge.core.coins.CoinType;
-import com.verge.core.coins.Value;
-import com.verge.core.exceptions.AddressMalformedException;
-import com.verge.core.exchange.shapeshift.data.ShapeShiftTxStatus;
-import com.verge.core.wallet.AbstractAddress;
+import com.vergeandroid.core.coins.CoinID;
+import com.vergeandroid.core.coins.CoinType;
+import com.vergeandroid.core.coins.Value;
+import com.vergeandroid.core.exceptions.AddressMalformedException;
+import com.vergeandroid.core.exchange.shapeshift.data.ShapeShiftTxStatus;
+import com.vergeandroid.core.wallet.AbstractAddress;
 
 import java.io.Serializable;
 import java.util.List;
 
 import javax.annotation.Nonnull;
 
-import static com.verge.core.Preconditions.checkNotNull;
+import static com.vergeandroid.core.Preconditions.checkNotNull;
 
 /**
  * @author John L. Jegutanis

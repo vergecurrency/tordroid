@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.verge.wallet.ui.FeesSettingsFragment" >
+    tools:context="com.vergeandroid.wallet.ui.FeesSettingsFragment" >
 
     <ListView
         android:id="@+id/coins_list"

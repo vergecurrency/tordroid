@@ -1,8 +1,8 @@
-package com.verge.core.wallet.families.bitcoin;
+package com.vergeandroid.core.wallet.families.bitcoin;
 
-import com.verge.core.coins.CannacoinMain;
-import com.verge.core.coins.NuBitsMain;
-import com.verge.core.coins.PeercoinMain;
+import com.vergeandroid.core.coins.CannacoinMain;
+import com.vergeandroid.core.coins.NuBitsMain;
+import com.vergeandroid.core.coins.PeercoinMain;
 
 import org.bitcoinj.core.Transaction;
 import org.junit.Test;

@@ -1,4 +1,4 @@
-package com.verge.wallet.camera;
+package com.vergeandroid.wallet.camera;
 
 
 /*

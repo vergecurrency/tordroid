@@ -1,4 +1,4 @@
-package com.verge.wallet.ui;
+package com.vergeandroid.wallet.ui;
 
 /**
  * @author John L. Jegutanis

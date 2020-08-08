@@ -1,7 +1,7 @@
-package com.verge.core.coins;
+package com.vergeandroid.core.coins;
 
-import com.verge.core.coins.families.BitFamily;
-import com.verge.core.coins.families.PeerFamily;
+import com.vergeandroid.core.coins.families.BitFamily;
+import com.vergeandroid.core.coins.families.PeerFamily;
 
 public class AsiacoinMain extends PeerFamily {
     private AsiacoinMain() {

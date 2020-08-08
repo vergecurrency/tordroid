@@ -1,13 +1,13 @@
-package com.verge.core.wallet;
+package com.vergeandroid.core.wallet;
 
-import com.verge.core.CoreUtils;
-import com.verge.core.coins.CoinType;
-import com.verge.core.coins.Value;
-import com.verge.core.coins.families.BitFamily;
-import com.verge.core.coins.families.NxtFamily;
-import com.verge.core.exceptions.UnsupportedCoinTypeException;
-import com.verge.core.protos.Protos;
-import com.verge.core.wallet.families.nxt.NxtFamilyWallet;
+import com.vergeandroid.core.CoreUtils;
+import com.vergeandroid.core.coins.CoinType;
+import com.vergeandroid.core.coins.Value;
+import com.vergeandroid.core.coins.families.BitFamily;
+import com.vergeandroid.core.coins.families.NxtFamily;
+import com.vergeandroid.core.exceptions.UnsupportedCoinTypeException;
+import com.vergeandroid.core.protos.Protos;
+import com.vergeandroid.core.wallet.families.nxt.NxtFamilyWallet;
 import com.google.common.annotations.VisibleForTesting;
 import com.google.common.base.Splitter;
 import com.google.common.collect.ImmutableList;
@@ -44,7 +44,7 @@ import java.util.concurrent.locks.ReentrantLock;
 import javax.annotation.Nullable;
 import javax.annotation.concurrent.GuardedBy;
 
-import static com.verge.core.CoreUtils.bytesToMnemonic;
+import static com.vergeandroid.core.CoreUtils.bytesToMnemonic;
 import static com.google.common.base.Preconditions.checkNotNull;
 import static com.google.common.base.Preconditions.checkState;
 
@@ -572,7 +572,7 @@ final public class Wallet {
     /**
      * <p>
      * Disables auto-saving, after it had been enabled with
-     * {@link Wallet#autosaveToFile(java.io.File, long, java.util.concurrent.TimeUnit, com.verge.core.wallet.WalletFiles.Listener)}
+     * {@link Wallet#autosaveToFile(java.io.File, long, java.util.concurrent.TimeUnit, com.vergeandroid.core.wallet.WalletFiles.Listener)}
      * before. This method blocks until finished.
      * </p>
      */

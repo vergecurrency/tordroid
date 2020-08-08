@@ -15,11 +15,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.verge.core.wallet.families.nxt;
+package com.vergeandroid.core.wallet.families.nxt;
 
-import com.verge.core.coins.CoinID;
-import com.verge.core.coins.CoinType;
-import com.verge.core.protos.Protos;
+import com.vergeandroid.core.coins.CoinID;
+import com.vergeandroid.core.coins.CoinType;
+import com.vergeandroid.core.protos.Protos;
 import com.google.protobuf.ByteString;
 
 import org.bitcoinj.core.Sha256Hash;
@@ -243,7 +243,7 @@ final public class NxtFamilyWalletProtobufSerializer {
             pocket.setDescription(walletProto.getDescription());
         }
 
-        // TODO ready transactions? Check com.verge.core.wallet WalletPocketProtobufSerializer
+        // TODO ready transactions? Check com.vergeandroid.core.wallet WalletPocketProtobufSerializer
 
         return pocket;
     }

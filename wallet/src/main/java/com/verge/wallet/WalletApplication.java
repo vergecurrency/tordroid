@@ -1,4 +1,4 @@
-package com.verge.wallet;
+package com.vergeandroid.wallet;
 
 import android.app.ActivityManager;
 import android.app.Application;
@@ -14,19 +14,19 @@ import android.os.SystemClock;
 import android.preference.PreferenceManager;
 import android.widget.Toast;
 
-import com.verge.core.coins.CoinType;
-import com.verge.core.coins.Value;
-import com.verge.core.exchange.shapeshift.ShapeShift;
-import com.verge.core.util.HardwareSoftwareCompliance;
-import com.verge.core.wallet.AbstractAddress;
-import com.verge.core.wallet.Wallet;
-import com.verge.core.wallet.WalletAccount;
-import com.verge.core.wallet.WalletProtobufSerializer;
-import com.verge.wallet.service.CoinService;
-import com.verge.wallet.service.CoinServiceImpl;
-import com.verge.wallet.util.Fonts;
-import com.verge.wallet.util.LinuxSecureRandom;
-import com.verge.wallet.util.NetworkUtils;
+import com.vergeandroid.core.coins.CoinType;
+import com.vergeandroid.core.coins.Value;
+import com.vergeandroid.core.exchange.shapeshift.ShapeShift;
+import com.vergeandroid.core.util.HardwareSoftwareCompliance;
+import com.vergeandroid.core.wallet.AbstractAddress;
+import com.vergeandroid.core.wallet.Wallet;
+import com.vergeandroid.core.wallet.WalletAccount;
+import com.vergeandroid.core.wallet.WalletProtobufSerializer;
+import com.vergeandroid.wallet.service.CoinService;
+import com.vergeandroid.wallet.service.CoinServiceImpl;
+import com.vergeandroid.wallet.util.Fonts;
+import com.vergeandroid.wallet.util.LinuxSecureRandom;
+import com.vergeandroid.wallet.util.NetworkUtils;
 import com.google.common.collect.ImmutableList;
 import com.google.common.io.Files;
 

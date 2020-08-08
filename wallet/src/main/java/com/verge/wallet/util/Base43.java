@@ -1,4 +1,4 @@
-package com.verge.wallet.util;
+package com.vergeandroid.wallet.util;
 
 /**
  * Copyright 2011 Google Inc.

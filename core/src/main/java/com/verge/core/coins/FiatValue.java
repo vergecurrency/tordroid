@@ -1,4 +1,4 @@
-package com.verge.core.coins;
+package com.vergeandroid.core.coins;
 
 import org.bitcoinj.utils.Fiat;
 

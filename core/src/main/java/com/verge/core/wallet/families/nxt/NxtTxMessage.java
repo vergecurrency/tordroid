@@ -1,10 +1,10 @@
-package com.verge.core.wallet.families.nxt;
+package com.vergeandroid.core.wallet.families.nxt;
 
-import com.verge.core.coins.nxt.Convert;
-import com.verge.core.coins.nxt.Transaction;
-import com.verge.core.messages.MessageFactory;
-import com.verge.core.messages.TxMessage;
-import com.verge.core.wallet.AbstractTransaction;
+import com.vergeandroid.core.coins.nxt.Convert;
+import com.vergeandroid.core.coins.nxt.Transaction;
+import com.vergeandroid.core.messages.MessageFactory;
+import com.vergeandroid.core.messages.TxMessage;
+import com.vergeandroid.core.wallet.AbstractTransaction;
 
 import javax.annotation.Nullable;
 

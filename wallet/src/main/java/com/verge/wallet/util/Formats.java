@@ -1,4 +1,4 @@
-package com.verge.wallet.util;
+package com.vergeandroid.wallet.util;
 
 /*
  * Copyright 2014 the original author or authors.
@@ -18,7 +18,7 @@ package com.verge.wallet.util;
  */
 
 
-import com.verge.wallet.Constants;
+import com.vergeandroid.wallet.Constants;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

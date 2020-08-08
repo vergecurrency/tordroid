@@ -1,4 +1,4 @@
-package com.verge.wallet.ui;
+package com.vergeandroid.wallet.ui;
 
 import android.app.Activity;
 import android.content.Context;
@@ -18,21 +18,21 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.verge.core.coins.Value;
-import com.verge.core.util.GenericUtils;
-import com.verge.core.wallet.Wallet;
-import com.verge.core.wallet.WalletAccount;
-import com.verge.wallet.Configuration;
-import com.verge.wallet.ExchangeRatesProvider;
-import com.verge.wallet.ExchangeRatesProvider.ExchangeRate;
-import com.verge.wallet.R;
-import com.verge.wallet.WalletApplication;
-import com.verge.wallet.ui.adaptors.AccountListAdapter;
-import com.verge.wallet.ui.widget.Amount;
-import com.verge.wallet.ui.widget.SwipeRefreshLayout;
-import com.verge.wallet.util.ThrottlingWalletChangeListener;
-import com.verge.wallet.util.UiUtils;
-import com.verge.wallet.util.WeakHandler;
+import com.vergeandroid.core.coins.Value;
+import com.vergeandroid.core.util.GenericUtils;
+import com.vergeandroid.core.wallet.Wallet;
+import com.vergeandroid.core.wallet.WalletAccount;
+import com.vergeandroid.wallet.Configuration;
+import com.vergeandroid.wallet.ExchangeRatesProvider;
+import com.vergeandroid.wallet.ExchangeRatesProvider.ExchangeRate;
+import com.vergeandroid.wallet.R;
+import com.vergeandroid.wallet.WalletApplication;
+import com.vergeandroid.wallet.ui.adaptors.AccountListAdapter;
+import com.vergeandroid.wallet.ui.widget.Amount;
+import com.vergeandroid.wallet.ui.widget.SwipeRefreshLayout;
+import com.vergeandroid.wallet.util.ThrottlingWalletChangeListener;
+import com.vergeandroid.wallet.util.UiUtils;
+import com.vergeandroid.wallet.util.WeakHandler;
 import com.google.common.collect.ImmutableMap;
 
 import org.bitcoinj.utils.Threading;

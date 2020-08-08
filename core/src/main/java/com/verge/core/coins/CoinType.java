@@ -1,11 +1,11 @@
-package com.verge.core.coins;
+package com.vergeandroid.core.coins;
 
 
-import com.verge.core.coins.families.Families;
-import com.verge.core.exceptions.AddressMalformedException;
-import com.verge.core.messages.MessageFactory;
-import com.verge.core.util.MonetaryFormat;
-import com.verge.core.wallet.AbstractAddress;
+import com.vergeandroid.core.coins.families.Families;
+import com.vergeandroid.core.exceptions.AddressMalformedException;
+import com.vergeandroid.core.messages.MessageFactory;
+import com.vergeandroid.core.util.MonetaryFormat;
+import com.vergeandroid.core.wallet.AbstractAddress;
 import com.google.common.base.Charsets;
 
 import org.bitcoinj.core.Coin;
@@ -141,7 +141,7 @@ abstract public class CoinType extends NetworkParameters implements ValueType, S
 
     /**
      * Returns a 1 coin of this type with the correct amount of units (satoshis)
-     * Use {@link com.verge.core.coins.CoinType:oneCoin}
+     * Use {@link com.vergeandroid.core.coins.CoinType:oneCoin}
      */
     @Deprecated
     public Coin getOneCoin() {

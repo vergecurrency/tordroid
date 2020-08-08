@@ -15,20 +15,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.verge.core.wallet;
+package com.vergeandroid.core.wallet;
 
-import com.verge.core.coins.CoinID;
-import com.verge.core.coins.CoinType;
-import com.verge.core.coins.Value;
-import com.verge.core.exceptions.AddressMalformedException;
-import com.verge.core.network.AddressStatus;
-import com.verge.core.protos.Protos;
-import com.verge.core.wallet.families.bitcoin.BitTransaction;
-import com.verge.core.wallet.families.bitcoin.BitWalletTransaction;
-import com.verge.core.wallet.families.bitcoin.EmptyTransactionOutput;
-import com.verge.core.wallet.families.bitcoin.TrimmedTransaction;
-import com.verge.core.wallet.families.bitcoin.TrimmedOutput;
-import com.verge.core.wallet.families.bitcoin.OutPointOutput;
+import com.vergeandroid.core.coins.CoinID;
+import com.vergeandroid.core.coins.CoinType;
+import com.vergeandroid.core.coins.Value;
+import com.vergeandroid.core.exceptions.AddressMalformedException;
+import com.vergeandroid.core.network.AddressStatus;
+import com.vergeandroid.core.protos.Protos;
+import com.vergeandroid.core.wallet.families.bitcoin.BitTransaction;
+import com.vergeandroid.core.wallet.families.bitcoin.BitWalletTransaction;
+import com.vergeandroid.core.wallet.families.bitcoin.EmptyTransactionOutput;
+import com.vergeandroid.core.wallet.families.bitcoin.TrimmedTransaction;
+import com.vergeandroid.core.wallet.families.bitcoin.TrimmedOutput;
+import com.vergeandroid.core.wallet.families.bitcoin.OutPointOutput;
 import com.google.protobuf.ByteString;
 
 import org.bitcoinj.core.Coin;
@@ -56,8 +56,8 @@ import java.util.Map;
 
 import javax.annotation.Nullable;
 
-import static com.verge.core.Preconditions.checkNotNull;
-import static com.verge.core.Preconditions.checkState;
+import static com.vergeandroid.core.Preconditions.checkNotNull;
+import static com.vergeandroid.core.Preconditions.checkState;
 import static org.bitcoinj.params.Networks.Family.CLAMS;
 import static org.bitcoinj.params.Networks.Family.NUBITS;
 import static org.bitcoinj.params.Networks.Family.PEERCOIN;

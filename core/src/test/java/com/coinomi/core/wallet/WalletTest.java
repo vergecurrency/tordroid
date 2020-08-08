@@ -1,11 +1,11 @@
-package com.verge.core.wallet;
+package com.vergeandroid.core.wallet;
 
-import com.verge.core.coins.BitcoinMain;
-import com.verge.core.coins.CoinType;
-import com.verge.core.coins.DogecoinMain;
-import com.verge.core.coins.DogecoinTest;
-import com.verge.core.coins.LitecoinMain;
-import com.verge.core.protos.Protos;
+import com.vergeandroid.core.coins.BitcoinMain;
+import com.vergeandroid.core.coins.CoinType;
+import com.vergeandroid.core.coins.DogecoinMain;
+import com.vergeandroid.core.coins.DogecoinTest;
+import com.vergeandroid.core.coins.LitecoinMain;
+import com.vergeandroid.core.protos.Protos;
 import org.bitcoinj.crypto.KeyCrypter;
 import org.bitcoinj.crypto.KeyCrypterScrypt;
 import org.bitcoinj.crypto.MnemonicException;

@@ -1,6 +1,6 @@
-package com.verge.core;
+package com.vergeandroid.core;
 
-import com.verge.core.wallet.AbstractAddress;
+import com.vergeandroid.core.wallet.AbstractAddress;
 import com.google.common.base.Joiner;
 
 import org.bitcoinj.crypto.MnemonicCode;

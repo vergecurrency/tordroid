@@ -1,9 +1,9 @@
-package com.verge.core.util;
+package com.vergeandroid.core.util;
 
-import com.verge.core.coins.CoinType;
-import com.verge.core.exceptions.AddressMalformedException;
-import com.verge.core.wallet.AbstractAddress;
-import com.verge.core.wallet.families.bitcoin.BitAddress;
+import com.vergeandroid.core.coins.CoinType;
+import com.vergeandroid.core.exceptions.AddressMalformedException;
+import com.vergeandroid.core.wallet.AbstractAddress;
+import com.vergeandroid.core.wallet.families.bitcoin.BitAddress;
 
 import org.bitcoinj.core.Address;
 import org.bitcoinj.core.AddressFormatException;
@@ -12,7 +12,7 @@ import org.bitcoinj.core.ScriptException;
 import org.bitcoinj.core.WrongNetworkException;
 import org.bitcoinj.script.Script;
 
-import static com.verge.core.Preconditions.checkArgument;
+import static com.vergeandroid.core.Preconditions.checkArgument;
 
 /**
  * @author John L. Jegutanis

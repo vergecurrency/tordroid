@@ -1,8 +1,8 @@
-package com.verge.stratumj;
+package com.vergeandroid.stratumj;
 
 
-import com.verge.stratumj.messages.CallMessage;
-import com.verge.stratumj.messages.ResultMessage;
+import com.vergeandroid.stratumj.messages.CallMessage;
+import com.vergeandroid.stratumj.messages.ResultMessage;
 import org.bitcoinj.utils.BriefLogFormatter;
 
 import com.google.common.util.concurrent.FutureCallback;

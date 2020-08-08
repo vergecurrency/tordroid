@@ -1,19 +1,19 @@
-package com.verge.core.exchange.shapeshift;
+package com.vergeandroid.core.exchange.shapeshift;
 
-import com.verge.core.coins.CoinID;
-import com.verge.core.coins.CoinType;
-import com.verge.core.coins.Value;
-import com.verge.core.exchange.shapeshift.data.ShapeShiftAmountTx;
-import com.verge.core.exchange.shapeshift.data.ShapeShiftCoins;
-import com.verge.core.exchange.shapeshift.data.ShapeShiftEmail;
-import com.verge.core.exchange.shapeshift.data.ShapeShiftException;
-import com.verge.core.exchange.shapeshift.data.ShapeShiftLimit;
-import com.verge.core.exchange.shapeshift.data.ShapeShiftMarketInfo;
-import com.verge.core.exchange.shapeshift.data.ShapeShiftNormalTx;
-import com.verge.core.exchange.shapeshift.data.ShapeShiftRate;
-import com.verge.core.exchange.shapeshift.data.ShapeShiftTime;
-import com.verge.core.exchange.shapeshift.data.ShapeShiftTxStatus;
-import com.verge.core.wallet.AbstractAddress;
+import com.vergeandroid.core.coins.CoinID;
+import com.vergeandroid.core.coins.CoinType;
+import com.vergeandroid.core.coins.Value;
+import com.vergeandroid.core.exchange.shapeshift.data.ShapeShiftAmountTx;
+import com.vergeandroid.core.exchange.shapeshift.data.ShapeShiftCoins;
+import com.vergeandroid.core.exchange.shapeshift.data.ShapeShiftEmail;
+import com.vergeandroid.core.exchange.shapeshift.data.ShapeShiftException;
+import com.vergeandroid.core.exchange.shapeshift.data.ShapeShiftLimit;
+import com.vergeandroid.core.exchange.shapeshift.data.ShapeShiftMarketInfo;
+import com.vergeandroid.core.exchange.shapeshift.data.ShapeShiftNormalTx;
+import com.vergeandroid.core.exchange.shapeshift.data.ShapeShiftRate;
+import com.vergeandroid.core.exchange.shapeshift.data.ShapeShiftTime;
+import com.vergeandroid.core.exchange.shapeshift.data.ShapeShiftTxStatus;
+import com.vergeandroid.core.wallet.AbstractAddress;
 import com.squareup.okhttp.MediaType;
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
@@ -27,8 +27,8 @@ import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 
-import static com.verge.core.Preconditions.checkNotNull;
-import static com.verge.core.Preconditions.checkState;
+import static com.vergeandroid.core.Preconditions.checkNotNull;
+import static com.vergeandroid.core.Preconditions.checkState;
 
 /**
  * @author John L. Jegutanis

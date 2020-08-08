@@ -1,4 +1,4 @@
-package com.verge.wallet.ui.widget;
+package com.vergeandroid.wallet.ui.widget;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,10 +8,10 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.verge.core.wallet.WalletAccount;
-import com.verge.wallet.Constants;
-import com.verge.wallet.R;
-import com.verge.wallet.util.WalletUtils;
+import com.vergeandroid.core.wallet.WalletAccount;
+import com.vergeandroid.wallet.Constants;
+import com.vergeandroid.wallet.R;
+import com.vergeandroid.wallet.util.WalletUtils;
 
 /**
  * @author John L. Jegutanis

@@ -1,9 +1,9 @@
-package com.verge.core.wallet;
+package com.vergeandroid.core.wallet;
 
-import com.verge.core.coins.CoinID;
-import com.verge.core.coins.CoinType;
-import com.verge.core.exceptions.AddressMalformedException;
-import com.verge.core.util.GenericUtils;
+import com.vergeandroid.core.coins.CoinID;
+import com.vergeandroid.core.coins.CoinType;
+import com.vergeandroid.core.exceptions.AddressMalformedException;
+import com.vergeandroid.core.util.GenericUtils;
 import com.google.common.base.Charsets;
 import com.google.common.collect.ImmutableList;
 import com.google.common.primitives.Bytes;

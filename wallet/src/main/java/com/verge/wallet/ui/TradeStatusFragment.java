@@ -1,4 +1,4 @@
-package com.verge.wallet.ui;
+package com.vergeandroid.wallet.ui;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -29,19 +29,19 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.verge.core.coins.CoinType;
-import com.verge.core.exchange.shapeshift.ShapeShift;
-import com.verge.core.exchange.shapeshift.data.ShapeShiftException;
-import com.verge.core.exchange.shapeshift.data.ShapeShiftTxStatus;
-import com.verge.core.wallet.AbstractAddress;
-import com.verge.core.wallet.WalletAccount;
-import com.verge.wallet.Constants;
-import com.verge.wallet.ExchangeHistoryProvider;
-import com.verge.wallet.ExchangeHistoryProvider.ExchangeEntry;
-import com.verge.wallet.R;
-import com.verge.wallet.WalletApplication;
-import com.verge.wallet.util.Fonts;
-import com.verge.wallet.util.WeakHandler;
+import com.vergeandroid.core.coins.CoinType;
+import com.vergeandroid.core.exchange.shapeshift.ShapeShift;
+import com.vergeandroid.core.exchange.shapeshift.data.ShapeShiftException;
+import com.vergeandroid.core.exchange.shapeshift.data.ShapeShiftTxStatus;
+import com.vergeandroid.core.wallet.AbstractAddress;
+import com.vergeandroid.core.wallet.WalletAccount;
+import com.vergeandroid.wallet.Constants;
+import com.vergeandroid.wallet.ExchangeHistoryProvider;
+import com.vergeandroid.wallet.ExchangeHistoryProvider.ExchangeEntry;
+import com.vergeandroid.wallet.R;
+import com.vergeandroid.wallet.WalletApplication;
+import com.vergeandroid.wallet.util.Fonts;
+import com.vergeandroid.wallet.util.WeakHandler;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -51,10 +51,10 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import static com.verge.core.Preconditions.checkNotNull;
-import static com.verge.wallet.util.UiUtils.setGone;
-import static com.verge.wallet.util.UiUtils.setInvisible;
-import static com.verge.wallet.util.UiUtils.setVisible;
+import static com.vergeandroid.core.Preconditions.checkNotNull;
+import static com.vergeandroid.wallet.util.UiUtils.setGone;
+import static com.vergeandroid.wallet.util.UiUtils.setInvisible;
+import static com.vergeandroid.wallet.util.UiUtils.setVisible;
 
 /**
  * @author John L. Jegutanis

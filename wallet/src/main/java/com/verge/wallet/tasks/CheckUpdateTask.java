@@ -1,8 +1,8 @@
-package com.verge.wallet.tasks;
+package com.vergeandroid.wallet.tasks;
 
 import android.os.AsyncTask;
 
-import com.verge.wallet.Constants;
+import com.vergeandroid.wallet.Constants;
 import com.google.common.base.Charsets;
 
 import org.slf4j.Logger;

@@ -1,4 +1,4 @@
-package com.verge.wallet.util;
+package com.vergeandroid.wallet.util;
 
 import android.content.res.AssetManager;
 import android.graphics.Paint;

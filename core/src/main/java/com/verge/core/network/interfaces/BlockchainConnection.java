@@ -1,7 +1,7 @@
-package com.verge.core.network.interfaces;
+package com.vergeandroid.core.network.interfaces;
 
-import com.verge.core.network.AddressStatus;
-import com.verge.core.wallet.AbstractAddress;
+import com.vergeandroid.core.network.AddressStatus;
+import com.vergeandroid.core.wallet.AbstractAddress;
 
 import org.bitcoinj.core.Sha256Hash;
 

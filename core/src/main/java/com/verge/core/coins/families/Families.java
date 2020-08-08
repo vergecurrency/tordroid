@@ -1,6 +1,6 @@
-package com.verge.core.coins.families;
+package com.vergeandroid.core.coins.families;
 
-import com.verge.core.coins.ValueType;
+import com.vergeandroid.core.coins.ValueType;
 
 /**
  * @author John L. Jegutanis

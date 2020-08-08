@@ -1,12 +1,12 @@
-package com.verge.wallet.ui.widget;
+package com.vergeandroid.wallet.ui.widget;
 
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.verge.wallet.R;
-import com.verge.wallet.util.Fonts;
+import com.vergeandroid.wallet.R;
+import com.vergeandroid.wallet.util.Fonts;
 
 /**
  * @author John L. Jegutanis

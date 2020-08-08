@@ -1,4 +1,4 @@
-package com.verge.wallet.ui;
+package com.vergeandroid.wallet.ui;
 
 import android.app.Activity;
 import android.app.Dialog;
@@ -9,13 +9,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.verge.core.coins.CoinType;
-import com.verge.core.exceptions.AddressMalformedException;
-import com.verge.core.util.GenericUtils;
-import com.verge.core.wallet.AbstractAddress;
-import com.verge.wallet.Constants;
-import com.verge.wallet.R;
-import com.verge.wallet.ui.widget.AddressView;
+import com.vergeandroid.core.coins.CoinType;
+import com.vergeandroid.core.exceptions.AddressMalformedException;
+import com.vergeandroid.core.util.GenericUtils;
+import com.vergeandroid.core.wallet.AbstractAddress;
+import com.vergeandroid.wallet.Constants;
+import com.vergeandroid.wallet.R;
+import com.vergeandroid.wallet.ui.widget.AddressView;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

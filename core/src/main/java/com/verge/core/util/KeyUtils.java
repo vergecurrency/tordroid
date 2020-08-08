@@ -1,7 +1,7 @@
-package com.verge.core.util;
+package com.vergeandroid.core.util;
 
-import com.verge.core.coins.CoinType;
-import com.verge.core.protos.Protos;
+import com.vergeandroid.core.coins.CoinType;
+import com.vergeandroid.core.protos.Protos;
 import com.google.common.collect.ImmutableList;
 import com.google.protobuf.ByteString;
 

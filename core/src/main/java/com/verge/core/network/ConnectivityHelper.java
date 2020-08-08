@@ -1,4 +1,4 @@
-package com.verge.core.network;
+package com.vergeandroid.core.network;
 
 /**
  * @author John L. Jegutanis

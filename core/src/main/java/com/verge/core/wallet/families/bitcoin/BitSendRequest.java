@@ -1,15 +1,15 @@
-package com.verge.core.wallet.families.bitcoin;
+package com.vergeandroid.core.wallet.families.bitcoin;
 
-import com.verge.core.coins.CoinType;
-import com.verge.core.coins.Value;
-import com.verge.core.coins.families.BitFamily;
-import com.verge.core.util.TypeUtils;
-import com.verge.core.wallet.SendRequest;
+import com.vergeandroid.core.coins.CoinType;
+import com.vergeandroid.core.coins.Value;
+import com.vergeandroid.core.coins.families.BitFamily;
+import com.vergeandroid.core.util.TypeUtils;
+import com.vergeandroid.core.wallet.SendRequest;
 
 import org.bitcoinj.core.Coin;
 import org.bitcoinj.core.Transaction;
 
-import static com.verge.core.Preconditions.checkState;
+import static com.vergeandroid.core.Preconditions.checkState;
 import static com.google.common.base.Preconditions.checkNotNull;
 
 /**

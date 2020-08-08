@@ -1,12 +1,12 @@
-package com.verge.wallet;
+package com.vergeandroid.wallet;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.text.format.DateUtils;
 
-import com.verge.core.coins.CoinType;
-import com.verge.core.coins.Value;
-import com.verge.wallet.util.WalletUtils;
+import com.vergeandroid.core.coins.CoinType;
+import com.vergeandroid.core.coins.Value;
+import com.vergeandroid.wallet.util.WalletUtils;
 import com.google.common.collect.ImmutableMap;
 
 import org.json.JSONException;

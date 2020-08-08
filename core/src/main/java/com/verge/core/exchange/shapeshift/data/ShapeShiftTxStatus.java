@@ -1,10 +1,10 @@
-package com.verge.core.exchange.shapeshift.data;
+package com.vergeandroid.core.exchange.shapeshift.data;
 
-import com.verge.core.coins.CoinID;
-import com.verge.core.coins.CoinType;
-import com.verge.core.coins.Value;
-import com.verge.core.exceptions.AddressMalformedException;
-import com.verge.core.wallet.AbstractAddress;
+import com.vergeandroid.core.coins.CoinID;
+import com.vergeandroid.core.coins.CoinType;
+import com.vergeandroid.core.coins.Value;
+import com.vergeandroid.core.exceptions.AddressMalformedException;
+import com.vergeandroid.core.wallet.AbstractAddress;
 
 import org.json.JSONException;
 import org.json.JSONObject;

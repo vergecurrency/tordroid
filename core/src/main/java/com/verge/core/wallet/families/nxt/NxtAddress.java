@@ -1,11 +1,11 @@
-package com.verge.core.wallet.families.nxt;
+package com.vergeandroid.core.wallet.families.nxt;
 
-import com.verge.core.coins.CoinType;
-import com.verge.core.coins.nxt.Account;
-import com.verge.core.coins.nxt.Convert;
-import com.verge.core.coins.nxt.Crypto;
-import com.verge.core.wallet.AbstractAddress;
-import com.verge.core.exceptions.AddressMalformedException;
+import com.vergeandroid.core.coins.CoinType;
+import com.vergeandroid.core.coins.nxt.Account;
+import com.vergeandroid.core.coins.nxt.Convert;
+import com.vergeandroid.core.coins.nxt.Crypto;
+import com.vergeandroid.core.wallet.AbstractAddress;
+import com.vergeandroid.core.exceptions.AddressMalformedException;
 
 import javax.annotation.Nullable;
 

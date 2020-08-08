@@ -1,4 +1,4 @@
-package com.verge.wallet.util;
+package com.vergeandroid.wallet.util;
 
 /*
  * Copyright 2011-2014 the original author or authors.
@@ -24,16 +24,16 @@ import android.text.Spannable;
 import android.text.style.RelativeSizeSpan;
 import android.text.style.StyleSpan;
 
-import com.verge.core.coins.CoinID;
-import com.verge.core.coins.CoinType;
-import com.verge.core.coins.families.NxtFamily;
-import com.verge.core.util.Currencies;
-import com.verge.core.wallet.AbstractAddress;
-import com.verge.core.wallet.AbstractTransaction;
-import com.verge.core.wallet.AbstractTransaction.AbstractOutput;
-import com.verge.core.wallet.AbstractWallet;
-import com.verge.core.wallet.WalletAccount;
-import com.verge.wallet.Constants;
+import com.vergeandroid.core.coins.CoinID;
+import com.vergeandroid.core.coins.CoinType;
+import com.vergeandroid.core.coins.families.NxtFamily;
+import com.vergeandroid.core.util.Currencies;
+import com.vergeandroid.core.wallet.AbstractAddress;
+import com.vergeandroid.core.wallet.AbstractTransaction;
+import com.vergeandroid.core.wallet.AbstractTransaction.AbstractOutput;
+import com.vergeandroid.core.wallet.AbstractWallet;
+import com.vergeandroid.core.wallet.WalletAccount;
+import com.vergeandroid.wallet.Constants;
 
 import org.bitcoinj.core.Sha256Hash;
 
@@ -48,7 +48,7 @@ import javax.annotation.CheckForNull;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-import static com.verge.core.Preconditions.checkState;
+import static com.vergeandroid.core.Preconditions.checkState;
 
 /**
  * @author Andreas Schildbach

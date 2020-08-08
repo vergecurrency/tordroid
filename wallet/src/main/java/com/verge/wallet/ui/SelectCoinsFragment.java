@@ -1,4 +1,4 @@
-package com.verge.wallet.ui;
+package com.vergeandroid.wallet.ui;
 
 
 import android.content.Context;
@@ -16,14 +16,14 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 
-import com.verge.core.coins.CoinType;
-import com.verge.wallet.Configuration;
-import com.verge.wallet.Constants;
-import com.verge.wallet.ExchangeRatesProvider;
-import com.verge.wallet.ExchangeRatesProvider.ExchangeRate;
-import com.verge.wallet.R;
-import com.verge.wallet.WalletApplication;
-import com.verge.wallet.ui.widget.HeaderWithFontIcon;
+import com.vergeandroid.core.coins.CoinType;
+import com.vergeandroid.wallet.Configuration;
+import com.vergeandroid.wallet.Constants;
+import com.vergeandroid.wallet.ExchangeRatesProvider;
+import com.vergeandroid.wallet.ExchangeRatesProvider.ExchangeRate;
+import com.vergeandroid.wallet.R;
+import com.vergeandroid.wallet.WalletApplication;
+import com.vergeandroid.wallet.ui.widget.HeaderWithFontIcon;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Lists;
 
@@ -32,7 +32,7 @@ import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 
-import static com.verge.wallet.ExchangeRatesProvider.getRates;
+import static com.vergeandroid.wallet.ExchangeRatesProvider.getRates;
 
 /**
  * Fragment that restores a wallet

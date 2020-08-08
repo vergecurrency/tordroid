@@ -1,4 +1,4 @@
-package com.verge.core.coins.nxt;
+package com.vergeandroid.core.coins.nxt;
 
 /*
     Reed Solomon Encoding and Decoding for Nxt

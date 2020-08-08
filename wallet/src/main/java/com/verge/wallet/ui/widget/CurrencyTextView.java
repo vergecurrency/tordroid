@@ -1,4 +1,4 @@
-package com.verge.wallet.ui.widget;
+package com.vergeandroid.wallet.ui.widget;
 
 /*
  * Copyright 2013-2014 the original author or authors.
@@ -25,13 +25,13 @@ import android.text.style.RelativeSizeSpan;
 import android.util.AttributeSet;
 import android.widget.TextView;
 
-import com.verge.core.coins.CoinType;
-import com.verge.core.coins.Value;
-import com.verge.core.coins.ValueType;
-import com.verge.core.util.MonetaryFormat;
-import com.verge.wallet.Constants;
-import com.verge.wallet.R;
-import com.verge.wallet.util.MonetarySpannable;
+import com.vergeandroid.core.coins.CoinType;
+import com.vergeandroid.core.coins.Value;
+import com.vergeandroid.core.coins.ValueType;
+import com.vergeandroid.core.util.MonetaryFormat;
+import com.vergeandroid.wallet.Constants;
+import com.vergeandroid.wallet.R;
+import com.vergeandroid.wallet.util.MonetarySpannable;
 
 import org.bitcoinj.core.Monetary;
 

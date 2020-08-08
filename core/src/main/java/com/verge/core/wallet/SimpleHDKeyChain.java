@@ -1,7 +1,7 @@
-package com.verge.core.wallet;
+package com.vergeandroid.core.wallet;
 
 
-import com.verge.core.protos.Protos;
+import com.vergeandroid.core.protos.Protos;
 import org.bitcoinj.core.BloomFilter;
 import org.bitcoinj.core.ECKey;
 import org.bitcoinj.core.Sha256Hash;
@@ -22,7 +22,7 @@ import org.bitcoinj.wallet.KeyBag;
 import org.bitcoinj.wallet.KeyChainEventListener;
 import org.bitcoinj.wallet.RedeemData;
 
-import com.verge.core.util.KeyUtils;
+import com.vergeandroid.core.util.KeyUtils;
 import com.google.common.collect.ImmutableList;
 import com.google.protobuf.ByteString;
 

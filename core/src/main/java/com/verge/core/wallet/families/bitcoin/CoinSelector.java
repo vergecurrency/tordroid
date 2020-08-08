@@ -1,4 +1,4 @@
-package com.verge.core.wallet.families.bitcoin;
+package com.vergeandroid.core.wallet.families.bitcoin;
 
 import org.bitcoinj.core.Coin;
 import org.bitcoinj.wallet.DefaultCoinSelector;

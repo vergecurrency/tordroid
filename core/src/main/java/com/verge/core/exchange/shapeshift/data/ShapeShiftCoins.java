@@ -1,7 +1,7 @@
-package com.verge.core.exchange.shapeshift.data;
+package com.vergeandroid.core.exchange.shapeshift.data;
 
-import com.verge.core.coins.CoinID;
-import com.verge.core.coins.CoinType;
+import com.vergeandroid.core.coins.CoinID;
+import com.vergeandroid.core.coins.CoinType;
 import com.google.common.collect.ImmutableList;
 
 import org.json.JSONObject;

@@ -1,4 +1,4 @@
-package com.verge.wallet.ui;
+package com.vergeandroid.wallet.ui;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -10,14 +10,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.verge.core.wallet.WalletAccount;
-import com.verge.wallet.Constants;
-import com.verge.wallet.R;
-import com.verge.wallet.WalletApplication;
-import com.verge.wallet.util.QrUtils;
-import com.verge.wallet.util.UiUtils;
+import com.vergeandroid.core.wallet.WalletAccount;
+import com.vergeandroid.wallet.Constants;
+import com.vergeandroid.wallet.R;
+import com.vergeandroid.wallet.WalletApplication;
+import com.vergeandroid.wallet.util.QrUtils;
+import com.vergeandroid.wallet.util.UiUtils;
 
-import static com.verge.core.Preconditions.checkNotNull;
+import static com.vergeandroid.core.Preconditions.checkNotNull;
 
 /**
  * @author John L. Jegutanis

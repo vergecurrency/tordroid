@@ -1,4 +1,4 @@
-package com.verge.wallet.ui;
+package com.vergeandroid.wallet.ui;
 
 
 import android.content.Context;
@@ -13,10 +13,10 @@ import android.widget.CompoundButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.verge.core.wallet.Wallet;
-import com.verge.wallet.Constants;
-import com.verge.wallet.R;
-import com.verge.wallet.util.Fonts;
+import com.vergeandroid.core.wallet.Wallet;
+import com.vergeandroid.wallet.Constants;
+import com.vergeandroid.wallet.R;
+import com.vergeandroid.wallet.util.Fonts;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

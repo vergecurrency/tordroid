@@ -1,4 +1,4 @@
-package com.verge.wallet.ui;
+package com.vergeandroid.wallet.ui;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -6,14 +6,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
-import com.verge.core.coins.CoinID;
-import com.verge.core.coins.CoinType;
-import com.verge.core.wallet.Wallet;
-import com.verge.core.wallet.WalletAccount;
-import com.verge.wallet.Constants;
-import com.verge.wallet.R;
-import com.verge.wallet.tasks.AddCoinTask;
-import com.verge.wallet.ui.dialogs.ConfirmAddCoinUnlockWalletDialog;
+import com.vergeandroid.core.coins.CoinID;
+import com.vergeandroid.core.coins.CoinType;
+import com.vergeandroid.core.wallet.Wallet;
+import com.vergeandroid.core.wallet.WalletAccount;
+import com.vergeandroid.wallet.Constants;
+import com.vergeandroid.wallet.R;
+import com.vergeandroid.wallet.tasks.AddCoinTask;
+import com.vergeandroid.wallet.ui.dialogs.ConfirmAddCoinUnlockWalletDialog;
 
 import org.bitcoinj.crypto.KeyCrypterException;
 

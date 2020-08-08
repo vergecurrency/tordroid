@@ -1,4 +1,4 @@
-package com.verge.core.exchange.shapeshift.data;
+package com.vergeandroid.core.exchange.shapeshift.data;
 
 import org.json.JSONException;
 import org.json.JSONObject;

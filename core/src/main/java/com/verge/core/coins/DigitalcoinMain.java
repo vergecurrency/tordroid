@@ -1,6 +1,6 @@
-package com.verge.core.coins;
+package com.vergeandroid.core.coins;
 
-import com.verge.core.coins.families.BitFamily;
+import com.vergeandroid.core.coins.families.BitFamily;
 
 /**
  * @author FuzzyHobbit

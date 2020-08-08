@@ -1,4 +1,4 @@
-package com.verge.wallet.util;
+package com.vergeandroid.wallet.util;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -17,18 +17,18 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
-import com.verge.core.uri.CoinURI;
-import com.verge.core.uri.CoinURIParseException;
-import com.verge.core.util.GenericUtils;
-import com.verge.core.wallet.AbstractAddress;
-import com.verge.core.wallet.Wallet;
-import com.verge.core.wallet.WalletAccount;
-import com.verge.wallet.AddressBookProvider;
-import com.verge.wallet.Constants;
-import com.verge.wallet.R;
-import com.verge.wallet.ui.AccountDetailsActivity;
-import com.verge.wallet.ui.EditAccountFragment;
-import com.verge.wallet.ui.EditAddressBookEntryFragment;
+import com.vergeandroid.core.uri.CoinURI;
+import com.vergeandroid.core.uri.CoinURIParseException;
+import com.vergeandroid.core.util.GenericUtils;
+import com.vergeandroid.core.wallet.AbstractAddress;
+import com.vergeandroid.core.wallet.Wallet;
+import com.vergeandroid.core.wallet.WalletAccount;
+import com.vergeandroid.wallet.AddressBookProvider;
+import com.vergeandroid.wallet.Constants;
+import com.vergeandroid.wallet.R;
+import com.vergeandroid.wallet.ui.AccountDetailsActivity;
+import com.vergeandroid.wallet.ui.EditAccountFragment;
+import com.vergeandroid.wallet.ui.EditAddressBookEntryFragment;
 
 import org.acra.ACRA;
 import org.slf4j.Logger;

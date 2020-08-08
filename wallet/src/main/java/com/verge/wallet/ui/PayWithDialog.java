@@ -1,4 +1,4 @@
-package com.verge.wallet.ui;
+package com.vergeandroid.wallet.ui;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -11,15 +11,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.verge.core.coins.CoinType;
-import com.verge.core.uri.CoinURI;
-import com.verge.core.uri.CoinURIParseException;
-import com.verge.core.wallet.WalletAccount;
-import com.verge.wallet.Constants;
-import com.verge.wallet.R;
-import com.verge.wallet.WalletApplication;
-import com.verge.wallet.ui.widget.CoinListItem;
-import com.verge.wallet.util.UiUtils;
+import com.vergeandroid.core.coins.CoinType;
+import com.vergeandroid.core.uri.CoinURI;
+import com.vergeandroid.core.uri.CoinURIParseException;
+import com.vergeandroid.core.wallet.WalletAccount;
+import com.vergeandroid.wallet.Constants;
+import com.vergeandroid.wallet.R;
+import com.vergeandroid.wallet.WalletApplication;
+import com.vergeandroid.wallet.ui.widget.CoinListItem;
+import com.vergeandroid.wallet.util.UiUtils;
 
 /**
  * @author John L. Jegutanis

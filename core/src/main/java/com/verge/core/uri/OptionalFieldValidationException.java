@@ -1,4 +1,4 @@
-package com.verge.core.uri;
+package com.vergeandroid.core.uri;
 
 /**
  * <p>This exception occurs when an optional field is detected (under the Bitcoin URI scheme) and fails

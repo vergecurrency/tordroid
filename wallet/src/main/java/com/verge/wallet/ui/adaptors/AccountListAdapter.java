@@ -1,4 +1,4 @@
-package com.verge.wallet.ui.adaptors;
+package com.vergeandroid.wallet.ui.adaptors;
 
 import android.content.Context;
 import android.support.annotation.Nullable;
@@ -9,14 +9,14 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.verge.core.coins.Value;
-import com.verge.core.util.GenericUtils;
-import com.verge.core.wallet.Wallet;
-import com.verge.core.wallet.WalletAccount;
-import com.verge.wallet.Constants;
-import com.verge.wallet.ExchangeRatesProvider;
-import com.verge.wallet.R;
-import com.verge.wallet.ui.widget.Amount;
+import com.vergeandroid.core.coins.Value;
+import com.vergeandroid.core.util.GenericUtils;
+import com.vergeandroid.core.wallet.Wallet;
+import com.vergeandroid.core.wallet.WalletAccount;
+import com.vergeandroid.wallet.Constants;
+import com.vergeandroid.wallet.ExchangeRatesProvider;
+import com.vergeandroid.wallet.R;
+import com.vergeandroid.wallet.ui.widget.Amount;
 
 import java.util.ArrayList;
 import java.util.HashMap;

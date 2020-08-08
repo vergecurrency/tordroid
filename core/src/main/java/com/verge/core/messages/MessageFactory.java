@@ -1,6 +1,6 @@
-package com.verge.core.messages;
+package com.vergeandroid.core.messages;
 
-import com.verge.core.wallet.AbstractTransaction;
+import com.vergeandroid.core.wallet.AbstractTransaction;
 
 import javax.annotation.Nullable;
 

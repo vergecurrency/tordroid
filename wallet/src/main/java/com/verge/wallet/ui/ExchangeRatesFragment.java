@@ -1,4 +1,4 @@
-package com.verge.wallet.ui;
+package com.vergeandroid.wallet.ui;
 
 /*
  * Copyright 2011-2014 the original author or authors.
@@ -37,19 +37,19 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.verge.core.coins.BitcoinMain;
-import com.verge.core.coins.CoinID;
-import com.verge.core.coins.CoinType;
-import com.verge.core.coins.Value;
-import com.verge.core.util.GenericUtils;
-import com.verge.wallet.Configuration;
-import com.verge.wallet.Constants;
-import com.verge.wallet.ExchangeRatesProvider;
-import com.verge.wallet.ExchangeRatesProvider.ExchangeRate;
-import com.verge.wallet.R;
-import com.verge.wallet.WalletApplication;
-import com.verge.wallet.ui.widget.Amount;
-import com.verge.wallet.util.WalletUtils;
+import com.vergeandroid.core.coins.BitcoinMain;
+import com.vergeandroid.core.coins.CoinID;
+import com.vergeandroid.core.coins.CoinType;
+import com.vergeandroid.core.coins.Value;
+import com.vergeandroid.core.util.GenericUtils;
+import com.vergeandroid.wallet.Configuration;
+import com.vergeandroid.wallet.Constants;
+import com.vergeandroid.wallet.ExchangeRatesProvider;
+import com.vergeandroid.wallet.ExchangeRatesProvider.ExchangeRate;
+import com.vergeandroid.wallet.R;
+import com.vergeandroid.wallet.WalletApplication;
+import com.vergeandroid.wallet.ui.widget.Amount;
+import com.vergeandroid.wallet.util.WalletUtils;
 
 import org.bitcoinj.core.Coin;
 
@@ -64,7 +64,7 @@ public final class ExchangeRatesFragment extends ListFragment implements OnShare
     private Context context;
     private WalletApplication application;
     private Configuration config;
-    private com.verge.core.wallet.Wallet wallet;
+    private com.vergeandroid.core.wallet.Wallet wallet;
     private Uri contentUri;
     private LoaderManager loaderManager;
 

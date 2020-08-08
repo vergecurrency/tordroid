@@ -1,8 +1,8 @@
-package com.verge.core.coins;
+package com.vergeandroid.core.coins;
 
-import com.verge.core.coins.families.Families;
-import com.verge.core.util.Currencies;
-import com.verge.core.util.MonetaryFormat;
+import com.vergeandroid.core.coins.families.Families;
+import com.vergeandroid.core.util.Currencies;
+import com.vergeandroid.core.util.MonetaryFormat;
 
 import org.bitcoinj.core.Coin;
 

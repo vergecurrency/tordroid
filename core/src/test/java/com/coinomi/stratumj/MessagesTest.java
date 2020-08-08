@@ -1,8 +1,8 @@
-package com.verge.stratumj;
+package com.vergeandroid.stratumj;
 
-import com.verge.stratumj.messages.BaseMessage;
-import com.verge.stratumj.messages.CallMessage;
-import com.verge.stratumj.messages.ResultMessage;
+import com.vergeandroid.stratumj.messages.BaseMessage;
+import com.vergeandroid.stratumj.messages.CallMessage;
+import com.vergeandroid.stratumj.messages.ResultMessage;
 
 import org.json.JSONException;
 import org.junit.Assert;

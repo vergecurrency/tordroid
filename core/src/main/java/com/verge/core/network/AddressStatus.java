@@ -1,8 +1,8 @@
-package com.verge.core.network;
+package com.vergeandroid.core.network;
 
-import com.verge.core.network.ServerClient.HistoryTx;
-import com.verge.core.network.ServerClient.UnspentTx;
-import com.verge.core.wallet.AbstractAddress;
+import com.vergeandroid.core.network.ServerClient.HistoryTx;
+import com.vergeandroid.core.network.ServerClient.UnspentTx;
+import com.vergeandroid.core.wallet.AbstractAddress;
 import com.google.common.collect.Sets;
 
 import org.bitcoinj.core.Sha256Hash;

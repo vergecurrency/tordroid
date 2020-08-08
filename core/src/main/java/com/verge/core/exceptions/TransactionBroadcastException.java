@@ -1,4 +1,4 @@
-package com.verge.core.exceptions;
+package com.vergeandroid.core.exceptions;
 
 /**
  * Created by vbcs on 29/9/2015.

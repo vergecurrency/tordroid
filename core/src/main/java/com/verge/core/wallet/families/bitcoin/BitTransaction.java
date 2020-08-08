@@ -1,13 +1,13 @@
-package com.verge.core.wallet.families.bitcoin;
+package com.vergeandroid.core.wallet.families.bitcoin;
 
-import com.verge.core.coins.CoinType;
-import com.verge.core.coins.Value;
-import com.verge.core.messages.MessageFactory;
-import com.verge.core.messages.TxMessage;
-import com.verge.core.wallet.AbstractAddress;
-import com.verge.core.wallet.AbstractTransaction;
-import com.verge.core.wallet.AbstractWallet;
-import com.verge.core.wallet.TransactionWatcherWallet;
+import com.vergeandroid.core.coins.CoinType;
+import com.vergeandroid.core.coins.Value;
+import com.vergeandroid.core.messages.MessageFactory;
+import com.vergeandroid.core.messages.TxMessage;
+import com.vergeandroid.core.wallet.AbstractAddress;
+import com.vergeandroid.core.wallet.AbstractTransaction;
+import com.vergeandroid.core.wallet.AbstractWallet;
+import com.vergeandroid.core.wallet.TransactionWatcherWallet;
 import com.google.common.collect.ImmutableList;
 
 import org.bitcoinj.core.Sha256Hash;
@@ -27,8 +27,8 @@ import java.util.Map;
 
 import javax.annotation.Nullable;
 
-import static com.verge.core.Preconditions.checkNotNull;
-import static com.verge.core.Preconditions.checkState;
+import static com.vergeandroid.core.Preconditions.checkNotNull;
+import static com.vergeandroid.core.Preconditions.checkState;
 
 /**
  * @author vbcs

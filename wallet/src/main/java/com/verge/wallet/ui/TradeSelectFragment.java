@@ -1,4 +1,4 @@
-package com.verge.wallet.ui;
+package com.vergeandroid.wallet.ui;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -21,27 +21,27 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.verge.core.coins.CoinType;
-import com.verge.core.coins.PeercoinMain;
-import com.verge.core.coins.Value;
-import com.verge.core.exchange.shapeshift.ShapeShift;
-import com.verge.core.exchange.shapeshift.data.ShapeShiftCoins;
-import com.verge.core.exchange.shapeshift.data.ShapeShiftMarketInfo;
-import com.verge.core.util.ExchangeRate;
-import com.verge.core.wallet.Wallet;
-import com.verge.core.wallet.WalletAccount;
-import com.verge.wallet.Constants;
-import com.verge.wallet.R;
-import com.verge.wallet.WalletApplication;
-import com.verge.wallet.tasks.AddCoinTask;
-import com.verge.wallet.tasks.ExchangeCheckSupportedCoinsTask;
-import com.verge.wallet.tasks.MarketInfoPollTask;
-import com.verge.wallet.ui.adaptors.AvailableAccountsAdaptor;
-import com.verge.wallet.ui.dialogs.ConfirmAddCoinUnlockWalletDialog;
-import com.verge.wallet.ui.widget.AmountEditView;
-import com.verge.wallet.util.Keyboard;
-import com.verge.wallet.util.ThrottlingWalletChangeListener;
-import com.verge.wallet.util.WeakHandler;
+import com.vergeandroid.core.coins.CoinType;
+import com.vergeandroid.core.coins.PeercoinMain;
+import com.vergeandroid.core.coins.Value;
+import com.vergeandroid.core.exchange.shapeshift.ShapeShift;
+import com.vergeandroid.core.exchange.shapeshift.data.ShapeShiftCoins;
+import com.vergeandroid.core.exchange.shapeshift.data.ShapeShiftMarketInfo;
+import com.vergeandroid.core.util.ExchangeRate;
+import com.vergeandroid.core.wallet.Wallet;
+import com.vergeandroid.core.wallet.WalletAccount;
+import com.vergeandroid.wallet.Constants;
+import com.vergeandroid.wallet.R;
+import com.vergeandroid.wallet.WalletApplication;
+import com.vergeandroid.wallet.tasks.AddCoinTask;
+import com.vergeandroid.wallet.tasks.ExchangeCheckSupportedCoinsTask;
+import com.vergeandroid.wallet.tasks.MarketInfoPollTask;
+import com.vergeandroid.wallet.ui.adaptors.AvailableAccountsAdaptor;
+import com.vergeandroid.wallet.ui.dialogs.ConfirmAddCoinUnlockWalletDialog;
+import com.vergeandroid.wallet.ui.widget.AmountEditView;
+import com.vergeandroid.wallet.util.Keyboard;
+import com.vergeandroid.wallet.util.ThrottlingWalletChangeListener;
+import com.vergeandroid.wallet.util.WeakHandler;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 
@@ -57,7 +57,7 @@ import java.util.Timer;
 
 import javax.annotation.Nullable;
 
-import static com.verge.core.coins.Value.canCompare;
+import static com.vergeandroid.core.coins.Value.canCompare;
 
 /**
  * @author John L. Jegutanis

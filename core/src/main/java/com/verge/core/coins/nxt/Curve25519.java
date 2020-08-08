@@ -1,4 +1,4 @@
-package com.verge.core.coins.nxt;
+package com.vergeandroid.core.coins.nxt;
 
 /* Ported from C to Java by Dmitry Skiba [sahn0], 23/02/08.
  * Original: http://cds.xs4all.nl:8081/ecdh/

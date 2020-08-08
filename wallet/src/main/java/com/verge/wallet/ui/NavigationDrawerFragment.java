@@ -1,4 +1,4 @@
-package com.verge.wallet.ui;
+package com.vergeandroid.wallet.ui;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -20,7 +20,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-import com.verge.wallet.R;
+import com.vergeandroid.wallet.R;
 
 import java.util.List;
 

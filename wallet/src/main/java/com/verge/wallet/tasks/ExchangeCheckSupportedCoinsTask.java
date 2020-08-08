@@ -1,10 +1,10 @@
-package com.verge.wallet.tasks;
+package com.vergeandroid.wallet.tasks;
 
 import android.os.AsyncTask;
 
-import com.verge.core.exchange.shapeshift.data.ShapeShiftCoins;
-import com.verge.core.exchange.shapeshift.data.ShapeShiftException;
-import com.verge.wallet.WalletApplication;
+import com.vergeandroid.core.exchange.shapeshift.data.ShapeShiftCoins;
+import com.vergeandroid.core.exchange.shapeshift.data.ShapeShiftException;
+import com.vergeandroid.wallet.WalletApplication;
 
 /**
  * @author John L. Jegutanis

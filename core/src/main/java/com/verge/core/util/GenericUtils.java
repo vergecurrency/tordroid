@@ -1,14 +1,14 @@
-package com.verge.core.util;
+package com.vergeandroid.core.util;
 
 
-import com.verge.core.coins.CoinID;
-import com.verge.core.coins.CoinType;
-import com.verge.core.coins.Value;
-import com.verge.core.coins.ValueType;
-import com.verge.core.exceptions.AddressMalformedException;
-import com.verge.core.wallet.AbstractAddress;
-import com.verge.core.wallet.families.bitcoin.BitAddress;
-import com.verge.core.wallet.families.nxt.NxtAddress;
+import com.vergeandroid.core.coins.CoinID;
+import com.vergeandroid.core.coins.CoinType;
+import com.vergeandroid.core.coins.Value;
+import com.vergeandroid.core.coins.ValueType;
+import com.vergeandroid.core.exceptions.AddressMalformedException;
+import com.vergeandroid.core.wallet.AbstractAddress;
+import com.vergeandroid.core.wallet.families.bitcoin.BitAddress;
+import com.vergeandroid.core.wallet.families.nxt.NxtAddress;
 import com.google.common.collect.ImmutableList;
 
 import org.bitcoinj.core.AddressFormatException;

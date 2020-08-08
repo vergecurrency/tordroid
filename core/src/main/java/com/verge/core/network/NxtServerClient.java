@@ -1,16 +1,16 @@
-package com.verge.core.network;
+package com.vergeandroid.core.network;
 
-import com.verge.core.coins.CoinType;
-import com.verge.core.coins.nxt.Convert;
-import com.verge.core.wallet.AbstractAddress;
-import com.verge.core.coins.nxt.NxtException;
-import com.verge.core.coins.nxt.TransactionImpl;
-import com.verge.core.network.interfaces.BlockchainConnection;
-import com.verge.core.network.interfaces.ConnectionEventListener;
-import com.verge.core.network.interfaces.TransactionEventListener;
+import com.vergeandroid.core.coins.CoinType;
+import com.vergeandroid.core.coins.nxt.Convert;
+import com.vergeandroid.core.wallet.AbstractAddress;
+import com.vergeandroid.core.coins.nxt.NxtException;
+import com.vergeandroid.core.coins.nxt.TransactionImpl;
+import com.vergeandroid.core.network.interfaces.BlockchainConnection;
+import com.vergeandroid.core.network.interfaces.ConnectionEventListener;
+import com.vergeandroid.core.network.interfaces.TransactionEventListener;
 
-import com.verge.core.wallet.families.nxt.NxtTransaction;
-import com.verge.stratumj.ServerAddress;
+import com.vergeandroid.core.wallet.families.nxt.NxtTransaction;
+import com.vergeandroid.stratumj.ServerAddress;
 
 import com.google.common.collect.ImmutableList;
 import com.google.common.util.concurrent.Service;

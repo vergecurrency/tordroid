@@ -1,4 +1,4 @@
-package com.verge.wallet.ui;
+package com.vergeandroid.wallet.ui;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -12,15 +12,15 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.verge.core.coins.CoinType;
-import com.verge.core.wallet.AbstractAddress;
-import com.verge.core.wallet.SignedMessage;
-import com.verge.core.wallet.WalletAccount;
-import com.verge.wallet.Constants;
-import com.verge.wallet.R;
-import com.verge.wallet.WalletApplication;
-import com.verge.wallet.tasks.SignVerifyMessageTask;
-import com.verge.wallet.util.Keyboard;
+import com.vergeandroid.core.coins.CoinType;
+import com.vergeandroid.core.wallet.AbstractAddress;
+import com.vergeandroid.core.wallet.SignedMessage;
+import com.vergeandroid.core.wallet.WalletAccount;
+import com.vergeandroid.wallet.Constants;
+import com.vergeandroid.wallet.R;
+import com.vergeandroid.wallet.WalletApplication;
+import com.vergeandroid.wallet.tasks.SignVerifyMessageTask;
+import com.vergeandroid.wallet.util.Keyboard;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,8 +28,8 @@ import org.slf4j.LoggerFactory;
 import javax.annotation.Nullable;
 
 import static android.view.View.OnClickListener;
-import static com.verge.core.Preconditions.checkNotNull;
-import static com.verge.core.Preconditions.checkState;
+import static com.vergeandroid.core.Preconditions.checkNotNull;
+import static com.vergeandroid.core.Preconditions.checkState;
 
 /**
  * Fragment that prepares a transaction

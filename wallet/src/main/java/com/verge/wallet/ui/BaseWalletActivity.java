@@ -1,15 +1,15 @@
-package com.verge.wallet.ui;
+package com.vergeandroid.wallet.ui;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 
-import com.verge.core.coins.CoinType;
-import com.verge.core.wallet.Wallet;
-import com.verge.core.wallet.WalletAccount;
-import com.verge.wallet.Configuration;
-import com.verge.wallet.WalletApplication;
+import com.vergeandroid.core.coins.CoinType;
+import com.vergeandroid.core.wallet.Wallet;
+import com.vergeandroid.core.wallet.WalletAccount;
+import com.vergeandroid.wallet.Configuration;
+import com.vergeandroid.wallet.WalletApplication;
 
 import java.util.List;
 

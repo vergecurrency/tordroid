@@ -1,7 +1,7 @@
-package com.verge.core.network;
+package com.vergeandroid.core.network;
 
-import com.verge.core.coins.CoinType;
-import com.verge.stratumj.ServerAddress;
+import com.vergeandroid.core.coins.CoinType;
+import com.vergeandroid.stratumj.ServerAddress;
 import com.google.common.collect.ImmutableList;
 
 import java.util.List;

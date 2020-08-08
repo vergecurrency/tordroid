@@ -1,4 +1,4 @@
-package com.verge.wallet;
+package com.vergeandroid.wallet;
 
 /*
  * Copyright 2011-2014 the original author or authors.
@@ -26,8 +26,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteQueryBuilder;
 import android.net.Uri;
 
-import com.verge.core.coins.CoinType;
-import com.verge.core.wallet.AbstractAddress;
+import com.vergeandroid.core.coins.CoinType;
+import com.vergeandroid.core.wallet.AbstractAddress;
 
 import java.util.List;
 

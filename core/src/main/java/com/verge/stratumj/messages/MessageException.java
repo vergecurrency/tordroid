@@ -1,4 +1,4 @@
-package com.verge.stratumj.messages;
+package com.vergeandroid.stratumj.messages;
 
 /**
  * @author John L. Jegutanis

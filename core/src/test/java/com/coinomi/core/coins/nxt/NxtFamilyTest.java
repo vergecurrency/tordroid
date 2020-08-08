@@ -1,13 +1,13 @@
-package com.verge.core.coins.nxt;
+package com.vergeandroid.core.coins.nxt;
 
 /**
  * @author John L. Jegutanis
  */
 
-import com.verge.core.coins.NxtMain;
-import com.verge.core.coins.nxt.Appendix.EncryptedMessage;
-import com.verge.core.wallet.families.nxt.NxtAddress;
-import com.verge.core.wallet.families.nxt.NxtFamilyKey;
+import com.vergeandroid.core.coins.NxtMain;
+import com.vergeandroid.core.coins.nxt.Appendix.EncryptedMessage;
+import com.vergeandroid.core.wallet.families.nxt.NxtAddress;
+import com.vergeandroid.core.wallet.families.nxt.NxtFamilyKey;
 
 import org.bitcoinj.crypto.DeterministicHierarchy;
 import org.bitcoinj.crypto.DeterministicKey;

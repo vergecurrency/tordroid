@@ -1,8 +1,8 @@
-package com.verge.core.wallet;
+package com.vergeandroid.core.wallet;
 
-import com.verge.core.coins.BitcoinMain;
-import com.verge.core.coins.BitcoinTest;
-import com.verge.core.protos.Protos;
+import com.vergeandroid.core.coins.BitcoinMain;
+import com.vergeandroid.core.coins.BitcoinTest;
+import com.vergeandroid.core.protos.Protos;
 import com.google.common.base.Charsets;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;

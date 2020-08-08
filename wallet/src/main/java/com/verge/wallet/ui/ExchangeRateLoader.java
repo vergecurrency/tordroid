@@ -1,4 +1,4 @@
-package com.verge.wallet.ui;
+package com.vergeandroid.wallet.ui;
 
 /*
  * Copyright 2012-2014 the original author or authors.
@@ -17,8 +17,8 @@ package com.verge.wallet.ui;
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import com.verge.wallet.Configuration;
-import com.verge.wallet.ExchangeRatesProvider;
+import com.vergeandroid.wallet.Configuration;
+import com.vergeandroid.wallet.ExchangeRatesProvider;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;

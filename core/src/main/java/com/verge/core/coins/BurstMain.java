@@ -1,6 +1,6 @@
-package com.verge.core.coins;
+package com.vergeandroid.core.coins;
 
-import com.verge.core.coins.families.NxtFamily;
+import com.vergeandroid.core.coins.families.NxtFamily;
 
 /**
  * @author John L. Jegutanis

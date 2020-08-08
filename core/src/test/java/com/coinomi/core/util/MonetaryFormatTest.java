@@ -1,4 +1,4 @@
-package com.verge.core.util;
+package com.vergeandroid.core.util;
 
 /*
  * Copyright 2014 Andreas Schildbach
@@ -17,10 +17,10 @@ package com.verge.core.util;
  * limitations under the License.
  */
 
-import com.verge.core.coins.BitcoinMain;
-import com.verge.core.coins.FiatValue;
-import com.verge.core.coins.Value;
-import com.verge.core.coins.ValueType;
+import com.vergeandroid.core.coins.BitcoinMain;
+import com.vergeandroid.core.coins.FiatValue;
+import com.vergeandroid.core.coins.Value;
+import com.vergeandroid.core.coins.ValueType;
 
 import static org.bitcoinj.core.Coin.CENT;
 import static org.bitcoinj.core.Coin.COIN;

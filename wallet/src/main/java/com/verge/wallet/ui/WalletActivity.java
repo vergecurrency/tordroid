@@ -1,4 +1,4 @@
-package com.verge.wallet.ui;
+package com.vergeandroid.wallet.ui;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -22,23 +22,23 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import com.verge.core.coins.CoinType;
-import com.verge.core.exceptions.AddressMalformedException;
-import com.verge.core.uri.CoinURI;
-import com.verge.core.uri.CoinURIParseException;
-import com.verge.core.util.GenericUtils;
-import com.verge.core.wallet.AbstractAddress;
-import com.verge.core.wallet.SerializedKey;
-import com.verge.core.wallet.WalletAccount;
-import com.verge.wallet.Constants;
-import com.verge.wallet.R;
-import com.verge.wallet.receiver.OrbotStatusReceiver;
-import com.verge.wallet.service.CoinService;
-import com.verge.wallet.service.CoinServiceImpl;
-import com.verge.wallet.tasks.CheckUpdateTask;
-import com.verge.wallet.ui.dialogs.TermsOfUseDialog;
-import com.verge.wallet.util.SystemUtils;
-import com.verge.wallet.util.WeakHandler;
+import com.vergeandroid.core.coins.CoinType;
+import com.vergeandroid.core.exceptions.AddressMalformedException;
+import com.vergeandroid.core.uri.CoinURI;
+import com.vergeandroid.core.uri.CoinURIParseException;
+import com.vergeandroid.core.util.GenericUtils;
+import com.vergeandroid.core.wallet.AbstractAddress;
+import com.vergeandroid.core.wallet.SerializedKey;
+import com.vergeandroid.core.wallet.WalletAccount;
+import com.vergeandroid.wallet.Constants;
+import com.vergeandroid.wallet.R;
+import com.vergeandroid.wallet.receiver.OrbotStatusReceiver;
+import com.vergeandroid.wallet.service.CoinService;
+import com.vergeandroid.wallet.service.CoinServiceImpl;
+import com.vergeandroid.wallet.tasks.CheckUpdateTask;
+import com.vergeandroid.wallet.ui.dialogs.TermsOfUseDialog;
+import com.vergeandroid.wallet.util.SystemUtils;
+import com.vergeandroid.wallet.util.WeakHandler;
 
 import org.bitcoinj.core.Transaction;
 import org.slf4j.Logger;
@@ -49,10 +49,10 @@ import java.util.List;
 
 import javax.annotation.Nullable;
 
-import static com.verge.wallet.ui.NavDrawerItemType.ITEM_COIN;
-import static com.verge.wallet.ui.NavDrawerItemType.ITEM_OVERVIEW;
-import static com.verge.wallet.ui.NavDrawerItemType.ITEM_SECTION_TITLE;
-import static com.verge.wallet.ui.NavDrawerItemType.ITEM_TRADE;
+import static com.vergeandroid.wallet.ui.NavDrawerItemType.ITEM_COIN;
+import static com.vergeandroid.wallet.ui.NavDrawerItemType.ITEM_OVERVIEW;
+import static com.vergeandroid.wallet.ui.NavDrawerItemType.ITEM_SECTION_TITLE;
+import static com.vergeandroid.wallet.ui.NavDrawerItemType.ITEM_TRADE;
 
 
 /**

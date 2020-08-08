@@ -1,4 +1,4 @@
-package com.verge.wallet.ui;
+package com.vergeandroid.wallet.ui;
 
 import android.content.ContentResolver;
 import android.content.Context;
@@ -18,24 +18,24 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.verge.core.coins.CoinType;
-import com.verge.core.coins.Value;
-import com.verge.core.util.GenericUtils;
-import com.verge.core.wallet.AbstractTransaction;
-import com.verge.core.wallet.AbstractWallet;
-import com.verge.core.wallet.WalletAccount;
-import com.verge.core.wallet.WalletConnectivityStatus;
-import com.verge.wallet.AddressBookProvider;
-import com.verge.wallet.Configuration;
-import com.verge.wallet.Constants;
-import com.verge.wallet.ExchangeRatesProvider;
-import com.verge.wallet.ExchangeRatesProvider.ExchangeRate;
-import com.verge.wallet.R;
-import com.verge.wallet.WalletApplication;
-import com.verge.wallet.ui.widget.Amount;
-import com.verge.wallet.ui.widget.SwipeRefreshLayout;
-import com.verge.wallet.util.ThrottlingWalletChangeListener;
-import com.verge.wallet.util.WeakHandler;
+import com.vergeandroid.core.coins.CoinType;
+import com.vergeandroid.core.coins.Value;
+import com.vergeandroid.core.util.GenericUtils;
+import com.vergeandroid.core.wallet.AbstractTransaction;
+import com.vergeandroid.core.wallet.AbstractWallet;
+import com.vergeandroid.core.wallet.WalletAccount;
+import com.vergeandroid.core.wallet.WalletConnectivityStatus;
+import com.vergeandroid.wallet.AddressBookProvider;
+import com.vergeandroid.wallet.Configuration;
+import com.vergeandroid.wallet.Constants;
+import com.vergeandroid.wallet.ExchangeRatesProvider;
+import com.vergeandroid.wallet.ExchangeRatesProvider.ExchangeRate;
+import com.vergeandroid.wallet.R;
+import com.vergeandroid.wallet.WalletApplication;
+import com.vergeandroid.wallet.ui.widget.Amount;
+import com.vergeandroid.wallet.ui.widget.SwipeRefreshLayout;
+import com.vergeandroid.wallet.util.ThrottlingWalletChangeListener;
+import com.vergeandroid.wallet.util.WeakHandler;
 import com.google.common.collect.Lists;
 
 import org.bitcoinj.core.Coin;
@@ -121,7 +121,7 @@ public class BalanceFragment extends WalletFragment implements LoaderCallbacks<L
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // The onCreateOptionsMenu is handled in com.verge.wallet.ui.AccountFragment
+        // The onCreateOptionsMenu is handled in com.vergeandroid.wallet.ui.AccountFragment
         setHasOptionsMenu(true);
 
         if (getArguments() != null) {

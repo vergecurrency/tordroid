@@ -1,8 +1,8 @@
-package com.verge.wallet.ui;
+package com.vergeandroid.wallet.ui;
 
 import android.support.v4.app.Fragment;
 
-import com.verge.core.wallet.WalletAccount;
+import com.vergeandroid.core.wallet.WalletAccount;
 
 /**
  * @author John L. Jegutanis

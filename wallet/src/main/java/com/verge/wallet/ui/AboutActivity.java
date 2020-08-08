@@ -1,12 +1,12 @@
-package com.verge.wallet.ui;
+package com.vergeandroid.wallet.ui;
 
 import android.app.AlertDialog;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-import com.verge.wallet.R;
-import com.verge.wallet.util.Fonts;
+import com.vergeandroid.wallet.R;
+import com.vergeandroid.wallet.util.Fonts;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;

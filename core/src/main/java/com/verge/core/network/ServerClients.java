@@ -1,11 +1,11 @@
-package com.verge.core.network;
+package com.vergeandroid.core.network;
 
-import com.verge.core.coins.CoinType;
-import com.verge.core.coins.families.BitFamily;
-import com.verge.core.coins.families.NxtFamily;
-import com.verge.core.exceptions.UnsupportedCoinTypeException;
-import com.verge.core.network.interfaces.BlockchainConnection;
-import com.verge.core.wallet.WalletAccount;
+import com.vergeandroid.core.coins.CoinType;
+import com.vergeandroid.core.coins.families.BitFamily;
+import com.vergeandroid.core.coins.families.NxtFamily;
+import com.vergeandroid.core.exceptions.UnsupportedCoinTypeException;
+import com.vergeandroid.core.network.interfaces.BlockchainConnection;
+import com.vergeandroid.core.wallet.WalletAccount;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

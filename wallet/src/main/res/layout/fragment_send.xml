@@ -74,7 +74,7 @@
                             android:layout_height="wrap_content"
                             android:text="@string/address_error" />
 
-                        <com.verge.wallet.ui.widget.AddressView
+                        <com.vergeandroid.wallet.ui.widget.AddressView
                             android:id="@+id/send_to_address_static"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -123,13 +123,13 @@
                     android:layout_height="wrap_content"
                     android:baselineAligned="false">
 
-                    <com.verge.wallet.ui.widget.AmountEditView
+                    <com.vergeandroid.wallet.ui.widget.AmountEditView
                         android:id="@+id/send_coin_amount"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="0.5" />
 
-                    <com.verge.wallet.ui.widget.AmountEditView
+                    <com.vergeandroid.wallet.ui.widget.AmountEditView
                         android:id="@+id/send_local_amount"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"

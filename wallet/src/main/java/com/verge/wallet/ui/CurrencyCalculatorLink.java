@@ -1,4 +1,4 @@
-package com.verge.wallet.ui;
+package com.vergeandroid.wallet.ui;
 
 /*
  * Copyright 2013-2014 the original author or authors.
@@ -19,10 +19,10 @@ package com.verge.wallet.ui;
 
 import android.view.View;
 
-import com.verge.core.coins.Value;
-import com.verge.core.util.ExchangeRate;
-import com.verge.wallet.ui.widget.AmountEditView;
-import com.verge.wallet.ui.widget.AmountEditView.Listener;
+import com.vergeandroid.core.coins.Value;
+import com.vergeandroid.core.util.ExchangeRate;
+import com.vergeandroid.wallet.ui.widget.AmountEditView;
+import com.vergeandroid.wallet.ui.widget.AmountEditView.Listener;
 
 import org.bitcoinj.core.Coin;
 

@@ -1,19 +1,19 @@
-package com.verge.core.wallet.families.nxt;
+package com.vergeandroid.core.wallet.families.nxt;
 
-import com.verge.core.coins.BurstMain;
-import com.verge.core.coins.CoinType;
-import com.verge.core.coins.FeePolicy;
-import com.verge.core.coins.NxtMain;
-import com.verge.core.coins.Value;
-import com.verge.core.coins.families.NxtFamily;
-import com.verge.core.coins.nxt.Appendix;
-import com.verge.core.coins.nxt.Attachment;
-import com.verge.core.coins.nxt.Convert;
-import com.verge.core.coins.nxt.TransactionImpl;
-import com.verge.core.util.TypeUtils;
-import com.verge.core.wallet.SendRequest;
+import com.vergeandroid.core.coins.BurstMain;
+import com.vergeandroid.core.coins.CoinType;
+import com.vergeandroid.core.coins.FeePolicy;
+import com.vergeandroid.core.coins.NxtMain;
+import com.vergeandroid.core.coins.Value;
+import com.vergeandroid.core.coins.families.NxtFamily;
+import com.vergeandroid.core.coins.nxt.Appendix;
+import com.vergeandroid.core.coins.nxt.Attachment;
+import com.vergeandroid.core.coins.nxt.Convert;
+import com.vergeandroid.core.coins.nxt.TransactionImpl;
+import com.vergeandroid.core.util.TypeUtils;
+import com.vergeandroid.core.wallet.SendRequest;
 
-import static com.verge.core.Preconditions.checkState;
+import static com.vergeandroid.core.Preconditions.checkState;
 import static com.google.common.base.Preconditions.checkNotNull;
 
 /**

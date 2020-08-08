@@ -1,19 +1,19 @@
-package com.verge.core.wallet.families.nxt;
+package com.vergeandroid.core.wallet.families.nxt;
 
-import com.verge.core.coins.CoinType;
-import com.verge.core.coins.NxtMain;
-import com.verge.core.coins.Value;
-import com.verge.core.coins.families.NxtFamily;
-import com.verge.core.coins.nxt.Account;
-import com.verge.core.coins.nxt.Attachment;
-import com.verge.core.coins.nxt.Convert;
-import com.verge.core.coins.nxt.NxtException;
-import com.verge.core.coins.nxt.Transaction;
-import com.verge.core.coins.nxt.TransactionImpl;
-import com.verge.core.protos.Protos;
-import com.verge.core.wallet.SendRequest;
-import com.verge.core.wallet.Wallet;
-import com.verge.core.wallet.WalletAccount;
+import com.vergeandroid.core.coins.CoinType;
+import com.vergeandroid.core.coins.NxtMain;
+import com.vergeandroid.core.coins.Value;
+import com.vergeandroid.core.coins.families.NxtFamily;
+import com.vergeandroid.core.coins.nxt.Account;
+import com.vergeandroid.core.coins.nxt.Attachment;
+import com.vergeandroid.core.coins.nxt.Convert;
+import com.vergeandroid.core.coins.nxt.NxtException;
+import com.vergeandroid.core.coins.nxt.Transaction;
+import com.vergeandroid.core.coins.nxt.TransactionImpl;
+import com.vergeandroid.core.protos.Protos;
+import com.vergeandroid.core.wallet.SendRequest;
+import com.vergeandroid.core.wallet.Wallet;
+import com.vergeandroid.core.wallet.WalletAccount;
 
 import org.bitcoinj.crypto.DeterministicHierarchy;
 import org.bitcoinj.crypto.DeterministicKey;

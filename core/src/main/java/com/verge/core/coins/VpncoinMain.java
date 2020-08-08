@@ -1,6 +1,6 @@
-package com.verge.core.coins;
+package com.vergeandroid.core.coins;
 
-import com.verge.core.coins.families.VpncoinFamily;
+import com.vergeandroid.core.coins.families.VpncoinFamily;
 
 /**
  * @author John L. Jegutanis

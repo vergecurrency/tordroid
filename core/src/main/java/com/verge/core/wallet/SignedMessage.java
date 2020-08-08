@@ -1,8 +1,8 @@
-package com.verge.core.wallet;
+package com.vergeandroid.core.wallet;
 
 import javax.annotation.Nullable;
 
-import static com.verge.core.Preconditions.checkNotNull;
+import static com.vergeandroid.core.Preconditions.checkNotNull;
 
 /**
  * @author John L. Jegutanis

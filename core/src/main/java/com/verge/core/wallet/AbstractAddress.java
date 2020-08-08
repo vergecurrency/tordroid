@@ -1,6 +1,6 @@
-package com.verge.core.wallet;
+package com.vergeandroid.core.wallet;
 
-import com.verge.core.coins.CoinType;
+import com.vergeandroid.core.coins.CoinType;
 
 import java.io.Serializable;
 

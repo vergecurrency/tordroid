@@ -1,10 +1,10 @@
-package com.verge.wallet.ui;
+package com.vergeandroid.wallet.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
-import com.verge.wallet.R;
+import com.vergeandroid.wallet.R;
 
 /**
  * @author John L. Jegutanis

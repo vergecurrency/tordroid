@@ -1,4 +1,4 @@
-package com.verge.wallet.ui;
+package com.vergeandroid.wallet.ui;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -7,7 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.verge.wallet.R;
+import com.vergeandroid.wallet.R;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

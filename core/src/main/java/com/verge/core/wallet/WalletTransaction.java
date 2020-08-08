@@ -1,6 +1,6 @@
-package com.verge.core.wallet;
+package com.vergeandroid.core.wallet;
 
-import com.verge.core.wallet.AbstractTransaction;
+import com.vergeandroid.core.wallet.AbstractTransaction;
 import static com.google.common.base.Preconditions.checkNotNull;
 
 /**

@@ -1,18 +1,18 @@
-package com.verge.core.network;
+package com.vergeandroid.core.network;
 
-import com.verge.core.coins.CoinType;
-import com.verge.core.exceptions.AddressMalformedException;
-import com.verge.core.network.interfaces.ConnectionEventListener;
-import com.verge.core.network.interfaces.TransactionEventListener;
-import com.verge.core.wallet.AbstractAddress;
-import com.verge.core.wallet.families.bitcoin.BitAddress;
-import com.verge.core.wallet.families.bitcoin.BitBlockchainConnection;
-import com.verge.core.wallet.families.bitcoin.BitTransaction;
-import com.verge.core.wallet.families.bitcoin.BitTransactionEventListener;
-import com.verge.stratumj.ServerAddress;
-import com.verge.stratumj.StratumClient;
-import com.verge.stratumj.messages.CallMessage;
-import com.verge.stratumj.messages.ResultMessage;
+import com.vergeandroid.core.coins.CoinType;
+import com.vergeandroid.core.exceptions.AddressMalformedException;
+import com.vergeandroid.core.network.interfaces.ConnectionEventListener;
+import com.vergeandroid.core.network.interfaces.TransactionEventListener;
+import com.vergeandroid.core.wallet.AbstractAddress;
+import com.vergeandroid.core.wallet.families.bitcoin.BitAddress;
+import com.vergeandroid.core.wallet.families.bitcoin.BitBlockchainConnection;
+import com.vergeandroid.core.wallet.families.bitcoin.BitTransaction;
+import com.vergeandroid.core.wallet.families.bitcoin.BitTransactionEventListener;
+import com.vergeandroid.stratumj.ServerAddress;
+import com.vergeandroid.stratumj.StratumClient;
+import com.vergeandroid.stratumj.messages.CallMessage;
+import com.vergeandroid.stratumj.messages.ResultMessage;
 import com.google.common.collect.ImmutableList;
 import com.google.common.io.Files;
 import com.google.common.util.concurrent.FutureCallback;
@@ -45,8 +45,8 @@ import java.util.concurrent.TimeUnit;
 
 import javax.annotation.Nullable;
 
-import static com.verge.core.Preconditions.checkNotNull;
-import static com.verge.core.Preconditions.checkState;
+import static com.vergeandroid.core.Preconditions.checkNotNull;
+import static com.vergeandroid.core.Preconditions.checkState;
 import static com.google.common.util.concurrent.Service.State.NEW;
 
 /**

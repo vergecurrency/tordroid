@@ -1,9 +1,9 @@
-package com.verge.core.wallet.families.clams;
+package com.vergeandroid.core.wallet.families.clams;
 
-import com.verge.core.messages.MessageFactory;
-import com.verge.core.messages.TxMessage;
-import com.verge.core.wallet.AbstractTransaction;
-import com.verge.core.wallet.families.bitcoin.BitTransaction;
+import com.vergeandroid.core.messages.MessageFactory;
+import com.vergeandroid.core.messages.TxMessage;
+import com.vergeandroid.core.wallet.AbstractTransaction;
+import com.vergeandroid.core.wallet.families.bitcoin.BitTransaction;
 import com.google.common.base.Charsets;
 
 import org.bitcoinj.core.Transaction;
@@ -12,7 +12,7 @@ import org.slf4j.LoggerFactory;
 
 import javax.annotation.Nullable;
 
-import static com.verge.core.Preconditions.checkArgument;
+import static com.vergeandroid.core.Preconditions.checkArgument;
 
 /**
  * @author John L. Jegutanis

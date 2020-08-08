@@ -1,8 +1,8 @@
-package com.verge.core.network.interfaces;
+package com.vergeandroid.core.network.interfaces;
 
-import com.verge.core.network.AddressStatus;
-import com.verge.core.network.BlockHeader;
-import com.verge.core.network.ServerClient.HistoryTx;
+import com.vergeandroid.core.network.AddressStatus;
+import com.vergeandroid.core.network.BlockHeader;
+import com.vergeandroid.core.network.ServerClient.HistoryTx;
 
 import java.util.List;
 

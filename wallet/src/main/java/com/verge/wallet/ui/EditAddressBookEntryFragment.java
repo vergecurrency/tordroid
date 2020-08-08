@@ -1,4 +1,4 @@
-package com.verge.wallet.ui;
+package com.vergeandroid.wallet.ui;
 
 /*
  * Copyright 2011-2014 the original author or authors.
@@ -30,12 +30,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
 
-import com.verge.core.coins.CoinID;
-import com.verge.core.coins.CoinType;
-import com.verge.core.util.GenericUtils;
-import com.verge.core.wallet.AbstractAddress;
-import com.verge.wallet.AddressBookProvider;
-import com.verge.wallet.R;
+import com.vergeandroid.core.coins.CoinID;
+import com.vergeandroid.core.coins.CoinType;
+import com.vergeandroid.core.util.GenericUtils;
+import com.vergeandroid.core.wallet.AbstractAddress;
+import com.vergeandroid.wallet.AddressBookProvider;
+import com.vergeandroid.wallet.R;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;

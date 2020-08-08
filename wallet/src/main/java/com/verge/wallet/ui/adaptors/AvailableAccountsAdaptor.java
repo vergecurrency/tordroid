@@ -1,15 +1,15 @@
-package com.verge.wallet.ui.adaptors;
+package com.vergeandroid.wallet.ui.adaptors;
 
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
-import com.verge.core.coins.CoinType;
-import com.verge.core.wallet.WalletAccount;
-import com.verge.core.wallet.WalletPocketHD;
-import com.verge.wallet.ui.widget.NavDrawerItemView;
-import com.verge.wallet.util.WalletUtils;
+import com.vergeandroid.core.coins.CoinType;
+import com.vergeandroid.core.wallet.WalletAccount;
+import com.vergeandroid.core.wallet.WalletPocketHD;
+import com.vergeandroid.wallet.ui.widget.NavDrawerItemView;
+import com.vergeandroid.wallet.util.WalletUtils;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 

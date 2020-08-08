@@ -1,4 +1,4 @@
-package com.verge.core.coins.nxt;
+package com.vergeandroid.core.coins.nxt;
 
 /******************************************************************************
  * Copyright © 2013-2015 The Nxt Core Developers.                             *
@@ -19,9 +19,9 @@ package com.verge.core.coins.nxt;
 //import nxt.Constants;
 //import nxt.NxtException;
 
-import com.verge.core.coins.CoinType;
-import com.verge.core.coins.families.Families;
-import com.verge.core.coins.families.NxtFamily;
+import com.vergeandroid.core.coins.CoinType;
+import com.vergeandroid.core.coins.families.Families;
+import com.vergeandroid.core.coins.families.NxtFamily;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;

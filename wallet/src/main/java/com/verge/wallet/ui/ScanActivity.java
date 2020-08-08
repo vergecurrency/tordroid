@@ -1,4 +1,4 @@
-package com.verge.wallet.ui;
+package com.vergeandroid.wallet.ui;
 /*
  * Copyright 2012-2014 the original author or authors.
  *
@@ -44,9 +44,9 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.widget.Toast;
 
-import com.verge.wallet.Constants;
-import com.verge.wallet.R;
-import com.verge.wallet.camera.CameraManager;
+import com.vergeandroid.wallet.Constants;
+import com.vergeandroid.wallet.R;
+import com.vergeandroid.wallet.camera.CameraManager;
 import com.google.zxing.BinaryBitmap;
 import com.google.zxing.DecodeHintType;
 import com.google.zxing.PlanarYUVLuminanceSource;

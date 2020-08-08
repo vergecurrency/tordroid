@@ -14,13 +14,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.verge.core.wallet;
+package com.vergeandroid.core.wallet;
 
 
-import com.verge.core.coins.CoinType;
-import com.verge.core.coins.Value;
-import com.verge.core.messages.TxMessage;
-import com.verge.core.wallet.families.bitcoin.CoinSelector;
+import com.vergeandroid.core.coins.CoinType;
+import com.vergeandroid.core.coins.Value;
+import com.vergeandroid.core.messages.TxMessage;
+import com.vergeandroid.core.wallet.families.bitcoin.CoinSelector;
 import com.google.common.base.Objects;
 import com.google.common.base.Objects.ToStringHelper;
 

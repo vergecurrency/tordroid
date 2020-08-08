@@ -1,4 +1,4 @@
-package com.verge.wallet.util;
+package com.vergeandroid.wallet.util;
 
 /*
  * Copyright 2013-2014 the original author or authors.
@@ -23,11 +23,11 @@ import java.util.concurrent.atomic.AtomicLong;
 
 import android.os.Handler;
 
-import com.verge.core.coins.Value;
-import com.verge.core.wallet.AbstractTransaction;
-import com.verge.core.wallet.WalletAccount;
-import com.verge.core.wallet.WalletAccountEventListener;
-import com.verge.core.wallet.WalletConnectivityStatus;
+import com.vergeandroid.core.coins.Value;
+import com.vergeandroid.core.wallet.AbstractTransaction;
+import com.vergeandroid.core.wallet.WalletAccount;
+import com.vergeandroid.core.wallet.WalletAccountEventListener;
+import com.vergeandroid.core.wallet.WalletConnectivityStatus;
 
 /**
  * @author Andreas Schildbach

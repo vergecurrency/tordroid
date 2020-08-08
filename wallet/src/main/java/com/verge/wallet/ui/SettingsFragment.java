@@ -1,9 +1,9 @@
-package com.verge.wallet.ui;
+package com.vergeandroid.wallet.ui;
 
 import android.os.Bundle;
 import android.support.v4.preference.PreferenceFragment;
 
-import com.verge.wallet.R;
+import com.vergeandroid.wallet.R;
 
 /**
  * @author John L. Jegutanis

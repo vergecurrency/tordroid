@@ -1,8 +1,8 @@
-package com.verge.core.wallet.families.bitcoin;
+package com.vergeandroid.core.wallet.families.bitcoin;
 
-import com.verge.core.network.AddressStatus;
-import com.verge.core.network.ServerClient.UnspentTx;
-import com.verge.core.network.interfaces.TransactionEventListener;
+import com.vergeandroid.core.network.AddressStatus;
+import com.vergeandroid.core.network.ServerClient.UnspentTx;
+import com.vergeandroid.core.network.interfaces.TransactionEventListener;
 
 import java.util.List;
 

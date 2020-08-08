@@ -1,4 +1,4 @@
-package com.verge.core.coins.nxt;
+package com.vergeandroid.core.coins.nxt;
 
 import org.spongycastle.crypto.CipherParameters;
 import org.spongycastle.crypto.InvalidCipherTextException;
