@@ -9,7 +9,7 @@ android {
         minSdkVersion 10
         targetSdkVersion 29
         versionCode 56
-        versionName "v1.0"
+        versionName "v1.2"
     }
 
     buildTypes {
