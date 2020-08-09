@@ -59,7 +59,7 @@ dependencies {
     implementation 'com.google.code.findbugs:jsr305:3.0.2'
     implementation 'com.madgag.spongycastle:core:1.58.0.0'
     implementation 'com.google.protobuf:protobuf-java:3.11.3'
-    implementation 'com.google.zxing:core:3.1.0'
+    implementation 'com.google.zxing:core:3.3.3'
     implementation 'ch.acra:acra:4.8.5'
     implementation 'com.android.support:support-v4-preferencefragment:1.0.0@aar'
     implementation 'com.jakewharton:butterknife:8.0.0'
