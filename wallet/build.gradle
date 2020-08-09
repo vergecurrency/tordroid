@@ -57,7 +57,7 @@ dependencies {
 //    compile 'com.android.support:preference-v7:23.2.1'
     implementation 'com.google.guava:guava:18.0'
     implementation 'com.google.code.findbugs:jsr305:3.0.2'
-    implementation 'com.madgag.spongycastle:core:1.51.0.0'
+    implementation 'com.madgag.spongycastle:core:1.58.0.0'
     implementation 'com.google.protobuf:protobuf-java:3.11.3'
     implementation 'com.google.zxing:core:3.1.0'
     implementation 'ch.acra:acra:4.8.5'
