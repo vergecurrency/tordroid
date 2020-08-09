@@ -30,7 +30,7 @@ import org.slf4j.LoggerFactory;
 
 import javax.annotation.Nullable;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 import static com.vergeandroid.wallet.util.UiUtils.toastGenericError;
@@ -56,7 +56,7 @@ public class AccountFragment extends Fragment {
     private static final int SEND_TO_URI = 0;
 
     private int currentScreen;
-    @Bind(R.id.pager) ViewPager viewPager;
+    @BindView(R.id.pager) ViewPager viewPager;
     NavigationDrawerFragment mNavigationDrawerFragment;
     @Nullable private WalletAccount account;
     private Listener listener;
@@ -127,13 +127,6 @@ public class AccountFragment extends Fragment {
                 new AppSectionsPagerAdapter(getActivity(), getChildFragmentManager(), account));
 
         return view;
-    }
-
-    @Override
-    public void onDestroyView() {
-        ButterKnife.unbind(this);
-        mNavigationDrawerFragment = null;
-        super.onDestroyView();
     }
 
     @Override

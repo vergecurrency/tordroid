@@ -20,7 +20,7 @@ import com.vergeandroid.wallet.WalletApplication;
 import com.vergeandroid.wallet.ui.DialogBuilder;
 import com.vergeandroid.wallet.ui.widget.AmountEditView;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 import static com.vergeandroid.core.Preconditions.checkState;
@@ -29,9 +29,9 @@ import static com.vergeandroid.core.Preconditions.checkState;
  * @author John L. Jegutanis
  */
 public class EditFeeDialog extends DialogFragment {
-    @Bind(R.id.fee_description)
+    @BindView(R.id.fee_description)
     TextView description;
-    @Bind(R.id.fee_amount)
+    @BindView(R.id.fee_amount)
     AmountEditView feeAmount;
     Configuration configuration;
     Resources resources;

@@ -60,12 +60,6 @@ public class DebuggingFragment extends Fragment {
     }
 
     @Override
-    public void onDestroyView() {
-        ButterKnife.unbind(this);
-        super.onDestroyView();
-    }
-
-    @Override
     public void onAttach(final Context context) {
         super.onAttach(context);
         WalletApplication application = (WalletApplication) context.getApplicationContext();

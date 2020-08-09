@@ -41,7 +41,7 @@ import org.slf4j.LoggerFactory;
 
 import java.util.Map;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.OnItemClick;
@@ -93,9 +93,9 @@ public class OverviewFragment extends Fragment{
     Map<String, ExchangeRate> exchangeRates;
     private NavigationDrawerFragment mNavigationDrawerFragment;
 
-    @Bind(R.id.swipeContainer) SwipeRefreshLayout swipeContainer;
-    @Bind(R.id.account_rows) ListView accountRows;
-    @Bind(R.id.account_balance) Amount mainAmount;
+    @BindView(R.id.swipeContainer) SwipeRefreshLayout swipeContainer;
+    @BindView(R.id.account_rows) ListView accountRows;
+    @BindView(R.id.account_balance) Amount mainAmount;
 
     private Listener listener;
 
@@ -164,12 +164,6 @@ public class OverviewFragment extends Fragment{
         adapter.setExchangeRates(exchangeRates);
 
         return view;
-    }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        ButterKnife.unbind(this);
     }
 
     private final ThrottlingWalletChangeListener walletChangeListener = new ThrottlingWalletChangeListener() {

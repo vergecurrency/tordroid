@@ -80,7 +80,7 @@ import java.util.Timer;
 
 import javax.annotation.Nullable;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
@@ -144,20 +144,20 @@ public class SendFragment extends WalletFragment {
     private Map<String, ExchangeRate> localRates = new HashMap<>();
     private ShapeShiftMarketInfo marketInfo;
 
-    @Bind(R.id.send_to_address)         AutoCompleteTextView sendToAddressView;
-    @Bind(R.id.send_to_address_static)  AddressView sendToStaticAddressView;
-    @Bind(R.id.send_coin_amount)        AmountEditView sendCoinAmountView;
-    @Bind(R.id.send_local_amount)       AmountEditView sendLocalAmountView;
-    @Bind(R.id.address_error_message)   TextView addressError;
-    @Bind(R.id.amount_error_message)    TextView amountError;
-    @Bind(R.id.amount_warning_message)  TextView amountWarning;
-    @Bind(R.id.scan_qr_code)            ImageButton scanQrCodeButton;
-    @Bind(R.id.erase_address)           ImageButton eraseAddressButton;
-    @Bind(R.id.tx_message_add_remove)   Button txMessageButton;
-    @Bind(R.id.tx_message_label)        TextView txMessageLabel;
-    @Bind(R.id.tx_message)              EditText txMessageView;
-    @Bind(R.id.tx_message_counter)      TextView txMessageCounter;
-    @Bind(R.id.send_confirm)            Button sendConfirmButton;
+    @BindView(R.id.send_to_address)         AutoCompleteTextView sendToAddressView;
+    @BindView(R.id.send_to_address_static)  AddressView sendToStaticAddressView;
+    @BindView(R.id.send_coin_amount)        AmountEditView sendCoinAmountView;
+    @BindView(R.id.send_local_amount)       AmountEditView sendLocalAmountView;
+    @BindView(R.id.address_error_message)   TextView addressError;
+    @BindView(R.id.amount_error_message)    TextView amountError;
+    @BindView(R.id.amount_warning_message)  TextView amountWarning;
+    @BindView(R.id.scan_qr_code)            ImageButton scanQrCodeButton;
+    @BindView(R.id.erase_address)           ImageButton eraseAddressButton;
+    @BindView(R.id.tx_message_add_remove)   Button txMessageButton;
+    @BindView(R.id.tx_message_label)        TextView txMessageLabel;
+    @BindView(R.id.tx_message)              EditText txMessageView;
+    @BindView(R.id.tx_message_counter)      TextView txMessageCounter;
+    @BindView(R.id.send_confirm)            Button sendConfirmButton;
     @Nullable ReceivingAddressViewAdapter sendToAdapter;
     CurrencyCalculatorLink amountCalculatorLink;
     Timer timer;
@@ -324,15 +324,6 @@ public class SendFragment extends WalletFragment {
         setupTxMessage();
 
         return view;
-    }
-
-    @Override
-    public void onDestroyView() {
-        config.setLastExchangeDirection(amountCalculatorLink.getExchangeDirection());
-        amountCalculatorLink = null;
-        sendToAdapter = null;
-        ButterKnife.unbind(this);
-        super.onDestroyView();
     }
 
     @Override

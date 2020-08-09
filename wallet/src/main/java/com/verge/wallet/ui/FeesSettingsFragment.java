@@ -17,7 +17,7 @@ import com.vergeandroid.wallet.WalletApplication;
 import com.vergeandroid.wallet.ui.adaptors.FeesListAdapter;
 import com.vergeandroid.wallet.ui.dialogs.EditFeeDialog;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnItemClick;
 
@@ -27,7 +27,7 @@ import butterknife.OnItemClick;
 public class FeesSettingsFragment extends Fragment implements SharedPreferences.OnSharedPreferenceChangeListener {
     private static final String EDIT_FEE_DIALOG = "edit_fee_dialog";
 
-    @Bind(R.id.coins_list) ListView coinList;
+    @BindView(R.id.coins_list) ListView coinList;
 
     private Configuration config;
     private Context context;
@@ -41,12 +41,6 @@ public class FeesSettingsFragment extends Fragment implements SharedPreferences.
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         adapter = new FeesListAdapter(context, config);
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        ButterKnife.unbind(this);
     }
 
     @Override

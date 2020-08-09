@@ -58,7 +58,7 @@ import java.util.HashMap;
 
 import javax.annotation.Nullable;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
@@ -128,10 +128,10 @@ public class MakeTransactionFragment extends Fragment {
     private HashMap<String, ExchangeRate> localRates = new HashMap<>();
     private CountDownTimer countDownTimer;
 
-    @Bind(R.id.transaction_info) TextView transactionInfo;
-    @Bind(R.id.password) EditText passwordView;
-    @Bind(R.id.transaction_amount_visualizer) TransactionAmountVisualizer txVisualizer;
-    @Bind(R.id.transaction_trade_withdraw) SendOutput tradeWithdrawSendOutput;
+    @BindView(R.id.transaction_info) TextView transactionInfo;
+    @BindView(R.id.password) EditText passwordView;
+    @BindView(R.id.transaction_amount_visualizer) TransactionAmountVisualizer txVisualizer;
+    @BindView(R.id.transaction_trade_withdraw) SendOutput tradeWithdrawSendOutput;
 
     public static MakeTransactionFragment newInstance(Bundle args) {
         MakeTransactionFragment fragment = new MakeTransactionFragment();
@@ -245,12 +245,6 @@ public class MakeTransactionFragment extends Fragment {
         poweredByShapeShift.setVisibility((isExchangeNeeded() ? View.VISIBLE : View.GONE));
 
         return view;
-    }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        ButterKnife.unbind(this);
     }
 
     @OnClick(R.id.button_confirm)

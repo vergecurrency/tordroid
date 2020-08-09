@@ -40,7 +40,7 @@ import org.slf4j.LoggerFactory;
 
 import javax.annotation.Nullable;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.OnFocusChange;
@@ -78,14 +78,14 @@ public class SweepWalletFragment extends Fragment {
     private Error error = Error.NONE;
     private TxStatus status = TxStatus.INITIAL;
 
-    @Bind(R.id.private_key_input) View privateKeyInputView;
-    @Bind(R.id.sweep_wallet_key) EditText privateKeyText;
-    @Bind(R.id.passwordView) View passwordView;
-    @Bind(R.id.sweep_error) TextView errorΜessage;
-    @Bind(R.id.passwordInput) EditText password;
-    @Bind(R.id.sweep_loading) View sweepLoadingView;
-    @Bind(R.id.sweeping_status) TextView sweepStatus;
-    @Bind(R.id.button_next) Button nextButton;
+    @BindView(R.id.private_key_input) View privateKeyInputView;
+    @BindView(R.id.sweep_wallet_key) EditText privateKeyText;
+    @BindView(R.id.passwordView) View passwordView;
+    @BindView(R.id.sweep_error) TextView errorΜessage;
+    @BindView(R.id.passwordInput) EditText password;
+    @BindView(R.id.sweep_loading) View sweepLoadingView;
+    @BindView(R.id.sweeping_status) TextView sweepStatus;
+    @BindView(R.id.button_next) Button nextButton;
 
     public SweepWalletFragment() { }
 
@@ -155,12 +155,6 @@ public class SweepWalletFragment extends Fragment {
         super.onResume();
         validatePrivateKey();
         updateView();
-    }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        ButterKnife.unbind(this);
     }
 
     @Override

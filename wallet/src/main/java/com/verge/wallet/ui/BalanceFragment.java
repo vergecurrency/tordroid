@@ -52,10 +52,11 @@ import java.util.concurrent.RejectedExecutionException;
 
 import javax.annotation.Nonnull;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.OnItemClick;
+import butterknife.Unbinder;
 
 /**
  * Use the {@link BalanceFragment#newInstance} factory method to
@@ -88,12 +89,12 @@ public class BalanceFragment extends WalletFragment implements LoaderCallbacks<L
     private final MyHandler handler = new MyHandler(this);
     private final ContentObserver addressBookObserver = new AddressBookObserver(handler);
 
-            @Bind(R.id.transaction_rows) ListView transactionRows;
-    @Bind(R.id.swipeContainer) SwipeRefreshLayout swipeContainer;
-    @Bind(R.id.history_empty) View emptyPocketMessage;
-    @Bind(R.id.account_balance) Amount accountBalance;
-    @Bind(R.id.account_exchanged_balance) Amount accountExchangedBalance;
-    @Bind(R.id.connection_label) TextView connectionLabel;
+            @BindView(R.id.transaction_rows) ListView transactionRows;
+    @BindView(R.id.swipeContainer) SwipeRefreshLayout swipeContainer;
+    @BindView(R.id.history_empty) View emptyPocketMessage;
+    @BindView(R.id.account_balance) Amount accountBalance;
+    @BindView(R.id.account_exchanged_balance) Amount accountExchangedBalance;
+    @BindView(R.id.connection_label) TextView connectionLabel;
     private TransactionsListAdapter adapter;
     private Listener listener;
     private ContentResolver resolver;
@@ -160,13 +161,6 @@ public class BalanceFragment extends WalletFragment implements LoaderCallbacks<L
         updateBalance(pocket.getBalance());
 
         return view;
-    }
-
-    @Override
-    public void onDestroyView() {
-        adapter = null;
-        ButterKnife.unbind(this);
-        super.onDestroyView();
     }
 
     private void setupAdapter(LayoutInflater inflater) {
