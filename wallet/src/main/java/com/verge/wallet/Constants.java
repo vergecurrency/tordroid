@@ -198,6 +198,7 @@ public class Constants {
                                                     new ServerAddress("burst-cce-2.verge.net", 5051)),
             new CoinAddress(VergeMain.get(),        new ServerAddress("qz6pnufyqjexudq6.onion", 50001, TOR_LOCAL_PROXY),
                                                     new ServerAddress("jx5tldmayybm2pui.onion", 50001, TOR_LOCAL_PROXY)),
+													new ServerAddress("hdnfur2opijcfnyj6kzlljttzyfdv7fd7u3xlcwsrkp7txitolhchoad.onion", 50003, TOR_LOCAL_PROXY)),
             new CoinAddress(EguldenMain.get(),      new ServerAddress("efl-cce-1.verge.net", 5037),
                                                     new ServerAddress("efl-cce-2.verge.net", 5037)),
             new CoinAddress(GcrMain.get(),          new ServerAddress("gcr-cce-1.verge.net", 5038),
