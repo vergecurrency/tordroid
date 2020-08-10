@@ -114,7 +114,7 @@
     <string name="ambiguous_address_message">Please select the correct coin type</string>
     <!-- Balance fragment -->
     <string name="wallet_transactions_coinbase">Mined</string>
-    <string name="history_empty">No coins received so far!\n\nYou can get some through an exchange, trading and selling goods or services.</string>
+    <string name="history_empty">No coins received so far!\n\nYou can get some through an exchange, or trading/selling goods or services.</string>
     <string name="sent_to">sent to</string>
     <string name="received_with">received with</string>
     <string name="received_from">received from</string>
@@ -209,12 +209,13 @@
     <string name="about_credits_translations_credits" translatable="false">Tamara Castellano (Italian)\nJorge Nicolas Karmis (Spanish)\nGeorge Kimionis (Greek)\n@visvirial (Japanese)\nДенис Рейн (Russian, Ukrainian)</string>
     <string name="about_credits_bitcoinj">Uses Bitcoinj library</string>
     <string name="about_credits_electrum">Uses Electrum server software </string>
+	<string name="about_credits_github">This project can be found at https://github.com/vergecurrency/tordroid </string>
     <string name="about_credits_schildbach">Influenced by Andreas Schildbach\nhttps://github.com/schildbach/bitcoin-wallet/</string>
     <string name="about_credits_zxing">QR-code functionality by ZXing\nhttps://github.com/zxing/zxing</string>
     <string name="about_credits_crypto_icons">Crypto-icons by Chris Shepherd\nhttps://github.com/shphrd/crypto-icons</string>
     <string name="about_credits_font_icons">Font-icons by Daniel Bruce\nhttp://www.entypo.com</string>
     <string name="about_credits_exchange_rates">Exchange rates provided by\nhttp://www.cryptocoincharts.info/\nhttps://bitcoinaverage.com/</string>
-    <string name="about_verge_copyright" translatable="false">\u00A9 2017 Verge</string>
+    <string name="about_verge_copyright" translatable="false">\u00A9 2020 Verge</string>
     <!-- Add Coins -->
     <string name="title_activity_add_coins">Add coins</string>
     <!-- %1$s is the coin name e.g. ... create a Bitcoin account ... -->
@@ -275,8 +276,8 @@
     <string name="title_activity_settings">Settings</string>
     <string name="pref_title_restore_wallet">Restore wallet</string>
     <string name="pref_title_exchange_rates">Exchange rates</string>
-    <string name="pref_title_manual_receiving_addresses">Manual receiving addresses</string>
-    <string name="pref_summary_manual_receiving_addresses">Do not automatically create a new address for every transaction</string>
+    <string name="pref_title_manual_receiving_addresses">Static receiving addresses</string>
+    <string name="pref_summary_manual_receiving_addresses">Do not automatically create a new address for every transaction.</string>
     <!-- Show Seed -->
     <string name="title_activity_show_seed">Show recovery phrase</string>
     <string name="seed_not_available_title">No recovery phrase found</string>
