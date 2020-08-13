@@ -2,51 +2,17 @@ package com.vergeandroid.wallet;
 
 import android.text.format.DateUtils;
 
-import com.vergeandroid.core.coins.AsiacoinMain;
-import com.vergeandroid.core.coins.AuroracoinMain;
-import com.vergeandroid.core.coins.BatacoinMain;
 import com.vergeandroid.core.coins.BitcoinMain;
 import com.vergeandroid.core.coins.BitcoinTest;
-import com.vergeandroid.core.coins.BlackcoinMain;
 import com.vergeandroid.core.coins.BurstMain;
-import com.vergeandroid.core.coins.CanadaeCoinMain;
-import com.vergeandroid.core.coins.CannacoinMain;
-import com.vergeandroid.core.coins.ClamsMain;
-import com.vergeandroid.core.coins.ClubcoinMain;
 import com.vergeandroid.core.coins.CoinID;
 import com.vergeandroid.core.coins.CoinType;
-import com.vergeandroid.core.coins.DashMain;
-import com.vergeandroid.core.coins.DigibyteMain;
-import com.vergeandroid.core.coins.DigitalcoinMain;
 import com.vergeandroid.core.coins.DogecoinMain;
 import com.vergeandroid.core.coins.DogecoinTest;
-import com.vergeandroid.core.coins.EguldenMain;
-import com.vergeandroid.core.coins.FeathercoinMain;
-import com.vergeandroid.core.coins.GcrMain;
-import com.vergeandroid.core.coins.GuldenMain;
-import com.vergeandroid.core.coins.JumbucksMain;
 import com.vergeandroid.core.coins.LitecoinMain;
 import com.vergeandroid.core.coins.LitecoinTest;
-import com.vergeandroid.core.coins.MonacoinMain;
-import com.vergeandroid.core.coins.NamecoinMain;
-import com.vergeandroid.core.coins.NeoscoinMain;
-import com.vergeandroid.core.coins.NovacoinMain;
-import com.vergeandroid.core.coins.NuBitsMain;
-import com.vergeandroid.core.coins.NuSharesMain;
 import com.vergeandroid.core.coins.NxtMain;
-import com.vergeandroid.core.coins.OKCashMain;
-import com.vergeandroid.core.coins.ParkbyteMain;
-import com.vergeandroid.core.coins.PeercoinMain;
-import com.vergeandroid.core.coins.PotcoinMain;
-import com.vergeandroid.core.coins.ReddcoinMain;
-import com.vergeandroid.core.coins.RubycoinMain;
-import com.vergeandroid.core.coins.ShadowCashMain;
-import com.vergeandroid.core.coins.UroMain;
 import com.vergeandroid.core.coins.VergeMain;
-import com.vergeandroid.core.coins.VertcoinMain;
-import com.vergeandroid.core.coins.VpncoinMain;
-import com.vergeandroid.core.coins.RichcoinMain;
-import com.vergeandroid.core.coins.IxcoinMain;
 import com.vergeandroid.core.network.CoinAddress;
 import com.vergeandroid.stratumj.ServerAddress;
 import com.google.common.collect.ImmutableList;
@@ -137,6 +103,8 @@ public class Constants {
                                                     new ServerAddress("btc-cce-2.verge.net", 5001)),
             new CoinAddress(BitcoinTest.get(),      new ServerAddress("btc-testnet-cce-1.verge.net", 15001),
                                                     new ServerAddress("btc-testnet-cce-2.verge.net", 15001)),
+			new CoinAddress(BurstMain.get(),        new ServerAddress("burst-cce-1.verge.net", 5051),
+                                                    new ServerAddress("burst-cce-2.verge.net", 5051)),
             new CoinAddress(DogecoinMain.get(),     new ServerAddress("doge-cce-1.verge.net", 5003),
                                                     new ServerAddress("doge-cce-2.verge.net", 5003)),
             new CoinAddress(DogecoinTest.get(),     new ServerAddress("doge-testnet-cce-1.verge.net", 15003),
@@ -145,83 +113,12 @@ public class Constants {
                                                     new ServerAddress("ltc-cce-2.verge.net", 5002)),
             new CoinAddress(LitecoinTest.get(),     new ServerAddress("ltc-testnet-cce-1.verge.net", 15002),
                                                     new ServerAddress("ltc-testnet-cce-2.verge.net", 15002)),
-            new CoinAddress(PeercoinMain.get(),     new ServerAddress("ppc-cce-1.verge.net", 5004),
-                                                    new ServerAddress("ppc-cce-2.verge.net", 5004)),
-            new CoinAddress(NuSharesMain.get(),     new ServerAddress("nsr-cce-1.verge.net", 5011),
-                                                    new ServerAddress("nsr-cce-2.verge.net", 5011)),
-            new CoinAddress(NuBitsMain.get(),       new ServerAddress("nbt-cce-1.verge.net", 5012),
-                                                    new ServerAddress("nbt-cce-2.verge.net", 5012)),
-            new CoinAddress(DashMain.get(),         new ServerAddress("drk-cce-1.verge.net", 5013),
-                                                    new ServerAddress("drk-cce-2.verge.net", 5013)),
-            new CoinAddress(ReddcoinMain.get(),     new ServerAddress("rdd-cce-1.verge.net", 5014),
-                                                    new ServerAddress("rdd-cce-2.verge.net", 5014)),
-            new CoinAddress(BlackcoinMain.get(),    new ServerAddress("blk-cce-1.verge.net", 5015),
-                                                    new ServerAddress("blk-cce-2.verge.net", 5015)),
-            new CoinAddress(NamecoinMain.get(),     new ServerAddress("nmc-cce-1.verge.net", 5016),
-                                                    new ServerAddress("nmc-cce-2.verge.net", 5016)),
-            new CoinAddress(FeathercoinMain.get(),  new ServerAddress("ftc-cce-1.verge.net", 5017),
-                                                    new ServerAddress("ftc-cce-2.verge.net", 5017)),
-            new CoinAddress(RubycoinMain.get(),     new ServerAddress("rby-cce-1.verge.net", 5018),
-                                                    new ServerAddress("rby-cce-2.verge.net", 5018)),
-            new CoinAddress(UroMain.get(),          new ServerAddress("uro-cce-1.verge.net", 5019),
-                                                    new ServerAddress("uro-cce-2.verge.net", 5019)),
-            new CoinAddress(DigitalcoinMain.get(),  new ServerAddress("dgc-cce-1.verge.net", 5020),
-                                                    new ServerAddress("dgc-cce-2.verge.net", 5020)),
-            new CoinAddress(CannacoinMain.get(),    new ServerAddress("ccn-cce-1.verge.net", 5021),
-                                                    new ServerAddress("ccn-cce-2.verge.net", 5021)),
-            new CoinAddress(MonacoinMain.get(),     new ServerAddress("mona-cce-1.verge.net", 5022),
-                                                    new ServerAddress("mona-cce-2.verge.net", 5022)),
-            new CoinAddress(DigibyteMain.get(),     new ServerAddress("dgb-cce-1.verge.net", 5023),
-                                                    new ServerAddress("dgb-cce-2.verge.net", 5023)),
-            // 5024 primecoin
-            new CoinAddress(ClamsMain.get(),        new ServerAddress("clam-cce-1.verge.net", 5025),
-                                                    new ServerAddress("clam-cce-2.verge.net", 5025)),
-            new CoinAddress(ShadowCashMain.get(),   new ServerAddress("sdc-cce-1.verge.net", 5026),
-                                                    new ServerAddress("sdc-cce-2.verge.net", 5026)),
-            new CoinAddress(NeoscoinMain.get(),     new ServerAddress("neos-cce-1.verge.net", 5027),
-                                                    new ServerAddress("neos-cce-2.verge.net", 5027)),
-            new CoinAddress(VertcoinMain.get(),     new ServerAddress("vtc-cce-1.verge.net", 5028),
-                                                    new ServerAddress("vtc-cce-2.verge.net", 5028)),
-            new CoinAddress(JumbucksMain.get(),     new ServerAddress("jbs-cce-1.verge.net", 5029),
-                                                    new ServerAddress("jbs-cce-2.verge.net", 5029)),
-            new CoinAddress(VpncoinMain.get(),      new ServerAddress("vpn-cce-1.verge.net", 5032),
-                                                    new ServerAddress("vpn-cce-2.verge.net", 5032)),
-            new CoinAddress(CanadaeCoinMain.get(),  new ServerAddress("cdn-cce-1.verge.net", 5033),
-                                                    new ServerAddress("cdn-cce-2.verge.net", 5033)),
-            new CoinAddress(NovacoinMain.get(),     new ServerAddress("nvc-cce-1.verge.net", 5034),
-                                                    new ServerAddress("nvc-cce-2.verge.net", 5034)),
-            new CoinAddress(ParkbyteMain.get(),     new ServerAddress("pkb-cce-1.verge.net", 5035),
-                                                    new ServerAddress("pkb-cce-2.verge.net", 5035)),
-            new CoinAddress(NxtMain.get(),          new ServerAddress("176.9.65.41", 7876),
+			new CoinAddress(NxtMain.get(),          new ServerAddress("176.9.65.41", 7876),
                                                     new ServerAddress("176.9.65.41", 7876)),
-            new CoinAddress(BurstMain.get(),        new ServerAddress("burst-cce-1.verge.net", 5051),
-                                                    new ServerAddress("burst-cce-2.verge.net", 5051)),
             new CoinAddress(VergeMain.get(),        //new ServerAddress("qz6pnufyqjexudq6.onion", 50001, TOR_LOCAL_PROXY),
                                                     //new ServerAddress("jx5tldmayybm2pui.onion", 50001, TOR_LOCAL_PROXY)),
 													new ServerAddress("qz6pnufyqjexudq6.onion", 50001, TOR_LOCAL_PROXY), // normally 2 ))
-                                                    new ServerAddress("hdnfur2opijcfnyj6kzlljttzyfdv7fd7u3xlcwsrkp7txitolhchoad.onion", 50003, TOR_LOCAL_PROXY)),
-            new CoinAddress(EguldenMain.get(),      new ServerAddress("efl-cce-1.verge.net", 5037),
-                                                    new ServerAddress("efl-cce-2.verge.net", 5037)),
-            new CoinAddress(GcrMain.get(),          new ServerAddress("gcr-cce-1.verge.net", 5038),
-                                                    new ServerAddress("gcr-cce-2.verge.net", 5038)),
-            new CoinAddress(PotcoinMain.get(),      new ServerAddress("pot-cce-1.verge.net", 5039),
-                                                    new ServerAddress("pot-cce-2.verge.net", 5039)),
-            new CoinAddress(GuldenMain.get(),       new ServerAddress("gulden-cce-1.verge.net", 5040),
-                                                    new ServerAddress("gulden-cce-2.verge.net", 5040)),
-            new CoinAddress(AuroracoinMain.get(),   new ServerAddress("aur-cce-1.verge.net", 5041),
-                                                    new ServerAddress("aur-cce-2.verge.net", 5041)),
-            new CoinAddress(BatacoinMain.get(),     new ServerAddress("bata-cce-1.verge.net", 5042),
-                                                    new ServerAddress("bata-cce-1.verge.net", 5042)),
-            new CoinAddress(OKCashMain.get(),       new ServerAddress("ok-cce-1.verge.net", 5043),
-                                                    new ServerAddress("ok-cce-2.verge.net", 5043)),
-            new CoinAddress(AsiacoinMain.get(),     new ServerAddress("ac-cce-1.verge.net", 5044),
-                                                    new ServerAddress("ac-cce-2.verge.net", 5044)),
-            new CoinAddress(ClubcoinMain.get(),     new ServerAddress("club-cce-1.verge.net", 5045),
-                                                    new ServerAddress("club-cce-2.verge.net", 5045)),
-            new CoinAddress(RichcoinMain.get(),     new ServerAddress("richx-cce-1.verge.net", 5046),
-                                                    new ServerAddress("richx-cce-2.verge.net", 5046)),
-            new CoinAddress(IxcoinMain.get(),       new ServerAddress("ixc-cce-1.verge.net", 5047),
-                                                    new ServerAddress("ixc-cce-2.verge.net", 5047))
+                                                    new ServerAddress("hdnfur2opijcfnyj6kzlljttzyfdv7fd7u3xlcwsrkp7txitolhchoad.onion", 50003, TOR_LOCAL_PROXY))
     );
 
     public static final HashMap<CoinType, Integer> COINS_ICONS;
@@ -234,85 +131,19 @@ public class Constants {
         COINS_ICONS.put(CoinID.DOGECOIN_TEST.getCoinType(), R.drawable.dogecoin_test);
         COINS_ICONS.put(CoinID.LITECOIN_MAIN.getCoinType(), R.drawable.litecoin);
         COINS_ICONS.put(CoinID.LITECOIN_TEST.getCoinType(), R.drawable.litecoin_test);
-        COINS_ICONS.put(CoinID.PEERCOIN_MAIN.getCoinType(), R.drawable.peercoin);
-        COINS_ICONS.put(CoinID.DASH_MAIN.getCoinType(), R.drawable.dash);
-        COINS_ICONS.put(CoinID.REDDCOIN_MAIN.getCoinType(), R.drawable.reddcoin);
-        COINS_ICONS.put(CoinID.NUSHARES_MAIN.getCoinType(), R.drawable.nushares);
-        COINS_ICONS.put(CoinID.NUBITS_MAIN.getCoinType(), R.drawable.nubits);
-        COINS_ICONS.put(CoinID.BLACKCOIN_MAIN.getCoinType(), R.drawable.blackcoin);
-        COINS_ICONS.put(CoinID.MONACOIN_MAIN.getCoinType(), R.drawable.monacoin);
-        COINS_ICONS.put(CoinID.RUBYCOIN_MAIN.getCoinType(), R.drawable.rubycoin);
-        COINS_ICONS.put(CoinID.NAMECOIN_MAIN.getCoinType(), R.drawable.namecoin);
-        COINS_ICONS.put(CoinID.FEATHERCOIN_MAIN.getCoinType(), R.drawable.feathercoin);
-//        COINS_ICONS.put(CoinID.URO_MAIN.getCoinType(), R.drawable.uro);
-        COINS_ICONS.put(CoinID.DIGITALCOIN_MAIN.getCoinType(), R.drawable.digitalcoin);
-        COINS_ICONS.put(CoinID.CANNACOIN_MAIN.getCoinType(), R.drawable.cannacoin);
-        COINS_ICONS.put(CoinID.DIGIBYTE_MAIN.getCoinType(), R.drawable.digibyte);
-        COINS_ICONS.put(CoinID.NEOSCOIN_MAIN.getCoinType(), R.drawable.neoscoin);
-        COINS_ICONS.put(CoinID.OKCASH_MAIN.getCoinType(), R.drawable.okcash);
-        COINS_ICONS.put(CoinID.VERTCOIN_MAIN.getCoinType(), R.drawable.vertcoin);
-        COINS_ICONS.put(CoinID.NXT_MAIN.getCoinType(), R.drawable.nxt);
+		COINS_ICONS.put(CoinID.NXT_MAIN.getCoinType(), R.drawable.nxt);
         COINS_ICONS.put(CoinID.BURST_MAIN.getCoinType(), R.drawable.burst);
-        COINS_ICONS.put(CoinID.JUMBUCKS_MAIN.getCoinType(), R.drawable.jumbucks);
-        COINS_ICONS.put(CoinID.VPNCOIN_MAIN.getCoinType(), R.drawable.vpncoin);
-        COINS_ICONS.put(CoinID.NOVACOIN_MAIN.getCoinType(), R.drawable.novacoin);
-        COINS_ICONS.put(CoinID.CANADAECOIN_MAIN.getCoinType(), R.drawable.canadaecoin);
-        COINS_ICONS.put(CoinID.SHADOWCASH_MAIN.getCoinType(), R.drawable.shadowcash);
-        COINS_ICONS.put(CoinID.PARKBYTE_MAIN.getCoinType(), R.drawable.parkbyte);
         COINS_ICONS.put(CoinID.VERGE_MAIN.getCoinType(), R.drawable.verge);
-        COINS_ICONS.put(CoinID.CLAMS_MAIN.getCoinType(), R.drawable.clams);
-        COINS_ICONS.put(CoinID.GCR_MAIN.getCoinType(), R.drawable.gcr);
-        COINS_ICONS.put(CoinID.POTCOIN_MAIN.getCoinType(), R.drawable.potcoin);
-        COINS_ICONS.put(CoinID.GULDEN_MAIN.getCoinType(), R.drawable.gulden);
-        COINS_ICONS.put(CoinID.AURORACOIN_MAIN.getCoinType(), R.drawable.auroracoin);
-        COINS_ICONS.put(CoinID.BATACOIN_MAIN.getCoinType(), R.drawable.batacoin);
-        COINS_ICONS.put(CoinID.ASIACOIN_MAIN.getCoinType(), R.drawable.asiacoin);
-        COINS_ICONS.put(CoinID.EGULDEN_MAIN.getCoinType(), R.drawable.egulden);
-        COINS_ICONS.put(CoinID.CLUBCOIN_MAIN.getCoinType(), R.drawable.clubcoin);
-        COINS_ICONS.put(CoinID.RICHCOIN_MAIN.getCoinType(), R.drawable.richcoin);
-        COINS_ICONS.put(CoinID.IXCOIN_MAIN.getCoinType(), R.drawable.ixcoin);
 
         COINS_BLOCK_EXPLORERS = new HashMap<CoinType, String>();
         COINS_BLOCK_EXPLORERS.put(CoinID.BITCOIN_MAIN.getCoinType(), "https://blockchain.info/tx/%s");
         COINS_BLOCK_EXPLORERS.put(CoinID.BITCOIN_TEST.getCoinType(), "https://chain.so/tx/BTCTEST/%s");
+
         COINS_BLOCK_EXPLORERS.put(CoinID.DOGECOIN_MAIN.getCoinType(), "https://chain.so/tx/DOGE/%s");
         COINS_BLOCK_EXPLORERS.put(CoinID.DOGECOIN_TEST.getCoinType(), "https://chain.so/tx/DOGETEST/%s");
         COINS_BLOCK_EXPLORERS.put(CoinID.LITECOIN_MAIN.getCoinType(), "http://ltc.blockr.io/tx/info/%s");
         COINS_BLOCK_EXPLORERS.put(CoinID.LITECOIN_TEST.getCoinType(), "https://chain.so/tx/LTCTEST/%s");
-        COINS_BLOCK_EXPLORERS.put(CoinID.PEERCOIN_MAIN.getCoinType(), "http://ppc.blockr.io/tx/info/%s");
-        COINS_BLOCK_EXPLORERS.put(CoinID.DASH_MAIN.getCoinType(), "http://explorer.dashpay.io/tx/%s");
-        COINS_BLOCK_EXPLORERS.put(CoinID.NUSHARES_MAIN.getCoinType(), "http://blockexplorer.nu/transactions/%s");
-        COINS_BLOCK_EXPLORERS.put(CoinID.NUBITS_MAIN.getCoinType(), "http://blockexplorer.nu/transactions/%s");
-        COINS_BLOCK_EXPLORERS.put(CoinID.REDDCOIN_MAIN.getCoinType(), "http://live.reddcoin.com/tx/%s");
-        COINS_BLOCK_EXPLORERS.put(CoinID.BLACKCOIN_MAIN.getCoinType(), "https://chainz.cryptoid.info/blk/tx.dws?%s.htm");
-        COINS_BLOCK_EXPLORERS.put(CoinID.MONACOIN_MAIN.getCoinType(), "https://bchain.info/MONA/tx/%s");
-        COINS_BLOCK_EXPLORERS.put(CoinID.RUBYCOIN_MAIN.getCoinType(), "https://chainz.cryptoid.info/rby/tx.dws?%s");
-        COINS_BLOCK_EXPLORERS.put(CoinID.NAMECOIN_MAIN.getCoinType(), "https://explorer.namecoin.info/tx/%s");
-        COINS_BLOCK_EXPLORERS.put(CoinID.FEATHERCOIN_MAIN.getCoinType(), "http://explorer.feathercoin.com/tx/%s");
-//        COINS_BLOCK_EXPLORERS.put(CoinID.URO_MAIN.getCoinType(), "https://chainz.cryptoid.info/uro/tx.dws?%s");
-        COINS_BLOCK_EXPLORERS.put(CoinID.DIGITALCOIN_MAIN.getCoinType(), "https://chainz.cryptoid.info/dgc/tx.dws?%s");
-        COINS_BLOCK_EXPLORERS.put(CoinID.CANNACOIN_MAIN.getCoinType(), "https://chainz.cryptoid.info/ccn/tx.dws?%s");
-        COINS_BLOCK_EXPLORERS.put(CoinID.DIGIBYTE_MAIN.getCoinType(), "https://digiexplorer.info/tx/%s");
-        COINS_BLOCK_EXPLORERS.put(CoinID.NEOSCOIN_MAIN.getCoinType(), "http://explorer.infernopool.com/tx/%s");
-        COINS_BLOCK_EXPLORERS.put(CoinID.OKCASH_MAIN.getCoinType(), "https://chainz.cryptoid.info/ok/tx.dws?%s");
-        COINS_BLOCK_EXPLORERS.put(CoinID.VERTCOIN_MAIN.getCoinType(), "https://bitinfocharts.com/vertcoin/tx/%s");
-        COINS_BLOCK_EXPLORERS.put(CoinID.JUMBUCKS_MAIN.getCoinType(), "http://explorer.getjumbucks.com/tx/%s");
-        COINS_BLOCK_EXPLORERS.put(CoinID.VPNCOIN_MAIN.getCoinType(), "https://blockexperts.com/vpn/tx/%s");
-        COINS_BLOCK_EXPLORERS.put(CoinID.NOVACOIN_MAIN.getCoinType(), "http://explorer.novaco.in/tx/%s");
-        COINS_BLOCK_EXPLORERS.put(CoinID.CANADAECOIN_MAIN.getCoinType(), "http://explorer.canadaecoin.ca/tx/%s");
-        COINS_BLOCK_EXPLORERS.put(CoinID.SHADOWCASH_MAIN.getCoinType(), "http://shadowchain.info/tx/%s");
-        COINS_BLOCK_EXPLORERS.put(CoinID.PARKBYTE_MAIN.getCoinType(), "https://chainz.cryptoid.info/pkb/tx.dws?%s");
         COINS_BLOCK_EXPLORERS.put(CoinID.VERGE_MAIN.getCoinType(), "http://dvzs4zoxkg6z43dd.onion/tx/%s");
-        COINS_BLOCK_EXPLORERS.put(CoinID.CLAMS_MAIN.getCoinType(), "http://khashier.com/tx/%s");
-        COINS_BLOCK_EXPLORERS.put(CoinID.GCR_MAIN.getCoinType(), "https://chainz.cryptoid.info/gcr/tx.dws?%s");
-        COINS_BLOCK_EXPLORERS.put(CoinID.POTCOIN_MAIN.getCoinType(), "https://chainz.cryptoid.info/pot/tx.dws?%s");
-        COINS_BLOCK_EXPLORERS.put(CoinID.GULDEN_MAIN.getCoinType(), "https://explorer.gulden.com/#/transaction/%s");
-        COINS_BLOCK_EXPLORERS.put(CoinID.AURORACOIN_MAIN.getCoinType(), "http://insight.auroracoin.io/tx/%s");
-        COINS_BLOCK_EXPLORERS.put(CoinID.BATACOIN_MAIN.getCoinType(), "https://chainz.cryptoid.info/bta/tx.dws?%s");
-        COINS_BLOCK_EXPLORERS.put(CoinID.ASIACOIN_MAIN.getCoinType(), "https://chainz.cryptoid.info/ac/tx.dws?%s.htm");
-        COINS_BLOCK_EXPLORERS.put(CoinID.EGULDEN_MAIN.getCoinType(), "https://chainz.cryptoid.info/efl/tx.dws?%s");
-        COINS_BLOCK_EXPLORERS.put(CoinID.RICHCOIN_MAIN.getCoinType(), "https://explorer.richcoin.us/transaction?transaction=%s");
-        COINS_BLOCK_EXPLORERS.put(CoinID.IXCOIN_MAIN.getCoinType(), "https://chainz.cryptoid.info/ixc/tx.dws?%s");
     }
 
     public static final CoinType DEFAULT_COIN = VergeMain.get();

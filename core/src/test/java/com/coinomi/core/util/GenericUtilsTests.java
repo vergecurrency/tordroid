@@ -1,13 +1,9 @@
 package com.vergeandroid.core.util;
 
 import com.vergeandroid.core.coins.BitcoinMain;
-import com.vergeandroid.core.coins.BlackcoinMain;
 import com.vergeandroid.core.coins.CoinType;
-import com.vergeandroid.core.coins.DigitalcoinMain;
-import com.vergeandroid.core.coins.FeathercoinMain;
 import com.vergeandroid.core.coins.LitecoinMain;
-import com.vergeandroid.core.coins.NuBitsMain;
-import com.vergeandroid.core.coins.PeercoinMain;
+
 import com.vergeandroid.core.exceptions.AddressMalformedException;
 import com.vergeandroid.core.wallet.AbstractAddress;
 
@@ -85,33 +81,6 @@ public class GenericUtilsTests {
         assertEquals("1.000010", GenericUtils.formatCoinValue(BitcoinMain.get(), Coin.valueOf(100001000), 8, 0));
         assertEquals("1.0010", GenericUtils.formatCoinValue(BitcoinMain.get(), Coin.valueOf(100100001), 6, 0));
         assertEquals("1.00100001", GenericUtils.formatCoinValue(BitcoinMain.get(), Coin.valueOf(100100001), 8, 0));
-
-        // Peercoin family
-        assertEquals("3.141592", GenericUtils.formatCoinValue(PeercoinMain.get(), Coin.valueOf(3141592), 6, 0));
-        assertEquals("0.027182", GenericUtils.formatCoinValue(PeercoinMain.get(), Coin.valueOf(27182), 6, 0));
-        assertEquals("3.1416", GenericUtils.formatCoinValue(PeercoinMain.get(), Coin.valueOf(3141592), 4, 0));
-        assertEquals("0.0272", GenericUtils.formatCoinValue(PeercoinMain.get(), Coin.valueOf(27182), 4, 0));
-        assertEquals("3.14", GenericUtils.formatCoinValue(PeercoinMain.get(), Coin.valueOf(3141592), 2, 0));
-        assertEquals("0.03", GenericUtils.formatCoinValue(PeercoinMain.get(), Coin.valueOf(27182), 2, 0));
-
-        assertEquals("1.00", GenericUtils.formatCoinValue(PeercoinMain.get(), Coin.valueOf(1000001), 4, 0));
-        assertEquals("1.000001", GenericUtils.formatCoinValue(PeercoinMain.get(), Coin.valueOf(1000001), 6, 0));
-        assertEquals("1.000001", GenericUtils.formatCoinValue(PeercoinMain.get(), Coin.valueOf(1000001), 8, 0));
-        assertEquals("1.00", GenericUtils.formatCoinValue(PeercoinMain.get(), Coin.valueOf(1000010), 4, 0));
-        assertEquals("1.000010", GenericUtils.formatCoinValue(PeercoinMain.get(), Coin.valueOf(1000010), 6, 0));
-        assertEquals("1.000010", GenericUtils.formatCoinValue(PeercoinMain.get(), Coin.valueOf(1000010), 8, 0));
-        assertEquals("1.0001", GenericUtils.formatCoinValue(PeercoinMain.get(), Coin.valueOf(1000100), 4, 0));
-        assertEquals("1.0001", GenericUtils.formatCoinValue(PeercoinMain.get(), Coin.valueOf(1000100), 6, 0));
-        assertEquals("1.0001", GenericUtils.formatCoinValue(PeercoinMain.get(), Coin.valueOf(1000100), 8, 0));
-        assertEquals("1.0010", GenericUtils.formatCoinValue(PeercoinMain.get(), Coin.valueOf(1001000), 4, 0));
-        assertEquals("1.0010", GenericUtils.formatCoinValue(PeercoinMain.get(), Coin.valueOf(1001000), 6, 0));
-        assertEquals("1.0010", GenericUtils.formatCoinValue(PeercoinMain.get(), Coin.valueOf(1001000), 8, 0));
-        assertEquals("1.0010", GenericUtils.formatCoinValue(PeercoinMain.get(), Coin.valueOf(1001001), 4, 0));
-        assertEquals("1.001001", GenericUtils.formatCoinValue(PeercoinMain.get(), Coin.valueOf(1001001), 6, 0));
-        assertEquals("1.001001", GenericUtils.formatCoinValue(PeercoinMain.get(), Coin.valueOf(1001001), 8, 0));
-
-        assertEquals("1.00", GenericUtils.formatCoinValue(PeercoinMain.get(), Coin.valueOf(1000049), 4, 0));
-        assertEquals("1.0001", GenericUtils.formatCoinValue(PeercoinMain.get(), Coin.valueOf(1000050), 4, 0));
     }
 
 

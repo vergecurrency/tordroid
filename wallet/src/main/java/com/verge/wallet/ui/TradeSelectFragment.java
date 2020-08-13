@@ -22,7 +22,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.vergeandroid.core.coins.CoinType;
-import com.vergeandroid.core.coins.PeercoinMain;
 import com.vergeandroid.core.coins.Value;
 import com.vergeandroid.core.exchange.shapeshift.ShapeShift;
 import com.vergeandroid.core.exchange.shapeshift.data.ShapeShiftCoins;
