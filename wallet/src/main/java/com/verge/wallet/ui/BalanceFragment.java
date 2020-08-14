@@ -44,6 +44,7 @@ import org.bitcoinj.utils.Threading;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
@@ -418,7 +419,7 @@ public class BalanceFragment extends WalletFragment implements LoaderCallbacks<L
 
         @Override
         public List<AbstractTransaction> loadInBackground() {
-            final List<AbstractTransaction> filteredAbstractTransactions = Lists.newArrayList(account.getTransactions().values());
+            final ArrayList filteredAbstractTransactions = Lists.newArrayList(account.getTransactions().values());
 
             Collections.sort(filteredAbstractTransactions, TRANSACTION_COMPARATOR);
 

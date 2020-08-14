@@ -98,7 +98,7 @@ public class SignVerifyMessageFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_sign_message, container, false);
 
         signingAddressView = (AutoCompleteTextView) view.findViewById(R.id.signing_address);
-        ArrayAdapter<AbstractAddress> adapter = new ArrayAdapter<>(getActivity(), R.layout.item_simple,
+        ArrayAdapter adapter = new ArrayAdapter<>(getActivity(), R.layout.item_simple,
                 account.getActiveAddresses());
         signingAddressView.setAdapter(adapter);
 

@@ -1059,7 +1059,7 @@ public class SendFragment extends WalletFragment {
         void showPayToDialog(String addressStr);
     }
 
-    private abstract class EditViewListener implements View.OnFocusChangeListener, TextWatcher {
+    private abstract static class EditViewListener implements View.OnFocusChangeListener, TextWatcher {
         @Override
         public void beforeTextChanged(final CharSequence s, final int start, final int count, final int after) {
         }

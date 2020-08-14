@@ -122,7 +122,7 @@ public final class ExchangeHistoryFragment extends ListFragment {
         public void onLoaderReset(final Loader<Cursor> loader) {}
     };
 
-    private final class ExchangeEntryAdapter extends ResourceCursorAdapter {
+    private static final class ExchangeEntryAdapter extends ResourceCursorAdapter {
         private ExchangeEntryAdapter(final Context context) {
             super(context, R.layout.exchange_status_row, null, true);
         }

@@ -71,13 +71,13 @@ public class PasswordQualityChecker {
         return minPasswordLength;
     }
 
-    public class PasswordTooCommonException extends Exception {
+    public static class PasswordTooCommonException extends Exception {
         public PasswordTooCommonException(String commonPassword) {
             super(commonPassword);
         }
     }
 
-    public class PasswordTooShortException extends Exception {
+    public static class PasswordTooShortException extends Exception {
         public PasswordTooShortException(String detailMessage) {
             super(detailMessage);
         }
