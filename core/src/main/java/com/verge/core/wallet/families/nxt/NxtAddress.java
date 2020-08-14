@@ -92,9 +92,7 @@ final public class NxtAddress implements AbstractAddress {
         NxtAddress that = (NxtAddress) o;
 
         if (accountId != that.accountId) return false;
-        if (!type.equals(that.type)) return false;
-
-        return true;
+        return type.equals(that.type);
     }
 
     @Override

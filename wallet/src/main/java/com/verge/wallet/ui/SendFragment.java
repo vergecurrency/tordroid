@@ -898,9 +898,7 @@ public class SendFragment extends WalletFragment {
 
         if (isTyping) return false;
         if (amountCalculatorLink.isEmpty()) return false;
-        if (amount != null && amount.isZero()) return false;
-
-        return true;
+        return amount == null || !amount.isZero();
     }
 
     private void validateAddress() {

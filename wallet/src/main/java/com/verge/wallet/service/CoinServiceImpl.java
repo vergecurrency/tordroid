@@ -233,7 +233,7 @@ public class CoinServiceImpl extends Service implements CoinService {
 //                wakeLock.release();
             }
         }
-    };
+    }
 
     private ServerClients getServerClients(Wallet wallet) {
         ServerClients newClients = new ServerClients(Constants.DEFAULT_COINS_SERVERS, connHelper);

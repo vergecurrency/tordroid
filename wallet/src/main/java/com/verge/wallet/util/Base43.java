@@ -17,6 +17,7 @@ package com.vergeandroid.wallet.util;
  */
 
 import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 
 import javax.annotation.Nonnull;
 
@@ -74,7 +75,7 @@ public class Base43
 
         final byte[] output = copyOfRange(temp, j, temp.length);
 
-        return new String(output, Charset.forName("US-ASCII"));
+        return new String(output, StandardCharsets.US_ASCII);
     }
 
     public static byte[] decode(@Nonnull final String input) throws IllegalArgumentException

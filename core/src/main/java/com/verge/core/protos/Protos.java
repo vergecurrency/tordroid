@@ -452,11 +452,7 @@ public final class Protos {
           
           return false;
         }
-        if (!hasServices()) {
-          
-          return false;
-        }
-        return true;
+          return hasServices();
       }
 
       public Builder mergeFrom(
@@ -1010,11 +1006,7 @@ public final class Protos {
           
           return false;
         }
-        if (!hasEncryptedPrivateKey()) {
-          
-          return false;
-        }
-        return true;
+          return hasEncryptedPrivateKey();
       }
 
       public Builder mergeFrom(
@@ -1832,11 +1824,7 @@ public final class Protos {
       }
 
       public final boolean isInitialized() {
-        if (!hasChainCode()) {
-          
-          return false;
-        }
-        return true;
+          return hasChainCode();
       }
 
       public Builder mergeFrom(
@@ -2587,7 +2575,7 @@ public final class Protos {
       private final int index;
       private final int value;
 
-      private Type(int index, int value) {
+      Type(int index, int value) {
         this.index = index;
         this.value = value;
       }
@@ -3117,10 +3105,7 @@ public final class Protos {
           }
         }
         if (hasDeterministicKey()) {
-          if (!getDeterministicKey().isInitialized()) {
-            
-            return false;
-          }
+            return getDeterministicKey().isInitialized();
         }
         return true;
       }
@@ -4284,11 +4269,7 @@ public final class Protos {
           
           return false;
         }
-        if (!hasScriptBytes()) {
-          
-          return false;
-        }
-        return true;
+          return hasScriptBytes();
       }
 
       public Builder mergeFrom(
@@ -5221,11 +5202,7 @@ public final class Protos {
           
           return false;
         }
-        if (!hasScriptBytes()) {
-          
-          return false;
-        }
-        return true;
+          return hasScriptBytes();
       }
 
       public Builder mergeFrom(
@@ -6160,11 +6137,7 @@ public final class Protos {
           
           return false;
         }
-        if (!hasValue()) {
-          
-          return false;
-        }
-        return true;
+          return hasValue();
       }
 
       public Builder mergeFrom(
@@ -6816,7 +6789,7 @@ public final class Protos {
       private final int index;
       private final int value;
 
-      private Type(int index, int value) {
+      Type(int index, int value) {
         this.index = index;
         this.value = value;
       }
@@ -6952,7 +6925,7 @@ public final class Protos {
       private final int index;
       private final int value;
 
-      private Source(int index, int value) {
+      Source(int index, int value) {
         this.index = index;
         this.value = value;
       }
@@ -8659,7 +8632,7 @@ public final class Protos {
       private final int index;
       private final int value;
 
-      private Pool(int index, int value) {
+      Pool(int index, int value) {
         this.index = index;
         this.value = value;
       }
@@ -9755,10 +9728,7 @@ public final class Protos {
           }
         }
         if (hasConfidence()) {
-          if (!getConfidence().isInitialized()) {
-            
-            return false;
-          }
+            return getConfidence().isInitialized();
         }
         return true;
       }
@@ -11703,11 +11673,7 @@ public final class Protos {
           
           return false;
         }
-        if (!hasStatus()) {
-          
-          return false;
-        }
-        return true;
+          return hasStatus();
       }
 
       public Builder mergeFrom(
@@ -15185,11 +15151,7 @@ public final class Protos {
       }
 
       public final boolean isInitialized() {
-        if (!hasSalt()) {
-          
-          return false;
-        }
-        return true;
+          return hasSalt();
       }
 
       public Builder mergeFrom(
@@ -15802,7 +15764,7 @@ public final class Protos {
       private final int index;
       private final int value;
 
-      private EncryptionType(int index, int value) {
+      EncryptionType(int index, int value) {
         this.index = index;
         this.value = value;
       }

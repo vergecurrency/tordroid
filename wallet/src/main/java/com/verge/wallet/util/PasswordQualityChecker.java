@@ -9,6 +9,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -37,7 +38,7 @@ public class PasswordQualityChecker {
 
         try {
             InputStream stream = context.getAssets().open(COMMON_PASSWORDS_TXT);
-            BufferedReader br = new BufferedReader(new InputStreamReader(stream, "UTF-8"));
+            BufferedReader br = new BufferedReader(new InputStreamReader(stream, StandardCharsets.UTF_8));
             String word;
             while ((word = br.readLine()) != null) {
                 this.passwordList.add(word);

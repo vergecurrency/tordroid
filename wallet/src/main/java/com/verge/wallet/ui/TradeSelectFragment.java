@@ -963,9 +963,7 @@ public class TradeSelectFragment extends Fragment implements ExchangeCheckSuppor
 
         if (isTyping) return false;
         if (amountCalculatorLink.isEmpty()) return false;
-        if (amountParsed != null && amountParsed.isZero()) return false;
-
-        return true;
+        return amountParsed == null || !amountParsed.isZero();
     }
 
 

@@ -774,9 +774,7 @@ public class ServerClient implements BitBlockchainConnection {
 
             if (txPos != unspentTx.txPos) return false;
             if (value != unspentTx.value) return false;
-            if (!txHash.equals(unspentTx.txHash)) return false;
-
-            return true;
+            return txHash.equals(unspentTx.txHash);
         }
 
         @Override

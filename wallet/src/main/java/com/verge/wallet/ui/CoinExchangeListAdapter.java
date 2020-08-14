@@ -61,10 +61,7 @@ public class CoinExchangeListAdapter extends BaseAdapter {
     private boolean isRateRelative(ExchangeRate rate) {
         if (rate.rate.value1.type instanceof CoinType && coins.contains(rate.rate.value1.type)) {
             return true;
-        } else if (rate.rate.value2.type instanceof CoinType && coins.contains(rate.rate.value2.type)) {
-            return true;
-        }
-        return false;
+        } else return rate.rate.value2.type instanceof CoinType && coins.contains(rate.rate.value2.type);
     }
 
     @Nullable

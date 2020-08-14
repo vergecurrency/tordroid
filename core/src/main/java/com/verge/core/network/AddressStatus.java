@@ -122,9 +122,7 @@ final public class AddressStatus {
         AddressStatus status1 = (AddressStatus) o;
 
         if (!address.equals(status1.address)) return false;
-        if (status != null ? !status.equals(status1.status) : status1.status != null) return false;
-
-        return true;
+        return status != null ? status.equals(status1.status) : status1.status == null;
     }
 
     @Override

@@ -24,6 +24,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.security.SecureRandom;
 import java.util.Arrays;
 
@@ -58,7 +59,7 @@ import com.google.common.io.BaseEncoding;
 public class Crypto
 {
     private static final BaseEncoding BASE64 = BaseEncoding.base64().withSeparator("\n", 76);
-    private static final Charset UTF_8 = Charset.forName("UTF-8");
+    private static final Charset UTF_8 = StandardCharsets.UTF_8;
 
     /**
      * number of times the password & salt are hashed during key creation.
@@ -309,9 +310,7 @@ public class Crypto
                 if (in.read(buf) == -1)
                     return false;
                 final String str = new String(buf);
-                if (!str.toString().equals(OPENSSL_MAGIC_TEXT))
-                    return false;
-                return true;
+                return str.equals(OPENSSL_MAGIC_TEXT);
             }
             catch (final IOException x)
             {

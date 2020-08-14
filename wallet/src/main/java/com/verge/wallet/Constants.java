@@ -19,6 +19,7 @@ import com.google.common.collect.Lists;
 import java.net.InetSocketAddress;
 import java.net.Proxy;
 import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -76,8 +77,8 @@ public class Constants {
     /** Default currency to use if all default mechanisms fail. */
     public static final String DEFAULT_EXCHANGE_CURRENCY = "USD";
 
-    public static final Charset UTF_8 = Charset.forName("UTF-8");
-    public static final Charset US_ASCII = Charset.forName("US-ASCII");
+    public static final Charset UTF_8 = StandardCharsets.UTF_8;
+    public static final Charset US_ASCII = StandardCharsets.US_ASCII;
 
     public static final char CHAR_HAIR_SPACE = '\u200a';
     public static final char CHAR_THIN_SPACE = '\u2009';

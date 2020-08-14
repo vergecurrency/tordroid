@@ -326,7 +326,7 @@ public class VpncoinTxMessage implements TxMessage {
         }
     }
 
-    static final int CRC_TBL[] = {
+    static final int[] CRC_TBL = {
             0x0000, 0x1081, 0x2102, 0x3183,
             0x4204, 0x5285, 0x6306, 0x7387,
             0x8408, 0x9489, 0xa50a, 0xb58b,

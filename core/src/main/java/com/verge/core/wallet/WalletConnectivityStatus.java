@@ -6,5 +6,5 @@ package com.vergeandroid.core.wallet;
 public enum WalletConnectivityStatus {
     DISCONNECTED,
     LOADING,
-    CONNECTED;
+    CONNECTED
 }

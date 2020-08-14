@@ -22,6 +22,7 @@ import org.spongycastle.crypto.params.KeyParameter;
 import org.spongycastle.util.encoders.Hex;
 
 import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
 import java.text.Normalizer;
 import java.util.Arrays;
 
@@ -114,9 +115,7 @@ public class DebuggingFragment extends Fragment {
         private void tryDecrypt(DeterministicKey masterKey, CharSequence password, UnlockResult result) {
             KeyCrypter crypter = checkNotNull(masterKey.getKeyCrypter());
             KeyParameter k = crypter.deriveKey(password);
-            try {
-                result.inputFingerprint = getFingerprint(password.toString().getBytes("UTF-8"));
-            } catch (UnsupportedEncodingException e) { /* Should not happen */ }
+            result.inputFingerprint = getFingerprint(password.toString().getBytes(StandardCharsets.UTF_8));
             result.keyFingerprint = getFingerprint(k.getKey());
             if (crypter instanceof KeyCrypterScrypt) {
                 result.scryptParams = ((KeyCrypterScrypt) crypter).getScryptParameters();

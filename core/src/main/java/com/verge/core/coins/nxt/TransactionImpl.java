@@ -640,7 +640,7 @@ public final class TransactionImpl implements Transaction {
                     amountNQT, feeNQT, timestamp, deadline,
                     transactionType.parseAttachment(attachmentData))
                     .referencedTransactionFullHash(referencedTransactionFullHash)
-                    .signature(signature).height(height);;
+                    .signature(signature).height(height);
 
             if (transactionType.hasRecipient()) {
                 long recipientId = Convert.parseUnsignedLong((String) transactionData.get("recipient"));

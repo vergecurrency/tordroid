@@ -65,7 +65,7 @@ public class TransactionAmountVisualizer extends LinearLayout {
         String symbol = type.getSymbol();
 
         final Value value = pocket != null ? tx.getValue(pocket) : type.value(0);
-        isSending = pocket != null ? value.signum() < 0 : true;
+        isSending = pocket == null || value.signum() < 0;
         // if sending and all the outputs point inside the current pocket. If received
         boolean isInternalTransfer = isSending;
         output.setVisibility(View.VISIBLE);

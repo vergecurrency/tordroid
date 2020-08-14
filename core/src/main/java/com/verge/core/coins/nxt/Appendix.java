@@ -15,7 +15,7 @@ public interface Appendix {
     //JSONObject getJSONObject();
     byte getVersion();
 
-    static abstract class AbstractAppendix implements Appendix {
+    abstract class AbstractAppendix implements Appendix {
 
         private final byte version;
 
@@ -82,7 +82,7 @@ public interface Appendix {
 
     }
 
-    public static class Message extends AbstractAppendix {
+    class Message extends AbstractAppendix {
 
         static Message parse(JSONObject attachmentData) throws NxtException.NotValidException, JSONException {
             if (!attachmentData.has("message")) {
@@ -158,7 +158,7 @@ public interface Appendix {
         }
     }
 
-    abstract static class AbstractEncryptedMessage extends AbstractAppendix {
+    abstract class AbstractEncryptedMessage extends AbstractAppendix {
 
         private final EncryptedData encryptedData;
         private final boolean isText;
@@ -216,7 +216,7 @@ public interface Appendix {
 
     }
 
-    public static class EncryptedMessage extends AbstractEncryptedMessage {
+    class EncryptedMessage extends AbstractEncryptedMessage {
 
         static EncryptedMessage parse(JSONObject attachmentData) throws NxtException.NotValidException, JSONException {
             if (!attachmentData.has("encryptedMessage") ) {
@@ -254,7 +254,7 @@ public interface Appendix {
 
     }
 
-    public static class EncryptToSelfMessage extends AbstractEncryptedMessage {
+    class EncryptToSelfMessage extends AbstractEncryptedMessage {
 
         static EncryptToSelfMessage parse(JSONObject attachmentData) throws NxtException.NotValidException, JSONException {
             if (!attachmentData.has("encryptToSelfMessage") ) {
@@ -291,7 +291,7 @@ public interface Appendix {
 
     }
 
-    public static class PublicKeyAnnouncement extends AbstractAppendix {
+    class PublicKeyAnnouncement extends AbstractAppendix {
 
         static PublicKeyAnnouncement parse(JSONObject attachmentData) throws NxtException.NotValidException, JSONException {
             if (!attachmentData.has("recipientPublicKey")) {

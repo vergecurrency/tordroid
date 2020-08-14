@@ -57,19 +57,19 @@ public class GenericUtils {
     public static String addressSplitToGroupsMultiline(final BitAddress address) {
         String addressStr = address.toString();
         StringBuilder sb = new StringBuilder();
-        sb.append(addressStr.substring(0, 4));
+        sb.append(addressStr, 0, 4);
         sb.append(" ");
-        sb.append(addressStr.substring(4, 8));
+        sb.append(addressStr, 4, 8);
         sb.append(" ");
-        sb.append(addressStr.substring(8, 12));
+        sb.append(addressStr, 8, 12);
         sb.append(" ");
-        sb.append(addressStr.substring(12, 17));
+        sb.append(addressStr, 12, 17);
         sb.append("\n");
-        sb.append(addressStr.substring(17, 21));
+        sb.append(addressStr, 17, 21);
         sb.append(" ");
-        sb.append(addressStr.substring(21, 25));
+        sb.append(addressStr, 21, 25);
         sb.append(" ");
-        sb.append(addressStr.substring(25, 29));
+        sb.append(addressStr, 25, 29);
         sb.append(" ");
         sb.append(addressStr.substring(29));
 
@@ -93,19 +93,19 @@ public class GenericUtils {
     public static String addressSplitToGroups(final BitAddress address) {
         String addressStr = address.toString();
         StringBuilder sb = new StringBuilder();
-        sb.append(addressStr.substring(0, 5));
+        sb.append(addressStr, 0, 5);
         sb.append(" ");
-        sb.append(addressStr.substring(5, 9));
+        sb.append(addressStr, 5, 9);
         sb.append(" ");
-        sb.append(addressStr.substring(9, 13));
+        sb.append(addressStr, 9, 13);
         sb.append(" ");
-        sb.append(addressStr.substring(13, 17));
+        sb.append(addressStr, 13, 17);
         sb.append(" ");
-        sb.append(addressStr.substring(17, 21));
+        sb.append(addressStr, 17, 21);
         sb.append(" ");
-        sb.append(addressStr.substring(21, 25));
+        sb.append(addressStr, 21, 25);
         sb.append(" ");
-        sb.append(addressStr.substring(25, 29));
+        sb.append(addressStr, 25, 29);
         sb.append(" ");
         sb.append(addressStr.substring(29));
 

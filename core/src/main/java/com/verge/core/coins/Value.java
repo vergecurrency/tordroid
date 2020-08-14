@@ -264,9 +264,7 @@ public class Value implements Monetary, Comparable<Value>, Serializable {
         if (o == null || o.getClass() != getClass())
             return false;
         final Value other = (Value) o;
-        if (this.value != other.value || !this.type.equals(other.type))
-            return false;
-        return true;
+        return this.value == other.value && this.type.equals(other.type);
     }
 
     @Override

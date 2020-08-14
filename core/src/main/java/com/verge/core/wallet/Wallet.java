@@ -34,6 +34,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
 import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -696,11 +697,7 @@ final public class Wallet {
     }
 
     private static List<String> decodeMnemonicCode(byte[] mnemonicCode) throws UnreadableWalletException {
-        try {
-            return Splitter.on(" ").splitToList(new String(mnemonicCode, "UTF-8"));
-        } catch (UnsupportedEncodingException e) {
-            throw new UnreadableWalletException(e.toString());
-        }
+        return Splitter.on(" ").splitToList(new String(mnemonicCode, StandardCharsets.UTF_8));
     }
 
     public List<Value> getBalances() {
