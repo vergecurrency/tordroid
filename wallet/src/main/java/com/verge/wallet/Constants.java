@@ -7,8 +7,6 @@ import com.vergeandroid.core.coins.BitcoinTest;
 import com.vergeandroid.core.coins.BurstMain;
 import com.vergeandroid.core.coins.CoinID;
 import com.vergeandroid.core.coins.CoinType;
-import com.vergeandroid.core.coins.DogecoinMain;
-import com.vergeandroid.core.coins.DogecoinTest;
 import com.vergeandroid.core.coins.LitecoinMain;
 import com.vergeandroid.core.coins.LitecoinTest;
 import com.vergeandroid.core.coins.NxtMain;
@@ -105,10 +103,6 @@ public class Constants {
                                                     new ServerAddress("btc-testnet-cce-2.verge.net", 15001)),
 			new CoinAddress(BurstMain.get(),        new ServerAddress("burst-cce-1.verge.net", 5051),
                                                     new ServerAddress("burst-cce-2.verge.net", 5051)),
-            new CoinAddress(DogecoinMain.get(),     new ServerAddress("doge-cce-1.verge.net", 5003),
-                                                    new ServerAddress("doge-cce-2.verge.net", 5003)),
-            new CoinAddress(DogecoinTest.get(),     new ServerAddress("doge-testnet-cce-1.verge.net", 15003),
-                                                    new ServerAddress("doge-testnet-cce-2.verge.net", 15003)),
             new CoinAddress(LitecoinMain.get(),     new ServerAddress("ltc-cce-1.verge.net", 5002),
                                                     new ServerAddress("ltc-cce-2.verge.net", 5002)),
             new CoinAddress(LitecoinTest.get(),     new ServerAddress("ltc-testnet-cce-1.verge.net", 15002),
@@ -127,8 +121,6 @@ public class Constants {
         COINS_ICONS = new HashMap<>();
         COINS_ICONS.put(CoinID.BITCOIN_MAIN.getCoinType(), R.drawable.bitcoin);
         COINS_ICONS.put(CoinID.BITCOIN_TEST.getCoinType(), R.drawable.bitcoin_test);
-        COINS_ICONS.put(CoinID.DOGECOIN_MAIN.getCoinType(), R.drawable.dogecoin);
-        COINS_ICONS.put(CoinID.DOGECOIN_TEST.getCoinType(), R.drawable.dogecoin_test);
         COINS_ICONS.put(CoinID.LITECOIN_MAIN.getCoinType(), R.drawable.litecoin);
         COINS_ICONS.put(CoinID.LITECOIN_TEST.getCoinType(), R.drawable.litecoin_test);
 		COINS_ICONS.put(CoinID.NXT_MAIN.getCoinType(), R.drawable.nxt);
@@ -138,9 +130,6 @@ public class Constants {
         COINS_BLOCK_EXPLORERS = new HashMap<CoinType, String>();
         COINS_BLOCK_EXPLORERS.put(CoinID.BITCOIN_MAIN.getCoinType(), "https://blockchain.info/tx/%s");
         COINS_BLOCK_EXPLORERS.put(CoinID.BITCOIN_TEST.getCoinType(), "https://chain.so/tx/BTCTEST/%s");
-
-        COINS_BLOCK_EXPLORERS.put(CoinID.DOGECOIN_MAIN.getCoinType(), "https://chain.so/tx/DOGE/%s");
-        COINS_BLOCK_EXPLORERS.put(CoinID.DOGECOIN_TEST.getCoinType(), "https://chain.so/tx/DOGETEST/%s");
         COINS_BLOCK_EXPLORERS.put(CoinID.LITECOIN_MAIN.getCoinType(), "http://ltc.blockr.io/tx/info/%s");
         COINS_BLOCK_EXPLORERS.put(CoinID.LITECOIN_TEST.getCoinType(), "https://chain.so/tx/LTCTEST/%s");
         COINS_BLOCK_EXPLORERS.put(CoinID.VERGE_MAIN.getCoinType(), "http://dvzs4zoxkg6z43dd.onion/tx/%s");
@@ -150,8 +139,7 @@ public class Constants {
     public static final List<CoinType> DEFAULT_COINS = ImmutableList.of((CoinType) VergeMain.get());
     public static final ArrayList<String> DEFAULT_TEST_COIN_IDS = Lists.newArrayList(
             BitcoinTest.get().getId(),
-            LitecoinTest.get().getId(),
-            DogecoinTest.get().getId()
+            LitecoinTest.get().getId()
     );
 
     public static final List<CoinType> SUPPORTED_COINS = ImmutableList.of(

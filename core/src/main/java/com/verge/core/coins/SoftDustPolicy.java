@@ -4,7 +4,7 @@ package com.vergeandroid.core.coins;
  * @author John L. Jegutanis
  */
 public enum SoftDustPolicy {
-    // Used by coins like Litecoin and Dogecoin, where if a soft dust TXOs are present, add base fee
+    // Used by coins like Litecoin, where if a soft dust TXOs are present, add base fee
     // for each soft dust TXO additionally to normal fees
     BASE_FEE_FOR_EACH_SOFT_DUST_TXO,
     // Used in Bitcoin, Peercoin and NuBits, where if a dust TXO is present make the fee at least base fee.

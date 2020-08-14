@@ -26,8 +26,6 @@ public enum CoinID {
     BITCOIN_TEST(BitcoinTest.get()),
     LITECOIN_MAIN(LitecoinMain.get()),
     LITECOIN_TEST(LitecoinTest.get()),
-    DOGECOIN_MAIN(DogecoinMain.get()),
-    DOGECOIN_TEST(DogecoinTest.get()),
     NXT_MAIN(NxtMain.get()),
     BURST_MAIN(BurstMain.get()),
     VERGE_MAIN(VergeMain.get()),
