@@ -46,9 +46,6 @@ public final class CurrencyTextView extends TextView {
     private Value amount = null;
     private MonetaryFormat format = null;
     private boolean alwaysSigned = false;
-    private RelativeSizeSpan prefixRelativeSizeSpan = null;
-    private ForegroundColorSpan prefixColorSpan = null;
-    private RelativeSizeSpan insignificantRelativeSizeSpan = null;
 
     public CurrencyTextView(final Context context) {
         super(context);
@@ -83,17 +80,19 @@ public final class CurrencyTextView extends TextView {
     }
 
     public void setInsignificantRelativeSize(final float insignificantRelativeSize) {
+        RelativeSizeSpan prefixRelativeSizeSpan = null;
+        RelativeSizeSpan insignificantRelativeSizeSpan = null;
         if (insignificantRelativeSize != 1) {
-            this.prefixRelativeSizeSpan = new RelativeSizeSpan(insignificantRelativeSize);
-            this.insignificantRelativeSizeSpan = new RelativeSizeSpan(insignificantRelativeSize);
+            prefixRelativeSizeSpan = new RelativeSizeSpan(insignificantRelativeSize);
+            insignificantRelativeSizeSpan = new RelativeSizeSpan(insignificantRelativeSize);
         } else {
-            this.prefixRelativeSizeSpan = null;
-            this.insignificantRelativeSizeSpan = null;
+            prefixRelativeSizeSpan = null;
+            insignificantRelativeSizeSpan = null;
         }
     }
 
     public void setPrefixColor(final int prefixColor) {
-        this.prefixColorSpan = new ForegroundColorSpan(prefixColor);
+        ForegroundColorSpan prefixColorSpan = new ForegroundColorSpan(prefixColor);
         updateView();
     }
 

@@ -112,8 +112,8 @@ public class ScannerView extends View
 
         final long now = System.currentTimeMillis();
 
-        final int width = canvas.getWidth();
-        final int height = canvas.getHeight();
+        final int width = getWidth();
+        final int height = getHeight();
 
         // draw mask darkened
         maskPaint.setColor(resultBitmap != null ? resultColor : maskColor);
