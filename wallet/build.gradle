@@ -4,6 +4,13 @@ android {
     compileSdkVersion 23
     buildToolsVersion '29.0.2'
 
+    lintOptions {
+        checkReleaseBuilds false
+        // Or, if you prefer, you can continue to check for errors in release builds,
+        // but continue the build even when errors are found:
+        abortOnError false
+    }
+
     defaultConfig {
         applicationId "com.vergeandroid.wallet"
         minSdkVersion 10
@@ -28,13 +35,12 @@ android {
             setRoot('src/test')
         }
     }
-}
 
-repositories {
-    flatDir {
-        dirs 'aars'
+    repositories {
+        flatDir {
+            dirs 'aars'
+        }
     }
-}
 
 //sourceSets {
 //    unitTest {
@@ -43,28 +49,28 @@ repositories {
 //    }
 //}
 
-dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation fileTree(dir: '../core/libs', include: ['*.jar'])
-    // Testing
+    dependencies {
+        implementation fileTree(dir: 'libs', include: ['*.jar'])
+        implementation fileTree(dir: '../core/libs', include: ['*.jar'])
+        // Testing
 //    androidTestCompile 'junit:junit:4.11'
 //    androidTestCompile 'org.robolectric:robolectric:2.3'
 //    androidTestCompile 'com.squareup:fest-android:1.0.+'
-    implementation project(':core')
-    implementation 'com.android.support:gridlayout-v7:23.4.0'
-    implementation 'com.android.support:support-v4:23.3.0'
-    implementation 'com.android.support:appcompat-v7:23.4.0'
+        implementation project(':core')
+        implementation 'com.android.support:gridlayout-v7:23.4.0'
+        implementation 'com.android.support:support-v4:23.3.0'
+        implementation 'com.android.support:appcompat-v7:23.4.0'
 //    compile 'com.android.support:preference-v7:23.2.1'
-    implementation 'com.google.guava:guava:18.0'
-    implementation 'com.google.code.findbugs:jsr305:3.0.2'
-    implementation 'com.madgag.spongycastle:core:1.58.0.0'
-    implementation 'com.google.protobuf:protobuf-java:3.11.3'
-    implementation 'com.google.zxing:core:3.3.3'
-    implementation 'ch.acra:acra:4.9.0'
-    implementation 'com.android.support:support-v4-preferencefragment:1.0.0@aar'
-    implementation 'com.jakewharton:butterknife:8.0.0'
-    annotationProcessor 'com.jakewharton:butterknife-compiler:8.0.0'
-}
+        implementation 'com.google.guava:guava:18.0'
+        implementation 'com.google.code.findbugs:jsr305:3.0.2'
+        implementation 'com.madgag.spongycastle:core:1.58.0.0'
+        implementation 'com.google.protobuf:protobuf-java:3.11.3'
+        implementation 'com.google.zxing:core:3.3.3'
+        implementation 'ch.acra:acra:4.9.0'
+        implementation 'com.android.support:support-v4-preferencefragment:1.0.0@aar'
+        implementation 'com.jakewharton:butterknife:8.0.0'
+        annotationProcessor 'com.jakewharton:butterknife-compiler:8.0.0'
+    }
 
 //apply plugin: 'robolectric'
 
@@ -80,3 +86,9 @@ dependencies {
 //        testOutputDir = file('build/test-classes/debug')
 //    }
 //}
+    packagingOptions {
+        exclude 'lib/x86_64/darwin/libscrypt.dylib'
+        exclude 'lib/x86_64/freebsd/libscrypt.so'
+        exclude 'lib/x86_64/linux/libscrypt.so'
+    }
+}
