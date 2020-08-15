@@ -77,12 +77,15 @@ public class WalletApplication extends Application {
     private ConnectivityManager connManager;
     private ShapeShift shapeShift;
     private File txCachePath;
+	private boolean isLocked;
 
     @Override
     public void onCreate() {
 //        ACRA.init(this);
 
         config = new Configuration(PreferenceManager.getDefaultSharedPreferences(this));
+		
+		isLocked = config.isFingerprintAuthEnabled() || config.hasPincodeHash();
 
         new LinuxSecureRandom(); // init proper random number generator
         performComplianceTests();
@@ -434,5 +437,13 @@ public class WalletApplication extends Application {
             coinServiceConnectIntent.putExtra(Constants.ARG_ACCOUNT_ID, account.getId());
             startService(coinServiceConnectIntent);
         }
+    }
+	
+	public boolean isLocked() {
+        return isLocked;
+    }
+
+    public void unlockApp() {
+        isLocked = false;
     }
 }

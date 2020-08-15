@@ -46,13 +46,4 @@
         tools:visibility="visible"
         tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus. Sed sit amet ipsum mauris." />
 
-    <Button
-        android:id="@+id/block_explorer_link"
-        style="@style/BorderlessButtonLink"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="@dimen/activity_vertical_margin"
-        android:text="@string/view_at_a_blockchain_explorer_link" />
-
 </LinearLayout>

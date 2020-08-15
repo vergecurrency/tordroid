@@ -178,5 +178,15 @@
     <style name="ExchangeRowAmount" parent="Amount">
         <item name="android:textSize">@dimen/exchange_row_text_size_amount</item>
     </style>
+	
+	<style name="PincodeEditText" parent="Base.Widget.AppCompat.EditText">
+        <item name="android:inputType">numberPassword</item>
+        <item name="android:maxLength">1</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textAppearance">@style/TextAppearance.AppCompat.Large</item>
+    </style>
 
 </resources>

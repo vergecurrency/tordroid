@@ -10,7 +10,7 @@ import com.vergeandroid.wallet.R;
 
 public class IntroActivity extends AbstractWalletFragmentActivity
         implements WelcomeFragment.Listener, PasswordConfirmationFragment.Listener,
-        SetPasswordFragment.Listener, SelectCoinsFragment.Listener {
+        SetPasswordFragment.Listener, SelectCoinsFragment.Listener, AppLockFragment.AppLockListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -101,12 +101,12 @@ public class IntroActivity extends AbstractWalletFragmentActivity
 
     @Override
     public void onPasswordConfirmed(Bundle args) {
-        selectCoins(args);
+        replaceFragment(AppLockFragment.newInstance(args));
     }
 
     @Override
     public void onPasswordSet(Bundle args) {
-        selectCoins(args);
+        replaceFragment(AppLockFragment.newInstance(args));
     }
 
     private void selectCoins(Bundle args) {
@@ -117,5 +117,10 @@ public class IntroActivity extends AbstractWalletFragmentActivity
     @Override
     public void onCoinSelection(Bundle args) {
         replaceFragment(FinalizeWalletRestorationFragment.newInstance(args));
+    }
+	
+	@Override
+    public void onAppLockResult(Bundle args) {
+        selectCoins(args);
     }
 }

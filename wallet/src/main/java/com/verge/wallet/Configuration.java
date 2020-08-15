@@ -2,6 +2,7 @@ package com.vergeandroid.wallet;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
+import android.support.annotation.NonNull;
 import android.text.format.DateUtils;
 
 import com.vergeandroid.core.coins.CoinType;
@@ -23,7 +24,9 @@ import javax.annotation.Nullable;
  * @author Andreas Schildbach
  */
 public class Configuration {
-
+	
+	private static final String PREFS_KEY_PINCODE_HASH = "pincode_hash";
+	private static final String PREFS_KEY_FINGERPRINT_ENABLED = "fingerprint_enabled";
     public final int lastVersionCode;
 
     private final SharedPreferences prefs;
@@ -245,5 +248,28 @@ public class Configuration {
     public void setTermAccepted(final boolean isTermsAccepted) {
         prefs.edit().putBoolean(PREFS_KEY_TERMS_ACCEPTED, isTermsAccepted).apply();
     }
+	
+	public void setPincodeHash(String hashMD5) {
+        prefs.edit().putString(PREFS_KEY_PINCODE_HASH, hashMD5).apply();
+    }
 
+    public void setFingerprintEnabled(boolean includeFingerprint) {
+        prefs.edit().putBoolean(PREFS_KEY_FINGERPRINT_ENABLED, includeFingerprint).apply();
+    }
+
+    public boolean isFingerprintAuthEnabled() {
+        return prefs.getBoolean(PREFS_KEY_FINGERPRINT_ENABLED, false);
+    }
+
+    public boolean isPincodeHashValid(@NonNull String hash) {
+        return hash.equals(prefs.getString(PREFS_KEY_PINCODE_HASH, null));
+    }
+
+    public boolean hasPincodeHash() {
+        return prefs.contains(PREFS_KEY_PINCODE_HASH);
+    }
+	
+	public void removeAppLock() {
+        prefs.edit().remove(PREFS_KEY_PINCODE_HASH).remove(PREFS_KEY_FINGERPRINT_ENABLED).apply();
+    }
 }

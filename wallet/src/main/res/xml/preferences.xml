@@ -20,6 +20,11 @@
         <intent android:targetPackage="@string/app_package"
             android:targetClass="com.vergeandroid.wallet.ui.IntroActivity" />
     </Preference>
+	
+	<Preference android:title="Applock">
+        <intent android:targetPackage="@string/app_package"
+            android:targetClass="com.vergeandroid.wallet.ui.ApplockActivity"/>
+    </Preference>
 
     <CheckBoxPreference
         android:key="manual_receiving_addresses"

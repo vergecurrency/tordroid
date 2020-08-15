@@ -54,7 +54,6 @@ public class TransactionDetailsFragment extends Fragment {
     private TextView txIdView;
     private TextView txMessageLabel;
     private TextView txMessage;
-    private TextView blockExplorerLink;
 
     private final Handler handler = new MyHandler(this);
 
@@ -110,7 +109,6 @@ public class TransactionDetailsFragment extends Fragment {
         txIdView = (TextView) footer.findViewById(R.id.tx_id);
         txMessageLabel = (TextView) footer.findViewById(R.id.tx_message_label);
         txMessage = (TextView) footer.findViewById(R.id.tx_message);
-        blockExplorerLink = (TextView) footer.findViewById(R.id.block_explorer_link);
 
         pocket.addEventListener(walletListener);
 
@@ -188,7 +186,6 @@ public class TransactionDetailsFragment extends Fragment {
         }
         adapter.setTransaction(tx);
         txIdView.setText(tx.getHashAsString());
-        setupBlockExplorerLink(pocket.getCoinType(), tx.getHashAsString());
 
         // Show message
         if (type.canHandleMessages() && tx.getMessage() != null) {
@@ -205,22 +202,6 @@ public class TransactionDetailsFragment extends Fragment {
             } catch (Exception e) {
                 ACRA.getErrorReporter().handleSilentException(e);
             }
-        }
-    }
-
-    private void setupBlockExplorerLink(CoinType type, String txHash) {
-        if (Constants.COINS_BLOCK_EXPLORERS.containsKey(type)) {
-            final String url = String.format(Constants.COINS_BLOCK_EXPLORERS.get(type), txHash);
-            blockExplorerLink.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent i = new Intent(Intent.ACTION_VIEW);
-                    i.setData(Uri.parse(url));
-                    startActivity(i);
-                }
-            });
-        } else {
-            blockExplorerLink.setVisibility(View.GONE);
         }
     }
 

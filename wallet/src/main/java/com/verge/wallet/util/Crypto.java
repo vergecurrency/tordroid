@@ -23,7 +23,11 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Reader;
+import java.io.UnsupportedEncodingException;
+import java.math.BigInteger;
 import java.nio.charset.Charset;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.nio.charset.StandardCharsets;
 import java.security.SecureRandom;
 import java.util.Arrays;
@@ -42,6 +46,8 @@ import org.spongycastle.crypto.paddings.PaddedBufferedBlockCipher;
 import org.spongycastle.crypto.params.ParametersWithIV;
 
 import com.google.common.io.BaseEncoding;
+
+import static org.spongycastle.crypto.tls.HashAlgorithm.md5;
 
 /**
  * This class encrypts and decrypts a string in a manner that is compatible with OpenSSL.
@@ -294,6 +300,18 @@ public class Crypto
         System.arraycopy(arrayB, 0, result, arrayA.length, arrayB.length);
 
         return result;
+    }
+	
+	public static String hashMD5(String input) {
+        try {
+            MessageDigest messageDigest = MessageDigest.getInstance("MD5");
+            messageDigest.update(input.getBytes("UTF-8"));
+            return String.format("%032x", new BigInteger(1, messageDigest.digest()));
+        } catch (NoSuchAlgorithmException e) {
+            return null;
+        } catch (UnsupportedEncodingException e) {
+            return null;
+        }
     }
 
     public final static FileFilter OPENSSL_FILE_FILTER = new FileFilter()

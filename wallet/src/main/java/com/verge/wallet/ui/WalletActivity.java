@@ -37,6 +37,7 @@ import com.vergeandroid.wallet.service.CoinService;
 import com.vergeandroid.wallet.service.CoinServiceImpl;
 import com.vergeandroid.wallet.tasks.CheckUpdateTask;
 import com.vergeandroid.wallet.ui.dialogs.TermsOfUseDialog;
+import com.vergeandroid.wallet.util.Lock;
 import com.vergeandroid.wallet.util.SystemUtils;
 import com.vergeandroid.wallet.util.WeakHandler;
 
@@ -113,6 +114,8 @@ final public class WalletActivity extends BaseWalletActivity implements
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_wallet);
+		
+		new Lock();
 
         orbotStatusReceiver = new OrbotStatusReceiver(this);
 
@@ -234,7 +237,6 @@ final public class WalletActivity extends BaseWalletActivity implements
     private void createNavDrawerItems() {
         navDrawerItems.clear();
         NavDrawerItem.addItem(navDrawerItems, ITEM_SECTION_TITLE, getString(R.string.navigation_drawer_wallet));
-        NavDrawerItem.addItem(navDrawerItems, ITEM_OVERVIEW, getString(R.string.title_activity_overview), R.drawable.ic_launcher, null);
         for (WalletAccount account : getAllAccounts()) {
             NavDrawerItem.addItem(navDrawerItems, ITEM_COIN, account.getDescriptionOrCoinName(),
                     Constants.COINS_ICONS.get(account.getCoinType()), account.getId());
@@ -657,28 +659,12 @@ final public class WalletActivity extends BaseWalletActivity implements
         } else if (id == R.id.action_sweep_wallet) {
             sweepWallet(null);
             return true;
-        } else if (id == R.id.action_support) {
-            sendSupportEmail();
-            return true;
         } else if (id == R.id.action_about) {
             startActivity(new Intent(WalletActivity.this, AboutActivity.class));
             return true;
         }
 
         return super.onOptionsItemSelected(item);
-    }
-
-    private void sendSupportEmail() {
-        Intent intent = new Intent(Intent.ACTION_SENDTO);
-        intent.setData(Uri.parse("mailto:")); // only email apps should handle this
-        intent.putExtra(Intent.EXTRA_EMAIL, new String[]{Constants.SUPPORT_EMAIL});
-        intent.putExtra(Intent.EXTRA_SUBJECT, "");
-        try {
-            startActivity(Intent.createChooser(intent,
-                    getResources().getString(R.string.support_message)));
-        } catch (ActivityNotFoundException ex) {
-            Toast.makeText(this, R.string.error_generic, Toast.LENGTH_SHORT).show();
-        }
     }
 
     void startExchangeRates() {
