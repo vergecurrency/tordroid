@@ -134,6 +134,6 @@ public class FingerprintScanDialog extends DialogFragment implements View.OnClic
     }
 
     public enum Mode {
-        CHECK, ADD;
+        CHECK, ADD
     }
 }

@@ -305,11 +305,9 @@ public class Crypto
 	public static String hashMD5(String input) {
         try {
             MessageDigest messageDigest = MessageDigest.getInstance("MD5");
-            messageDigest.update(input.getBytes("UTF-8"));
+            messageDigest.update(input.getBytes(StandardCharsets.UTF_8));
             return String.format("%032x", new BigInteger(1, messageDigest.digest()));
         } catch (NoSuchAlgorithmException e) {
-            return null;
-        } catch (UnsupportedEncodingException e) {
             return null;
         }
     }
