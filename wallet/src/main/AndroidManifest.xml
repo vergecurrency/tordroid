@@ -13,7 +13,7 @@
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
     <uses-permission android:name="android.permission.BLUETOOTH"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-	<uses-permission android:name="android.permission.USE_FINGERPRINT" />
+	<uses-permission android:name="android.permission.USE_FINGERPRINT"/>
 
     <uses-feature
         android:name="android.hardware.touchscreen"
@@ -197,6 +197,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.vergeandroid.wallet.ui.SettingsActivity"/>
         </activity>
+		<activity android:name="com.vergeandroid.wallet.ui.ApplockActivity"/>
         <activity
             android:name="com.vergeandroid.wallet.ui.DebuggingActivity"
             android:label="@string/title_activity_debugging"
