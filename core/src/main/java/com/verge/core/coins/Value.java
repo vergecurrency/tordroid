@@ -1,4 +1,4 @@
-package com.vergeandroid.core.coins;
+package com.vergepay.core.coins;
 
 /**
  * Copyright 2014 Andreas Schildbach

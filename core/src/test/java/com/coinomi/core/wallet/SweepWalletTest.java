@@ -1,7 +1,7 @@
-package com.vergeandroid.core.wallet;
+package com.vergepay.core.wallet;
 
-import com.vergeandroid.core.coins.BitcoinMain;
-import com.vergeandroid.core.coins.CoinType;
+import com.vergepay.core.coins.BitcoinMain;
+import com.vergepay.core.coins.CoinType;
 
 import org.bitcoinj.core.ECKey;
 import org.bitcoinj.crypto.BIP38PrivateKey;

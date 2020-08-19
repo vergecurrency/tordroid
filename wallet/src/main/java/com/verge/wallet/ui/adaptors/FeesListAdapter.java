@@ -1,14 +1,14 @@
-package com.vergeandroid.wallet.ui.adaptors;
+package com.vergepay.wallet.ui.adaptors;
 
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
-import com.vergeandroid.core.coins.CoinType;
-import com.vergeandroid.core.coins.Value;
-import com.vergeandroid.wallet.Configuration;
-import com.vergeandroid.wallet.ui.widget.CoinListItem;
+import com.vergepay.core.coins.CoinType;
+import com.vergepay.core.coins.Value;
+import com.vergepay.wallet.Configuration;
+import com.vergepay.wallet.ui.widget.CoinListItem;
 
 import java.util.ArrayList;
 import java.util.List;

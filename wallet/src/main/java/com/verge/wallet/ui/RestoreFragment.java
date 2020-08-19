@@ -1,4 +1,4 @@
-package com.vergeandroid.wallet.ui;
+package com.vergepay.wallet.ui;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -21,11 +21,11 @@ import android.widget.ImageButton;
 import android.widget.MultiAutoCompleteTextView;
 import android.widget.TextView;
 
-import com.vergeandroid.core.CoreUtils;
-import com.vergeandroid.wallet.Constants;
-import com.vergeandroid.wallet.R;
-import com.vergeandroid.wallet.util.Fonts;
-import com.vergeandroid.wallet.util.Keyboard;
+import com.vergepay.core.CoreUtils;
+import com.vergepay.wallet.Constants;
+import com.vergepay.wallet.R;
+import com.vergepay.wallet.util.Fonts;
+import com.vergepay.wallet.util.Keyboard;
 
 import org.bitcoinj.crypto.MnemonicCode;
 import org.bitcoinj.crypto.MnemonicException;

@@ -1,4 +1,4 @@
-package com.vergeandroid.wallet.ui.dialogs;
+package com.vergepay.wallet.ui.dialogs;
 
 import android.app.Activity;
 import android.app.Dialog;
@@ -6,10 +6,10 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 
-import com.vergeandroid.wallet.R;
-import com.vergeandroid.wallet.ui.DialogBuilder;
+import com.vergepay.wallet.R;
+import com.vergepay.wallet.ui.DialogBuilder;
 
-import static com.vergeandroid.core.Preconditions.checkState;
+import static com.vergepay.core.Preconditions.checkState;
 
 /**
  * @author John L. Jegutanis

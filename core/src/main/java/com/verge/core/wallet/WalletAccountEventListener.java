@@ -1,6 +1,6 @@
-package com.vergeandroid.core.wallet;
+package com.vergepay.core.wallet;
 
-import com.vergeandroid.core.coins.Value;
+import com.vergepay.core.coins.Value;
 
 /**
  * @author John L. Jegutanis

@@ -1,9 +1,9 @@
-package com.vergeandroid.core.util;
+package com.vergepay.core.util;
 
-import com.vergeandroid.core.coins.CoinType;
-import com.vergeandroid.core.coins.ValueType;
-import com.vergeandroid.core.wallet.AbstractAddress;
-import com.vergeandroid.core.wallet.WalletAccount;
+import com.vergepay.core.coins.CoinType;
+import com.vergepay.core.coins.ValueType;
+import com.vergepay.core.wallet.AbstractAddress;
+import com.vergepay.core.wallet.WalletAccount;
 
 /**
  * @author John L. Jegutanis

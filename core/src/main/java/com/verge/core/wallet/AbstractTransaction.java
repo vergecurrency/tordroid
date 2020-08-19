@@ -1,8 +1,8 @@
-package com.vergeandroid.core.wallet;
+package com.vergepay.core.wallet;
 
-import com.vergeandroid.core.coins.CoinType;
-import com.vergeandroid.core.coins.Value;
-import com.vergeandroid.core.messages.TxMessage;
+import com.vergepay.core.coins.CoinType;
+import com.vergepay.core.coins.Value;
+import com.vergepay.core.messages.TxMessage;
 
 import org.bitcoinj.core.Sha256Hash;
 import org.bitcoinj.core.TransactionConfidence.ConfidenceType;

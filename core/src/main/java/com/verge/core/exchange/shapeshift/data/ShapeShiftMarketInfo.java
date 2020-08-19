@@ -1,10 +1,10 @@
-package com.vergeandroid.core.exchange.shapeshift.data;
+package com.vergepay.core.exchange.shapeshift.data;
 
-import com.vergeandroid.core.coins.CoinID;
-import com.vergeandroid.core.coins.CoinType;
-import com.vergeandroid.core.coins.Value;
-import com.vergeandroid.core.exchange.shapeshift.ShapeShift;
-import com.vergeandroid.core.util.ExchangeRate;
+import com.vergepay.core.coins.CoinID;
+import com.vergepay.core.coins.CoinType;
+import com.vergepay.core.coins.Value;
+import com.vergepay.core.exchange.shapeshift.ShapeShift;
+import com.vergepay.core.util.ExchangeRate;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -12,7 +12,7 @@ import org.json.JSONObject;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
-import static com.vergeandroid.core.Preconditions.checkState;
+import static com.vergepay.core.Preconditions.checkState;
 
 /**
  * @author John L. Jegutanis

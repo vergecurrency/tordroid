@@ -12,7 +12,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.vergeandroid.wallet"
+        applicationId "com.vergepay.wallet"
         minSdkVersion 10
         targetSdkVersion 29
         versionCode 62

@@ -1,7 +1,7 @@
-package com.vergeandroid.core.wallet.families.vpncoin;
+package com.vergepay.core.wallet.families.vpncoin;
 
-import com.vergeandroid.core.coins.VpncoinMain;
-import com.vergeandroid.core.messages.MessageFactory;
+import com.vergepay.core.coins.VpncoinMain;
+import com.vergepay.core.messages.MessageFactory;
 import com.google.common.base.Charsets;
 
 import org.bitcoinj.core.Transaction;

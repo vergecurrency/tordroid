@@ -1,4 +1,4 @@
-package com.vergeandroid.wallet.ui;
+package com.vergepay.wallet.ui;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -10,14 +10,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
 
-import com.vergeandroid.core.wallet.WalletAccount;
-import com.vergeandroid.wallet.R;
-import com.vergeandroid.wallet.WalletApplication;
+import com.vergepay.core.wallet.WalletAccount;
+import com.vergepay.wallet.R;
+import com.vergepay.wallet.WalletApplication;
 
 import butterknife.ButterKnife;
 
-import static com.vergeandroid.core.Preconditions.checkNotNull;
-import static com.vergeandroid.wallet.Constants.ARG_ACCOUNT_ID;
+import static com.vergepay.core.Preconditions.checkNotNull;
+import static com.vergepay.wallet.Constants.ARG_ACCOUNT_ID;
 
 /**
  * @author John L. Jegutanis

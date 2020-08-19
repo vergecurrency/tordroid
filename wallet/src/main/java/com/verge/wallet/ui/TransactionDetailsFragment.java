@@ -1,4 +1,4 @@
-package com.vergeandroid.wallet.ui;
+package com.vergepay.wallet.ui;
 
 
 import android.content.Intent;
@@ -15,18 +15,18 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.vergeandroid.core.coins.CoinType;
-import com.vergeandroid.core.messages.TxMessage;
-import com.vergeandroid.core.wallet.AbstractTransaction;
-import com.vergeandroid.core.wallet.AbstractTransaction.AbstractOutput;
-import com.vergeandroid.core.wallet.AbstractWallet;
-import com.vergeandroid.wallet.Constants;
-import com.vergeandroid.wallet.R;
-import com.vergeandroid.wallet.WalletApplication;
-import com.vergeandroid.wallet.util.ThrottlingWalletChangeListener;
-import com.vergeandroid.wallet.util.TimeUtils;
-import com.vergeandroid.wallet.util.UiUtils;
-import com.vergeandroid.wallet.util.WeakHandler;
+import com.vergepay.core.coins.CoinType;
+import com.vergepay.core.messages.TxMessage;
+import com.vergepay.core.wallet.AbstractTransaction;
+import com.vergepay.core.wallet.AbstractTransaction.AbstractOutput;
+import com.vergepay.core.wallet.AbstractWallet;
+import com.vergepay.wallet.Constants;
+import com.vergepay.wallet.R;
+import com.vergepay.wallet.WalletApplication;
+import com.vergepay.wallet.util.ThrottlingWalletChangeListener;
+import com.vergepay.wallet.util.TimeUtils;
+import com.vergepay.wallet.util.UiUtils;
+import com.vergepay.wallet.util.WeakHandler;
 
 import org.acra.ACRA;
 import org.slf4j.Logger;

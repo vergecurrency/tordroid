@@ -1,13 +1,13 @@
-package com.vergeandroid.wallet.ui;
+package com.vergepay.wallet.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 
-import com.vergeandroid.core.wallet.SendRequest;
-import com.vergeandroid.wallet.Constants;
-import com.vergeandroid.wallet.ExchangeHistoryProvider;
-import com.vergeandroid.wallet.R;
+import com.vergepay.core.wallet.SendRequest;
+import com.vergepay.wallet.Constants;
+import com.vergepay.wallet.ExchangeHistoryProvider;
+import com.vergepay.wallet.R;
 
 import javax.annotation.Nullable;
 

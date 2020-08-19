@@ -1,4 +1,4 @@
-package com.vergeandroid.core;
+package com.vergepay.core;
 
 
 /*

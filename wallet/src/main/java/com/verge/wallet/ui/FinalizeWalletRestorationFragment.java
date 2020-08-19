@@ -1,4 +1,4 @@
-package com.vergeandroid.wallet.ui;
+package com.vergepay.wallet.ui;
 
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -12,15 +12,15 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.vergeandroid.core.coins.CoinID;
-import com.vergeandroid.core.coins.CoinType;
-import com.vergeandroid.core.wallet.Wallet;
-import com.vergeandroid.wallet.Constants;
-import com.vergeandroid.wallet.R;
-import com.vergeandroid.wallet.WalletApplication;
-import com.vergeandroid.wallet.service.CoinService;
-import com.vergeandroid.wallet.service.CoinServiceImpl;
-import com.vergeandroid.wallet.util.WeakHandler;
+import com.vergepay.core.coins.CoinID;
+import com.vergepay.core.coins.CoinType;
+import com.vergepay.core.wallet.Wallet;
+import com.vergepay.wallet.Constants;
+import com.vergepay.wallet.R;
+import com.vergepay.wallet.WalletApplication;
+import com.vergepay.wallet.service.CoinService;
+import com.vergepay.wallet.service.CoinServiceImpl;
+import com.vergepay.wallet.util.WeakHandler;
 
 import org.bitcoinj.crypto.KeyCrypterScrypt;
 

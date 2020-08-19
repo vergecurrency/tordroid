@@ -1,13 +1,13 @@
-package com.vergeandroid.wallet.ui;
+package com.vergepay.wallet.ui;
 
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
-import com.vergeandroid.core.coins.CoinType;
-import com.vergeandroid.wallet.ExchangeRatesProvider.ExchangeRate;
-import com.vergeandroid.wallet.ui.widget.CoinListItem;
+import com.vergepay.core.coins.CoinType;
+import com.vergepay.wallet.ExchangeRatesProvider.ExchangeRate;
+import com.vergepay.wallet.ui.widget.CoinListItem;
 
 import java.util.HashMap;
 import java.util.List;

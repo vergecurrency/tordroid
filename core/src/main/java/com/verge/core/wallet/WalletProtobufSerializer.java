@@ -1,15 +1,15 @@
-package com.vergeandroid.core.wallet;
+package com.vergepay.core.wallet;
 
-import com.vergeandroid.core.coins.CoinID;
-import com.vergeandroid.core.coins.CoinType;
-import com.vergeandroid.core.coins.families.BitFamily;
-import com.vergeandroid.core.coins.families.NxtFamily;
-import com.vergeandroid.core.protos.Protos;
-import com.vergeandroid.core.util.KeyUtils;
-import com.vergeandroid.core.wallet.families.bitcoin.BitTransaction;
-import com.vergeandroid.core.wallet.families.bitcoin.OutPointOutput;
-import com.vergeandroid.core.wallet.families.nxt.NxtFamilyWallet;
-import com.vergeandroid.core.wallet.families.nxt.NxtFamilyWalletProtobufSerializer;
+import com.vergepay.core.coins.CoinID;
+import com.vergepay.core.coins.CoinType;
+import com.vergepay.core.coins.families.BitFamily;
+import com.vergepay.core.coins.families.NxtFamily;
+import com.vergepay.core.protos.Protos;
+import com.vergepay.core.util.KeyUtils;
+import com.vergepay.core.wallet.families.bitcoin.BitTransaction;
+import com.vergepay.core.wallet.families.bitcoin.OutPointOutput;
+import com.vergepay.core.wallet.families.nxt.NxtFamilyWallet;
+import com.vergepay.core.wallet.families.nxt.NxtFamilyWalletProtobufSerializer;
 import com.google.common.base.Splitter;
 import com.google.protobuf.ByteString;
 import com.google.protobuf.TextFormat;

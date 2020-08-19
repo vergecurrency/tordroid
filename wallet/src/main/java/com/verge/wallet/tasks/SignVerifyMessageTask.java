@@ -1,9 +1,9 @@
-package com.vergeandroid.wallet.tasks;
+package com.vergepay.wallet.tasks;
 
 import android.os.AsyncTask;
 
-import com.vergeandroid.core.wallet.SignedMessage;
-import com.vergeandroid.core.wallet.WalletAccount;
+import com.vergepay.core.wallet.SignedMessage;
+import com.vergepay.core.wallet.WalletAccount;
 
 import org.acra.ACRA;
 import org.bitcoinj.crypto.KeyCrypterException;

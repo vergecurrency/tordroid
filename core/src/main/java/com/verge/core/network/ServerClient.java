@@ -1,18 +1,18 @@
-package com.vergeandroid.core.network;
+package com.vergepay.core.network;
 
-import com.vergeandroid.core.coins.CoinType;
-import com.vergeandroid.core.exceptions.AddressMalformedException;
-import com.vergeandroid.core.network.interfaces.ConnectionEventListener;
-import com.vergeandroid.core.network.interfaces.TransactionEventListener;
-import com.vergeandroid.core.wallet.AbstractAddress;
-import com.vergeandroid.core.wallet.families.bitcoin.BitAddress;
-import com.vergeandroid.core.wallet.families.bitcoin.BitBlockchainConnection;
-import com.vergeandroid.core.wallet.families.bitcoin.BitTransaction;
-import com.vergeandroid.core.wallet.families.bitcoin.BitTransactionEventListener;
-import com.vergeandroid.stratumj.ServerAddress;
-import com.vergeandroid.stratumj.StratumClient;
-import com.vergeandroid.stratumj.messages.CallMessage;
-import com.vergeandroid.stratumj.messages.ResultMessage;
+import com.vergepay.core.coins.CoinType;
+import com.vergepay.core.exceptions.AddressMalformedException;
+import com.vergepay.core.network.interfaces.ConnectionEventListener;
+import com.vergepay.core.network.interfaces.TransactionEventListener;
+import com.vergepay.core.wallet.AbstractAddress;
+import com.vergepay.core.wallet.families.bitcoin.BitAddress;
+import com.vergepay.core.wallet.families.bitcoin.BitBlockchainConnection;
+import com.vergepay.core.wallet.families.bitcoin.BitTransaction;
+import com.vergepay.core.wallet.families.bitcoin.BitTransactionEventListener;
+import com.vergepay.stratumj.ServerAddress;
+import com.vergepay.stratumj.StratumClient;
+import com.vergepay.stratumj.messages.CallMessage;
+import com.vergepay.stratumj.messages.ResultMessage;
 import com.google.common.collect.ImmutableList;
 import com.google.common.io.Files;
 import com.google.common.util.concurrent.FutureCallback;
@@ -45,8 +45,8 @@ import java.util.concurrent.TimeUnit;
 
 import javax.annotation.Nullable;
 
-import static com.vergeandroid.core.Preconditions.checkNotNull;
-import static com.vergeandroid.core.Preconditions.checkState;
+import static com.vergepay.core.Preconditions.checkNotNull;
+import static com.vergepay.core.Preconditions.checkState;
 import static com.google.common.util.concurrent.Service.State.NEW;
 
 /**

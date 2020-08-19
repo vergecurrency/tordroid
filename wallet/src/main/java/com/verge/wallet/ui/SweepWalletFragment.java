@@ -1,4 +1,4 @@
-package com.vergeandroid.wallet.ui;
+package com.vergepay.wallet.ui;
 
 import android.app.Activity;
 import android.content.Context;
@@ -18,20 +18,20 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.vergeandroid.core.coins.CoinType;
-import com.vergeandroid.core.coins.Value;
-import com.vergeandroid.core.network.ConnectivityHelper;
-import com.vergeandroid.core.network.ServerClients;
-import com.vergeandroid.core.wallet.BitWalletSingleKey;
-import com.vergeandroid.core.wallet.SendRequest;
-import com.vergeandroid.core.wallet.SerializedKey;
-import com.vergeandroid.core.wallet.WalletAccount;
-import com.vergeandroid.core.wallet.families.bitcoin.BitTransaction;
-import com.vergeandroid.wallet.Constants;
-import com.vergeandroid.wallet.R;
-import com.vergeandroid.wallet.WalletApplication;
-import com.vergeandroid.wallet.util.Keyboard;
-import com.vergeandroid.wallet.util.WeakHandler;
+import com.vergepay.core.coins.CoinType;
+import com.vergepay.core.coins.Value;
+import com.vergepay.core.network.ConnectivityHelper;
+import com.vergepay.core.network.ServerClients;
+import com.vergepay.core.wallet.BitWalletSingleKey;
+import com.vergepay.core.wallet.SendRequest;
+import com.vergepay.core.wallet.SerializedKey;
+import com.vergepay.core.wallet.WalletAccount;
+import com.vergepay.core.wallet.families.bitcoin.BitTransaction;
+import com.vergepay.wallet.Constants;
+import com.vergepay.wallet.R;
+import com.vergepay.wallet.WalletApplication;
+import com.vergepay.wallet.util.Keyboard;
+import com.vergepay.wallet.util.WeakHandler;
 
 import org.bitcoinj.core.TransactionInput;
 import org.bitcoinj.core.TransactionOutPoint;
@@ -47,9 +47,9 @@ import butterknife.OnFocusChange;
 import butterknife.OnTextChanged;
 
 import static butterknife.OnTextChanged.Callback.AFTER_TEXT_CHANGED;
-import static com.vergeandroid.core.Preconditions.checkNotNull;
-import static com.vergeandroid.wallet.util.UiUtils.setGone;
-import static com.vergeandroid.wallet.util.UiUtils.setVisible;
+import static com.vergepay.core.Preconditions.checkNotNull;
+import static com.vergepay.wallet.util.UiUtils.setGone;
+import static com.vergepay.wallet.util.UiUtils.setVisible;
 
 
 /**

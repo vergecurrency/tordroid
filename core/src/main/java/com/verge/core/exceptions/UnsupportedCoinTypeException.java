@@ -1,6 +1,6 @@
-package com.vergeandroid.core.exceptions;
+package com.vergepay.core.exceptions;
 
-import com.vergeandroid.core.coins.CoinType;
+import com.vergepay.core.coins.CoinType;
 
 /**
  * @author John L. Jegutanis

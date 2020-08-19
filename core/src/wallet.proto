@@ -23,9 +23,9 @@
  * - To regenerate after editing, run: mvn generate-sources -DupdateProtobuf
  */
 
-package com.vergeandroid.core.protos;
+package com.vergepay.core.protos;
 
-option java_package = "com.vergeandroid.core.protos";
+option java_package = "com.vergepay.core.protos";
 
 option java_outer_classname = "Protos";
 

@@ -1,4 +1,4 @@
-package com.vergeandroid.wallet.ui.widget;
+package com.vergepay.wallet.ui.widget;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -10,11 +10,11 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.vergeandroid.core.util.GenericUtils;
-import com.vergeandroid.core.wallet.AbstractAddress;
-import com.vergeandroid.wallet.AddressBookProvider;
-import com.vergeandroid.wallet.R;
-import com.vergeandroid.wallet.util.WalletUtils;
+import com.vergepay.core.util.GenericUtils;
+import com.vergepay.core.wallet.AbstractAddress;
+import com.vergepay.wallet.AddressBookProvider;
+import com.vergepay.wallet.R;
+import com.vergepay.wallet.util.WalletUtils;
 
 /**
  * @author John L. Jegutanis

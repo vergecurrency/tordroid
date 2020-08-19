@@ -1,6 +1,6 @@
-package com.vergeandroid.core.messages;
+package com.vergepay.core.messages;
 
-import com.vergeandroid.core.wallet.AbstractTransaction;
+import com.vergepay.core.wallet.AbstractTransaction;
 
 import java.io.Serializable;
 

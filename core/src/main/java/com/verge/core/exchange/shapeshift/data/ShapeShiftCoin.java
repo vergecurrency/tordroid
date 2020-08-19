@@ -1,6 +1,6 @@
-package com.vergeandroid.core.exchange.shapeshift.data;
+package com.vergepay.core.exchange.shapeshift.data;
 
-import com.vergeandroid.core.exchange.shapeshift.ShapeShift;
+import com.vergepay.core.exchange.shapeshift.ShapeShift;
 
 import org.json.JSONObject;
 

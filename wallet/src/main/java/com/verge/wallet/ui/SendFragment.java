@@ -1,4 +1,4 @@
-package com.vergeandroid.wallet.ui;
+package com.vergepay.wallet.ui;
 
 import android.app.Activity;
 import android.content.ContentResolver;
@@ -31,36 +31,36 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.vergeandroid.core.coins.CoinID;
-import com.vergeandroid.core.coins.CoinType;
-import com.vergeandroid.core.coins.FiatType;
-import com.vergeandroid.core.coins.Value;
-import com.vergeandroid.core.coins.ValueType;
-import com.vergeandroid.core.coins.families.NxtFamily;
-import com.vergeandroid.core.exceptions.AddressMalformedException;
-import com.vergeandroid.core.exceptions.NoSuchPocketException;
-import com.vergeandroid.core.exchange.shapeshift.ShapeShift;
-import com.vergeandroid.core.exchange.shapeshift.data.ShapeShiftMarketInfo;
-import com.vergeandroid.core.messages.MessageFactory;
-import com.vergeandroid.core.messages.TxMessage;
-import com.vergeandroid.core.uri.CoinURI;
-import com.vergeandroid.core.uri.CoinURIParseException;
-import com.vergeandroid.core.util.ExchangeRate;
-import com.vergeandroid.core.util.GenericUtils;
-import com.vergeandroid.core.wallet.AbstractAddress;
-import com.vergeandroid.core.wallet.WalletAccount;
-import com.vergeandroid.wallet.AddressBookProvider;
-import com.vergeandroid.wallet.Configuration;
-import com.vergeandroid.wallet.Constants;
-import com.vergeandroid.wallet.ExchangeRatesProvider;
-import com.vergeandroid.wallet.R;
-import com.vergeandroid.wallet.WalletApplication;
-import com.vergeandroid.wallet.tasks.MarketInfoPollTask;
-import com.vergeandroid.wallet.ui.widget.AddressView;
-import com.vergeandroid.wallet.ui.widget.AmountEditView;
-import com.vergeandroid.wallet.util.ThrottlingWalletChangeListener;
-import com.vergeandroid.wallet.util.UiUtils;
-import com.vergeandroid.wallet.util.WeakHandler;
+import com.vergepay.core.coins.CoinID;
+import com.vergepay.core.coins.CoinType;
+import com.vergepay.core.coins.FiatType;
+import com.vergepay.core.coins.Value;
+import com.vergepay.core.coins.ValueType;
+import com.vergepay.core.coins.families.NxtFamily;
+import com.vergepay.core.exceptions.AddressMalformedException;
+import com.vergepay.core.exceptions.NoSuchPocketException;
+import com.vergepay.core.exchange.shapeshift.ShapeShift;
+import com.vergepay.core.exchange.shapeshift.data.ShapeShiftMarketInfo;
+import com.vergepay.core.messages.MessageFactory;
+import com.vergepay.core.messages.TxMessage;
+import com.vergepay.core.uri.CoinURI;
+import com.vergepay.core.uri.CoinURIParseException;
+import com.vergepay.core.util.ExchangeRate;
+import com.vergepay.core.util.GenericUtils;
+import com.vergepay.core.wallet.AbstractAddress;
+import com.vergepay.core.wallet.WalletAccount;
+import com.vergepay.wallet.AddressBookProvider;
+import com.vergepay.wallet.Configuration;
+import com.vergepay.wallet.Constants;
+import com.vergepay.wallet.ExchangeRatesProvider;
+import com.vergepay.wallet.R;
+import com.vergepay.wallet.WalletApplication;
+import com.vergepay.wallet.tasks.MarketInfoPollTask;
+import com.vergepay.wallet.ui.widget.AddressView;
+import com.vergepay.wallet.ui.widget.AmountEditView;
+import com.vergepay.wallet.util.ThrottlingWalletChangeListener;
+import com.vergepay.wallet.util.UiUtils;
+import com.vergepay.wallet.util.WeakHandler;
 import com.google.common.base.Charsets;
 
 import org.acra.ACRA;
@@ -87,11 +87,11 @@ import butterknife.OnClick;
 import static android.view.View.GONE;
 import static android.view.View.OnClickListener;
 import static android.view.View.VISIBLE;
-import static com.vergeandroid.core.Preconditions.checkNotNull;
-import static com.vergeandroid.core.coins.Value.canCompare;
-import static com.vergeandroid.wallet.ExchangeRatesProvider.getRates;
-import static com.vergeandroid.wallet.util.UiUtils.setGone;
-import static com.vergeandroid.wallet.util.UiUtils.setVisible;
+import static com.vergepay.core.Preconditions.checkNotNull;
+import static com.vergepay.core.coins.Value.canCompare;
+import static com.vergepay.wallet.ExchangeRatesProvider.getRates;
+import static com.vergepay.wallet.util.UiUtils.setGone;
+import static com.vergepay.wallet.util.UiUtils.setVisible;
 
 /**
  * Fragment that prepares a transaction
@@ -205,7 +205,7 @@ public class SendFragment extends WalletFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // The onCreateOptionsMenu is handled in com.vergeandroid.wallet.ui.AccountFragment
+        // The onCreateOptionsMenu is handled in com.vergepay.wallet.ui.AccountFragment
         setHasOptionsMenu(true);
 
         Bundle args = getArguments();
@@ -1148,7 +1148,7 @@ public class SendFragment extends WalletFragment {
         @Override
         public void onLoadFinished(final Loader<Cursor> loader, final Cursor data) {
             if (data != null && data.getCount() > 0) {
-                HashMap<String, com.vergeandroid.core.util.ExchangeRate> rates = new HashMap<>(data.getCount());
+                HashMap<String, com.vergepay.core.util.ExchangeRate> rates = new HashMap<>(data.getCount());
                 data.moveToFirst();
                 do {
                     ExchangeRatesProvider.ExchangeRate rate = ExchangeRatesProvider.getExchangeRate(data);

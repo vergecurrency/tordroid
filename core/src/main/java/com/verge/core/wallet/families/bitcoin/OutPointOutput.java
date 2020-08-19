@@ -1,7 +1,7 @@
-package com.vergeandroid.core.wallet.families.bitcoin;
+package com.vergepay.core.wallet.families.bitcoin;
 
-import com.vergeandroid.core.coins.CoinType;
-import com.vergeandroid.core.coins.Value;
+import com.vergepay.core.coins.CoinType;
+import com.vergepay.core.coins.Value;
 
 import org.bitcoinj.core.Sha256Hash;
 import org.bitcoinj.core.TransactionInput;

@@ -1,10 +1,10 @@
-package com.vergeandroid.core.wallet;
+package com.vergepay.core.wallet;
 
-import com.vergeandroid.core.coins.CoinType;
-import com.vergeandroid.core.coins.Value;
-import com.vergeandroid.core.coins.ValueType;
-import com.vergeandroid.core.exceptions.TransactionBroadcastException;
-import com.vergeandroid.core.network.interfaces.ConnectionEventListener;
+import com.vergepay.core.coins.CoinType;
+import com.vergepay.core.coins.Value;
+import com.vergepay.core.coins.ValueType;
+import com.vergepay.core.exceptions.TransactionBroadcastException;
+import com.vergepay.core.network.interfaces.ConnectionEventListener;
 
 import org.bitcoinj.core.Sha256Hash;
 import org.bitcoinj.crypto.KeyCrypter;

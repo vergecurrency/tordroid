@@ -1,4 +1,4 @@
-package com.vergeandroid.core.coins.nxt;
+package com.vergepay.core.coins.nxt;
 
 
 //import org.json.simple.JSONObject;

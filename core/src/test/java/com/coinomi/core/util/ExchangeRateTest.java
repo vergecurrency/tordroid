@@ -1,4 +1,4 @@
-package com.vergeandroid.core.util;
+package com.vergepay.core.util;
 
 /*
  * Copyright 2014 Andreas Schildbach
@@ -17,13 +17,13 @@ package com.vergeandroid.core.util;
  * limitations under the License.
  */
 
-import com.vergeandroid.core.coins.BitcoinMain;
-import com.vergeandroid.core.coins.CoinType;
-import com.vergeandroid.core.coins.FiatType;
-import com.vergeandroid.core.coins.FiatValue;
-import com.vergeandroid.core.coins.LitecoinMain;
-import com.vergeandroid.core.coins.NuBitsMain;
-import com.vergeandroid.core.coins.Value;
+import com.vergepay.core.coins.BitcoinMain;
+import com.vergepay.core.coins.CoinType;
+import com.vergepay.core.coins.FiatType;
+import com.vergepay.core.coins.FiatValue;
+import com.vergepay.core.coins.LitecoinMain;
+import com.vergepay.core.coins.NuBitsMain;
+import com.vergepay.core.coins.Value;
 
 import org.junit.Test;
 

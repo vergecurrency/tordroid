@@ -1,4 +1,4 @@
-package com.vergeandroid.wallet.ui;
+package com.vergepay.wallet.ui;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -6,15 +6,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
-import com.vergeandroid.core.coins.CoinType;
-import com.vergeandroid.core.coins.Value;
-import com.vergeandroid.core.coins.families.NxtFamily;
-import com.vergeandroid.core.util.GenericUtils;
-import com.vergeandroid.core.wallet.AbstractTransaction;
-import com.vergeandroid.core.wallet.AbstractTransaction.AbstractOutput;
-import com.vergeandroid.core.wallet.AbstractWallet;
-import com.vergeandroid.wallet.R;
-import com.vergeandroid.wallet.ui.widget.SendOutput;
+import com.vergepay.core.coins.CoinType;
+import com.vergepay.core.coins.Value;
+import com.vergepay.core.coins.families.NxtFamily;
+import com.vergepay.core.util.GenericUtils;
+import com.vergepay.core.wallet.AbstractTransaction;
+import com.vergepay.core.wallet.AbstractTransaction.AbstractOutput;
+import com.vergepay.core.wallet.AbstractWallet;
+import com.vergepay.wallet.R;
+import com.vergepay.wallet.ui.widget.SendOutput;
 
 import java.util.ArrayList;
 import java.util.List;

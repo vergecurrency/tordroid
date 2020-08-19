@@ -1,8 +1,8 @@
-package com.vergeandroid.core.wallet;
+package com.vergepay.core.wallet;
 
-import com.vergeandroid.core.wallet.families.bitcoin.CoinSelection;
-import com.vergeandroid.core.wallet.families.bitcoin.CoinSelector;
-import com.vergeandroid.core.wallet.families.bitcoin.OutPointOutput;
+import com.vergepay.core.wallet.families.bitcoin.CoinSelection;
+import com.vergepay.core.wallet.families.bitcoin.CoinSelector;
+import com.vergepay.core.wallet.families.bitcoin.OutPointOutput;
 import com.google.common.annotations.VisibleForTesting;
 
 import org.bitcoinj.core.Coin;

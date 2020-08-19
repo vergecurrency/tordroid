@@ -1,4 +1,4 @@
-package com.vergeandroid.wallet.ui.dialogs;
+package com.vergepay.wallet.ui.dialogs;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -15,15 +15,15 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.vergeandroid.core.exceptions.Bip44KeyLookAheadExceededException;
-import com.vergeandroid.core.wallet.AbstractAddress;
-import com.vergeandroid.core.wallet.WalletAccount;
-import com.vergeandroid.core.wallet.WalletPocketHD;
-import com.vergeandroid.wallet.AddressBookProvider;
-import com.vergeandroid.wallet.Constants;
-import com.vergeandroid.wallet.R;
-import com.vergeandroid.wallet.WalletApplication;
-import com.vergeandroid.wallet.ui.DialogBuilder;
+import com.vergepay.core.exceptions.Bip44KeyLookAheadExceededException;
+import com.vergepay.core.wallet.AbstractAddress;
+import com.vergepay.core.wallet.WalletAccount;
+import com.vergepay.core.wallet.WalletPocketHD;
+import com.vergepay.wallet.AddressBookProvider;
+import com.vergepay.wallet.Constants;
+import com.vergepay.wallet.R;
+import com.vergepay.wallet.WalletApplication;
+import com.vergepay.wallet.ui.DialogBuilder;
 
 import javax.annotation.Nullable;
 

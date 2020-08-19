@@ -1,13 +1,13 @@
-package com.vergeandroid.wallet;
+package com.vergepay.wallet;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.support.annotation.NonNull;
 import android.text.format.DateUtils;
 
-import com.vergeandroid.core.coins.CoinType;
-import com.vergeandroid.core.coins.Value;
-import com.vergeandroid.wallet.util.WalletUtils;
+import com.vergepay.core.coins.CoinType;
+import com.vergepay.core.coins.Value;
+import com.vergepay.wallet.util.WalletUtils;
 import com.google.common.collect.ImmutableMap;
 
 import org.json.JSONException;

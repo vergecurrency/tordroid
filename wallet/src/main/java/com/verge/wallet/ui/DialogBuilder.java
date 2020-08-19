@@ -1,4 +1,4 @@
-package com.vergeandroid.wallet.ui;
+package com.vergepay.wallet.ui;
 
 /*
  * Copyright 2014 the original author or authors.
@@ -26,7 +26,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.vergeandroid.wallet.R;
+import com.vergepay.wallet.R;
 
 import javax.annotation.Nullable;
 

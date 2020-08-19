@@ -1,4 +1,4 @@
-package com.vergeandroid.wallet.ui;
+package com.vergepay.wallet.ui;
 
 import android.app.Activity;
 import android.content.ContentResolver;
@@ -21,29 +21,29 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.vergeandroid.core.coins.CoinType;
-import com.vergeandroid.core.coins.FiatType;
-import com.vergeandroid.core.coins.Value;
-import com.vergeandroid.core.coins.families.BitFamily;
-import com.vergeandroid.core.coins.families.NxtFamily;
-import com.vergeandroid.core.exceptions.UnsupportedCoinTypeException;
-import com.vergeandroid.core.uri.CoinURI;
-import com.vergeandroid.core.util.ExchangeRate;
-import com.vergeandroid.core.util.GenericUtils;
-import com.vergeandroid.core.wallet.AbstractAddress;
-import com.vergeandroid.core.wallet.WalletAccount;
-import com.vergeandroid.wallet.AddressBookProvider;
-import com.vergeandroid.wallet.Configuration;
-import com.vergeandroid.wallet.Constants;
-import com.vergeandroid.wallet.ExchangeRatesProvider;
-import com.vergeandroid.wallet.R;
-import com.vergeandroid.wallet.WalletApplication;
-import com.vergeandroid.wallet.ui.dialogs.CreateNewAddressDialog;
-import com.vergeandroid.wallet.ui.widget.AmountEditView;
-import com.vergeandroid.wallet.util.QrUtils;
-import com.vergeandroid.wallet.util.ThrottlingWalletChangeListener;
-import com.vergeandroid.wallet.util.UiUtils;
-import com.vergeandroid.wallet.util.WeakHandler;
+import com.vergepay.core.coins.CoinType;
+import com.vergepay.core.coins.FiatType;
+import com.vergepay.core.coins.Value;
+import com.vergepay.core.coins.families.BitFamily;
+import com.vergepay.core.coins.families.NxtFamily;
+import com.vergepay.core.exceptions.UnsupportedCoinTypeException;
+import com.vergepay.core.uri.CoinURI;
+import com.vergepay.core.util.ExchangeRate;
+import com.vergepay.core.util.GenericUtils;
+import com.vergepay.core.wallet.AbstractAddress;
+import com.vergepay.core.wallet.WalletAccount;
+import com.vergepay.wallet.AddressBookProvider;
+import com.vergepay.wallet.Configuration;
+import com.vergepay.wallet.Constants;
+import com.vergepay.wallet.ExchangeRatesProvider;
+import com.vergepay.wallet.R;
+import com.vergepay.wallet.WalletApplication;
+import com.vergepay.wallet.ui.dialogs.CreateNewAddressDialog;
+import com.vergepay.wallet.ui.widget.AmountEditView;
+import com.vergepay.wallet.util.QrUtils;
+import com.vergepay.wallet.util.ThrottlingWalletChangeListener;
+import com.vergepay.wallet.util.UiUtils;
+import com.vergepay.wallet.util.WeakHandler;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -55,8 +55,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-import static com.vergeandroid.core.Preconditions.checkNotNull;
-import static com.vergeandroid.wallet.ExchangeRatesProvider.getRate;
+import static com.vergepay.core.Preconditions.checkNotNull;
+import static com.vergepay.wallet.ExchangeRatesProvider.getRate;
 
 /**
  *
@@ -152,8 +152,8 @@ public class AddressRequestFragment extends WalletFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // The onCreateOptionsMenu is handled in com.vergeandroid.wallet.ui.AccountFragment
-        // or in com.vergeandroid.wallet.ui.PreviousAddressesActivity
+        // The onCreateOptionsMenu is handled in com.vergepay.wallet.ui.AccountFragment
+        // or in com.vergepay.wallet.ui.PreviousAddressesActivity
         setHasOptionsMenu(true);
 
         WalletApplication walletApplication = (WalletApplication) getActivity().getApplication();

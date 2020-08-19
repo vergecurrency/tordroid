@@ -1,4 +1,4 @@
-package com.vergeandroid.core.coins.families;
+package com.vergepay.core.coins.families;
 
 /**
  * @author John L. Jegutanis

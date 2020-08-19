@@ -1,8 +1,8 @@
-package com.vergeandroid.stratumj;
+package com.vergepay.stratumj;
 
-import com.vergeandroid.stratumj.messages.BaseMessage;
-import com.vergeandroid.stratumj.messages.CallMessage;
-import com.vergeandroid.stratumj.messages.ResultMessage;
+import com.vergepay.stratumj.messages.BaseMessage;
+import com.vergepay.stratumj.messages.CallMessage;
+import com.vergepay.stratumj.messages.ResultMessage;
 
 import org.json.JSONException;
 import org.junit.Assert;

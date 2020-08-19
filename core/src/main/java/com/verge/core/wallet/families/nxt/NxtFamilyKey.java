@@ -1,8 +1,8 @@
-package com.vergeandroid.core.wallet.families.nxt;
+package com.vergepay.core.wallet.families.nxt;
 
-import com.vergeandroid.core.coins.nxt.Crypto;
-import com.vergeandroid.core.protos.Protos;
-import com.vergeandroid.core.util.KeyUtils;
+import com.vergepay.core.coins.nxt.Crypto;
+import com.vergepay.core.protos.Protos;
+import com.vergepay.core.util.KeyUtils;
 import com.google.protobuf.ByteString;
 
 import org.bitcoinj.core.BloomFilter;

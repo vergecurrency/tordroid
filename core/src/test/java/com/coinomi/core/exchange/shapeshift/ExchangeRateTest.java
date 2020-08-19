@@ -1,12 +1,12 @@
-package com.vergeandroid.core.exchange.shapeshift;
+package com.vergepay.core.exchange.shapeshift;
 
-import com.vergeandroid.core.coins.BitcoinMain;
-import com.vergeandroid.core.coins.CoinType;
-import com.vergeandroid.core.coins.DogecoinMain;
-import com.vergeandroid.core.coins.FiatValue;
-import com.vergeandroid.core.coins.NuBitsMain;
-import com.vergeandroid.core.exchange.shapeshift.data.ShapeShiftExchangeRate;
-import com.vergeandroid.core.util.ExchangeRateBase;
+import com.vergepay.core.coins.BitcoinMain;
+import com.vergepay.core.coins.CoinType;
+import com.vergepay.core.coins.DogecoinMain;
+import com.vergepay.core.coins.FiatValue;
+import com.vergepay.core.coins.NuBitsMain;
+import com.vergepay.core.exchange.shapeshift.data.ShapeShiftExchangeRate;
+import com.vergepay.core.util.ExchangeRateBase;
 
 import org.junit.Test;
 

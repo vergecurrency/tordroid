@@ -1,4 +1,4 @@
-package com.vergeandroid.wallet.ui;
+package com.vergepay.wallet.ui;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -29,19 +29,19 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.vergeandroid.core.coins.CoinType;
-import com.vergeandroid.core.exchange.shapeshift.ShapeShift;
-import com.vergeandroid.core.exchange.shapeshift.data.ShapeShiftException;
-import com.vergeandroid.core.exchange.shapeshift.data.ShapeShiftTxStatus;
-import com.vergeandroid.core.wallet.AbstractAddress;
-import com.vergeandroid.core.wallet.WalletAccount;
-import com.vergeandroid.wallet.Constants;
-import com.vergeandroid.wallet.ExchangeHistoryProvider;
-import com.vergeandroid.wallet.ExchangeHistoryProvider.ExchangeEntry;
-import com.vergeandroid.wallet.R;
-import com.vergeandroid.wallet.WalletApplication;
-import com.vergeandroid.wallet.util.Fonts;
-import com.vergeandroid.wallet.util.WeakHandler;
+import com.vergepay.core.coins.CoinType;
+import com.vergepay.core.exchange.shapeshift.ShapeShift;
+import com.vergepay.core.exchange.shapeshift.data.ShapeShiftException;
+import com.vergepay.core.exchange.shapeshift.data.ShapeShiftTxStatus;
+import com.vergepay.core.wallet.AbstractAddress;
+import com.vergepay.core.wallet.WalletAccount;
+import com.vergepay.wallet.Constants;
+import com.vergepay.wallet.ExchangeHistoryProvider;
+import com.vergepay.wallet.ExchangeHistoryProvider.ExchangeEntry;
+import com.vergepay.wallet.R;
+import com.vergepay.wallet.WalletApplication;
+import com.vergepay.wallet.util.Fonts;
+import com.vergepay.wallet.util.WeakHandler;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -51,10 +51,10 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import static com.vergeandroid.core.Preconditions.checkNotNull;
-import static com.vergeandroid.wallet.util.UiUtils.setGone;
-import static com.vergeandroid.wallet.util.UiUtils.setInvisible;
-import static com.vergeandroid.wallet.util.UiUtils.setVisible;
+import static com.vergepay.core.Preconditions.checkNotNull;
+import static com.vergepay.wallet.util.UiUtils.setGone;
+import static com.vergepay.wallet.util.UiUtils.setInvisible;
+import static com.vergepay.wallet.util.UiUtils.setVisible;
 
 /**
  * @author John L. Jegutanis

@@ -1,4 +1,4 @@
-package com.vergeandroid.wallet.ui;
+package com.vergepay.wallet.ui;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -17,11 +17,11 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.vergeandroid.wallet.Constants;
-import com.vergeandroid.wallet.R;
-import com.vergeandroid.wallet.util.Fonts;
-import com.vergeandroid.wallet.util.Keyboard;
-import com.vergeandroid.wallet.util.PasswordQualityChecker;
+import com.vergepay.wallet.Constants;
+import com.vergepay.wallet.R;
+import com.vergepay.wallet.util.Fonts;
+import com.vergepay.wallet.util.Keyboard;
+import com.vergepay.wallet.util.PasswordQualityChecker;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

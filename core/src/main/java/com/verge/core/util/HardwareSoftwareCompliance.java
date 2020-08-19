@@ -1,4 +1,4 @@
-package com.vergeandroid.core.util;
+package com.vergepay.core.util;
 
 import org.bitcoinj.core.ECKey;
 import org.slf4j.Logger;

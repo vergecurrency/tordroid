@@ -1,4 +1,4 @@
-package com.vergeandroid.wallet.ui;
+package com.vergepay.wallet.ui;
 
 import android.content.Context;
 import android.os.AsyncTask;
@@ -8,9 +8,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.vergeandroid.core.wallet.Wallet;
-import com.vergeandroid.wallet.R;
-import com.vergeandroid.wallet.WalletApplication;
+import com.vergepay.core.wallet.Wallet;
+import com.vergepay.wallet.R;
+import com.vergepay.wallet.WalletApplication;
 
 import org.bitcoinj.core.Sha256Hash;
 import org.bitcoinj.crypto.DeterministicKey;
@@ -31,7 +31,7 @@ import javax.annotation.Nullable;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-import static com.vergeandroid.core.Preconditions.checkNotNull;
+import static com.vergepay.core.Preconditions.checkNotNull;
 
 /**
  * @author John L. Jegutanis

@@ -1,4 +1,4 @@
-package com.vergeandroid.stratumj.messages;
+package com.vergepay.stratumj.messages;
 
 import org.json.JSONArray;
 import org.json.JSONException;

@@ -1,18 +1,18 @@
-package com.vergeandroid.wallet;
+package com.vergepay.wallet;
 
 import android.text.format.DateUtils;
 
-import com.vergeandroid.core.coins.BitcoinMain;
-import com.vergeandroid.core.coins.BitcoinTest;
-import com.vergeandroid.core.coins.BurstMain;
-import com.vergeandroid.core.coins.CoinID;
-import com.vergeandroid.core.coins.CoinType;
-import com.vergeandroid.core.coins.LitecoinMain;
-import com.vergeandroid.core.coins.LitecoinTest;
-import com.vergeandroid.core.coins.NxtMain;
-import com.vergeandroid.core.coins.VergeMain;
-import com.vergeandroid.core.network.CoinAddress;
-import com.vergeandroid.stratumj.ServerAddress;
+import com.vergepay.core.coins.BitcoinMain;
+import com.vergepay.core.coins.BitcoinTest;
+import com.vergepay.core.coins.BurstMain;
+import com.vergepay.core.coins.CoinID;
+import com.vergepay.core.coins.CoinType;
+import com.vergepay.core.coins.LitecoinMain;
+import com.vergepay.core.coins.LitecoinTest;
+import com.vergepay.core.coins.NxtMain;
+import com.vergepay.core.coins.VergeMain;
+import com.vergepay.core.network.CoinAddress;
+import com.vergepay.stratumj.ServerAddress;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 

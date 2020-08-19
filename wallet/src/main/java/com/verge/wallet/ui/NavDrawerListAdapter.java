@@ -1,4 +1,4 @@
-package com.vergeandroid.wallet.ui;
+package com.vergepay.wallet.ui;
 
 import android.content.Context;
 import android.os.Build;
@@ -8,14 +8,14 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import com.vergeandroid.wallet.R;
-import com.vergeandroid.wallet.ui.widget.NavDrawerItemView;
+import com.vergepay.wallet.R;
+import com.vergepay.wallet.ui.widget.NavDrawerItemView;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.vergeandroid.wallet.ui.NavDrawerItemType.ITEM_SECTION_TITLE;
-import static com.vergeandroid.wallet.ui.NavDrawerItemType.ITEM_SEPARATOR;
+import static com.vergepay.wallet.ui.NavDrawerItemType.ITEM_SECTION_TITLE;
+import static com.vergepay.wallet.ui.NavDrawerItemType.ITEM_SEPARATOR;
 
 /**
  * @author John L. Jegutanis

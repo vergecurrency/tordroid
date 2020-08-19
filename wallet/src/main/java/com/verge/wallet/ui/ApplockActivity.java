@@ -1,4 +1,4 @@
-package com.vergeandroid.wallet.ui;
+package com.vergepay.wallet.ui;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -6,8 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
-import com.vergeandroid.wallet.R;
-import com.vergeandroid.wallet.WalletApplication;
+import com.vergepay.wallet.R;
+import com.vergepay.wallet.WalletApplication;
 
 public class ApplockActivity extends AppCompatActivity implements AppLockFragment.AppLockListener {
 

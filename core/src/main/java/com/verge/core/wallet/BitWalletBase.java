@@ -16,13 +16,13 @@
  * limitations under the License.
  */
 
-package com.vergeandroid.core.wallet;
+package com.vergepay.core.wallet;
 
-import com.vergeandroid.core.coins.CoinType;
-import com.vergeandroid.core.coins.Value;
-import com.vergeandroid.core.exceptions.AddressMalformedException;
-import com.vergeandroid.core.wallet.families.bitcoin.BitAddress;
-import com.vergeandroid.core.wallet.families.bitcoin.BitSendRequest;
+import com.vergepay.core.coins.CoinType;
+import com.vergepay.core.coins.Value;
+import com.vergepay.core.exceptions.AddressMalformedException;
+import com.vergepay.core.wallet.families.bitcoin.BitAddress;
+import com.vergepay.core.wallet.families.bitcoin.BitSendRequest;
 
 import org.bitcoinj.core.ECKey;
 import org.bitcoinj.core.InsufficientMoneyException;
@@ -36,10 +36,10 @@ import java.util.Arrays;
 
 import javax.annotation.Nullable;
 
-import static com.vergeandroid.core.Preconditions.checkNotNull;
-import static com.vergeandroid.core.Preconditions.checkState;
-import static com.vergeandroid.core.util.BitAddressUtils.getHash160;
-import static com.vergeandroid.core.util.BitAddressUtils.isP2SHAddress;
+import static com.vergepay.core.Preconditions.checkNotNull;
+import static com.vergepay.core.Preconditions.checkState;
+import static com.vergepay.core.util.BitAddressUtils.getHash160;
+import static com.vergepay.core.util.BitAddressUtils.isP2SHAddress;
 
 /**
  * @author John L. Jegutanis

@@ -1,6 +1,6 @@
-package com.vergeandroid.core.network;
+package com.vergepay.core.network;
 
-import com.vergeandroid.core.coins.CoinType;
+import com.vergepay.core.coins.CoinType;
 
 import java.util.Date;
 

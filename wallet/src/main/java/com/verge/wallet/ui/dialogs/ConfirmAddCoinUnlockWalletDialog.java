@@ -1,4 +1,4 @@
-package com.vergeandroid.wallet.ui.dialogs;
+package com.vergepay.wallet.ui.dialogs;
 
 import android.app.Activity;
 import android.app.Dialog;
@@ -10,9 +10,9 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.vergeandroid.core.coins.CoinType;
-import com.vergeandroid.wallet.R;
-import com.vergeandroid.wallet.ui.DialogBuilder;
+import com.vergepay.core.coins.CoinType;
+import com.vergepay.wallet.R;
+import com.vergepay.wallet.ui.DialogBuilder;
 
 import butterknife.ButterKnife;
 

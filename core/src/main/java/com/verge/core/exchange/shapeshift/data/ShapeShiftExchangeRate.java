@@ -1,4 +1,4 @@
-package com.vergeandroid.core.exchange.shapeshift.data;
+package com.vergepay.core.exchange.shapeshift.data;
 
 /**
  * Copyright 2014 Andreas Schildbach
@@ -18,10 +18,10 @@ package com.vergeandroid.core.exchange.shapeshift.data;
  */
 
 
-import com.vergeandroid.core.coins.CoinType;
-import com.vergeandroid.core.coins.Value;
-import com.vergeandroid.core.coins.ValueType;
-import com.vergeandroid.core.util.ExchangeRateBase;
+import com.vergepay.core.coins.CoinType;
+import com.vergepay.core.coins.Value;
+import com.vergepay.core.coins.ValueType;
+import com.vergepay.core.util.ExchangeRateBase;
 
 import org.bitcoinj.core.Coin;
 
@@ -31,7 +31,7 @@ import static com.google.common.base.Preconditions.checkArgument;
 import static com.google.common.base.Preconditions.checkState;
 
 /**
- * An exchange rate is expressed as a ratio of a pair of {@link com.vergeandroid.core.coins.Value} amounts.
+ * An exchange rate is expressed as a ratio of a pair of {@link com.vergepay.core.coins.Value} amounts.
  */
 public class ShapeShiftExchangeRate extends ExchangeRateBase {
     public final Value minerFee;

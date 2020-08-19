@@ -1,4 +1,4 @@
-package com.vergeandroid.core.wallet.families.bitcoin;
+package com.vergepay.core.wallet.families.bitcoin;
 
 import com.google.common.collect.ImmutableList;
 
@@ -14,9 +14,9 @@ import java.util.List;
 
 import javax.annotation.Nullable;
 
-import static com.vergeandroid.core.Preconditions.checkArgument;
-import static com.vergeandroid.core.Preconditions.checkNotNull;
-import static com.vergeandroid.core.Preconditions.checkState;
+import static com.vergepay.core.Preconditions.checkArgument;
+import static com.vergepay.core.Preconditions.checkNotNull;
+import static com.vergepay.core.Preconditions.checkState;
 
 /**
  * @author John L. Jegutanis

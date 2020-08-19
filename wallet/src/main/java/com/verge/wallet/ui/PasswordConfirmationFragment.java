@@ -1,4 +1,4 @@
-package com.vergeandroid.wallet.ui;
+package com.vergepay.wallet.ui;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -9,17 +9,17 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.vergeandroid.wallet.Constants;
-import com.vergeandroid.wallet.R;
-import com.vergeandroid.wallet.util.Fonts;
-import com.vergeandroid.wallet.util.Keyboard;
+import com.vergepay.wallet.Constants;
+import com.vergepay.wallet.R;
+import com.vergepay.wallet.util.Fonts;
+import com.vergepay.wallet.util.Keyboard;
 
 import javax.annotation.Nullable;
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link com.vergeandroid.wallet.ui.PasswordConfirmationFragment.Listener} interface
+ * {@link com.vergepay.wallet.ui.PasswordConfirmationFragment.Listener} interface
  * to handle interaction events.
  * Use the {@link PasswordConfirmationFragment#newInstance} factory method to
  * create an instance of this fragment.

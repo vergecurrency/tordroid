@@ -1,4 +1,4 @@
-package com.vergeandroid.core.coins;
+package com.vergepay.core.coins;
 
 /**
  * Copyright 2014 Andreas Schildbach
@@ -18,9 +18,9 @@ package com.vergeandroid.core.coins;
  */
 
 
-import com.vergeandroid.core.util.GenericUtils;
+import com.vergepay.core.util.GenericUtils;
 
-import static com.vergeandroid.core.coins.Value.*;
+import static com.vergepay.core.coins.Value.*;
 
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;

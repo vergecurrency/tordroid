@@ -1,28 +1,28 @@
-package com.vergeandroid.core.wallet.families.nxt;
+package com.vergepay.core.wallet.families.nxt;
 
-import com.vergeandroid.core.coins.CoinType;
-import com.vergeandroid.core.coins.Value;
-import com.vergeandroid.core.coins.nxt.Convert;
-import com.vergeandroid.core.coins.nxt.NxtException;
-import com.vergeandroid.core.coins.nxt.Transaction;
-import com.vergeandroid.core.exceptions.TransactionBroadcastException;
-import com.vergeandroid.core.network.AddressStatus;
-import com.vergeandroid.core.network.BlockHeader;
-import com.vergeandroid.core.network.NxtServerClient;
-import com.vergeandroid.core.network.ServerClient;
-import com.vergeandroid.core.network.interfaces.BlockchainConnection;
-import com.vergeandroid.core.network.interfaces.TransactionEventListener;
-import com.vergeandroid.core.protos.Protos;
-import com.vergeandroid.core.util.KeyUtils;
-import com.vergeandroid.core.wallet.AbstractAddress;
-import com.vergeandroid.core.wallet.AbstractTransaction;
-import com.vergeandroid.core.wallet.AbstractWallet;
-import com.vergeandroid.core.wallet.SendRequest;
-import com.vergeandroid.core.wallet.SignedMessage;
-import com.vergeandroid.core.wallet.Wallet;
-import com.vergeandroid.core.wallet.WalletAccount;
-import com.vergeandroid.core.wallet.WalletAccountEventListener;
-import com.vergeandroid.core.wallet.WalletConnectivityStatus;
+import com.vergepay.core.coins.CoinType;
+import com.vergepay.core.coins.Value;
+import com.vergepay.core.coins.nxt.Convert;
+import com.vergepay.core.coins.nxt.NxtException;
+import com.vergepay.core.coins.nxt.Transaction;
+import com.vergepay.core.exceptions.TransactionBroadcastException;
+import com.vergepay.core.network.AddressStatus;
+import com.vergepay.core.network.BlockHeader;
+import com.vergepay.core.network.NxtServerClient;
+import com.vergepay.core.network.ServerClient;
+import com.vergepay.core.network.interfaces.BlockchainConnection;
+import com.vergepay.core.network.interfaces.TransactionEventListener;
+import com.vergepay.core.protos.Protos;
+import com.vergepay.core.util.KeyUtils;
+import com.vergepay.core.wallet.AbstractAddress;
+import com.vergepay.core.wallet.AbstractTransaction;
+import com.vergepay.core.wallet.AbstractWallet;
+import com.vergepay.core.wallet.SendRequest;
+import com.vergepay.core.wallet.SignedMessage;
+import com.vergepay.core.wallet.Wallet;
+import com.vergepay.core.wallet.WalletAccount;
+import com.vergepay.core.wallet.WalletAccountEventListener;
+import com.vergepay.core.wallet.WalletConnectivityStatus;
 import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
@@ -49,8 +49,8 @@ import java.util.concurrent.Executor;
 
 import javax.annotation.Nullable;
 
-import static com.vergeandroid.core.Preconditions.checkNotNull;
-import static com.vergeandroid.core.Preconditions.checkState;
+import static com.vergepay.core.Preconditions.checkNotNull;
+import static com.vergepay.core.Preconditions.checkState;
 import static com.google.common.base.Preconditions.checkArgument;
 
 /**

@@ -1,4 +1,4 @@
-package com.vergeandroid.wallet.service;
+package com.vergepay.wallet.service;
 
 import android.app.NotificationManager;
 import android.app.Service;
@@ -13,14 +13,14 @@ import android.os.IBinder;
 import android.os.SystemClock;
 import android.text.format.DateUtils;
 
-import com.vergeandroid.core.network.ConnectivityHelper;
-import com.vergeandroid.core.network.ServerClients;
-import com.vergeandroid.core.wallet.AbstractAddress;
-import com.vergeandroid.core.wallet.Wallet;
-import com.vergeandroid.core.wallet.WalletAccount;
-import com.vergeandroid.wallet.Configuration;
-import com.vergeandroid.wallet.Constants;
-import com.vergeandroid.wallet.WalletApplication;
+import com.vergepay.core.network.ConnectivityHelper;
+import com.vergepay.core.network.ServerClients;
+import com.vergepay.core.wallet.AbstractAddress;
+import com.vergepay.core.wallet.Wallet;
+import com.vergepay.core.wallet.WalletAccount;
+import com.vergepay.wallet.Configuration;
+import com.vergepay.wallet.Constants;
+import com.vergepay.wallet.WalletApplication;
 
 import org.bitcoinj.core.Sha256Hash;
 import org.bitcoinj.core.Transaction;

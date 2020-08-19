@@ -1,4 +1,4 @@
-package com.vergeandroid.core.exchange.shapeshift;
+package com.vergepay.core.exchange.shapeshift;
 
 import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.Lists;

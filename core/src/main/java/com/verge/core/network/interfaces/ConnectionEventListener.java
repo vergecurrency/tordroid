@@ -1,6 +1,6 @@
-package com.vergeandroid.core.network.interfaces;
+package com.vergepay.core.network.interfaces;
 
-import com.vergeandroid.core.coins.CoinType;
+import com.vergepay.core.coins.CoinType;
 
 /**
  * @author John L. Jegutanis

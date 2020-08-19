@@ -1,4 +1,4 @@
-package com.vergeandroid.wallet.ui.dialogs;
+package com.vergepay.wallet.ui.dialogs;
 
 import android.app.Activity;
 import android.app.Dialog;
@@ -9,21 +9,21 @@ import android.support.v4.app.DialogFragment;
 import android.view.View;
 import android.widget.TextView;
 
-import com.vergeandroid.core.coins.CoinID;
-import com.vergeandroid.core.coins.CoinType;
-import com.vergeandroid.core.coins.Value;
-import com.vergeandroid.core.coins.ValueType;
-import com.vergeandroid.wallet.Configuration;
-import com.vergeandroid.wallet.Constants;
-import com.vergeandroid.wallet.R;
-import com.vergeandroid.wallet.WalletApplication;
-import com.vergeandroid.wallet.ui.DialogBuilder;
-import com.vergeandroid.wallet.ui.widget.AmountEditView;
+import com.vergepay.core.coins.CoinID;
+import com.vergepay.core.coins.CoinType;
+import com.vergepay.core.coins.Value;
+import com.vergepay.core.coins.ValueType;
+import com.vergepay.wallet.Configuration;
+import com.vergepay.wallet.Constants;
+import com.vergepay.wallet.R;
+import com.vergepay.wallet.WalletApplication;
+import com.vergepay.wallet.ui.DialogBuilder;
+import com.vergepay.wallet.ui.widget.AmountEditView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-import static com.vergeandroid.core.Preconditions.checkState;
+import static com.vergepay.core.Preconditions.checkState;
 
 /**
  * @author John L. Jegutanis

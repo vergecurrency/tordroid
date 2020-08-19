@@ -1,10 +1,10 @@
-package com.vergeandroid.wallet.tasks;
+package com.vergepay.wallet.tasks;
 
 import android.os.AsyncTask;
 
-import com.vergeandroid.core.coins.CoinType;
-import com.vergeandroid.core.wallet.Wallet;
-import com.vergeandroid.core.wallet.WalletAccount;
+import com.vergepay.core.coins.CoinType;
+import com.vergepay.core.wallet.Wallet;
+import com.vergepay.core.wallet.WalletAccount;
 
 import org.spongycastle.crypto.params.KeyParameter;
 

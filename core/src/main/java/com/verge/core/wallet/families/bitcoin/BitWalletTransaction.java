@@ -1,6 +1,6 @@
-package com.vergeandroid.core.wallet.families.bitcoin;
+package com.vergepay.core.wallet.families.bitcoin;
 
-import com.vergeandroid.core.wallet.WalletTransaction;
+import com.vergepay.core.wallet.WalletTransaction;
 
 /**
  * @author John L. Jegutanis

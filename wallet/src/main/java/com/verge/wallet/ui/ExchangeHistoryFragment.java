@@ -1,4 +1,4 @@
-package com.vergeandroid.wallet.ui;
+package com.vergepay.wallet.ui;
 
 import android.content.Context;
 import android.content.Intent;
@@ -17,16 +17,16 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.vergeandroid.core.coins.CoinType;
-import com.vergeandroid.wallet.Configuration;
-import com.vergeandroid.wallet.Constants;
-import com.vergeandroid.wallet.ExchangeHistoryProvider;
-import com.vergeandroid.wallet.ExchangeHistoryProvider.ExchangeEntry;
-import com.vergeandroid.wallet.R;
-import com.vergeandroid.wallet.WalletApplication;
-import com.vergeandroid.wallet.ui.widget.AddressView;
-import com.vergeandroid.wallet.ui.widget.Amount;
-import com.vergeandroid.wallet.util.Fonts;
+import com.vergepay.core.coins.CoinType;
+import com.vergepay.wallet.Configuration;
+import com.vergepay.wallet.Constants;
+import com.vergepay.wallet.ExchangeHistoryProvider;
+import com.vergepay.wallet.ExchangeHistoryProvider.ExchangeEntry;
+import com.vergepay.wallet.R;
+import com.vergepay.wallet.WalletApplication;
+import com.vergepay.wallet.ui.widget.AddressView;
+import com.vergepay.wallet.ui.widget.Amount;
+import com.vergepay.wallet.util.Fonts;
 
 import org.bitcoinj.core.Coin;
 
@@ -40,7 +40,7 @@ public final class ExchangeHistoryFragment extends ListFragment {
     private Context activity;
     private WalletApplication application;
     private Configuration config;
-    private com.vergeandroid.core.wallet.Wallet wallet;
+    private com.vergepay.core.wallet.Wallet wallet;
     private Uri contentUri;
     private LoaderManager loaderManager;
 

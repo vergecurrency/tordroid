@@ -1,4 +1,4 @@
-package com.vergeandroid.wallet.ui.dialogs;
+package com.vergepay.wallet.ui.dialogs;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -12,7 +12,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.vergeandroid.wallet.R;
+import com.vergepay.wallet.R;
 
 public class FingerprintScanDialog extends DialogFragment implements View.OnClickListener {
 

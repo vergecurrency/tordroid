@@ -1,16 +1,16 @@
-package com.vergeandroid.wallet.ui;
+package com.vergepay.wallet.ui;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 
-import com.vergeandroid.core.coins.CoinType;
-import com.vergeandroid.core.coins.Value;
-import com.vergeandroid.core.wallet.WalletAccount;
-import com.vergeandroid.wallet.Constants;
-import com.vergeandroid.wallet.ExchangeHistoryProvider.ExchangeEntry;
-import com.vergeandroid.wallet.R;
-import com.vergeandroid.wallet.tasks.AddCoinTask;
-import com.vergeandroid.wallet.ui.dialogs.ConfirmAddCoinUnlockWalletDialog;
+import com.vergepay.core.coins.CoinType;
+import com.vergepay.core.coins.Value;
+import com.vergepay.core.wallet.WalletAccount;
+import com.vergepay.wallet.Constants;
+import com.vergepay.wallet.ExchangeHistoryProvider.ExchangeEntry;
+import com.vergepay.wallet.R;
+import com.vergepay.wallet.tasks.AddCoinTask;
+import com.vergepay.wallet.ui.dialogs.ConfirmAddCoinUnlockWalletDialog;
 
 import org.bitcoinj.crypto.KeyCrypterException;
 

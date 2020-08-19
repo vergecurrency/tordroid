@@ -1,9 +1,9 @@
-package com.vergeandroid.core.wallet;
+package com.vergepay.core.wallet;
 
-import com.vergeandroid.core.coins.BitcoinMain;
-import com.vergeandroid.core.coins.CoinType;
-import com.vergeandroid.core.coins.LitecoinMain;
-import com.vergeandroid.core.protos.Protos;
+import com.vergepay.core.coins.BitcoinMain;
+import com.vergepay.core.coins.CoinType;
+import com.vergepay.core.coins.LitecoinMain;
+import com.vergepay.core.protos.Protos;
 import org.bitcoinj.crypto.KeyCrypter;
 import org.bitcoinj.crypto.KeyCrypterScrypt;
 import org.bitcoinj.crypto.MnemonicException;

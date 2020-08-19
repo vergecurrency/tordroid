@@ -1,4 +1,4 @@
-package com.vergeandroid.core.coins.nxt;
+package com.vergepay.core.coins.nxt;
 
 /******************************************************************************
  * Copyright © 2013-2015 The Nxt Core Developers.                             *

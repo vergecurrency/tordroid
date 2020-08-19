@@ -1,4 +1,4 @@
-package com.vergeandroid.core.exceptions;
+package com.vergepay.core.exceptions;
 
 /**
  * @author John L. Jegutanis

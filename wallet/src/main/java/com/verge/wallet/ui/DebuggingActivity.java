@@ -1,9 +1,9 @@
-package com.vergeandroid.wallet.ui;
+package com.vergepay.wallet.ui;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 
-import com.vergeandroid.wallet.R;
+import com.vergepay.wallet.R;
 
 /**
  * @author John L. Jegutanis

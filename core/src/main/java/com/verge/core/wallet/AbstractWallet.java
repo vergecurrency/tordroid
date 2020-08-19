@@ -1,8 +1,8 @@
-package com.vergeandroid.core.wallet;
+package com.vergepay.core.wallet;
 
-import com.vergeandroid.core.coins.CoinType;
-import com.vergeandroid.core.coins.ValueType;
-import com.vergeandroid.core.util.TypeUtils;
+import com.vergepay.core.coins.CoinType;
+import com.vergepay.core.coins.ValueType;
+import com.vergepay.core.util.TypeUtils;
 
 import org.bitcoinj.utils.Threading;
 

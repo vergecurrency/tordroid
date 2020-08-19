@@ -1,9 +1,9 @@
-package com.vergeandroid.stratumj;
+package com.vergepay.stratumj;
 
-import com.vergeandroid.stratumj.messages.BaseMessage;
-import com.vergeandroid.stratumj.messages.CallMessage;
-import com.vergeandroid.stratumj.messages.MessageException;
-import com.vergeandroid.stratumj.messages.ResultMessage;
+import com.vergepay.stratumj.messages.BaseMessage;
+import com.vergepay.stratumj.messages.CallMessage;
+import com.vergepay.stratumj.messages.MessageException;
+import com.vergepay.stratumj.messages.ResultMessage;
 import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.ImmutableList;
 import com.google.common.util.concurrent.AbstractExecutionThreadService;

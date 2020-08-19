@@ -1,12 +1,12 @@
-package com.vergeandroid.wallet.receiver;
+package com.vergepay.wallet.receiver;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 
-import com.vergeandroid.wallet.ui.BalanceFragment;
-import com.vergeandroid.wallet.ui.WalletActivity;
+import com.vergepay.wallet.ui.BalanceFragment;
+import com.vergepay.wallet.ui.WalletActivity;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -1,7 +1,7 @@
-package com.vergeandroid.core.coins;
+package com.vergepay.core.coins;
 
-import com.vergeandroid.core.exceptions.AddressMalformedException;
-import com.vergeandroid.core.util.GenericUtils;
+import com.vergepay.core.exceptions.AddressMalformedException;
+import com.vergepay.core.util.GenericUtils;
 import com.google.common.collect.ImmutableList;
 
 import org.bitcoinj.core.NetworkParameters;

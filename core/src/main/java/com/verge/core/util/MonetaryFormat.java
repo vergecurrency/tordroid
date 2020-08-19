@@ -1,4 +1,4 @@
-package com.vergeandroid.core.util;
+package com.vergepay.core.util;
 
 
 /*
@@ -18,10 +18,10 @@ package com.vergeandroid.core.util;
  * limitations under the License.
  */
 
-import com.vergeandroid.core.coins.FiatType;
-import com.vergeandroid.core.coins.FiatValue;
-import com.vergeandroid.core.coins.Value;
-import com.vergeandroid.core.coins.ValueType;
+import com.vergepay.core.coins.FiatType;
+import com.vergepay.core.coins.FiatValue;
+import com.vergepay.core.coins.Value;
+import com.vergepay.core.coins.ValueType;
 
 import static com.google.common.base.Preconditions.checkArgument;
 import static com.google.common.base.Preconditions.checkState;
@@ -433,7 +433,7 @@ public final class MonetaryFormat implements Serializable {
     }
 
     /**
-     * Parse a human readable fiat value to a {@link com.vergeandroid.core.coins.Value} instance.
+     * Parse a human readable fiat value to a {@link com.vergepay.core.coins.Value} instance.
      *
      * @throws NumberFormatException
      *             if the string cannot be parsed for some reason

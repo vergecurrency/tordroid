@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.vergeandroid.wallet"
+          package="com.vergepay.wallet"
           android:installLocation="internalOnly">
 
     <uses-permission android:name="android.permission.INTERNET"/>
@@ -48,14 +48,14 @@
         android:xlargeScreens="true"/>
 
     <application
-        android:name="com.vergeandroid.wallet.WalletApplication"
+        android:name="com.vergepay.wallet.WalletApplication"
         android:allowBackup="false"
         android:hardwareAccelerated="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme">
         <activity
-            android:name="com.vergeandroid.wallet.ui.WalletActivity"
+            android:name="com.vergepay.wallet.ui.WalletActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="adjustResize">
@@ -66,7 +66,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.vergeandroid.wallet.ui.SendActivity"
+            android:name="com.vergepay.wallet.ui.SendActivity"
             android:label="@string/send_coins_activity_title"
             android:theme="@style/AppTheme">
             <intent-filter android:label="@string/app_name">
@@ -82,146 +82,146 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.vergeandroid.wallet.ui.IntroActivity"
+            android:name="com.vergepay.wallet.ui.IntroActivity"
             android:theme="@style/AppThemeNoTitleBar"
             android:windowSoftInputMode="adjustResize">
         </activity>
         <activity
-            android:name="com.vergeandroid.wallet.ui.PasswordConfirmationActivity"
+            android:name="com.vergepay.wallet.ui.PasswordConfirmationActivity"
             android:theme="@style/AppThemeNoTitleBar"
             android:windowSoftInputMode="adjustResize">
         </activity>
         <activity
-            android:name="com.vergeandroid.wallet.ui.SignTransactionActivity"
+            android:name="com.vergepay.wallet.ui.SignTransactionActivity"
             android:theme="@style/AppThemeNoTitleBar"
             android:windowSoftInputMode="stateHidden">
         </activity>
         <activity
-            android:name="com.vergeandroid.wallet.ui.ScanActivity"
+            android:name="com.vergepay.wallet.ui.ScanActivity"
             android:configChanges="orientation|keyboard|keyboardHidden"
             android:screenOrientation="landscape"
             android:stateNotNeeded="true"
             android:theme="@style/AppThemeNoTitleBar"
             android:windowSoftInputMode="stateAlwaysHidden"/>
         <activity
-            android:name="com.vergeandroid.wallet.ui.AboutActivity"
+            android:name="com.vergepay.wallet.ui.AboutActivity"
             android:label="@string/title_activity_about"
             android:theme="@style/AppTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.vergeandroid.wallet.ui.WalletActivity"/>
+                android:value="com.vergepay.wallet.ui.WalletActivity"/>
         </activity>
         <activity
-            android:name="com.vergeandroid.wallet.ui.AddCoinsActivity"
+            android:name="com.vergepay.wallet.ui.AddCoinsActivity"
             android:label="@string/title_activity_add_coins"
             android:theme="@style/AppTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.vergeandroid.wallet.ui.WalletActivity"/>
+                android:value="com.vergepay.wallet.ui.WalletActivity"/>
         </activity>
         <activity
-            android:name="com.vergeandroid.wallet.ui.TransactionDetailsActivity"
+            android:name="com.vergepay.wallet.ui.TransactionDetailsActivity"
             android:label="@string/title_activity_transaction_details"
             android:theme="@style/AppTheme">
         </activity>
         <activity
-            android:name="com.vergeandroid.wallet.ui.ExchangeRatesActivity"
+            android:name="com.vergepay.wallet.ui.ExchangeRatesActivity"
             android:label="@string/title_activity_exchange_rates"
             android:theme="@style/AppTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.vergeandroid.wallet.ui.WalletActivity"/>
+                android:value="com.vergepay.wallet.ui.WalletActivity"/>
         </activity>
         <activity
-            android:name="com.vergeandroid.wallet.ui.PreviousAddressesActivity"
+            android:name="com.vergepay.wallet.ui.PreviousAddressesActivity"
             android:label="@string/title_activity_previous_addresses"
             android:theme="@style/AppTheme">
         </activity>
         <activity
-            android:name="com.vergeandroid.wallet.ui.SettingsActivity"
+            android:name="com.vergepay.wallet.ui.SettingsActivity"
             android:label="@string/title_activity_settings"
             android:theme="@style/AppTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.vergeandroid.wallet.ui.WalletActivity"/>
+                android:value="com.vergepay.wallet.ui.WalletActivity"/>
         </activity>
         <activity
-            android:name="com.vergeandroid.wallet.ui.ShowSeedActivity"
+            android:name="com.vergepay.wallet.ui.ShowSeedActivity"
             android:label="@string/title_activity_show_seed"
             android:theme="@style/AppTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.vergeandroid.wallet.ui.SettingsActivity"/>
+                android:value="com.vergepay.wallet.ui.SettingsActivity"/>
         </activity>
         <activity
-            android:name="com.vergeandroid.wallet.ui.TradeActivity"
+            android:name="com.vergepay.wallet.ui.TradeActivity"
             android:label="@string/title_activity_trade"
             android:theme="@style/AppTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.vergeandroid.wallet.ui.WalletActivity"/>
+                android:value="com.vergepay.wallet.ui.WalletActivity"/>
         </activity>
         <activity
-            android:name="com.vergeandroid.wallet.ui.ExchangeHistoryActivity"
+            android:name="com.vergepay.wallet.ui.ExchangeHistoryActivity"
             android:label="@string/title_activity_exchange_history"
             android:theme="@style/AppTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.vergeandroid.wallet.ui.TradeActivity"/>
+                android:value="com.vergepay.wallet.ui.TradeActivity"/>
         </activity>
         <activity
-            android:name="com.vergeandroid.wallet.ui.TradeStatusActivity"
+            android:name="com.vergepay.wallet.ui.TradeStatusActivity"
             android:label="@string/title_activity_exchange_status"
             android:theme="@style/AppTheme">
         </activity>
         <activity
-            android:name="com.vergeandroid.wallet.ui.SignVerifyMessageActivity"
+            android:name="com.vergepay.wallet.ui.SignVerifyMessageActivity"
             android:label="@string/title_activity_sign_verify_message"
             android:theme="@style/AppTheme">
         </activity>
         <activity
-            android:name="com.vergeandroid.wallet.ui.AccountDetailsActivity"
+            android:name="com.vergepay.wallet.ui.AccountDetailsActivity"
             android:label="@string/title_activity_account_details"
             android:theme="@style/AppTheme">
         </activity>
         <activity
-            android:name="com.vergeandroid.wallet.ui.SweepWalletActivity"
+            android:name="com.vergepay.wallet.ui.SweepWalletActivity"
             android:label="@string/title_activity_sweep_wallet"
             android:theme="@style/AppTheme">
         </activity>
         <activity
-            android:name="com.vergeandroid.wallet.ui.FeesSettingsActivity"
+            android:name="com.vergepay.wallet.ui.FeesSettingsActivity"
             android:label="@string/title_activity_transaction_fees"
             android:theme="@style/AppTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.vergeandroid.wallet.ui.SettingsActivity"/>
+                android:value="com.vergepay.wallet.ui.SettingsActivity"/>
         </activity>
-		<activity android:name="com.vergeandroid.wallet.ui.ApplockActivity"/>
+		<activity android:name="com.vergepay.wallet.ui.ApplockActivity"/>
         <activity
-            android:name="com.vergeandroid.wallet.ui.DebuggingActivity"
+            android:name="com.vergepay.wallet.ui.DebuggingActivity"
             android:label="@string/title_activity_debugging"
             android:theme="@style/AppTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.vergeandroid.wallet.ui.SettingsActivity"/>
+                android:value="com.vergepay.wallet.ui.SettingsActivity"/>
         </activity>
 
         <provider
-            android:name="com.vergeandroid.wallet.ExchangeRatesProvider"
-            android:authorities="com.vergeandroid.wallet.exchange_rates"
+            android:name="com.vergepay.wallet.ExchangeRatesProvider"
+            android:authorities="com.vergepay.wallet.exchange_rates"
             android:exported="false"/>
         <provider
-            android:name="com.vergeandroid.wallet.AddressBookProvider"
-            android:authorities="com.vergeandroid.wallet.address_book"
+            android:name="com.vergepay.wallet.AddressBookProvider"
+            android:authorities="com.vergepay.wallet.address_book"
             android:exported="false"/>
         <provider
             android:name=".ExchangeHistoryProvider"
-            android:authorities="com.vergeandroid.wallet.exchange_history"
+            android:authorities="com.vergepay.wallet.exchange_history"
             android:exported="false"/>
 
         <service
-            android:name="com.vergeandroid.wallet.service.CoinServiceImpl"
+            android:name="com.vergepay.wallet.service.CoinServiceImpl"
             android:exported="false"/>
 
     </application>

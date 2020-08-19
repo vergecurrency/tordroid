@@ -1,4 +1,4 @@
-package com.vergeandroid.wallet.service;
+package com.vergepay.wallet.service;
 
 import org.bitcoinj.core.Peer;
 import org.bitcoinj.core.StoredBlock;

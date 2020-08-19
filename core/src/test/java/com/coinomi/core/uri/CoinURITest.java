@@ -1,4 +1,4 @@
-package com.vergeandroid.core.uri;
+package com.vergepay.core.uri;
 
 /*
  * Copyright 2012, 2014 the original author or authors.
@@ -18,14 +18,14 @@ package com.vergeandroid.core.uri;
  * 
  */
 
-import com.vergeandroid.core.coins.BitcoinMain;
-import com.vergeandroid.core.coins.BitcoinTest;
-import com.vergeandroid.core.coins.CoinType;
-import com.vergeandroid.core.coins.LitecoinMain;
-import com.vergeandroid.core.coins.PeercoinMain;
-import com.vergeandroid.core.util.GenericUtils;
-import com.vergeandroid.core.wallet.families.bitcoin.BitAddress;
-import com.vergeandroid.core.wallet.families.nxt.NxtAddress;
+import com.vergepay.core.coins.BitcoinMain;
+import com.vergepay.core.coins.BitcoinTest;
+import com.vergepay.core.coins.CoinType;
+import com.vergepay.core.coins.LitecoinMain;
+import com.vergepay.core.coins.PeercoinMain;
+import com.vergepay.core.util.GenericUtils;
+import com.vergepay.core.wallet.families.bitcoin.BitAddress;
+import com.vergepay.core.wallet.families.nxt.NxtAddress;
 
 import org.bitcoinj.core.Coin;
 import org.junit.Test;
@@ -33,7 +33,7 @@ import org.spongycastle.util.encoders.Hex;
 
 import java.io.UnsupportedEncodingException;
 
-import static com.vergeandroid.core.util.BitAddressUtils.getHash160;
+import static com.vergepay.core.util.BitAddressUtils.getHash160;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;

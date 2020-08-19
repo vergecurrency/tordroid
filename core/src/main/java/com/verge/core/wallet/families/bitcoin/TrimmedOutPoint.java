@@ -1,4 +1,4 @@
-package com.vergeandroid.core.wallet.families.bitcoin;
+package com.vergepay.core.wallet.families.bitcoin;
 
 import org.bitcoinj.core.NetworkParameters;
 import org.bitcoinj.core.Sha256Hash;

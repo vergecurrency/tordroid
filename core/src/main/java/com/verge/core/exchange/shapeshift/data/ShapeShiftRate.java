@@ -1,13 +1,13 @@
-package com.vergeandroid.core.exchange.shapeshift.data;
+package com.vergepay.core.exchange.shapeshift.data;
 
-import com.vergeandroid.core.coins.CoinID;
-import com.vergeandroid.core.coins.CoinType;
-import com.vergeandroid.core.util.ExchangeRate;
-import com.vergeandroid.core.util.ExchangeRateBase;
+import com.vergepay.core.coins.CoinID;
+import com.vergepay.core.coins.CoinType;
+import com.vergepay.core.util.ExchangeRate;
+import com.vergepay.core.util.ExchangeRateBase;
 
 import org.json.JSONObject;
 
-import static com.vergeandroid.core.Preconditions.checkState;
+import static com.vergepay.core.Preconditions.checkState;
 
 /**
  * @author John L. Jegutanis

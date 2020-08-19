@@ -1,8 +1,8 @@
-package com.vergeandroid.core.network.interfaces;
+package com.vergepay.core.network.interfaces;
 
-import com.vergeandroid.core.network.AddressStatus;
-import com.vergeandroid.core.network.BlockHeader;
-import com.vergeandroid.core.network.ServerClient.HistoryTx;
+import com.vergepay.core.network.AddressStatus;
+import com.vergepay.core.network.BlockHeader;
+import com.vergepay.core.network.ServerClient.HistoryTx;
 
 import java.util.List;
 

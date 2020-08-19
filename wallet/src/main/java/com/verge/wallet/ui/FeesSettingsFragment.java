@@ -1,4 +1,4 @@
-package com.vergeandroid.wallet.ui;
+package com.vergepay.wallet.ui;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -10,12 +10,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
-import com.vergeandroid.core.coins.Value;
-import com.vergeandroid.wallet.Configuration;
-import com.vergeandroid.wallet.R;
-import com.vergeandroid.wallet.WalletApplication;
-import com.vergeandroid.wallet.ui.adaptors.FeesListAdapter;
-import com.vergeandroid.wallet.ui.dialogs.EditFeeDialog;
+import com.vergepay.core.coins.Value;
+import com.vergepay.wallet.Configuration;
+import com.vergepay.wallet.R;
+import com.vergepay.wallet.WalletApplication;
+import com.vergepay.wallet.ui.adaptors.FeesListAdapter;
+import com.vergepay.wallet.ui.dialogs.EditFeeDialog;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

@@ -1,13 +1,13 @@
-package com.vergeandroid.core.wallet;
+package com.vergepay.core.wallet;
 
-import com.vergeandroid.core.protos.Protos;
+import com.vergepay.core.protos.Protos;
 import org.bitcoinj.core.ECKey;
 import org.bitcoinj.crypto.EncryptableItem;
 import org.bitcoinj.crypto.EncryptedData;
 import org.bitcoinj.crypto.KeyCrypter;
 import org.bitcoinj.wallet.BasicKeyChain;
 
-import com.vergeandroid.core.util.KeyUtils;
+import com.vergepay.core.util.KeyUtils;
 import com.google.protobuf.ByteString;
 
 import java.util.LinkedHashMap;

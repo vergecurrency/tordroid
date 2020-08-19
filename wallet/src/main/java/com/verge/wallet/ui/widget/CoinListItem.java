@@ -1,4 +1,4 @@
-package com.vergeandroid.wallet.ui.widget;
+package com.vergepay.wallet.ui.widget;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,13 +8,13 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.vergeandroid.core.coins.CoinType;
-import com.vergeandroid.core.coins.Value;
-import com.vergeandroid.core.util.GenericUtils;
-import com.vergeandroid.core.wallet.WalletAccount;
-import com.vergeandroid.wallet.ExchangeRatesProvider.ExchangeRate;
-import com.vergeandroid.wallet.R;
-import com.vergeandroid.wallet.util.WalletUtils;
+import com.vergepay.core.coins.CoinType;
+import com.vergepay.core.coins.Value;
+import com.vergepay.core.util.GenericUtils;
+import com.vergepay.core.wallet.WalletAccount;
+import com.vergepay.wallet.ExchangeRatesProvider.ExchangeRate;
+import com.vergepay.wallet.R;
+import com.vergepay.wallet.util.WalletUtils;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

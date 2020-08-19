@@ -1,9 +1,9 @@
-package com.vergeandroid.core.wallet.families.vpncoin;
+package com.vergepay.core.wallet.families.vpncoin;
 
-import com.vergeandroid.core.messages.MessageFactory;
-import com.vergeandroid.core.messages.TxMessage;
-import com.vergeandroid.core.wallet.AbstractTransaction;
-import com.vergeandroid.core.wallet.families.bitcoin.BitTransaction;
+import com.vergepay.core.messages.MessageFactory;
+import com.vergepay.core.messages.TxMessage;
+import com.vergepay.core.wallet.AbstractTransaction;
+import com.vergepay.core.wallet.families.bitcoin.BitTransaction;
 import com.google.common.base.Charsets;
 
 import org.bitcoinj.core.Transaction;
@@ -20,7 +20,7 @@ import java.util.zip.Inflater;
 
 import javax.annotation.Nullable;
 
-import static com.vergeandroid.core.Preconditions.checkArgument;
+import static com.vergepay.core.Preconditions.checkArgument;
 
 /**
  * @author John L. Jegutanis

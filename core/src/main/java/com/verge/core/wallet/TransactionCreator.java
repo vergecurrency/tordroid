@@ -1,12 +1,12 @@
-package com.vergeandroid.core.wallet;
+package com.vergepay.core.wallet;
 
-import com.vergeandroid.core.coins.CoinType;
-import com.vergeandroid.core.coins.FeePolicy;
-import com.vergeandroid.core.coins.Value;
-import com.vergeandroid.core.wallet.families.bitcoin.BitSendRequest;
-import com.vergeandroid.core.wallet.families.bitcoin.CoinSelection;
-import com.vergeandroid.core.wallet.families.bitcoin.CoinSelector;
-import com.vergeandroid.core.wallet.families.bitcoin.OutPointOutput;
+import com.vergepay.core.coins.CoinType;
+import com.vergepay.core.coins.FeePolicy;
+import com.vergepay.core.coins.Value;
+import com.vergepay.core.wallet.families.bitcoin.BitSendRequest;
+import com.vergepay.core.wallet.families.bitcoin.CoinSelection;
+import com.vergepay.core.wallet.families.bitcoin.CoinSelector;
+import com.vergepay.core.wallet.families.bitcoin.OutPointOutput;
 import com.google.common.collect.Lists;
 
 import org.bitcoinj.core.Address;
@@ -35,9 +35,9 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.locks.ReentrantLock;
 
-import static com.vergeandroid.core.Preconditions.checkArgument;
-import static com.vergeandroid.core.Preconditions.checkNotNull;
-import static com.vergeandroid.core.Preconditions.checkState;
+import static com.vergepay.core.Preconditions.checkArgument;
+import static com.vergepay.core.Preconditions.checkNotNull;
+import static com.vergepay.core.Preconditions.checkState;
 
 /**
  * @author John L. Jegutanis

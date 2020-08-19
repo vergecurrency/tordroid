@@ -1,7 +1,7 @@
-package com.vergeandroid.wallet.tasks;
+package com.vergepay.wallet.tasks;
 
-import com.vergeandroid.core.exchange.shapeshift.ShapeShift;
-import com.vergeandroid.core.exchange.shapeshift.data.ShapeShiftMarketInfo;
+import com.vergepay.core.exchange.shapeshift.ShapeShift;
+import com.vergepay.core.exchange.shapeshift.data.ShapeShiftMarketInfo;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

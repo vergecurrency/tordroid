@@ -16,17 +16,17 @@
  * 
  */
 
-package com.vergeandroid.core.uri;
+package com.vergepay.core.uri;
 
-import com.vergeandroid.core.coins.CoinID;
-import com.vergeandroid.core.coins.CoinType;
-import com.vergeandroid.core.coins.Value;
-import com.vergeandroid.core.coins.families.NxtFamily;
-import com.vergeandroid.core.exceptions.AddressMalformedException;
-import com.vergeandroid.core.util.GenericUtils;
-import com.vergeandroid.core.wallet.AbstractAddress;
-import com.vergeandroid.core.wallet.families.bitcoin.BitAddress;
-import com.vergeandroid.core.wallet.families.nxt.NxtAddress;
+import com.vergepay.core.coins.CoinID;
+import com.vergepay.core.coins.CoinType;
+import com.vergepay.core.coins.Value;
+import com.vergepay.core.coins.families.NxtFamily;
+import com.vergepay.core.exceptions.AddressMalformedException;
+import com.vergepay.core.util.GenericUtils;
+import com.vergepay.core.wallet.AbstractAddress;
+import com.vergepay.core.wallet.families.bitcoin.BitAddress;
+import com.vergepay.core.wallet.families.nxt.NxtAddress;
 import com.google.common.collect.Lists;
 
 import org.slf4j.Logger;
@@ -44,8 +44,8 @@ import java.util.Map;
 
 import javax.annotation.Nullable;
 
-import static com.vergeandroid.core.Preconditions.checkNotNull;
-import static com.vergeandroid.core.Preconditions.checkState;
+import static com.vergepay.core.Preconditions.checkNotNull;
+import static com.vergepay.core.Preconditions.checkState;
 
 /**
  * <p>Provides a standard implementation of a Bitcoin URI with support for the following:</p>
@@ -383,7 +383,7 @@ public class CoinURI implements Serializable {
 
     /**
      * Same as {@link #getType()} but throws an exception if the uri has no type
-     * @return The {@link com.vergeandroid.core.coins.CoinType} of this URI
+     * @return The {@link com.vergepay.core.coins.CoinType} of this URI
      */
     public CoinType getTypeRequired() throws CoinURIParseException {
         if (!hasType()) {
@@ -393,7 +393,7 @@ public class CoinURI implements Serializable {
     }
 
     /**
-     * @return The {@link com.vergeandroid.core.coins.CoinType} of this URI
+     * @return The {@link com.vergepay.core.coins.CoinType} of this URI
      */
     @Nullable
     public CoinType getType() {

@@ -1,4 +1,4 @@
-package com.vergeandroid.core.coins.nxt;
+package com.vergepay.core.coins.nxt;
 
 /******************************************************************************
  * Copyright © 2013-2015 The Nxt Core Developers.                             *
@@ -617,7 +617,7 @@ public final class Account {
 //            return account;
 //        }
 //        throw new RuntimeException("DUPLICATE KEY for account " + Long.toUnsignedString(account.getId())
-//                + " existing key " + com.vergeandroid.core.coins.nxt.Convert.toHexString(account.getPublicKey()) + " new key " + com.vergeandroid.core.coins.nxt.Convert.toHexString(publicKey));
+//                + " existing key " + com.vergepay.core.coins.nxt.Convert.toHexString(account.getPublicKey()) + " new key " + com.vergepay.core.coins.nxt.Convert.toHexString(publicKey));
 //    }
 
     public static long getId(byte[] publicKey) {
@@ -769,7 +769,7 @@ public final class Account {
 //    private long activeLesseeId;
 //
 //    private Account(long id) {
-//        if (id != com.vergeandroid.core.coins.nxt.Crypto.rsDecode(com.vergeandroid.core.coins.nxt.Crypto.rsEncode(id))) {
+//        if (id != com.vergepay.core.coins.nxt.Crypto.rsDecode(com.vergepay.core.coins.nxt.Crypto.rsEncode(id))) {
 //            Logger.logMessage("CRITICAL ERROR: Reed-Solomon encoding fails for " + id);
 //        }
 //        this.id = id;
@@ -815,8 +815,8 @@ public final class Account {
 //    }
 //
 //    void setAccountInfo(String name, String description) {
-//        name = com.vergeandroid.core.coins.nxt.Convert.emptyToNull(name.trim());
-//        description = com.vergeandroid.core.coins.nxt.Convert.emptyToNull(description.trim());
+//        name = com.vergepay.core.coins.nxt.Convert.emptyToNull(name.trim());
+//        description = com.vergepay.core.coins.nxt.Convert.emptyToNull(description.trim());
 //        AccountInfo accountInfo = getAccountInfo();
 //        if (accountInfo == null) {
 //            accountInfo = new AccountInfo(id, name, description);
@@ -851,18 +851,18 @@ public final class Account {
 //            throw new IllegalArgumentException("Recipient account doesn't have a public key set");
 //        }
 //        if (compress && data.length > 0) {
-//            data = com.vergeandroid.core.coins.nxt.Convert.compress(data);
+//            data = com.vergepay.core.coins.nxt.Convert.compress(data);
 //        }
-//        return EncryptedData.encrypt(data, com.vergeandroid.core.coins.nxt.Crypto.getPrivateKey(senderSecretPhrase), getPublicKey());
+//        return EncryptedData.encrypt(data, com.vergepay.core.coins.nxt.Crypto.getPrivateKey(senderSecretPhrase), getPublicKey());
 //    }
 //
 //    public byte[] decryptFrom(EncryptedData encryptedData, String recipientSecretPhrase, boolean uncompress) {
 //        if (getPublicKey() == null) {
 //            throw new IllegalArgumentException("Sender account doesn't have a public key set");
 //        }
-//        byte[] decrypted = encryptedData.decrypt(com.vergeandroid.core.coins.nxt.Crypto.getPrivateKey(recipientSecretPhrase), getPublicKey());
+//        byte[] decrypted = encryptedData.decrypt(com.vergepay.core.coins.nxt.Crypto.getPrivateKey(recipientSecretPhrase), getPublicKey());
 //        if (uncompress && decrypted.length > 0) {
-//            decrypted = com.vergeandroid.core.coins.nxt.Convert.uncompress(decrypted);
+//            decrypted = com.vergepay.core.coins.nxt.Convert.uncompress(decrypted);
 //        }
 //        return decrypted;
 //    }

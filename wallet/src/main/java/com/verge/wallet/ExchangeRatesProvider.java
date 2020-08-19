@@ -1,4 +1,4 @@
-package com.vergeandroid.wallet;
+package com.vergepay.wallet;
 
 /*
  * Copyright 2011-2014 the original author or authors.
@@ -29,12 +29,12 @@ import android.net.Uri;
 import android.preference.PreferenceManager;
 import android.provider.BaseColumns;
 
-import com.vergeandroid.core.coins.CoinID;
-import com.vergeandroid.core.coins.CoinType;
-import com.vergeandroid.core.coins.FiatValue;
-import com.vergeandroid.core.coins.Value;
-import com.vergeandroid.core.util.ExchangeRateBase;
-import com.vergeandroid.wallet.util.NetworkUtils;
+import com.vergepay.core.coins.CoinID;
+import com.vergepay.core.coins.CoinType;
+import com.vergepay.core.coins.FiatValue;
+import com.vergepay.core.coins.Value;
+import com.vergepay.core.util.ExchangeRateBase;
+import com.vergepay.wallet.util.NetworkUtils;
 import com.google.common.collect.ImmutableMap;
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;

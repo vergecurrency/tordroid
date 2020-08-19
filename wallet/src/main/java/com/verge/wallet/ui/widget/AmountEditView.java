@@ -1,4 +1,4 @@
-package com.vergeandroid.wallet.ui.widget;
+package com.vergepay.wallet.ui.widget;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -13,12 +13,12 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.vergeandroid.core.coins.CoinType;
-import com.vergeandroid.core.coins.Value;
-import com.vergeandroid.core.coins.ValueType;
-import com.vergeandroid.core.util.MonetaryFormat;
-import com.vergeandroid.wallet.R;
-import com.vergeandroid.wallet.util.MonetarySpannable;
+import com.vergepay.core.coins.CoinType;
+import com.vergepay.core.coins.Value;
+import com.vergepay.core.coins.ValueType;
+import com.vergepay.core.util.MonetaryFormat;
+import com.vergepay.wallet.R;
+import com.vergepay.wallet.util.MonetarySpannable;
 
 import org.bitcoinj.core.Coin;
 

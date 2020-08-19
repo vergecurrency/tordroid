@@ -1,4 +1,4 @@
-package com.vergeandroid.stratumj;
+package com.vergepay.stratumj;
 
 import java.net.Proxy;
 

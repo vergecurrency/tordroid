@@ -1,4 +1,4 @@
-package com.vergeandroid.core.wallet;
+package com.vergepay.core.wallet;
 
 /**
  * @author John L. Jegutanis

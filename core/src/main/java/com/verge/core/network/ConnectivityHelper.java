@@ -1,4 +1,4 @@
-package com.vergeandroid.core.network;
+package com.vergepay.core.network;
 
 /**
  * @author John L. Jegutanis
