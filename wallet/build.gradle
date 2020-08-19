@@ -15,8 +15,8 @@ android {
         applicationId "com.vergepay.wallet"
         minSdkVersion 10
         targetSdkVersion 29
-        versionCode 62
-        versionName "v1.4"
+        versionCode 1
+        versionName "v1.0"
     }
 
     buildTypes {
