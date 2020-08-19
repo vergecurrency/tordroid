@@ -110,8 +110,8 @@ public class Constants {
                                                     new ServerAddress("ltc-testnet-cce-2.verge.net", 15002)),
 			new CoinAddress(NxtMain.get(),          new ServerAddress("176.9.65.41", 7876),
                                                     new ServerAddress("176.9.65.41", 7876)),
-            new CoinAddress(VergeMain.get(),        new ServerAddress("qz6pnufyqjexudq6.onion", 50001, TOR_LOCAL_PROXY),
-                                                    new ServerAddress("jx5tldmayybm2pui.onion", 50001, TOR_LOCAL_PROXY))
+            new CoinAddress(VergeMain.get(),        new ServerAddress("hdnfur2opijcfnyj6kzlljttzyfdv7fd7u3xlcwsrkp7txitolhchoad.onion", 50001, TOR_LOCAL_PROXY),
+                                                    new ServerAddress("hdnfur2opijcfnyj6kzlljttzyfdv7fd7u3xlcwsrkp7txitolhchoad.onion", 50002, TOR_LOCAL_PROXY))
     );
 
     public static final HashMap<CoinType, Integer> COINS_ICONS;
