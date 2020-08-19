@@ -1,8 +1,8 @@
-package com.vergeandroid.wallet.util;
+package com.vergepay.wallet.util;
 
 import android.content.Context;
 
-import com.vergeandroid.wallet.Constants;
+import com.vergepay.wallet.Constants;
 import com.squareup.okhttp.Cache;
 import com.squareup.okhttp.ConnectionSpec;
 import com.squareup.okhttp.OkHttpClient;

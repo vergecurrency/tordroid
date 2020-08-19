@@ -1,4 +1,4 @@
-package com.vergeandroid.wallet.util;
+package com.vergepay.wallet.util;
 
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;

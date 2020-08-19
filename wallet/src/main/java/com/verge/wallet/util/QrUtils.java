@@ -1,11 +1,11 @@
-package com.vergeandroid.wallet.util;
+package com.vergepay.wallet.util;
 
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.widget.ImageView;
 
-import com.vergeandroid.wallet.R;
+import com.vergepay.wallet.R;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.EncodeHintType;
 import com.google.zxing.WriterException;

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.vergeandroid.wallet.util;
+package com.vergepay.wallet.util;
 
 
 import java.io.File;

@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.vergeandroid.wallet.ui.ShowSeedFragment">
+    tools:context="com.vergepay.wallet.ui.ShowSeedFragment">
 
     <ScrollView
         android:layout_width="match_parent"

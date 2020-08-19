@@ -1,4 +1,4 @@
-package com.vergeandroid.wallet.ui.widget;
+package com.vergepay.wallet.ui.widget;
 
 import android.content.Context;
 import android.graphics.Paint;

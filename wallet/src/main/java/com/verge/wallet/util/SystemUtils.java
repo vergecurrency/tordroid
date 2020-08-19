@@ -1,4 +1,4 @@
-package com.vergeandroid.wallet.util;
+package com.vergepay.wallet.util;
 
 import android.content.Context;
 import android.text.TextUtils;

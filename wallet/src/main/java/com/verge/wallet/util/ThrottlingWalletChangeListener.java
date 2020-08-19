@@ -1,4 +1,4 @@
-package com.vergeandroid.wallet.util;
+package com.vergepay.wallet.util;
 
 /*
  * Copyright 2013-2014 the original author or authors.
@@ -23,11 +23,11 @@ import java.util.concurrent.atomic.AtomicLong;
 
 import android.os.Handler;
 
-import com.vergeandroid.core.coins.Value;
-import com.vergeandroid.core.wallet.AbstractTransaction;
-import com.vergeandroid.core.wallet.WalletAccount;
-import com.vergeandroid.core.wallet.WalletAccountEventListener;
-import com.vergeandroid.core.wallet.WalletConnectivityStatus;
+import com.vergepay.core.coins.Value;
+import com.vergepay.core.wallet.AbstractTransaction;
+import com.vergepay.core.wallet.WalletAccount;
+import com.vergepay.core.wallet.WalletAccountEventListener;
+import com.vergepay.core.wallet.WalletConnectivityStatus;
 
 /**
  * @author Andreas Schildbach

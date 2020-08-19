@@ -1,4 +1,4 @@
-package com.vergeandroid.wallet.util;
+package com.vergepay.wallet.util;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

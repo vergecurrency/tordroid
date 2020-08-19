@@ -1,4 +1,4 @@
-package com.vergeandroid.wallet.ui.widget;
+package com.vergepay.wallet.ui.widget;
 
 /*
  * Copyright (C) 2013 The Android Open Source Project
