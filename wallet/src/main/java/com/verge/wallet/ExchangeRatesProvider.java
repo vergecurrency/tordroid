@@ -99,10 +99,10 @@ public class ExchangeRatesProvider extends ContentProvider {
     private long cryptoToLocalLastUpdated = 0;
     private String lastCryptoCurrency = null;
 
-    private static final String BASE_URL = "https://future.vergeticker.onion/api";
+    private static final String BASE_URL = "https://ticker.coinomi.net/simple";
     private static final String TO_LOCAL_URL = BASE_URL + "/to-local/%s";
     private static final String TO_CRYPTO_URL = BASE_URL + "/to-crypto/%s";
-    private static final String COINOMI_SOURCE = "http://dvzs4zoxkg6z43dd.onion";
+    private static final String COINOMI_SOURCE = "Coinomi Ticker";
 
     private static final Logger log = LoggerFactory.getLogger(ExchangeRatesProvider.class);
 
