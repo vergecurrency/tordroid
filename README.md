@@ -11,8 +11,7 @@ settings.gradle. When it is finished importing, click on the SDK Manager ![SDK M
 
 <br/><br/>
 
-Make sure that you have JDK 7 installed before building. You can get it [here from Oracle (login required)](https://www.oracle.com/java/technologies/javase/javase7-archive-downloads.html) or you can opt for the [Open Source version from OpenJDK here](https://jdk.java.net/java-se-ri/7) . Once you have that installed, navigate to File > Project Structure > SDK Location and change the path of your current JDK to the path of the new JDK. 
-**The project will not build with JDK 8**. 
+Make sure that you have JDK 8 installed before building. You can get it [here from Oracle (login required)](https://www.oracle.com/java/technologies/javase/javase8-archive-downloads.html) or you can opt for the [Open Source version from OpenJDK here](https://jdk.java.net/java-se-ri/8-MR3) . Once you have that installed, navigate to File > Project Structure > SDK Location and change the path of your current JDK to the path of the new JDK. 
 
 <br/><br/>
 
