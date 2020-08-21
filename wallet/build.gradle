@@ -71,8 +71,8 @@ android {
         implementation 'com.google.zxing:core:3.3.3'
         implementation 'ch.acra:acra:4.9.0'
         implementation 'com.android.support:support-v4-preferencefragment:1.0.0@aar'
-        implementation 'com.jakewharton:butterknife:8.0.0'
-        annotationProcessor 'com.jakewharton:butterknife-compiler:8.0.0'
+        implementation 'com.jakewharton:butterknife:8.4.0'
+        annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
     }
 
 //apply plugin: 'robolectric'
