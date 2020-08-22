@@ -13,19 +13,19 @@ compileJava   {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
 
-    compile 'com.google.guava:guava:18.0'
-    compile 'com.google.code.findbugs:jsr305:3.0.2'
-    compile 'com.madgag.spongycastle:core:1.58.0.0'
+    compile 'com.google.guava:guava:18.0' //latest as of 8/2020
+    compile 'com.google.code.findbugs:jsr305:3.0.2' //latest as of 8/2020
+    compile 'com.madgag.spongycastle:core:1.58.0.0' //latest as of 8/2020
 
-    compile 'com.lambdaworks:scrypt:1.4.0'
+    compile 'com.lambdaworks:scrypt:1.4.0' //latest as of 8/2020
 
-    compile 'com.google.protobuf:protobuf-java:3.11.3'
+    compile 'com.google.protobuf:protobuf-java:3.12.2'
     compile 'org.slf4j:slf4j-jdk14:1.7.30'
 
 //    compile 'org.json:json:20140107'
-    compile 'org.json:json:20080701'
+    compile 'org.json:json:20200518'
 
-    compile 'com.squareup.okhttp:okhttp:2.7.5'
+    compile 'com.squareup.okhttp:okhttp:2.7.5' //latest as of 8/2020
 
     testCompile 'junit:junit:4.11'
     testCompile 'org.mockito:mockito-all:1.9.5'
