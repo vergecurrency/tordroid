@@ -1,7 +1,7 @@
 package com.vergepay.wallet.ui;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+import androidx.fragment.app.Fragment;
 
 import com.vergepay.core.coins.CoinType;
 import com.vergepay.core.coins.Value;
@@ -9,7 +9,6 @@ import com.vergepay.core.wallet.WalletAccount;
 import com.vergepay.wallet.Constants;
 import com.vergepay.wallet.ExchangeHistoryProvider.ExchangeEntry;
 import com.vergepay.wallet.R;
-import com.vergepay.wallet.tasks.AddCoinTask;
 import com.vergepay.wallet.ui.dialogs.ConfirmAddCoinUnlockWalletDialog;
 
 import org.bitcoinj.crypto.KeyCrypterException;

@@ -1,7 +1,7 @@
 package com.vergepay.wallet.ui;
 
 import android.os.Bundle;
-import android.support.v4.preference.PreferenceFragment;
+import androidx.core.preference.PreferenceFragment;
 
 import com.vergepay.wallet.R;
 

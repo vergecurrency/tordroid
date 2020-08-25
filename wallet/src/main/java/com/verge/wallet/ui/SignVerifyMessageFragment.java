@@ -2,7 +2,7 @@ package com.vergepay.wallet.ui;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +13,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.vergepay.core.coins.CoinType;
-import com.vergepay.core.wallet.AbstractAddress;
 import com.vergepay.core.wallet.SignedMessage;
 import com.vergepay.core.wallet.WalletAccount;
 import com.vergepay.wallet.Constants;

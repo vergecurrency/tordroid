@@ -2,9 +2,9 @@ package com.vergepay.wallet.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
+
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.vergepay.wallet.Constants;
 import com.vergepay.wallet.ExchangeHistoryProvider.ExchangeEntry;

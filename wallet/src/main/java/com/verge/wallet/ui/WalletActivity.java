@@ -14,10 +14,10 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBar;
-import android.support.v7.view.ActionMode;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.view.ActionMode;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -53,7 +53,6 @@ import javax.annotation.Nullable;
 import static com.vergepay.wallet.ui.NavDrawerItemType.ITEM_COIN;
 import static com.vergepay.wallet.ui.NavDrawerItemType.ITEM_OVERVIEW;
 import static com.vergepay.wallet.ui.NavDrawerItemType.ITEM_SECTION_TITLE;
-import static com.vergepay.wallet.ui.NavDrawerItemType.ITEM_TRADE;
 
 
 /**
@@ -255,7 +254,7 @@ final public class WalletActivity extends BaseWalletActivity implements
             }
             sendBroadcast(intent);
         } catch (PackageManager.NameNotFoundException e) {
-            new android.support.v7.app.AlertDialog.Builder(this)
+            new androidx.appcompat.app.AlertDialog.Builder(this)
                     .setMessage("In order to use this application Orbot must be installed")
                     .setPositiveButton("Install", new DialogInterface.OnClickListener() {
                         @Override
