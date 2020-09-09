@@ -22,8 +22,8 @@ android {
         targetSdkVersion 30
         compileSdkVersion 30
         ndkVersion "21.3.6528147" //shouldnt matter but gradle complains?
-        versionCode 1
-        versionName "v1.0"
+        versionCode 2
+        versionName "v2.0"
         ndk {
             abiFilters  "armeabi-v7a", "arm64-v8a"
         }
@@ -70,7 +70,6 @@ android {
         implementation 'com.android.support:gridlayout-v7:28.0.0'
         implementation 'com.android.support:support-v4:28.0.0'
         implementation 'com.android.support:appcompat-v7:28.0.0'
-//    compile 'com.android.support:preference-v7:23.2.1'
         implementation 'com.google.guava:guava:18.0' // most recent as of 8/2020
         implementation 'com.google.code.findbugs:jsr305:3.0.2' // most recent as of 8/2020
         implementation 'com.madgag.spongycastle:core:1.58.0.0' // most recent as of 8/2020
@@ -100,6 +99,7 @@ android {
         exclude 'lib/x86_64/darwin/libscrypt.dylib'
         exclude 'lib/x86_64/freebsd/libscrypt.so'
         exclude 'lib/x86_64/linux/libscrypt.so'
+        exclude 'lib/armeabi-v7a/libscrypt.so'
 
         exclude 'lib/armeabi-v7a/libvudroid.so'
         exclude 'lib/x86/libvudroid.so'
@@ -111,5 +111,12 @@ android {
         exclude ('/lib/mips64/*' + '*')
         exclude ('/lib/x86_64/*' + '*')
         exclude ('/lib/x86/*' + '*')
+    }
+
+    splits {
+        abi {
+            reset()
+            include "armeabi-v7a", "arm64-v8a"
+        }
     }
 }
