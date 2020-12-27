@@ -13,13 +13,13 @@ compileJava   {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
 
-    compile 'com.google.guava:guava:18.0' //latest as of 8/2020
+    compile 'com.google.guava:guava:18.0' //TODO ToStringHelper update for 19.0+
     compile 'com.google.code.findbugs:jsr305:3.0.2' //latest as of 8/2020
     compile 'com.madgag.spongycastle:core:1.58.0.0' //latest as of 8/2020
     compile 'com.lambdaworks:scrypt:1.4.0' //latest as of 8/2020
-    compile 'com.google.protobuf:protobuf-java:3.12.2'
-    compile 'org.slf4j:slf4j-jdk14:1.7.30'
-    compile 'org.json:json:20200518' //latest as of 8/2020
+    compile 'com.google.protobuf:protobuf-java:3.14.0' //latest as of 12/2020
+    compile 'org.slf4j:slf4j-jdk14:1.7.30' //latest release ver as of 12/2020
+    compile 'org.json:json:20201115' //latest as of 12/2020
     compile 'com.squareup.okhttp:okhttp:2.7.5' //latest as of 8/2020
 
     testCompile 'junit:junit:4.11'

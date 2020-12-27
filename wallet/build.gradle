@@ -21,9 +21,9 @@ android {
         minSdkVersion 21
         targetSdkVersion 30
         compileSdkVersion 30
-        ndkVersion "21.3.6528147" //shouldnt matter but gradle complains?
-        versionCode 2
-        versionName "v2.0"
+        ndkVersion "21.3.6528147" //shouldnt matter but gradle complains
+        versionCode 020010
+        versionName "v2.01"
         ndk {
             abiFilters  "armeabi-v7a", "arm64-v8a"
         }
@@ -70,7 +70,7 @@ android {
         implementation 'com.android.support:gridlayout-v7:28.0.0'
         implementation 'com.android.support:support-v4:28.0.0'
         implementation 'com.android.support:appcompat-v7:28.0.0'
-        implementation 'com.google.guava:guava:24.1-jre' // most recent as of 12/2020
+        implementation 'com.google.guava:guava:18.0' //TODO ToStringHelper update for 19.0+
         implementation 'com.google.code.findbugs:jsr305:3.0.2' // most recent as of 12/2020
         implementation 'com.madgag.spongycastle:core:1.58.0.0' // most recent as of 12/2020
         implementation 'com.google.protobuf:protobuf-java:3.14.0' // most recent as of 12/2020
