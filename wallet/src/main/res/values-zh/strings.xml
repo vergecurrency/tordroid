@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 	<string name="action_sweep_wallet">Sweep wallet</string>
-	<string name="action_support">Contact support</string>
-	<string name="error_camera">Could not access the device camera</string>
+    <string name="error_camera">Could not access the device camera</string>
 	<string name="terms_of_service_title">Terms of service</string>
 	<string name="edit_account_description_label">Description</string>
 	<string name="button_default">Default</string>
@@ -24,13 +23,11 @@
     <string name="debugging_test_wallet_password_results">Unlocked wallet: %1$s\n\nFingerprints\nInput: %2$s\nKey: %3$s</string>
     <!-- Overview -->
     <string name="title_activity_overview">Overview</string>
-	<string name="support_message">Contact support</string>
     <!-- Sweep wallet -->
     <!-- Sweep paper wallet means to redeem coins from a code usually printed on a paper -->
     <string name="title_activity_sweep_wallet">Sweep paper wallet</string>
     <string name="sweep_wallet_info">You are about to transfer coins from a paper wallet to your verge wallet.\nAfter the transfer is complete, please avoid reusing the paper wallet for security reasons.\n\nSupported formats: WIF, BIP38, Mini private key.</string>
     <string name="sweep_wallet_key_title">Private key</string>
-    <string name="sweep_wallet_key_password">Private key password</string>
     <string name="sweep_wallet_key_hint">type or scan a private key</string>
     <string name="sweep_wallet_bad_format">Could not recognize the private key format.</string>
     <string name="sweep_wallet_bad_coin_type">The private key type does not match the destination account type.</string>
@@ -50,7 +47,6 @@
     <!-- Example: The fee value is per kilobyte.-->
     <string name="tx_fees_description">The fee value is %1$s.</string>
     <string name="tx_fees_per_kilobyte">per kilobyte of transaction data</string>
-    <string name="tx_fees_per_byte">per byte of transaction data</string>
     <string name="tx_fees_per_transaction">per transaction</string>
     <string name="action_scan_qr_code">扫描</string>
     <string name="action_share">分享</string>
@@ -81,8 +77,6 @@
     <string name="button_delete">删除</string>
     <string name="button_add">添加</string>
     <string name="button_save">保存</string>
-    <string name="button_remove">移除</string>
-    <string name="button_edit">编辑</string>
     <string name="button_send">发送</string>
     <string name="button_sign">签署</string>
     <string name="button_verify">验证</string>
@@ -91,7 +85,6 @@
     <string name="button_download">下载</string>
     <string name="button_agree">同意</string>
     <string name="button_disagree">否定</string>
-    <string name="button_add_coins">+币</string>
     <string name="scan_qr_code">扫描二维码</string>
     <string name="erase_address">擦除地址</string>
     <string name="copied_to_clipboard">复制到剪贴板</string>
@@ -100,14 +93,12 @@
     <string name="wallet_title_send">发送</string>
     <string name="wallet_locked_message">钱包已加密</string>
     <string name="unlock_wallet_title">解密钱包</string>
-    <string name="unlocking_wallet_working">解密钱包&#8230;</string>
     <string name="unlocking_wallet_error_title">无法解密钱包</string>
     <string name="unlocking_wallet_error_detail">密码是否正确？请确认输入正确。如果问题没有解决请考虑使用复原密码.</string>
     <string name="powered_by">技术支持：</string>
     <!-- Nav drawer -->
     <string name="navigation_drawer_open">打开导航条</string>
     <string name="navigation_drawer_close">关闭导航条</string>
-    <string name="navigation_drawer_services">服务</string>
     <string name="navigation_drawer_wallet">钱包</string>
     <!-- SendOutput widget -->
     <string name="fee">交易手续费</string>
@@ -118,7 +109,6 @@
     <string name="welcome_text">欢迎使用TORdroid钱包</string>
     <string name="create_wallet">创建新钱包</string>
     <string name="restore_wallet">恢复钱包</string>
-    <string name="test_wallet">测试钱包</string>
     <!-- Intro -->
     <string name="incompatible_device_warning_title">设备不匹配</string>
     <string name="incompatible_device_warning_message">由于软件或硬件原因，此设备无法执行某些加密功能。\n可以通过设备生产商发布的更新来解决。\n\n如果有任何疑问，欢迎和我们联系：support@coinomi.com</string>
@@ -139,7 +129,6 @@
     <string name="restore_error">无法验证种子。 %1$s</string>
     <string name="extra_entropy">额外函数</string>
     <!-- Wallet activity -->
-    <string name="test_wallet_message">此为测试钱包，你可以发送及接受测试网络上的比特币、莱特币及狗狗币。\n\n如果你想使用主网上的币，请移步: <b>设置 &gt; 恢复钱包 &gt; 创建新钱包</b>.</string>
     <string name="wallet_update_title">新版本可供更新</string>
     <string name="wallet_update_message">有新版本的TORdroid，其中包含新功能及修复bug.</string>
     <string name="pay_with">用发送</string>
@@ -165,13 +154,7 @@
     <!-- Send Activity -->
     <string name="send_coins_activity_title">发送</string>
     <!-- Send fragment -->
-    <string name="send_coins_fragment_receiving_address_label">支付给</string>
     <string name="send_coins_fragment_receiving_address_tip">输入姓名或地址</string>
-    <string name="send_coins_fragment_receiving_address_error">无效比特币地址！</string>
-    <string name="send_coins_fragment_amount_label">将支付的金额</string>
-    <string name="send_coins_fragment_button_send">发送</string>
-    <string name="send_coins_fragment_button_back">返回</string>
-    <string name="send_coins_failed_msg">失败！</string>
     <string name="send_coins_error_network">无法连接到网络</string>
     <string name="send_coins_error_dust">发送金额太小，会被网络拒绝。</string>
     <string name="send_coins_error">无法发送：%1$s</string>
@@ -224,7 +207,6 @@
     <string name="title_activity_about">关于我们</string>
     <string name="app_name_long">安卓版</string>
     <string name="about_licence">开源项目\nhttps://github.com/TORdroid/coinomi-android\n源码基于 GNU普通公众许可3开源</string>
-    <string name="about_credits_nubits">服务器由Nubits提供-NBT是世界上首个价格稳定的数字货币\nhttps://nubits.com/</string>
     <string name="about_credits_translations">翻译者：</string>
     <string name="about_credits_bitcoinj">使用Bitcoinj库\nhttp://bitcoinj.github.io/</string>
     <string name="about_credits_electrum">使用Electrum 服务器软件\nhttps://electrum.org/</string>
@@ -235,7 +217,6 @@
     <string name="about_credits_exchange_rates">交易汇率由以下网站提供：\nhttp://www.cryptocoincharts.info/\nhttps://bitcoinaverage.com/</string>
     <!-- Add Coins -->
     <string name="title_activity_add_coins">添加币种</string>
-    <string name="password_add_coin">你即将在钱包中 创建%1$s 地址。</string>
     <string name="adding_coin_confirmation_title">添加 %1$s?</string>
     <string name="adding_coin_working">在创建%1$s 帐号时，请等待。</string>
     <string name="add_coin_error">添加 %1$s: %2$s 时出错。</string>
@@ -250,7 +231,6 @@
     <string name="status_label">状态</string>
     <string name="date_label">日期</string>
     <string name="transaction_id_label">交易ID</string>
-    <string name="view_at_a_blockchain_explorer_link">在区块浏览中查看</string>
     <plurals name="status_building">
         <item quantity="other">%d 确认</item>
     </plurals>
@@ -269,8 +249,6 @@
     <string name="previous_addresses_used">用过的地址</string>
     <string name="previous_addresses_unused">未用过的地址</string>
     <!-- Edit Address Book Entry -->
-    <string name="edit_address_book_entry_dialog_title_add">添加地址</string>
-    <string name="edit_address_book_entry_dialog_title_edit">编辑地址</string>
     <string name="edit_address_book_entry_dialog_address_label">地址</string>
     <string name="edit_address_book_entry_dialog_label_label">名称</string>
     <!-- Settings -->
@@ -312,16 +290,12 @@
     <string name="trade_status_received_deposit">已经收到 %1$s 的充值</string>
     <string name="trade_status_waiting_trade">等待交易&#8230;</string>
     <string name="trade_status_complete_detail">交易完成，已发送 %1$s</string>
-    <string name="trade_status_complete">交易完成</string>
     <string name="trade_status_view_transaction">查看交易</string>
     <string name="trade_status_email_receipt">邮件收条</string>
     <string name="trade_status_failed_detail">交易失败： %1$s</string>
     <string name="trade_status_failed">交易失败</string>
     <string name="trade_status_delete_message">从历史中删除？</string>
-    <string name="trade_status_tx_not_available">没有找到交易，请稍后再试。</string>
     <!-- Email receipt dialog -->
-    <string name="email_receipt_title">邮件收条</string>
-    <string name="email_receipt_message">接收一封关于此交易的邮件</string>
     <!-- Exchange History -->
     <string name="title_activity_exchange_history">交易历史</string>
     <string name="exchange_history_empty">没有交易</string>
@@ -342,19 +316,9 @@
     <string name="tx_message_public">公开消息</string>
     <string name="tx_message_private">私密消息</string>
     <string name="tx_message_public_add">添加公开消息</string>
-    <string name="tx_message_private_add">添加私密消息</string>
     <string name="tx_message_public_remove">删除公开消息</string>
-    <string name="tx_message_private_remove">删除私密消息</string>
-    <string name="tx_message_from">来自</string>
-    <string name="tx_message_subject">主题</string>
-    <string name="tx_message">消息正文</string>
     <!-- Account details -->
     <string name="title_activity_account_details">帐户详细信息</string>
-    <string name="account_description_label">描述</string>
     <string name="account_public_key_label">公钥</string>
-    <string name="account_extended_public_key_label">延展公钥</string>
     <string name="account_public_key_warning">分享公钥可以让其他人查看你的帐户余额及交易历史</string>
-    <string name="account_private_key_label">私钥</string>
-    <string name="account_extended_private_key_label">延展私钥</string>
-    <string name="account_private_key_warning">私钥可以让你从此帐户中发送资金。没有必要备份这个私钥，因为其可以通过  <i>恢复钱包密码</i> 重新生成。</string>
 </resources>

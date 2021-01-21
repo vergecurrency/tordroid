@@ -33,7 +33,6 @@
                     android:text="@string/signing_info" />
 
                 <TextView
-                    android:id="@+id/signing_address_label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/activity_vertical_margin"
@@ -59,7 +58,6 @@
                     android:visibility="gone"/>
 
                 <TextView
-                    android:id="@+id/message_to_sign_label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/activity_vertical_margin"
@@ -75,7 +73,6 @@
                     tools:text="test"/>
 
                 <TextView
-                    android:id="@+id/signature_label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/activity_vertical_margin"

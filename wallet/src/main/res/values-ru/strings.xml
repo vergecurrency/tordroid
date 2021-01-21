@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 		<string name="action_sweep_wallet">Sweep wallet</string>
-	<string name="action_support">Contact support</string>
-	<string name="error_camera">Could not access the device camera</string>
+    <string name="error_camera">Could not access the device camera</string>
 	<string name="terms_of_service_title">Terms of service</string>
 	<string name="edit_account_description_label">Description</string>
 	<string name="button_default">Default</string>
@@ -24,13 +23,11 @@
     <string name="debugging_test_wallet_password_results">Unlocked wallet: %1$s\n\nFingerprints\nInput: %2$s\nKey: %3$s</string>
     <!-- Overview -->
     <string name="title_activity_overview">Overview</string>
-	<string name="support_message">Contact support</string>
     <!-- Sweep wallet -->
     <!-- Sweep paper wallet means to redeem coins from a code usually printed on a paper -->
     <string name="title_activity_sweep_wallet">Sweep paper wallet</string>
     <string name="sweep_wallet_info">You are about to transfer coins from a paper wallet to your verge wallet.\nAfter the transfer is complete, please avoid reusing the paper wallet for security reasons.\n\nSupported formats: WIF, BIP38, Mini private key.</string>
     <string name="sweep_wallet_key_title">Private key</string>
-    <string name="sweep_wallet_key_password">Private key password</string>
     <string name="sweep_wallet_key_hint">type or scan a private key</string>
     <string name="sweep_wallet_bad_format">Could not recognize the private key format.</string>
     <string name="sweep_wallet_bad_coin_type">The private key type does not match the destination account type.</string>
@@ -50,7 +47,6 @@
     <!-- Example: The fee value is per kilobyte.-->
     <string name="tx_fees_description">The fee value is %1$s.</string>
     <string name="tx_fees_per_kilobyte">per kilobyte of transaction data</string>
-    <string name="tx_fees_per_byte">per byte of transaction data</string>
     <string name="tx_fees_per_transaction">per transaction</string>
     <string name="action_scan_qr_code">Сканировать</string>
     <string name="action_share">Поделиться</string>
@@ -81,8 +77,6 @@
     <string name="button_delete">Удалить</string>
     <string name="button_add">Добавить</string>
     <string name="button_save">Сохранить</string>
-    <string name="button_remove">Удалить</string>
-    <string name="button_edit">Редактировать</string>
     <string name="button_send">Отправить</string>
     <string name="button_sign">Подписать</string>
     <string name="button_verify">Проверить</string>
@@ -91,7 +85,6 @@
     <string name="button_download">Скачать</string>
     <string name="button_agree">Согласен</string>
     <string name="button_disagree">Не согласен</string>
-    <string name="button_add_coins">Добавить кошелек</string>
     <string name="scan_qr_code">Отсканировать QR-код</string>
     <string name="erase_address">Удалить адрес</string>
     <string name="copied_to_clipboard">Скопировано в буфер обмена</string>
@@ -100,14 +93,12 @@
     <string name="wallet_title_send">отправить</string>
     <string name="wallet_locked_message">Ваш кошелёк заблокирован</string>
     <string name="unlock_wallet_title">Разблокировать Ваш кошелёк</string>
-    <string name="unlocking_wallet_working">Ваш кошелёк разблокируется&#8230;</string>
     <string name="unlocking_wallet_error_title">Не удалось разблокировать Ваш кошелёк</string>
     <string name="unlocking_wallet_error_detail">Вы ввели правильный пароль? Пожалуйста, удостоверьтесь, что пароль был введен без ошибок. Попытайтесь восстановить используя восстанавливающую фразу, если ошибка сохранится.</string>
     <string name="powered_by">Поддерживается</string>
     <!-- Nav drawer -->
     <string name="navigation_drawer_open">Открыть боковое меню</string>
     <string name="navigation_drawer_close">Закрыть боковое меню</string>
-    <string name="navigation_drawer_services">Сервис</string>
     <string name="navigation_drawer_wallet">Кошелёк</string>
     <!-- SendOutput widget -->
     <string name="fee">налог на транзакцию</string>
@@ -118,7 +109,6 @@
     <string name="welcome_text">Добро пожаловать в TORdroid</string>
     <string name="create_wallet">Создать новый кошелёк</string>
     <string name="restore_wallet">Восстановить кошелёк</string>
-    <string name="test_wallet">Тестовый кошелёк</string>
     <!-- Intro -->
     <string name="incompatible_device_warning_title">Устройство не поддерживается</string>
     <string name="incompatible_device_warning_message">Ваш аппарат не может осуществить некоторые криптографические операции по причине дефектов в операционной системе или в самом аппарате.\nЭту проблему может решить обновление ПО от производителя устройства.\n\nПожалуйста, обратитесь к нам , если у Вас есть вопросы : support@coinomi.com</string>
@@ -139,7 +129,6 @@
     <string name="restore_error">Не удалось проверить Вашу восстанавливающую фразу. %1$s</string>
     <string name="extra_entropy">Усиленная энтропия</string>
     <!-- Wallet activity -->
-    <string name="test_wallet_message">Это тестовый кошелек, где Вы можете отправлять и получать Bitcoin, Litecoin, Dogecoin используя testnet.\n\nЕсли Вы хотите использовать кошелёк с настоящими деньгами, пожалуйста зайдите в: <b>Настройки &gt; Восстановить кошелёк &gt; Создать новый кошелёк</b>.</string>
     <string name="wallet_update_title">Доступна новая версия</string>
     <string name="wallet_update_message">Доступна новая версия TORdroid, она содержит новые функции и исправления.</string>
     <string name="pay_with">Отправить используя</string>
@@ -165,13 +154,7 @@
     <!-- Send Activity -->
     <string name="send_coins_activity_title">Отправить монеты</string>
     <!-- Send fragment -->
-    <string name="send_coins_fragment_receiving_address_label">Оплатить</string>
     <string name="send_coins_fragment_receiving_address_tip">введите имя или адрес</string>
-    <string name="send_coins_fragment_receiving_address_error">Неверный Bitcoin Адрес!</string>
-    <string name="send_coins_fragment_amount_label">Сумма оплаты</string>
-    <string name="send_coins_fragment_button_send">Отправить</string>
-    <string name="send_coins_fragment_button_back">Назад</string>
-    <string name="send_coins_failed_msg">Неудача!</string>
     <string name="send_coins_error_network">Невозможно подключится к валютной сети</string>
     <string name="send_coins_error_dust">Сумма которую Вы пытаетесь отправить очень мала и будет отторгнута валютной сетью.</string>
     <string name="send_coins_error">Невозможно отправить монеты: %1$s</string>
@@ -230,7 +213,6 @@
     <string name="title_activity_about">О TORdroid</string>
     <string name="app_name_long">TORdroid для Android</string>
     <string name="about_licence">Программа с открытым исходным кодом\nhttps://github.com/TORdroid/coinomi-android\nИсходный код открыт на основе лицензии GNU General Public License 3</string>
-    <string name="about_credits_nubits">Инфраструктура серверов предоставлена NuBits - Первой Всемирной Стабильной Цифровой Валютой \nhttps://nubits.com/</string>
     <string name="about_credits_translations">Переводы выполнили:</string>
     <string name="about_credits_bitcoinj">Используется библиотека Bitcoinj\nhttp://bitcoinj.github.io/</string>
     <string name="about_credits_electrum">Используется серверное ПО от Electrum\nhttps://electrum.org/</string>
@@ -241,7 +223,6 @@
     <string name="about_credits_exchange_rates">Курсы валют предоставлены \nhttp://www.cryptocoincharts.info/\nhttps://bitcoinaverage.com/</string>
     <!-- Add Coins -->
     <string name="title_activity_add_coins">Добавить монеты</string>
-    <string name="password_add_coin">Вы собираетесь создать %1$s счёт в Вашем кошельке.</string>
     <string name="adding_coin_confirmation_title">Добавить %1$s?</string>
     <string name="adding_coin_working">Пожалуйста подождите пока создаётся новый %1$s счёт</string>
     <string name="add_coin_error">Ошибка добавления %1$s: %2$s</string>
@@ -256,7 +237,6 @@
     <string name="status_label">состояние</string>
     <string name="date_label">дата</string>
     <string name="transaction_id_label">id транзакции</string>
-    <string name="view_at_a_blockchain_explorer_link">Просмотреть на blockchain explorer</string>
     <plurals name="status_building">
         <item quantity="one">%d подтверждение</item>
         <item quantity="other">%d подтверждениям</item>
@@ -278,8 +258,6 @@
     <string name="previous_addresses_used">Использованный адрес</string>
     <string name="previous_addresses_unused">Неиспользованный адрес</string>
     <!-- Edit Address Book Entry -->
-    <string name="edit_address_book_entry_dialog_title_add">Добавить адрес</string>
-    <string name="edit_address_book_entry_dialog_title_edit">Редактировать адрес</string>
     <string name="edit_address_book_entry_dialog_address_label">Адрес</string>
     <string name="edit_address_book_entry_dialog_label_label">Имя</string>
     <!-- Settings -->
@@ -321,16 +299,12 @@
     <string name="trade_status_received_deposit">Получен депозит %1$s</string>
     <string name="trade_status_waiting_trade">Ожидание обмена&#8230;</string>
     <string name="trade_status_complete_detail">Обмен завершен, отправлено %1$s</string>
-    <string name="trade_status_complete">Обмен завершен</string>
     <string name="trade_status_view_transaction">Просмотреть транзакцию</string>
     <string name="trade_status_email_receipt">Почтовое подтверждение</string>
     <string name="trade_status_failed_detail">Обмен не выполнен: %1$s</string>
     <string name="trade_status_failed">Обмен не выполнен</string>
     <string name="trade_status_delete_message">Удалить из истории?</string>
-    <string name="trade_status_tx_not_available">Транзакции не обнаружены, попробуйте снова через несколько секунд</string>
     <!-- Email receipt dialog -->
-    <string name="email_receipt_title">Почтовое подтверждение</string>
-    <string name="email_receipt_message">Получить почтовое подтверждение для данной обменной операции</string>
     <!-- Exchange History -->
     <string name="title_activity_exchange_history">История обменов</string>
     <string name="exchange_history_empty">Обмен валюты еще не производился</string>
@@ -351,19 +325,9 @@
     <string name="tx_message_public">публичное сообщение</string>
     <string name="tx_message_private">личное сообщение</string>
     <string name="tx_message_public_add">Добавить публичное сообщение</string>
-    <string name="tx_message_private_add">Добавить личное сообщение</string>
     <string name="tx_message_public_remove">Удалить публичное сообщение</string>
-    <string name="tx_message_private_remove">Удалить личное сообщение</string>
-    <string name="tx_message_from">от</string>
-    <string name="tx_message_subject">объект</string>
-    <string name="tx_message">сообщение</string>
     <!-- Account details -->
     <string name="title_activity_account_details">Детали учетной записи</string>
-    <string name="account_description_label">описание</string>
     <string name="account_public_key_label">публичный ключ</string>
-    <string name="account_extended_public_key_label">расширенный публичный ключ</string>
     <string name="account_public_key_warning">Отдавая ваш публичный ключ в чужие руки, Вы позволяете просматривать ваш баланс и историю транзакций.</string>
-    <string name="account_private_key_label">личный ключ</string>
-    <string name="account_extended_private_key_label">расширенный личный ключ</string>
-    <string name="account_private_key_warning">Личный ключ позволяет вам отправлять монеты с этого аккаунта. Совсем не обязательно делать его копию, поскольку он создается на основе вашей <i>восстанавливающей фразы</i></string>
 </resources>

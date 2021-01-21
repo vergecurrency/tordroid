@@ -109,7 +109,6 @@
                 </RelativeLayout>
 
                 <TextView
-                    android:id="@+id/amount_to_send_label"
                     style="@style/SecondaryText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -117,7 +116,6 @@
                     android:text="@string/amount_to_send_label" />
 
                 <LinearLayout
-                    android:id="@+id/amounts"
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

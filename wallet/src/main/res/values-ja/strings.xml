@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 	<string name="action_sweep_wallet">Sweep wallet</string>
-	<string name="action_support">Contact support</string>
-	<string name="error_camera">Could not access the device camera</string>
+    <string name="error_camera">Could not access the device camera</string>
 	<string name="terms_of_service_title">Terms of service</string>
 	<string name="edit_account_description_label">Description</string>
 	<string name="button_default">Default</string>
@@ -24,13 +23,11 @@
     <string name="debugging_test_wallet_password_results">Unlocked wallet: %1$s\n\nFingerprints\nInput: %2$s\nKey: %3$s</string>
     <!-- Overview -->
     <string name="title_activity_overview">Overview</string>
-	<string name="support_message">Contact support</string>
     <!-- Sweep wallet -->
     <!-- Sweep paper wallet means to redeem coins from a code usually printed on a paper -->
     <string name="title_activity_sweep_wallet">Sweep paper wallet</string>
     <string name="sweep_wallet_info">You are about to transfer coins from a paper wallet to your verge wallet.\nAfter the transfer is complete, please avoid reusing the paper wallet for security reasons.\n\nSupported formats: WIF, BIP38, Mini private key.</string>
     <string name="sweep_wallet_key_title">Private key</string>
-    <string name="sweep_wallet_key_password">Private key password</string>
     <string name="sweep_wallet_key_hint">type or scan a private key</string>
     <string name="sweep_wallet_bad_format">Could not recognize the private key format.</string>
     <string name="sweep_wallet_bad_coin_type">The private key type does not match the destination account type.</string>
@@ -50,7 +47,6 @@
     <!-- Example: The fee value is per kilobyte.-->
     <string name="tx_fees_description">The fee value is %1$s.</string>
     <string name="tx_fees_per_kilobyte">per kilobyte of transaction data</string>
-    <string name="tx_fees_per_byte">per byte of transaction data</string>
     <string name="tx_fees_per_transaction">per transaction</string>
     <string name="action_scan_qr_code">スキャン</string>
     <string name="action_share">シェア</string>
@@ -81,8 +77,6 @@
     <string name="button_delete">削除</string>
     <string name="button_add">追加</string>
     <string name="button_save">保存</string>
-    <string name="button_remove">削除</string>
-    <string name="button_edit">編集</string>
     <string name="button_send">送る</string>
     <string name="button_sign">署名</string>
     <string name="button_verify">検証</string>
@@ -91,7 +85,6 @@
     <string name="button_download">ダウンロード</string>
     <string name="button_agree">了解</string>
     <string name="button_disagree">拒否</string>
-    <string name="button_add_coins">コイン追加</string>
     <string name="scan_qr_code">QRコードをスキャン</string>
     <string name="erase_address">アドレスを削除</string>
     <string name="copied_to_clipboard">クリップボードにコピーされました</string>
@@ -100,14 +93,12 @@
     <string name="wallet_title_send">送る</string>
     <string name="wallet_locked_message">ウォレットはロックされています</string>
     <string name="unlock_wallet_title">ウォレットのロックを解除する</string>
-    <string name="unlocking_wallet_working">ウォレットのロックを解除しています&#8230;</string>
     <string name="unlocking_wallet_error_title">ウォレットのロックを解除できませんでした</string>
     <string name="unlocking_wallet_error_detail">パスワードは正しいですか？パスワードが正しく入力されていることをご確認ください。何度やってもこのエラーが表示されてしまう場合には、復元フレーズを用いた復旧をお試しください。</string>
     <string name="powered_by">Powered by</string>
     <!-- Nav drawer -->
     <string name="navigation_drawer_open">ナビゲーション・ドロワーを開く</string>
     <string name="navigation_drawer_close">ナビゲーション・ドロワーを閉じる</string>
-    <string name="navigation_drawer_services">サービス</string>
     <string name="navigation_drawer_wallet">ウォレット</string>
     <!-- SendOutput widget -->
     <string name="fee">トランザクション手数料</string>
@@ -118,7 +109,6 @@
     <string name="welcome_text">TORdroidウォレットへようこそ</string>
     <string name="create_wallet">新しいウォレットを作成する</string>
     <string name="restore_wallet">ウォレットを復旧する</string>
-    <string name="test_wallet">ウォレットをテストする</string>
     <!-- Intro -->
     <string name="incompatible_device_warning_title">互換性のない端末</string>
     <string name="incompatible_device_warning_message">この端末はソフトウェアもしくはハードウェアのバグにより、いくつかの暗号機能を実行できません。\nこれは端末の製造元によるアップデートにより解決できるかもしれません。\n\n何かご質問があれば support@coinomi.com までお問い合わせください。</string>
@@ -139,7 +129,6 @@
     <string name="restore_error">復元フレーズの検証に失敗しました。%1$s</string>
     <string name="extra_entropy">追加のエントロピー</string>
     <!-- Wallet activity -->
-    <string name="test_wallet_message">これはテストウォレットです。テストネットのBitcoin、Litecoin、Dogecoinを送ったり受け取ったりできます。\n\n本物のおかねを扱うことのできるウォレットを使いたい場合には、<b>設定 &gt; ウォレットを復旧する &gt; 新しいウォレットを作成する</b>を選択してください。</string>
     <string name="wallet_update_title">新しいバージョンが利用可能です。</string>
     <string name="wallet_update_message">新しいバージョンのTORdroidが利用可能です。これには新しい機能やバグ修正が含まれます。</string>
     <string name="pay_with">次のもので送金する：</string>
@@ -165,13 +154,7 @@
     <!-- Send Activity -->
     <string name="send_coins_activity_title">コインを送る</string>
     <!-- Send fragment -->
-    <string name="send_coins_fragment_receiving_address_label">支払い先</string>
     <string name="send_coins_fragment_receiving_address_tip">ラベルかアドレスを入力</string>
-    <string name="send_coins_fragment_receiving_address_error">無効なアドレスです！</string>
-    <string name="send_coins_fragment_amount_label">支払い金額</string>
-    <string name="send_coins_fragment_button_send">送る</string>
-    <string name="send_coins_fragment_button_back">戻る</string>
-    <string name="send_coins_failed_msg">失敗しました！</string>
     <string name="send_coins_error_network">コインのネットワークに接続できませんでした</string>
     <string name="send_coins_error_dust">送金額が小さすぎるため、ネットワークから拒否されてしまう可能性があります</string>
     <string name="send_coins_error">コインを送れませんでした: %1$s</string>
@@ -224,7 +207,6 @@
     <string name="title_activity_about">TORdroidについて</string>
     <string name="app_name_long">TORdroid for Android</string>
     <string name="about_licence">オープンソース・プロジェクト\nhttps://github.com/TORdroid/coinomi-android\nソースコードはGNU General Public License 3のもとでライセンスされています</string>
-    <string name="about_credits_nubits">サーバのインフラはNuBits - 世界初の安定したデジタル通貨 - の寄付により成り立っています\nhttps://nubits.com/</string>
     <string name="about_credits_translations">翻訳提供者:</string>
     <string name="about_credits_bitcoinj">Bitcoinjライブラリを使用しています\nhttp://bitcoinj.github.io/</string>
     <string name="about_credits_electrum">Electrumのサーバソフトウェアを使用しています\nhttps://electrum.org/</string>
@@ -235,7 +217,6 @@
     <string name="about_credits_exchange_rates">為替レートは以下により提供されています\nhttp://www.cryptocoincharts.info/\nhttps://bitcoinaverage.com/</string>
     <!-- Add Coins -->
     <string name="title_activity_add_coins">コインを追加する</string>
-    <string name="password_add_coin">ウォレットの中に %1$s のアカウントを作成しようとしています。</string>
     <string name="adding_coin_confirmation_title">%1$s を追加しますか？</string>
     <string name="adding_coin_working">新しい %1$s のアカウントを追加しています。しばらくお待ちください</string>
     <string name="add_coin_error">%1$s を追加する際にエラーが発生しました: %2$s</string>
@@ -250,7 +231,6 @@
     <string name="status_label">状態</string>
     <string name="date_label">日付</string>
     <string name="transaction_id_label">トランザクションID</string>
-    <string name="view_at_a_blockchain_explorer_link">ブロックエクスプローラで確認する</string>
     <plurals name="status_building">
         <item quantity="other">%d 検証</item>
     </plurals>
@@ -269,8 +249,6 @@
     <string name="previous_addresses_used">使用済みアドレス</string>
     <string name="previous_addresses_unused">未使用アドレス</string>
     <!-- Edit Address Book Entry -->
-    <string name="edit_address_book_entry_dialog_title_add">アドレスを追加する</string>
-    <string name="edit_address_book_entry_dialog_title_edit">アドレスを編集する</string>
     <string name="edit_address_book_entry_dialog_address_label">アドレス</string>
     <string name="edit_address_book_entry_dialog_label_label">ラベル</string>
     <!-- Settings -->
@@ -312,16 +290,12 @@
     <string name="trade_status_received_deposit">%1$s の受け取りを確認しました</string>
     <string name="trade_status_waiting_trade">両替を待っています&#8230;</string>
     <string name="trade_status_complete_detail">両替が完了しました。%1$s を送金しました</string>
-    <string name="trade_status_complete">両替が完了しました</string>
     <string name="trade_status_view_transaction">トランザクションを見る</string>
     <string name="trade_status_email_receipt">レシートメール</string>
     <string name="trade_status_failed_detail">両替に失敗しました: %1$s</string>
     <string name="trade_status_failed">両替に失敗しました</string>
     <string name="trade_status_delete_message">履歴から削除しますか？</string>
-    <string name="trade_status_tx_not_available">トランザクションが見つかりませんでした。数秒後に再度お試しください</string>
     <!-- Email receipt dialog -->
-    <string name="email_receipt_title">レシートメール</string>
-    <string name="email_receipt_message">この両替トランザクションに対するメールを受け取る</string>
     <!-- Exchange History -->
     <string name="title_activity_exchange_history">両替履歴</string>
     <string name="exchange_history_empty">両替は一度も行っていません</string>
@@ -342,19 +316,9 @@
     <string name="tx_message_public">公開メッセージ</string>
     <string name="tx_message_private">非公開メッセージ</string>
     <string name="tx_message_public_add">公開メッセージの追加</string>
-    <string name="tx_message_private_add">非公開メッセージの追加</string>
     <string name="tx_message_public_remove">公開メッセージの削除</string>
-    <string name="tx_message_private_remove">非公開メッセージの削除</string>
-    <string name="tx_message_from">送信元</string>
-    <string name="tx_message_subject">件名</string>
-    <string name="tx_message">メッセージ</string>
     <!-- Account details -->
     <string name="title_activity_account_details">アカウント詳細</string>
-    <string name="account_description_label">説明</string>
     <string name="account_public_key_label">公開鍵</string>
-    <string name="account_extended_public_key_label">拡張公開鍵</string>
     <string name="account_public_key_warning">公開鍵を共有すると、共有した相手があなたの残高やトランザクション履歴を閲覧できるようになります。</string>
-    <string name="account_private_key_label">秘密鍵</string>
-    <string name="account_extended_private_key_label">拡張秘密鍵</string>
-    <string name="account_private_key_warning">秘密鍵があればこのアカウントからコインを送金できます。この鍵は<i>復元フレーズ</i>から計算することができますので、この鍵をバックアップする必要はありません。</string>
 </resources>

@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 	<string name="action_sweep_wallet">Sweep wallet</string>
-	<string name="action_support">Contact support</string>
-	<string name="error_camera">Could not access the device camera</string>
+    <string name="error_camera">Could not access the device camera</string>
 	<string name="terms_of_service_title">Terms of service</string>
 	<string name="edit_account_description_label">Description</string>
 	<string name="button_default">Default</string>
@@ -24,13 +23,11 @@
     <string name="debugging_test_wallet_password_results">Unlocked wallet: %1$s\n\nFingerprints\nInput: %2$s\nKey: %3$s</string>
     <!-- Overview -->
     <string name="title_activity_overview">Overview</string>
-	<string name="support_message">Contact support</string>
     <!-- Sweep wallet -->
     <!-- Sweep paper wallet means to redeem coins from a code usually printed on a paper -->
     <string name="title_activity_sweep_wallet">Sweep paper wallet</string>
     <string name="sweep_wallet_info">You are about to transfer coins from a paper wallet to your verge wallet.\nAfter the transfer is complete, please avoid reusing the paper wallet for security reasons.\n\nSupported formats: WIF, BIP38, Mini private key.</string>
     <string name="sweep_wallet_key_title">Private key</string>
-    <string name="sweep_wallet_key_password">Private key password</string>
     <string name="sweep_wallet_key_hint">type or scan a private key</string>
     <string name="sweep_wallet_bad_format">Could not recognize the private key format.</string>
     <string name="sweep_wallet_bad_coin_type">The private key type does not match the destination account type.</string>
@@ -50,7 +47,6 @@
     <!-- Example: The fee value is per kilobyte.-->
     <string name="tx_fees_description">The fee value is %1$s.</string>
     <string name="tx_fees_per_kilobyte">per kilobyte of transaction data</string>
-    <string name="tx_fees_per_byte">per byte of transaction data</string>
     <string name="tx_fees_per_transaction">per transaction</string>
     <string name="action_scan_qr_code">Scansiona</string>
     <string name="action_share">Condividi</string>
@@ -81,8 +77,6 @@
     <string name="button_delete">Cancella</string>
     <string name="button_add">Aggiungi</string>
     <string name="button_save">Salva</string>
-    <string name="button_remove">Elimina</string>
-    <string name="button_edit">Modifica</string>
     <string name="button_send">Invia</string>
     <string name="button_sign">Firma</string>
     <string name="button_verify">Verifica</string>
@@ -91,7 +85,6 @@
     <string name="button_download">Download</string>
     <string name="button_agree">Consenti</string>
     <string name="button_disagree">Non consenti</string>
-    <string name="button_add_coins">+ Monete</string>
     <string name="scan_qr_code">Scansiona QR code</string>
     <string name="erase_address">Cancella indirizzo</string>
     <string name="copied_to_clipboard">Copiato negli appunti</string>
@@ -100,14 +93,12 @@
     <string name="wallet_title_send">invia</string>
     <string name="wallet_locked_message">Il tuo portafoglio è bloccato</string>
     <string name="unlock_wallet_title">Sblocca il tuo portafoglio</string>
-    <string name="unlocking_wallet_working">Sbloccare il tuo portafoglio&#8230;</string>
     <string name="unlocking_wallet_error_title">Non è stato possibile sbloccare il tuo portafoglio</string>
     <string name="unlocking_wallet_error_detail">Stai usando la giusta password? Per favore assicurati che la tua password è stata inserita correttamente. Se questo errore persiste tenta il ripristino usando la frase di recupero.</string>
     <string name="powered_by">Powered by</string>
     <!-- Nav drawer -->
     <string name="navigation_drawer_open">Apri cassetto di navigazione</string>
     <string name="navigation_drawer_close">Chiudi cassetto di navigazione</string>
-    <string name="navigation_drawer_services">Servizi</string>
     <string name="navigation_drawer_wallet">Portafoglio</string>
     <!-- SendOutput widget -->
     <string name="fee">costo della transazione</string>
@@ -118,7 +109,6 @@
     <string name="welcome_text">Benvenuto nel portafoglio di VERGE TORdroid</string>
     <string name="create_wallet">Crea un nuovo portafoglio</string>
     <string name="restore_wallet">Ripristina un portafoglio</string>
-    <string name="test_wallet">Test portafoglio</string>
     <!-- Intro -->
     <string name="incompatible_device_warning_title">Dispositivo non compatibile</string>
     <string name="incompatible_device_warning_message">Questo dispositivo non può eseguire determinate funzioni a causa di difetti nel software o nell\'hardware.\nCiò potrebbe essere risolto tramite un aggiornamento fatto dal fabbricante del dispositivo.\n\nContattaci se hai delle domande: support@coinomi.com</string>
@@ -139,7 +129,6 @@
     <string name="restore_error">Non è stato possibile verificare la tua frase di recupero. %1$s</string>
     <string name="extra_entropy">Extra entropia</string>
     <!-- Wallet activity -->
-    <string name="test_wallet_message">Questo è un portafoglio di prova, dove puoi inviare e ricevere Bitcoins, Litecoin e Dogecoins di prova.\n\nSe vuoi usare il portafoglio con monete reali per favore vai a:<b>Impostazioni &gt; Ripristina portafoglio &gt; Crea un nuovo portafoglio</b>.</string>
     <string name="wallet_update_title">La nuova versione è disponibile</string>
     <string name="wallet_update_message">Una nuova versione di TORdroid è disponibile, contiene  nuove caratteristiche e correzioni.</string>
     <string name="pay_with">Invia con</string>
@@ -165,13 +154,7 @@
     <!-- Send Activity -->
     <string name="send_coins_activity_title">Invia monete</string>
     <!-- Send fragment -->
-    <string name="send_coins_fragment_receiving_address_label">Paga a</string>
     <string name="send_coins_fragment_receiving_address_tip">inserisci nome o indirizzo</string>
-    <string name="send_coins_fragment_receiving_address_error">Indirizzo Bitcoin non valido!</string>
-    <string name="send_coins_fragment_amount_label">Importo da pagare</string>
-    <string name="send_coins_fragment_button_send">Invia</string>
-    <string name="send_coins_fragment_button_back">Indietro</string>
-    <string name="send_coins_failed_msg">Non riuscito!</string>
     <string name="send_coins_error_network">Impossibile collegarsi al network della moneta</string>
     <string name="send_coins_error_dust">L\'importo che si vuole inviare è troppo piccolo e sarà respinto dal network</string>
     <string name="send_coins_error">Non è stato possibile inviare monete: %1$s</string>
@@ -226,7 +209,6 @@
     <string name="title_activity_about">Riguardo TORdroid</string>
     <string name="app_name_long">Verge TORdroid per Android</string>
     <string name="about_licence">Un progetto open source\nhttps://github.com/TORdroid/coinomi-android\nSource code con licenza GNU General Public License 3</string>
-    <string name="about_credits_nubits">Server infrastructure donated by NuBits - The World\'s First Stable Digital Currency\nhttps://nubits.com/</string>
     <string name="about_credits_translations">Traduzione fornita da:</string>
     <string name="about_credits_bitcoinj">Usa la biblioteca Bitcoinj\nhttp://bitcoinj.github.io/</string>
     <string name="about_credits_electrum">Usa il server software Electrum \nhttps://electrum.org/</string>
@@ -237,7 +219,6 @@
     <string name="about_credits_exchange_rates">Tassi di cambio forniti da\nhttp://www.cryptocoincharts.info/\nhttps://bitcoinaverage.com/</string>
     <!-- Add Coins -->
     <string name="title_activity_add_coins">Aggiungi monete</string>
-    <string name="password_add_coin">Stai per creare un %1$s conto nel tuo portafoglio.</string>
     <string name="adding_coin_confirmation_title">Aggiungi %1$s?</string>
     <string name="adding_coin_working">Per favore attendi sta per essere creato un nuovo %1$s conto</string>
     <string name="add_coin_error">Errore nell\'aggiunta %1$s: %2$s</string>
@@ -252,7 +233,6 @@
     <string name="status_label">stato</string>
     <string name="date_label">data</string>
     <string name="transaction_id_label">identificativo transazione</string>
-    <string name="view_at_a_blockchain_explorer_link">Vedi in blockchain explorer</string>
     <plurals name="status_building">
         <item quantity="one">%d conferma</item>
         <item quantity="other">%d conferme</item>
@@ -272,8 +252,6 @@
     <string name="previous_addresses_used">Indirizzo utilizzato</string>
     <string name="previous_addresses_unused">Indirizzo inutilizzato</string>
     <!-- Edit Address Book Entry -->
-    <string name="edit_address_book_entry_dialog_title_add">Aggiungi indirizzo</string>
-    <string name="edit_address_book_entry_dialog_title_edit">Modifica indirizzo</string>
     <string name="edit_address_book_entry_dialog_address_label">Indirizzo</string>
     <string name="edit_address_book_entry_dialog_label_label">Nome</string>
     <!-- Settings -->
@@ -315,16 +293,12 @@
     <string name="trade_status_received_deposit">Ricevuto un deposito di %1$s</string>
     <string name="trade_status_waiting_trade">Attesa per lo scambio&#8230;</string>
     <string name="trade_status_complete_detail">Scambio completato, inviato un totale di %1$s</string>
-    <string name="trade_status_complete">Scambio completo</string>
     <string name="trade_status_view_transaction">Guarda transazione</string>
     <string name="trade_status_email_receipt">Ricevuta email</string>
     <string name="trade_status_failed_detail">Scambio fallito: %1$s</string>
     <string name="trade_status_failed">Scambio fallito</string>
     <string name="trade_status_delete_message">Rimuovere dalla storia?</string>
-    <string name="trade_status_tx_not_available">Transazione non trovata, riprova tra pochi secondi</string>
     <!-- Email receipt dialog -->
-    <string name="email_receipt_title">Ricevuta email</string>
-    <string name="email_receipt_message">"Ricevi una email per questa transazione "</string>
     <!-- Exchange History -->
     <string name="title_activity_exchange_history">Storico scambi</string>
     <string name="exchange_history_empty">Non sono avvenuti scambi</string>
@@ -345,19 +319,9 @@
     <string name="tx_message_public">messaggio pubblico</string>
     <string name="tx_message_private">messaggio privato</string>
     <string name="tx_message_public_add">Aggiungi messaggio pubblico</string>
-    <string name="tx_message_private_add">Aggiungi messaggio privato</string>
     <string name="tx_message_public_remove">Rimuovi messaggio pubblico</string>
-    <string name="tx_message_private_remove">Rimuovi messaggio privato</string>
-    <string name="tx_message_from">da</string>
-    <string name="tx_message_subject">soggetto</string>
-    <string name="tx_message">messaggio</string>
     <!-- Account details -->
     <string name="title_activity_account_details">Dettagli conto</string>
-    <string name="account_description_label">descrizione</string>
     <string name="account_public_key_label">chiave pubblica</string>
-    <string name="account_extended_public_key_label">chiave pubblica estesa</string>
     <string name="account_public_key_warning">"Condividere la tua chiave pubblica permetterà che nessuno veda il tuo saldo e lo storico delle transazioni. "</string>
-    <string name="account_private_key_label">chiave privata</string>
-    <string name="account_extended_private_key_label">chiave privata estesa</string>
-    <string name="account_private_key_warning">La chiave privata ti permette di inviare monete da questo conto. Non è necessario salvare questa chiave in quanto è derivata dalla tua <i>frase di recupero</i></string>
 </resources>

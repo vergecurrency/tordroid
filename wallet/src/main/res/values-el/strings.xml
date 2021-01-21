@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 	<string name="action_sweep_wallet">Sweep wallet</string>
-	<string name="action_support">Contact support</string>
-	<string name="error_camera">Could not access the device camera</string>
+    <string name="error_camera">Could not access the device camera</string>
 	<string name="terms_of_service_title">Terms of service</string>
 	<string name="edit_account_description_label">Description</string>
 	<string name="button_default">Default</string>
@@ -23,13 +22,11 @@
     <string name="debugging_test_wallet_password_results">Unlocked wallet: %1$s\n\nFingerprints\nInput: %2$s\nKey: %3$s</string>
     <!-- Overview -->
     <string name="title_activity_overview">Overview</string>
-	<string name="support_message">Contact support</string>
     <!-- Sweep wallet -->
     <!-- Sweep paper wallet means to redeem coins from a code usually printed on a paper -->
     <string name="title_activity_sweep_wallet">Sweep paper wallet</string>
     <string name="sweep_wallet_info">You are about to transfer coins from a paper wallet to your verge wallet.\nAfter the transfer is complete, please avoid reusing the paper wallet for security reasons.\n\nSupported formats: WIF, BIP38, Mini private key.</string>
     <string name="sweep_wallet_key_title">Private key</string>
-    <string name="sweep_wallet_key_password">Private key password</string>
     <string name="sweep_wallet_key_hint">type or scan a private key</string>
     <string name="sweep_wallet_bad_format">Could not recognize the private key format.</string>
     <string name="sweep_wallet_bad_coin_type">The private key type does not match the destination account type.</string>
@@ -49,7 +46,6 @@
     <!-- Example: The fee value is per kilobyte.-->
     <string name="tx_fees_description">The fee value is %1$s.</string>
     <string name="tx_fees_per_kilobyte">per kilobyte of transaction data</string>
-    <string name="tx_fees_per_byte">per byte of transaction data</string>
     <string name="tx_fees_per_transaction">per transaction</string>
     <string name="action_scan_qr_code">Σάρωση</string>
     <string name="action_share">Διαμοιρασμός</string>
@@ -80,8 +76,6 @@
     <string name="button_delete">Διαγραφή</string>
     <string name="button_add">Προσθήκη</string>
     <string name="button_save">Αποθήκευση</string>
-    <string name="button_remove">Απομάκρυνση</string>
-    <string name="button_edit">Επεξεργασία</string>
     <string name="button_send">Αποστολή</string>
     <string name="button_sign">Υπογραφή</string>
     <string name="button_verify">Επαλήθευση</string>
@@ -90,7 +84,6 @@
     <string name="button_download">Κατέβασμα</string>
     <string name="button_agree">Συμφωνώ</string>
     <string name="button_disagree">Διαφωνώ</string>
-    <string name="button_add_coins">+ Νομίσματα</string>
     <string name="scan_qr_code">Σάρωση QR code</string>
     <string name="erase_address">Διαγραφή διεύθυνσης</string>
     <string name="copied_to_clipboard">Αντιγράφηκε στη μνήμη</string>
@@ -99,14 +92,12 @@
     <string name="wallet_title_send">αποστολή</string>
     <string name="wallet_locked_message">Το πορτοφόλι σας είναι κλειδωμένο</string>
     <string name="unlock_wallet_title">Ξεκλειδώστε το πορτοφόλι σας</string>
-    <string name="unlocking_wallet_working">Το πορτοφόλι σας ξεκλειδώνεται&#8230;</string>
     <string name="unlocking_wallet_error_title">Το ξεκλείδωμα του πορτοφολιού σας απέτυχε</string>
     <string name="unlocking_wallet_error_detail">Χρησιμοποιείτε το σωστό κωδικό; Παρακαλώ σιγουρευτείτε ότι έχετε εισάγει το σωστό κωδικό. Αν το σφάλμα επιμένει προσπαθήστε να ανακτήσετε το πορτοφόλι σας.</string>
     <string name="powered_by">Παρέχεται από</string>
     <!-- Nav drawer -->
     <string name="navigation_drawer_open">Άνοιγμα πίνακα πλοήγησης</string>
     <string name="navigation_drawer_close">Κλείσιμο πίνακα πλοήγησης</string>
-    <string name="navigation_drawer_services">Υπηρεσίες</string>
     <string name="navigation_drawer_wallet">Πορτοφόλι</string>
     <!-- SendOutput widget -->
     <string name="fee">έξοδα συναλλαγής</string>
@@ -117,7 +108,6 @@
     <string name="welcome_text">Καλώς ήλθατε στο TORdroid</string>
     <string name="create_wallet">Νέο πορτοφόλι</string>
     <string name="restore_wallet">Ανάκτηση πορτοφολιού</string>
-    <string name="test_wallet">Δοκιμαστικό πορτοφόλι</string>
     <!-- Intro -->
     <string name="incompatible_device_warning_title">Μη συμβατή συσκευή</string>
     <string name="incompatible_device_warning_message">Η συσκευή σας δεν μπορεί να εκτελέσει κάποιες κρυπτογραφικές μεθόδους λόγω ελαττωμάτων στο λογισμικό ή την ίδια τη συσκευή.\nΤο πρόβλημα θα μπόρεσε να λυθεί ύστερα από την ενημέρωση λογισμικού από τον κατασκευαστή της συσκευής.\n\nΠαρακαλώ επικοινωνήστε μαζί μας αν έχετε απορίες: support@coinomi.com</string>
@@ -138,7 +128,6 @@
     <string name="restore_error">Η φράση ανάκτησής σας δεν μπόρεσε να επαληθευτεί. %1$s</string>
     <string name="extra_entropy">Ενισχυμένη εντροπία</string>
     <!-- Wallet activity -->
-    <string name="test_wallet_message">Το παρόν είναι ένα δοκιμαστικό πορτοφόλι, όπου μπορείτε να στείλετε και παραλάβετε δοκιμαστικά νομίσματα Bitcoin, Litecoin, Dogecoin κ.ά.\n\nΑν επιθυμείτε να χρησιμοποιήσετε το πορτοφόλι με αληθινά χρήματα παρακαλώ επιλέξτε: <b>Ρυθμίσεις &gt; Ανάκτηση πορτοφολιού &gt; Δημιουργία νέου πορτοφολιού</b>.</string>
     <string name="wallet_update_title">Νέα έκδοση διαθέσιμη</string>
     <string name="wallet_update_message">Μια νέα έκδοση του TORdroid η οποία εμπεριέχει νέες δυνατότητες και τυχόν διορθώσεις αδυναμιών είναι διαθέσιμη.</string>
     <string name="pay_with">Αποστολή με</string>
@@ -165,13 +154,7 @@
     <!-- Send Activity -->
     <string name="send_coins_activity_title">Αποστολή νομισμάτων</string>
     <!-- Send fragment -->
-    <string name="send_coins_fragment_receiving_address_label">Πληρωμή σε</string>
     <string name="send_coins_fragment_receiving_address_tip">εισάγετε όνομα ή διεύθυνση</string>
-    <string name="send_coins_fragment_receiving_address_error">Μη έγκυρη διεύθυνση!</string>
-    <string name="send_coins_fragment_amount_label">Ποσόν πληρωμής</string>
-    <string name="send_coins_fragment_button_send">Αποστολή</string>
-    <string name="send_coins_fragment_button_back">Επιστροφή</string>
-    <string name="send_coins_failed_msg">Αποτυχία!</string>
     <string name="send_coins_error_network">Αποτυχία σύνδεσης στο νομισματικό δίκτυο</string>
     <string name="send_coins_error_dust">Το ποσόν που προσπαθείτε να στείλετε είναι πολύ μικρό και θα απορριφθεί από το νομισματικό δίκτυο</string>
     <string name="send_coins_error">Δεν μπόρεσαν να αποσταλούν τα νομίσματα: %1$s</string>
@@ -226,7 +209,6 @@
     <string name="title_activity_about">Σχετικά με το TORdroid</string>
     <string name="app_name_long">TORdroid για το λειτουργικό Android</string>
     <string name="about_licence">Ένα πρόγραμμα ανοιχτού λογισμικού\nhttps://github.com/TORdroid/coinomi-android\nΟ πηγαίος κώδικας διατίθεται βάσει της άδειας GNU General Public License 3</string>
-    <string name="about_credits_nubits">Οι κεντρικοί εξυπηρετητές είναι μια προσφορά της NuBits\nhttps://nubits.com/</string>
     <string name="about_credits_translations">Μεταφράσεις από τους:</string>
     <string name="about_credits_bitcoinj">Χρησιμοποιείται η βιβλιοθήκη Bitcoinj\nhttp://bitcoinj.github.io/</string>
     <string name="about_credits_electrum">Χρησιμοποιείται λογισμικό του εξυπηρετητή Electrum\nhttps://electrum.org/</string>
@@ -237,7 +219,6 @@
     <string name="about_credits_exchange_rates">Πάροχοι νομισματικών ισοτιμιών\nhttp://www.cryptocoincharts.info/\nhttps://bitcoinaverage.com/</string>
     <!-- Add Coins -->
     <string name="title_activity_add_coins">Προσθήκη νομισμάτων</string>
-    <string name="password_add_coin">Είστε ένα βήμα μακριά από τη δημιουργία ενός %1$s λογαριασμού στο πορτοφόλι σας.</string>
     <string name="adding_coin_confirmation_title">Να προστεθεί το %1$s;</string>
     <string name="adding_coin_working">Παρακαλώ περιμένετε ενόσω δημιουργείται ένας νέος %1$s λογαριασμός</string>
     <string name="add_coin_error">Σφάλμα προθήκης του %1$s: %2$s</string>
@@ -252,7 +233,6 @@
     <string name="status_label">κατάσταση</string>
     <string name="date_label">ημερομηνία</string>
     <string name="transaction_id_label">κωδικός συναλλαγής</string>
-    <string name="view_at_a_blockchain_explorer_link">Προβολή σε blockchain explorer</string>
     <plurals name="status_building">
         <item quantity="one">%d επιβεβαίωση</item>
         <item quantity="other">%d επιβεβαιώσεις</item>
@@ -272,8 +252,6 @@
     <string name="previous_addresses_used">Χρησιμοποιημένη διευθύνση</string>
     <string name="previous_addresses_unused">Αχρησιμοποίητη διευθύνση</string>
     <!-- Edit Address Book Entry -->
-    <string name="edit_address_book_entry_dialog_title_add">Προσθήκη διεύθυνσης</string>
-    <string name="edit_address_book_entry_dialog_title_edit">Επεξεργασία διεύθυνσης</string>
     <string name="edit_address_book_entry_dialog_address_label">Διεύθυνση</string>
     <string name="edit_address_book_entry_dialog_label_label">Περιγραφή</string>
     <!-- Settings -->
@@ -315,16 +293,12 @@
     <string name="trade_status_received_deposit">Παρελήφθη η κατάθεση των %1$s</string>
     <string name="trade_status_waiting_trade">Αναμονή απάντησης από το ανταλλακτήριο&#8230;</string>
     <string name="trade_status_complete_detail">Η μετατροπή ολοκληρώθηκε, απεστάλησαν %1$s</string>
-    <string name="trade_status_complete">Η μετατροπή των νομισμάτων ολοκληρώθηκε</string>
     <string name="trade_status_view_transaction">Προβολή συναλλαγής</string>
     <string name="trade_status_email_receipt">Αποστολή απόδειξης με ηλεκτρονικό ταχυδρομείο</string>
     <string name="trade_status_failed_detail">Η μετατροπή απέτυχε: %1$s</string>
     <string name="trade_status_failed">Η μετατροπή απέτυχε</string>
     <string name="trade_status_delete_message">Διαγραφή από το ιστορικό;</string>
-    <string name="trade_status_tx_not_available">Η συναλλαγή δεν βρέθηκε, δοκιμάστε ξανά σε λίγα δευτερόλεπτα</string>
     <!-- Email receipt dialog -->
-    <string name="email_receipt_title">Αποστολή απόδειξης</string>
-    <string name="email_receipt_message">Αποστολή ηλεκτρονικής απόδειξης για αυτήν τη συναλλαγή μετατροπής νομισμάτων</string>
     <!-- Exchange History -->
     <string name="title_activity_exchange_history">Ιστορικό συναλλαγών</string>
     <string name="exchange_history_empty">Δεν έχουν πραγματοποιηθεί μετατροπές νομισμάτων</string>
@@ -345,19 +319,9 @@
     <string name="tx_message_public">δημόσιο μήνυμα</string>
     <string name="tx_message_private">προσωπικό μήνυμα</string>
     <string name="tx_message_public_add">Προσθήκη δημοσίου μηνύματος</string>
-    <string name="tx_message_private_add">Προσθήκη προσωπικού μηνύματος</string>
     <string name="tx_message_public_remove">Διαγραφή δημοσίου μηνύματος</string>
-    <string name="tx_message_private_remove">Διαγραφή προσωπικού μηνύματος</string>
-    <string name="tx_message_from">από</string>
-    <string name="tx_message_subject">θέμα</string>
-    <string name="tx_message">μήνυμα</string>
     <!-- Account details -->
     <string name="title_activity_account_details">Λεπτομέρειες λογαριασμού</string>
-    <string name="account_description_label">περιγραφή</string>
     <string name="account_public_key_label">δημόσιο κλειδί</string>
-    <string name="account_extended_public_key_label">επεκταμένο δημόσιο κλειδί</string>
     <string name="account_public_key_warning">Μοιράζοντας το δημόσιο κλειδί σας επιτρέπετε στον καθένα να δει το υπόλοιπο του λογαριασμού σας όπως και το ιστορικό των συναλλαγών σας</string>
-    <string name="account_private_key_label">ιδιωτικό κλειδί</string>
-    <string name="account_extended_private_key_label">επεκταμένο ιδιωτικό κλειδί</string>
-    <string name="account_private_key_warning">Το ιδιωτικό κλειδί επιτρέπει την αποστολή νομισμάτων από αυτόν τον λογαριασμό. Δεν χρειάζεται να αποθηκεύσετε αυτό το κλειδί, αφού προκύπτει από την <i>φράση ανάκτησης</i> του πορτοφολιού σας</string>
 </resources>

@@ -51,15 +51,7 @@
         <item name="android:textColorLink">@color/white</item>
     </style>
 
-    <style name="NormalBoldText" parent="NormalText">
-        <item name="android:textStyle">bold</item>
-    </style>
-
     <style name="SecondaryText" parent="@android:style/TextAppearance">
-        <item name="android:textColor">@color/white</item>
-    </style>
-
-    <style name="HintText" parent="@android:style/TextAppearance">
         <item name="android:textColor">@color/white</item>
     </style>
 
@@ -113,10 +105,7 @@
     <style name="AmountSmall" parent="Amount">
         <item name="android:textSize">@dimen/amount_text_size_small</item>
     </style>
-    <style name="AmountPending" parent="Amount">
-        <item name="android:textSize">@dimen/amount_pending_text_size</item>
-        <item name="android:textColor">@color/gray_26_hint_text</item>
-    </style>
+
     <style name="AmountSymbol" parent="SecondaryText">
         <item name="android:singleLine">true</item>
     </style>
@@ -175,11 +164,8 @@
     <style name="ExchangeRowLabel" parent="NormalText">
         <item name="android:textSize">@dimen/exchange_row_text_size_label</item>
     </style>
-    <style name="ExchangeRowAmount" parent="Amount">
-        <item name="android:textSize">@dimen/exchange_row_text_size_amount</item>
-    </style>
-	
-	<style name="PincodeEditText" parent="Base.Widget.AppCompat.EditText">
+
+    <style name="PincodeEditText" parent="Base.Widget.AppCompat.EditText">
         <item name="android:inputType">numberPassword</item>
         <item name="android:maxLength">1</item>
         <item name="android:singleLine">true</item>

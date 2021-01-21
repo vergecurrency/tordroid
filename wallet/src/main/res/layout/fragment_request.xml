@@ -79,7 +79,6 @@
                     android:textColor="@color/gray_54_sec_text_icons" />
 
                 <TextView
-                    android:id="@+id/request_public_key"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/request_public_key_label"

@@ -49,7 +49,6 @@
             android:paddingTop="@dimen/activity_vertical_margin">
 
             <LinearLayout
-                android:id="@+id/coins"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:baselineAligned="false"
@@ -91,7 +90,6 @@
                         android:layout_height="wrap_content" />
 
                     <TextView
-                        android:id="@+id/warn_no_account_found"
                         style="@style/WarningText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -101,7 +99,6 @@
 
 
             <TextView
-                android:id="@+id/amount_to_send_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/activity_vertical_margin"
@@ -109,7 +106,6 @@
                 android:textColor="@color/gray_54_sec_text_icons" />
 
             <LinearLayout
-                android:id="@+id/amounts"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:baselineAligned="false"
