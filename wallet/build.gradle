@@ -22,8 +22,8 @@ android {
         targetSdkVersion 30
         compileSdkVersion 30
         ndkVersion "21.3.6528147" //shouldnt matter but gradle complains
-        versionCode 020020
-        versionName "v2.02"
+        versionCode 020030
+        versionName "v2.03"
         ndk {
             abiFilters  "armeabi-v7a", "arm64-v8a"
         }
