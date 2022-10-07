@@ -17,7 +17,7 @@ dependencies {
     compile 'com.google.code.findbugs:jsr305:3.0.2' //latest as of 8/2020
     compile 'com.madgag.spongycastle:core:1.58.0.0' //latest as of 8/2020
     compile 'com.lambdaworks:scrypt:1.4.0' //latest as of 8/2020
-    compile 'com.google.protobuf:protobuf-java:3.14.0' //latest as of 12/2020
+    compile 'com.google.protobuf:protobuf-java:3.21.7' //latest as of 10/2022
     compile 'org.slf4j:slf4j-jdk14:2.0.3' //latest release ver as of 10/2022
     compile 'org.json:json:20220924' //latest as of 10/2022
     compile 'com.squareup.okhttp:okhttp:2.7.5' //latest as of 8/2020
