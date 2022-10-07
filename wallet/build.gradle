@@ -71,13 +71,13 @@ android {
         implementation 'com.android.support:support-v4:28.0.0'
         implementation 'com.android.support:appcompat-v7:28.0.0'
         implementation 'com.google.guava:guava:18.0' //TODO ToStringHelper update for 19.0+
-        implementation 'com.google.code.findbugs:jsr305:3.0.2' // most recent as of 12/2020
-        implementation 'com.madgag.spongycastle:core:1.58.0.0' // most recent as of 12/2020
+        implementation 'com.google.code.findbugs:jsr305:3.0.2' // most recent as of 10/2022
+        implementation 'com.madgag.spongycastle:core:1.58.0.0' // most recent as of 10/2022
         implementation 'com.google.protobuf:protobuf-java:3.21.7' //latest as of 10/2022
-        implementation 'com.google.zxing:core:3.4.1' //most recent as of 12/2020
-        implementation 'ch.acra:acra:4.11.1' //most recent as of 12/2020
+        implementation 'com.google.zxing:core:3.5.0' //most recent as of 10/2022
+        implementation 'ch.acra:acra:4.11.1' //most recent as of 10/2022
         implementation 'com.android.support:support-v4-preferencefragment:1.0.0@aar'
-        implementation 'com.jakewharton:butterknife:8.8.1'
+        implementation 'com.jakewharton:butterknife:8.8.1' // ButterKnife.findById() is deprecated, needs findbyviewid() updates
         annotationProcessor 'com.jakewharton:butterknife-compiler:9.0.0'
     }
 
