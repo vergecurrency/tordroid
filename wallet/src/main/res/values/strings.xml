@@ -105,7 +105,8 @@
     <string name="ambiguous_address_message">Please select the correct coin type</string>
     <!-- Balance fragment -->
     <string name="wallet_transactions_coinbase">Mined</string>
-    <string name="history_empty">No coins received so far!\n\nYou can get some through an exchange, or trading/selling goods or services.</string>
+    <string name="history_empty">No Verge (XVG) received yet!\n\nSwipe down to refresh the balance.\n\nEnsure Orbot is running or restart it.\n\n\If you do not own any Verge (XVG), you can get some through an exchange, or trading/selling goods or services.</string>
+<!--    <string name="history_empty">No coins received so far!\n\nYou can get some through an exchange, or trading/selling goods or services.</string>-->
     <string name="sent_to">sent to</string>
     <string name="received_with">received with</string>
     <string name="received_from">received from</string>
