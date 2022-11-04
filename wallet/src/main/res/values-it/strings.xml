@@ -324,4 +324,15 @@
     <string name="title_activity_account_details">Dettagli conto</string>
     <string name="account_public_key_label">chiave pubblica</string>
     <string name="account_public_key_warning">"Condividere la tua chiave pubblica permetterà che nessuno veda il tuo saldo e lo storico delle transazioni. "</string>
+    <string name="about_credits_github">Questo progetto può essere trovato su https://github.com/vergecurrency/tordroid</string>
+    <string name="use_pincode_only">Usa solo codice PIN</string>
+    <string name="use_fingerprint_pincode">Usa impronta digitale + codice PIN</string>
+    <string name="app_lock_description">Blocco app ti consente di proteggere il tuo portafoglio utilizzando il codice PIN o l\'impronta digitale (se presente sul tuo telefono). Puoi aggiungere il blocco dell\'app in un secondo momento nel menu Impostazioni</string>
+    <string name="error_no_fingerprints">Per utilizzare il blocco dell\'app con impronta digitale, aggiungi almeno un\'impronta digitale alle impostazioni di sicurezza di Android</string>
+    <string name="add_fingerprint_label">Tocca il sensore delle impronte digitali per aggiungere il blocco dell\'app per le impronte digitali</string>
+    <string name="enter_your_pincode">Inserisci il tuo codice PIN</string>
+    <string name="finger_not_recognized">Il dito non viene riconosciuto</string>
+    <string name="wrong_pincode">Codice PIN errato</string>
+    <string name="touch_fingerprint_label">Scansiona il dito per sbloccare l\'app</string>
+    <string name="remove_app_lock">Rimuovi il blocco dell\'app</string>
 </resources>

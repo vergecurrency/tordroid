@@ -324,4 +324,15 @@
     <string name="title_activity_account_details">Detalles de su cuenta</string>
     <string name="account_public_key_label">clave pública</string>
     <string name="account_public_key_warning">Compartir su clave pública permitirá que alguien pueda ver su saldo e historial de transacciones.</string>
+    <string name="about_credits_github">Este proyecto se puede encontrar en https://github.com/vergecurrency/tordroid</string>
+    <string name="use_pincode_only">Usar solo código PIN</string>
+    <string name="use_fingerprint_pincode">Usar huella dactilar + código PIN</string>
+    <string name="app_lock_description">El bloqueo de aplicaciones le permite asegurar su billetera usando un código PIN o una huella digital (si está presente en su teléfono). Puede agregar bloqueo de aplicaciones más tarde en el menú Configuración</string>
+    <string name="error_no_fingerprints">Para usar el bloqueo de la aplicación de huellas digitales, agregue al menos una huella digital en la configuración de seguridad de Android</string>
+    <string name="add_fingerprint_label">Toque su sensor de huellas dactilares para agregar el bloqueo de la aplicación de huellas dactilares</string>
+    <string name="enter_your_pincode">Ingrese su código PIN</string>
+    <string name="finger_not_recognized">No se reconoce el dedo</string>
+    <string name="wrong_pincode">Código PIN incorrecto</string>
+    <string name="touch_fingerprint_label">Escanea tu dedo para desbloquear la aplicación</string>
+    <string name="remove_app_lock">Quitar el bloqueo de la aplicación</string>
 </resources>
