@@ -14,6 +14,7 @@ import android.support.v4.content.Loader;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -57,7 +58,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.OnItemClick;
-import butterknife.Unbinder;
 
 /**
  * Use the {@link BalanceFragment#newInstance} factory method to
@@ -90,12 +90,14 @@ public class BalanceFragment extends WalletFragment implements LoaderCallbacks<L
     private final MyHandler handler = new MyHandler(this);
     private final ContentObserver addressBookObserver = new AddressBookObserver(handler);
 
-            @BindView(R.id.transaction_rows) ListView transactionRows;
+    @BindView(R.id.transaction_rows) ListView transactionRows;
     @BindView(R.id.swipeContainer) SwipeRefreshLayout swipeContainer;
     @BindView(R.id.history_empty) View emptyPocketMessage;
+    @BindView(R.id.get_verge) View getVergeMessage;
     @BindView(R.id.account_balance) Amount accountBalance;
     @BindView(R.id.account_exchanged_balance) Amount accountExchangedBalance;
     @BindView(R.id.connection_label) TextView connectionLabel;
+    @BindView(R.id.connected_dot) ImageView connectedDot;
     private TransactionsListAdapter adapter;
     private Listener listener;
     private ContentResolver resolver;
@@ -152,6 +154,7 @@ public class BalanceFragment extends WalletFragment implements LoaderCallbacks<L
         // Hide empty message if have some transaction history
         if (pocket.getTransactions().size() > 0) {
             emptyPocketMessage.setVisibility(View.GONE);
+            getVergeMessage.setVisibility(View.GONE);
         }
 
         setupAdapter(inflater);
@@ -259,6 +262,7 @@ public class BalanceFragment extends WalletFragment implements LoaderCallbacks<L
                     @Override
                     public void run() {
                         emptyPocketMessage.setVisibility(View.GONE);
+                        getVergeMessage.setVisibility(View.GONE);
                     }
                 });
             }
@@ -280,13 +284,18 @@ public class BalanceFragment extends WalletFragment implements LoaderCallbacks<L
     }
 
     private void setConnectivityStatus(final WalletConnectivityStatus connectivity) {
+        log.info(String.valueOf(connectivity));
         switch (connectivity) {
             case CONNECTED:
+                log.info("HIT CONNECTED****************");
+                connectedDot.setVisibility(View.VISIBLE);
             case LOADING:
                 connectionLabel.setVisibility(View.GONE);
                 break;
             case DISCONNECTED:
+                log.info("HIT DISCONNECTED****************");
                 connectionLabel.setVisibility(View.VISIBLE);
+                connectedDot.setVisibility(View.GONE);
                 break;
             default:
                 throw new RuntimeException("Unknown connectivity status: " + connectivity);
