@@ -112,6 +112,7 @@
     <string name="received_from">received from</string>
     <string name="get_tx_info_error">Could not get transaction information</string>
     <string name="disconnected_label">No connection</string>
+    <string name="connecting_label" translatable="false">Establishing Connection...</string>
     <string name="no_wallet_pocket_selected">No wallet account selected</string>
     <string name="get_tx_broadcast_error">Transaction broadcast error</string>
     <!-- Receive fragment -->
@@ -239,7 +240,7 @@
     <string name="exchange_rates_load_error">Could not load exchange rates</string>
     <string name="exchange_rates_empty_search">Could not find exchange rate</string>
     <!-- Select Coins -->
-    <string name="select_coins">If you are ready to open your wallet now, click "Verge" below</string>
+    <string name="select_coins">If you are ready to open your wallet now, click "Verge" below, then click FINISH</string>
     <!-- Previous Addresses -->
     <string name="title_activity_previous_addresses">My previous addresses</string>
     <string name="previous_addresses_used">Used address</string>
@@ -255,7 +256,7 @@
     <string name="edit_account_delete_description">This removes the account from the wallet but it is still possible to re-add it and recover the coins.</string>
     <!-- Settings -->
     <string name="title_activity_settings">Settings</string>
-    <string name="pref_title_restore_wallet">Restore wallet</string>
+    <string name="pref_title_restore_wallet">Restore or Create New Wallet</string>
     <string name="pref_title_exchange_rates">Exchange rates</string>
     <string name="pref_title_manual_receiving_addresses">Static receiving addresses</string>
     <string name="pref_summary_manual_receiving_addresses">Do not automatically create a new address for every transaction.</string>
@@ -426,5 +427,7 @@ This disclaimer was amended for the last time on January 1st, 2016.</string>
     <string name="wrong_pincode">Wrong pincode</string>
 	<string name="touch_fingerprint_label">Scan your finger to unlock app</string>
     <string name="remove_app_lock">Remove app lock</string>
+    <string name="https_vergecurrency_com_get_verge" translatable="false">https://vergecurrency.com/get-verge/</string>
+    <string name="network_connected" translatable="false">Network Connected</string>
 
 </resources>

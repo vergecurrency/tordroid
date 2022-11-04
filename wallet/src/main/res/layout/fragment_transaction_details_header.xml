@@ -12,11 +12,11 @@
 
     <TextView
         android:id="@+id/tx_date_label"
+        style="@style/SecondaryText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/SecondaryText"
         android:text="@string/date_label"
-        android:textColor="@color/gray_54_sec_text_icons" />
+        android:textColor="@color/actionbar_fg" />
 
     <TextView
         android:id="@+id/tx_date"
