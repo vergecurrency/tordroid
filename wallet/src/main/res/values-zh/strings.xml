@@ -321,4 +321,15 @@
     <string name="title_activity_account_details">帐户详细信息</string>
     <string name="account_public_key_label">公钥</string>
     <string name="account_public_key_warning">分享公钥可以让其他人查看你的帐户余额及交易历史</string>
+    <string name="about_credits_github">這個項目可以在 https://github.com/vergecurrency/tordroid</string>
+    <string name="use_pincode_only">仅使用密码</string>
+    <string name="use_fingerprint_pincode">使用指纹+密码</string>
+    <string name="app_lock_description">应用锁可让您使用 PIN 码或指纹（如果手机上有）保护您的钱包。您可以稍后在“设置”菜单中添加应用锁</string>
+    <string name="error_no_fingerprints">要使用指纹应用锁，请在 Android 安全设置中添加至少一个指纹</string>
+    <string name="add_fingerprint_label">触摸您的指纹传感器以添加指纹应用锁</string>
+    <string name="enter_your_pincode">输入您的密码</string>
+    <string name="finger_not_recognized">手指无法识别</string>
+    <string name="wrong_pincode">错误的密码</string>
+    <string name="touch_fingerprint_label">扫描手指解锁应用</string>
+    <string name="remove_app_lock">移除应用锁</string>
 </resources>

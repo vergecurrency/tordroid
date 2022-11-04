@@ -321,4 +321,15 @@
     <string name="title_activity_account_details">アカウント詳細</string>
     <string name="account_public_key_label">公開鍵</string>
     <string name="account_public_key_warning">公開鍵を共有すると、共有した相手があなたの残高やトランザクション履歴を閲覧できるようになります。</string>
+    <string name="about_credits_github">このプロジェクトは https://github.com/vergecurrency/tordroid</string>
+    <string name="use_pincode_only">PIN コードのみを使用する</string>
+    <string name="use_fingerprint_pincode">指紋 + 暗証番号を使用</string>
+    <string name="app_lock_description">アプリロックを使用すると、PIN コードまたは指紋 (携帯電話にある場合) を使用してウォレットを保護できます。後で [設定] メニューでアプリのロックを追加できます</string>
+    <string name="error_no_fingerprints">指紋アプリ ロックを使用するには、Android のセキュリティ設定で少なくとも 1 つの指紋を追加してください</string>
+    <string name="add_fingerprint_label">指紋センサーをタップして、指紋アプリ ロックを追加します</string>
+    <string name="enter_your_pincode">暗証番号を入力してください</string>
+    <string name="finger_not_recognized">指が認識されない</string>
+    <string name="wrong_pincode">間違った暗証番号</string>
+    <string name="touch_fingerprint_label">指をスキャンしてアプリのロックを解除</string>
+    <string name="remove_app_lock">アプリロックを解除</string>
 </resources>

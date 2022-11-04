@@ -324,4 +324,15 @@
     <string name="title_activity_account_details">Λεπτομέρειες λογαριασμού</string>
     <string name="account_public_key_label">δημόσιο κλειδί</string>
     <string name="account_public_key_warning">Μοιράζοντας το δημόσιο κλειδί σας επιτρέπετε στον καθένα να δει το υπόλοιπο του λογαριασμού σας όπως και το ιστορικό των συναλλαγών σας</string>
+    <string name="about_credits_github">Μπορείτε να βρείτε αυτό το έργο στη διεύθυνση https://github.com/vergecurrency/tordroid</string>
+    <string name="use_pincode_only">Χρησιμοποιήστε μόνο κωδικό PIN</string>
+    <string name="use_fingerprint_pincode">Χρησιμοποιήστε δακτυλικό αποτύπωμα + κωδικό PIN</string>
+    <string name="app_lock_description">Το κλείδωμα εφαρμογής σάς επιτρέπει να ασφαλίζετε το πορτοφόλι σας χρησιμοποιώντας κωδικό PIN ή δακτυλικό αποτύπωμα (αν υπάρχει στο τηλέφωνό σας). Μπορείτε να προσθέσετε κλείδωμα εφαρμογής αργότερα στο μενού Ρυθμίσεις</string>
+    <string name="error_no_fingerprints">Για να χρησιμοποιήσετε το κλείδωμα εφαρμογής δακτυλικών αποτυπωμάτων, προσθέστε τουλάχιστον ένα δακτυλικό αποτύπωμα στις ρυθμίσεις ασφαλείας του Android</string>
+    <string name="add_fingerprint_label">Αγγίξτε τον αισθητήρα δακτυλικών αποτυπωμάτων σας για να προσθέσετε κλείδωμα εφαρμογής δακτυλικών αποτυπωμάτων</string>
+    <string name="enter_your_pincode">Εισαγάγετε τον κωδικό σας PIN</string>
+    <string name="finger_not_recognized">Το δάχτυλο δεν αναγνωρίζεται</string>
+    <string name="wrong_pincode">Λάθος κωδικός PIN</string>
+    <string name="touch_fingerprint_label">Σαρώστε το δάχτυλό σας για να ξεκλειδώσετε την εφαρμογή</string>
+    <string name="remove_app_lock">Αφαιρέστε το κλείδωμα εφαρμογής</string>
 </resources>

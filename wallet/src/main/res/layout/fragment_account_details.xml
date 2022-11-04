@@ -1,4 +1,5 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -65,11 +66,19 @@
                         android:id="@+id/qr_code_public_key"
                         android:layout_width="@dimen/qr_code_size"
                         android:layout_height="@dimen/qr_code_size"
-                        tools:background="@color/gray_87_text"
+                        android:layout_margin="@dimen/qr_code_margin"
                         android:background="@color/qr_code_normal_bg"
-                        android:layout_margin="@dimen/qr_code_margin" />
+                        tools:background="@color/white" />
+
+                    <ImageView
+                        android:id="@+id/imageView3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:maxHeight="@dimen/activity_horizontal_margin"
+                        android:src="@drawable/verge_logo_gradient" />
 
                 </LinearLayout>
+
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

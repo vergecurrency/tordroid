@@ -330,4 +330,15 @@
     <string name="title_activity_account_details">Детали учетной записи</string>
     <string name="account_public_key_label">публичный ключ</string>
     <string name="account_public_key_warning">Отдавая ваш публичный ключ в чужие руки, Вы позволяете просматривать ваш баланс и историю транзакций.</string>
+    <string name="about_credits_github">Этот проект можно найти по адресу https://github.com/vergecurrency/tordroid</string>
+    <string name="use_pincode_only">Использовать только пин-код</string>
+    <string name="use_fingerprint_pincode">Использовать отпечаток пальца + пин-код</string>
+    <string name="app_lock_description">Блокировка приложения позволяет защитить кошелек с помощью PIN-кода или отпечатка пальца (если он есть на вашем телефоне). Вы можете добавить блокировку приложения позже в меню настроек.</string>
+    <string name="error_no_fingerprints">Чтобы использовать блокировку приложения с помощью отпечатка пальца, добавьте хотя бы один отпечаток пальца в настройках безопасности Android.</string>
+    <string name="add_fingerprint_label">Коснитесь датчика отпечатков пальцев, чтобы добавить блокировку приложения по отпечатку пальца.</string>
+    <string name="enter_your_pincode">Введите свой пин-код</string>
+    <string name="finger_not_recognized">Палец не распознан</string>
+    <string name="wrong_pincode">Неверный пин-код</string>
+    <string name="touch_fingerprint_label">Отсканируйте палец, чтобы разблокировать приложение</string>
+    <string name="remove_app_lock">Удалить блокировку приложения</string>
 </resources>
