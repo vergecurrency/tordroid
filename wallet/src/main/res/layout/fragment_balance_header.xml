@@ -25,7 +25,7 @@
             android:layout_height="12dp"
             android:layout_gravity="right"
             android:contentDescription="TODO"
-            android:visibility="gone"
+            android:visibility="invisible"
             coinomi:srcCompat="@drawable/generic_green_circle" />
 
         <com.vergepay.wallet.ui.widget.Amount
