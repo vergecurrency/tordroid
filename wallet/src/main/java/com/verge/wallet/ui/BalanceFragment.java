@@ -284,20 +284,20 @@ public class BalanceFragment extends WalletFragment implements LoaderCallbacks<L
     }
 
     private void setConnectivityStatus(final WalletConnectivityStatus connectivity) {
-        log.info(String.valueOf(connectivity));
         switch (connectivity) {
             case CONNECTED:
-                log.info("HIT CONNECTED****************");
                 connectedDot.setVisibility(View.VISIBLE);
+                break;
             case LOADING:
                 connectionLabel.setVisibility(View.GONE);
+                connectedDot.setVisibility(View.INVISIBLE);
                 break;
             case DISCONNECTED:
-                log.info("HIT DISCONNECTED****************");
                 connectionLabel.setVisibility(View.VISIBLE);
-                connectedDot.setVisibility(View.GONE);
+                connectedDot.setVisibility(View.INVISIBLE);
                 break;
             default:
+                connectedDot.setVisibility(View.INVISIBLE);
                 throw new RuntimeException("Unknown connectivity status: " + connectivity);
         }
     }
