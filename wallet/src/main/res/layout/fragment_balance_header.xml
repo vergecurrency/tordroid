@@ -25,7 +25,6 @@
             android:layout_height="12dp"
             android:layout_gravity="right"
             android:contentDescription="TODO"
-            android:tint="#01DA0A"
             android:visibility="invisible"
             coinomi:srcCompat="@drawable/generic_green_circle" />
 
