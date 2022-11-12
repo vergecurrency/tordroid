@@ -98,6 +98,7 @@ public class BalanceFragment extends WalletFragment implements LoaderCallbacks<L
     @BindView(R.id.account_exchanged_balance) Amount accountExchangedBalance;
     @BindView(R.id.connection_label) TextView connectionLabel;
     @BindView(R.id.connected_dot) ImageView connectedDot;
+    @BindView(R.id.disconnected_dot) ImageView disconnectedDot;
     private TransactionsListAdapter adapter;
     private Listener listener;
     private ContentResolver resolver;
@@ -287,14 +288,17 @@ public class BalanceFragment extends WalletFragment implements LoaderCallbacks<L
         switch (connectivity) {
             case CONNECTED:
                 connectedDot.setVisibility(View.VISIBLE);
+                disconnectedDot.setVisibility(View.GONE);
                 break;
             case LOADING:
                 connectionLabel.setVisibility(View.GONE);
                 connectedDot.setVisibility(View.INVISIBLE);
+                disconnectedDot.setVisibility(View.VISIBLE);
                 break;
             case DISCONNECTED:
                 connectionLabel.setVisibility(View.VISIBLE);
                 connectedDot.setVisibility(View.INVISIBLE);
+                disconnectedDot.setVisibility(View.VISIBLE);
                 break;
             default:
                 connectedDot.setVisibility(View.INVISIBLE);

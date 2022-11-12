@@ -28,6 +28,15 @@
             android:visibility="invisible"
             coinomi:srcCompat="@drawable/generic_green_circle" />
 
+        <ImageView
+            android:id="@+id/disconnected_dot"
+            android:layout_width="wrap_content"
+            android:layout_height="12dp"
+            android:layout_gravity="right"
+            android:contentDescription="TODO"
+            android:visibility="invisible"
+            coinomi:srcCompat="@drawable/generic_red_circle" />
+
         <com.vergepay.wallet.ui.widget.Amount
             android:id="@+id/account_exchanged_balance"
             android:layout_width="wrap_content"
