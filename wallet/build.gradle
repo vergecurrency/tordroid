@@ -22,8 +22,8 @@ android {
         targetSdkVersion 31
         compileSdkVersion 31
         ndkVersion "21.3.6528147" //shouldn't matter but gradle complains
-        versionCode 020401
-        versionName "v2.4"
+        versionCode 020500
+        versionName "v2.5"
             ndk {
             abiFilters  "armeabi-v7a", "arm64-v8a"
         }
@@ -63,9 +63,9 @@ android {
         implementation fileTree(dir: 'libs', include: ['*.jar'])
         implementation fileTree(dir: '../core/libs', include: ['*.jar'])
         // Testing
-//    androidTestCompile 'junit:junit:4.11'
-//    androidTestCompile 'org.robolectric:robolectric:2.3'
-//    androidTestCompile 'com.squareup:fest-android:1.0.+'
+        //    androidTestCompile 'junit:junit:4.11'
+        //    androidTestCompile 'org.robolectric:robolectric:2.3'
+        //    androidTestCompile 'com.squareup:fest-android:1.0.+'
         implementation project(':core')
         implementation 'com.android.support:gridlayout-v7:28.0.0'
         implementation 'com.android.support:support-v4:28.0.0'
