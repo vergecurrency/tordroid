@@ -1,8 +1,8 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 30
-    buildToolsVersion '30.0.0'
+    compileSdkVersion 31
+    buildToolsVersion '31'
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -18,11 +18,11 @@ android {
 
     defaultConfig {
         applicationId "com.vergepay.wallet"
-        minSdkVersion 21
-        targetSdkVersion 30
-        compileSdkVersion 30
+        minSdk 30
+        targetSdkVersion 31
+        compileSdkVersion 31
         ndkVersion "21.3.6528147" //shouldnt matter but gradle complains
-        versionCode 020400
+        versionCode 020401
         versionName "v2.4"
             ndk {
             abiFilters  "armeabi-v7a", "arm64-v8a"
@@ -74,7 +74,7 @@ android {
         implementation 'com.google.code.findbugs:jsr305:3.0.2' // most recent as of 10/2022
         implementation 'com.madgag.spongycastle:core:1.58.0.0' // most recent as of 10/2022
         implementation 'com.google.protobuf:protobuf-java:3.21.7' //latest as of 10/2022
-        implementation 'com.google.zxing:core:3.5.0' //most recent as of 10/2022
+        implementation 'com.google.zxing:core:3.5.1' //most recent as of 7/2023
         implementation 'ch.acra:acra:4.11.1' //most recent as of 10/2022
         implementation 'com.android.support:support-v4-preferencefragment:1.0.0@aar'
         implementation 'com.jakewharton:butterknife:8.8.1' // ButterKnife.findById() is deprecated, needs findbyviewid() updates
