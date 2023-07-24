@@ -14,6 +14,8 @@ You can get it [here from Oracle (login required)](https://www.oracle.com/pk/jav
 Once you have that installed, navigate to File > Project Structure > SDK Location and change the path of your current JDK to 
 the path of the new JDK.
 <br/><br/>
+To work with on ChromeOS flex, download chromeOS here: https://dl.google.com/chromeos-flex/images/latest.bin.zip
+<br/><br/>
 To test, open a virtual phone in your Android Studio Device Manager or, to test on a physical device, 
 you will need to enable developer options on your phone. To do so, go into settings, About Phone, 
 locate your Build Number, and tap it 7 times, or until it says "You are now a Developer". Then, 
