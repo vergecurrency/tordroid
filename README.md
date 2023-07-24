@@ -1,7 +1,7 @@
 Verge Tor Wallet for Android
 ============================
 
-<p align="center"><img src="https://cutewallpaper.org/26/android-logo-png-transparent-background/android-logo-png-pic-esquiloio.png" alt="android logo"></p
+<p align="left"><img src="https://image.pngaaa.com/864/15864-small.png" alt="android logo"></p>
 
 ## Building the app
 
