@@ -6,12 +6,13 @@ Verge Tor Wallet for Android
 
 Install [Android Studio](https://developer.android.com/sdk/installing/studio.html). Once it is
 running, import tordroid by navigating to where you cloned or downloaded it and selecting
-settings.gradle. When it is finished importing, click on the SDK Manager ![SDK Manager](https://developer.android.com/images/tools/sdk-manager-studio.png). You will want to install SDK version 30.
-
-
+settings.gradle. When it is finished importing, click on the SDK Manager ![SDK Manager](https://developer.android.com/images/tools/sdk-manager-studio.png). 
+You will want to install SDK version 31.
 <br/><br/>
-
-Make sure that you have JDK 8 installed before building. You can get it [here from Oracle (login required)](https://www.oracle.com/java/technologies/javase/javase8-archive-downloads.html) or you can opt for the [Open Source version from OpenJDK here](https://jdk.java.net/java-se-ri/8-MR3) . Once you have that installed, navigate to File > Project Structure > SDK Location and change the path of your current JDK to the path of the new JDK. 
+Make sure that you have JDK 11 installed before building. 
+You can get it [here from Oracle (login required)](https://www.oracle.com/pk/java/technologies/javase/jdk11-archive-downloads.html). 
+Once you have that installed, navigate to File > Project Structure > SDK Location and change the path of your current JDK to 
+the path of the new JDK. 
 
 <br/><br/>
 

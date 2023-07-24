@@ -9,12 +9,6 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
-    lintOptions {
-        checkReleaseBuilds false
-        // Or, if you prefer, you can continue to check for errors in release builds,
-        // but continue the build even when errors are found:
-        abortOnError false
-    }
 
     defaultConfig {
         applicationId "com.vergepay.wallet"
@@ -80,6 +74,15 @@ android {
         implementation 'com.jakewharton:butterknife:8.8.1' // ButterKnife.findById() is deprecated, needs FindByViewId() updates
         annotationProcessor 'com.jakewharton:butterknife-compiler:9.0.0'
     }
+    packagingOptions {
+        jniLibs {
+            keepDebugSymbols += ['*/armeabi-v7a/*.so', '*/arm64-v8a/*.so']
+            excludes += ['lib/x86_64/freebsd/libscrypt.so', 'lib/x86_64/linux/libscrypt.so', 'lib/armeabi-v7a/libscrypt.so', 'lib/armeabi-v7a/libvudroid.so', 'lib/x86/libvudroid.so', 'lib/arm64-v8a/libvudroid.so']
+        }
+        resources {
+            excludes += ['lib/x86_64/darwin/libscrypt.dylib']
+        }
+    }
 
 //apply plugin: 'robolectric'
 
@@ -95,28 +98,16 @@ android {
 //        testOutputDir = file('build/test-classes/debug')
 //    }
 //}
-    packagingOptions {
-        exclude 'lib/x86_64/darwin/libscrypt.dylib'
-        exclude 'lib/x86_64/freebsd/libscrypt.so'
-        exclude 'lib/x86_64/linux/libscrypt.so'
-        exclude 'lib/armeabi-v7a/libscrypt.so'
-
-        exclude 'lib/armeabi-v7a/libvudroid.so'
-        exclude 'lib/x86/libvudroid.so'
-        exclude 'lib/arm64-v8a/libvudroid.so'
-        doNotStrip "*/armeabi-v7a/*.so"
-        doNotStrip '*/arm64-v8a/*.so'
-        exclude ('/lib/armeabi/*' + '*')
-        exclude ('/lib/mips/*' + '*')
-        exclude ('/lib/mips64/*' + '*')
-        exclude ('/lib/x86_64/*' + '*')
-        exclude ('/lib/x86/*' + '*')
-    }
 
     splits {
         abi {
             reset()
             include "armeabi-v7a", "arm64-v8a"
         }
+    }
+    namespace 'com.vergepay.wallet'
+    lint {
+        abortOnError false
+        checkReleaseBuilds false
     }
 }
