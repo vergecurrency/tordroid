@@ -13,7 +13,7 @@ android {
     defaultConfig {
         applicationId "com.vergepay.wallet"
         minSdk 31
-        targetSdkVersion 33
+        targetSdkVersion 31
         compileSdkVersion 33
         ndkVersion "21.3.6528147" //shouldn't matter but gradle complains
         versionCode 020501
