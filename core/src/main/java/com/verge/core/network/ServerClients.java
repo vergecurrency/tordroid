@@ -22,11 +22,11 @@ import javax.annotation.Nullable;
 public class ServerClients {
     private static final Logger log = LoggerFactory.getLogger(ServerClient.class);
     private final ConnectivityHelper connectivityHelper;
-    private HashMap<CoinType, BlockchainConnection> connections = new HashMap<>();
-    private HashMap<CoinType, CoinAddress> addresses = new HashMap<>();
+    private final HashMap<CoinType, BlockchainConnection> connections = new HashMap<>();
+    private final HashMap<CoinType, CoinAddress> addresses = new HashMap<>();
 
 
-    private static ConnectivityHelper DEFAULT_CONNECTIVITY_HELPER = new ConnectivityHelper() {
+    private static final ConnectivityHelper DEFAULT_CONNECTIVITY_HELPER = new ConnectivityHelper() {
         @Override
         public boolean isConnected() { return true; }
     };

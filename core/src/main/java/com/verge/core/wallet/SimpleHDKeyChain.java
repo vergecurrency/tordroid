@@ -554,7 +554,7 @@ public class SimpleHDKeyChain implements EncryptableKeyChain, KeyBag {
             final Protos.Key.Type t = key.getType();
             if (t == Protos.Key.Type.DETERMINISTIC_KEY) {
                 if (!key.hasDeterministicKey())
-                    throw new UnreadableWalletException("Deterministic key missing extra data: " + key.toString());
+                    throw new UnreadableWalletException("Deterministic key missing extra data: " + key);
 
                 if (chain == null) {
                     DeterministicKey rootKey = KeyUtils.getDeterministicKey(key, null, crypter);

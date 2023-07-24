@@ -136,7 +136,7 @@ public class AccountFragment extends Fragment {
             this.listener = (Listener) context;
             this.application = (WalletApplication) context.getApplicationContext();
         } catch (ClassCastException e) {
-            throw new ClassCastException(context.toString() + " must implement " + Listener.class);
+            throw new ClassCastException(context + " must implement " + Listener.class);
         }
     }
 
@@ -304,7 +304,7 @@ public class AccountFragment extends Fragment {
         private SendFragment send;
         private BalanceFragment balance;
 
-        private WalletAccount account;
+        private final WalletAccount account;
 
         public AppSectionsPagerAdapter(Context context, FragmentManager fm, WalletAccount account) {
             super(fm);
@@ -353,10 +353,8 @@ public class AccountFragment extends Fragment {
 
         @Override
         protected void weakHandleMessage(AccountFragment ref, Message msg) {
-            switch (msg.what) {
-                case SEND_TO_URI:
-                    ref.setSendToUri((CoinURI) msg.obj);
-                    break;
+            if (msg.what == SEND_TO_URI) {
+                ref.setSendToUri((CoinURI) msg.obj);
             }
         }
     }

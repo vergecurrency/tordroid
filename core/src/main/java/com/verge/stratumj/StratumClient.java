@@ -38,8 +38,8 @@ public class StratumClient extends AbstractExecutionThreadService {
     private static final Logger log = LoggerFactory.getLogger(StratumClient.class);
     private final int NUM_OF_WORKERS = 1;
 
-    private AtomicLong idCounter = new AtomicLong();
-    private ServerAddress serverAddress;
+    private final AtomicLong idCounter = new AtomicLong();
+    private final ServerAddress serverAddress;
     private Socket socket;
     @VisibleForTesting DataOutputStream toServer;
     BufferedReader fromServer;

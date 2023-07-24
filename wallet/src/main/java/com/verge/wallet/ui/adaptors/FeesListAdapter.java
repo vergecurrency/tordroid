@@ -19,7 +19,7 @@ import java.util.List;
 public class FeesListAdapter extends BaseAdapter {
     private final Context context;
     private final Configuration config;
-    private List<Value> fees;
+    private final List<Value> fees;
 
     public FeesListAdapter(final Context context, Configuration config) {
         this.context = context;

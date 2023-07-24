@@ -21,7 +21,7 @@ public class BurstMain extends NxtFamily {
         feePolicy = FeePolicy.FLAT_FEE;
     }
 
-    private static BurstMain instance = new BurstMain();
+    private static final BurstMain instance = new BurstMain();
     public static synchronized CoinType get() {
         return instance;
     }

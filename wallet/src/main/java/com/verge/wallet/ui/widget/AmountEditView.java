@@ -40,8 +40,8 @@ public class AmountEditView extends LinearLayout {
 
     private Listener listener;
 
-    private TextView symbol;
-    private EditText amountText;
+    private final TextView symbol;
+    private final EditText amountText;
     private boolean amountSigned = false;
     @Nullable
     private ValueType type;

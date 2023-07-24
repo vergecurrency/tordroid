@@ -62,9 +62,8 @@ public class TransactionDetailsFragment extends Fragment {
 
         @Override
         protected void weakHandleMessage(TransactionDetailsFragment ref, Message msg) {
-            switch (msg.what) {
-                case UPDATE_VIEW:
-                    ref.updateView();
+            if (msg.what == UPDATE_VIEW) {
+                ref.updateView();
             }
         }
     }

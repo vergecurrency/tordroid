@@ -64,7 +64,7 @@ final public class Wallet {
     @Nullable private DeterministicSeed seed;
     private DeterministicKey masterKey;
 
-    protected volatile WalletFiles vFileManager;
+    private volatile WalletFiles vFileManager;
 
     // FIXME, make multi account capable
     private final static int ACCOUNT_ZERO = 0;

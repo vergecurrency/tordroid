@@ -28,9 +28,9 @@ public class TransactionAmountVisualizerAdapter extends BaseAdapter {
 
     private final AbstractWallet pocket;
     private boolean isSending;
-    private CoinType type;
-    private String symbol;
-    private List<AbstractTransaction.AbstractOutput> outputs;
+    private final CoinType type;
+    private final String symbol;
+    private final List<AbstractTransaction.AbstractOutput> outputs;
     private boolean hasFee;
     private Value feeAmount;
 

@@ -40,19 +40,16 @@ public class PreviousAddressesActivity extends BaseWalletActivity implements
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                if (getFM().findFragmentByTag(LIST_ADDRESSES_TAG).isVisible()) {
-                    finish();
-                    return true;
-                } else {
-                    getSupportFragmentManager().popBackStack();
-                    return true;
-                }
-            default:
-                // Not one of ours. Perform default menu processing
-                return super.onOptionsItemSelected(item);
-        }
+        if (item.getItemId() == android.R.id.home) {
+            if (getFM().findFragmentByTag(LIST_ADDRESSES_TAG).isVisible()) {
+                finish();
+                return true;
+            } else {
+                getSupportFragmentManager().popBackStack();
+                return true;
+            }
+        }// Not one of ours. Perform default menu processing
+        return super.onOptionsItemSelected(item);
     }
 
     @Override

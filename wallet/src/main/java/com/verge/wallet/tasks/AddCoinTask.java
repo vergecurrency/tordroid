@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
  */
 public final class AddCoinTask  extends AsyncTask<Void, Void, Void> {
     private final Listener listener;
-    protected final CoinType type;
+    private final CoinType type;
     private final Wallet wallet;
     @Nullable
     private final String description;
@@ -62,7 +62,7 @@ public final class AddCoinTask  extends AsyncTask<Void, Void, Void> {
     }
 
     @Override
-    final protected void onPostExecute(Void aVoid) {
+    protected void onPostExecute(Void aVoid) {
         listener.onAddCoinTaskFinished(exception, newAccount);
     }
 }

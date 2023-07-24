@@ -77,12 +77,10 @@ public abstract class TransactionType {
     public static TransactionType findTransactionType(byte type, byte subtype) {
         switch (type) {
             case TYPE_PAYMENT:
-                switch (subtype) {
-                    case SUBTYPE_PAYMENT_ORDINARY_PAYMENT:
-                        return Payment.ORDINARY;
-                    default:
-                        return null;
+                if (subtype == SUBTYPE_PAYMENT_ORDINARY_PAYMENT) {
+                    return Payment.ORDINARY;
                 }
+                return null;
             case TYPE_MESSAGING:
                 switch (subtype) {
                     case SUBTYPE_MESSAGING_ARBITRARY_MESSAGE:
@@ -143,13 +141,11 @@ public abstract class TransactionType {
                         return null;
                 }
             case TYPE_ACCOUNT_CONTROL:
-                switch (subtype) {
-                    case SUBTYPE_ACCOUNT_CONTROL_EFFECTIVE_BALANCE_LEASING:
-                        return AccountControl.EFFECTIVE_BALANCE_LEASING;
-                    default:
-                        return null;
+                if (subtype == SUBTYPE_ACCOUNT_CONTROL_EFFECTIVE_BALANCE_LEASING) {
+                    return AccountControl.EFFECTIVE_BALANCE_LEASING;
                 }
-                /*case TYPE_BURST_MINING:
+                return null;
+/*case TYPE_BURST_MINING:
                 switch (subtype) {
                     case SUBTYPE_BURST_MINING_REWARD_RECIPIENT_ASSIGNMENT:
                         return BurstMining.REWARD_RECIPIENT_ASSIGNMENT;
@@ -242,7 +238,7 @@ public abstract class TransactionType {
         public static final TransactionType ORDINARY = new Payment() {
 
             @Override
-            public final byte getSubtype() {
+            public byte getSubtype() {
                 return TransactionType.SUBTYPE_PAYMENT_ORDINARY_PAYMENT;
             }
 
@@ -276,7 +272,7 @@ public abstract class TransactionType {
         public final static TransactionType ARBITRARY_MESSAGE = new Messaging() {
 
             @Override
-            public final byte getSubtype() {
+            public byte getSubtype() {
                 return TransactionType.SUBTYPE_MESSAGING_ARBITRARY_MESSAGE;
             }
 
@@ -301,7 +297,7 @@ public abstract class TransactionType {
         public static final TransactionType ALIAS_ASSIGNMENT = new Messaging() {
 
             @Override
-            public final byte getSubtype() {
+            public byte getSubtype() {
                 return TransactionType.SUBTYPE_MESSAGING_ALIAS_ASSIGNMENT;
             }
 
@@ -326,7 +322,7 @@ public abstract class TransactionType {
         public static final TransactionType ALIAS_SELL = new Messaging() {
 
             @Override
-            public final byte getSubtype() {
+            public byte getSubtype() {
                 return TransactionType.SUBTYPE_MESSAGING_ALIAS_SELL;
             }
 
@@ -350,7 +346,7 @@ public abstract class TransactionType {
         public static final TransactionType ALIAS_BUY = new Messaging() {
 
             @Override
-            public final byte getSubtype() {
+            public byte getSubtype() {
                 return TransactionType.SUBTYPE_MESSAGING_ALIAS_BUY;
             }
 
@@ -373,7 +369,7 @@ public abstract class TransactionType {
 
         public final static TransactionType POLL_CREATION = new Messaging() {
             @Override
-            public final byte getSubtype() {
+            public byte getSubtype() {
                 return TransactionType.SUBTYPE_MESSAGING_POLL_CREATION;
             }
 
@@ -397,7 +393,7 @@ public abstract class TransactionType {
         public final static TransactionType VOTE_CASTING = new Messaging() {
 
             @Override
-            public final byte getSubtype() {
+            public byte getSubtype() {
                 return TransactionType.SUBTYPE_MESSAGING_VOTE_CASTING;
             }
 
@@ -421,7 +417,7 @@ public abstract class TransactionType {
         public static final TransactionType HUB_ANNOUNCEMENT = new Messaging() {
 
             @Override
-            public final byte getSubtype() {
+            public byte getSubtype() {
                 return TransactionType.SUBTYPE_MESSAGING_HUB_ANNOUNCEMENT;
             }
 
@@ -480,7 +476,7 @@ public abstract class TransactionType {
         public static final TransactionType ASSET_ISSUANCE = new ColoredCoins() {
 
             @Override
-            public final byte getSubtype() {
+            public byte getSubtype() {
                 return TransactionType.SUBTYPE_COLORED_COINS_ASSET_ISSUANCE;
             }
 
@@ -514,7 +510,7 @@ public abstract class TransactionType {
         public static final TransactionType ASSET_TRANSFER = new ColoredCoins() {
 
             @Override
-            public final byte getSubtype() {
+            public byte getSubtype() {
                 return TransactionType.SUBTYPE_COLORED_COINS_ASSET_TRANSFER;
             }
 
@@ -551,7 +547,7 @@ public abstract class TransactionType {
         public static final TransactionType ASK_ORDER_PLACEMENT = new ColoredCoinsOrderPlacement() {
 
             @Override
-            public final byte getSubtype() {
+            public byte getSubtype() {
                 return TransactionType.SUBTYPE_COLORED_COINS_ASK_ORDER_PLACEMENT;
             }
 
@@ -572,7 +568,7 @@ public abstract class TransactionType {
         public final static TransactionType BID_ORDER_PLACEMENT = new ColoredCoinsOrderPlacement() {
 
             @Override
-            public final byte getSubtype() {
+            public byte getSubtype() {
                 return TransactionType.SUBTYPE_COLORED_COINS_BID_ORDER_PLACEMENT;
             }
 
@@ -602,7 +598,7 @@ public abstract class TransactionType {
         public static final TransactionType ASK_ORDER_CANCELLATION = new ColoredCoinsOrderCancellation() {
 
             @Override
-            public final byte getSubtype() {
+            public byte getSubtype() {
                 return TransactionType.SUBTYPE_COLORED_COINS_ASK_ORDER_CANCELLATION;
             }
 
@@ -620,7 +616,7 @@ public abstract class TransactionType {
         public static final TransactionType BID_ORDER_CANCELLATION = new ColoredCoinsOrderCancellation() {
 
             @Override
-            public final byte getSubtype() {
+            public byte getSubtype() {
                 return TransactionType.SUBTYPE_COLORED_COINS_BID_ORDER_CANCELLATION;
             }
 
@@ -654,7 +650,7 @@ public abstract class TransactionType {
         public static final TransactionType LISTING = new DigitalGoods() {
 
             @Override
-            public final byte getSubtype() {
+            public byte getSubtype() {
                 return TransactionType.SUBTYPE_DIGITAL_GOODS_LISTING;
             }
 
@@ -679,7 +675,7 @@ public abstract class TransactionType {
         public static final TransactionType DELISTING = new DigitalGoods() {
 
             @Override
-            public final byte getSubtype() {
+            public byte getSubtype() {
                 return TransactionType.SUBTYPE_DIGITAL_GOODS_DELISTING;
             }
 
@@ -705,7 +701,7 @@ public abstract class TransactionType {
         public static final TransactionType PRICE_CHANGE = new DigitalGoods() {
 
             @Override
-            public final byte getSubtype() {
+            public byte getSubtype() {
                 return TransactionType.SUBTYPE_DIGITAL_GOODS_PRICE_CHANGE;
             }
 
@@ -729,7 +725,7 @@ public abstract class TransactionType {
         public static final TransactionType QUANTITY_CHANGE = new DigitalGoods() {
 
             @Override
-            public final byte getSubtype() {
+            public byte getSubtype() {
                 return TransactionType.SUBTYPE_DIGITAL_GOODS_QUANTITY_CHANGE;
             }
 
@@ -755,7 +751,7 @@ public abstract class TransactionType {
         public static final TransactionType PURCHASE = new DigitalGoods() {
 
             @Override
-            public final byte getSubtype() {
+            public byte getSubtype() {
                 return TransactionType.SUBTYPE_DIGITAL_GOODS_PURCHASE;
             }
 
@@ -780,7 +776,7 @@ public abstract class TransactionType {
         public static final TransactionType DELIVERY = new DigitalGoods() {
 
             @Override
-            public final byte getSubtype() {
+            public byte getSubtype() {
                 return TransactionType.SUBTYPE_DIGITAL_GOODS_DELIVERY;
             }
 
@@ -804,7 +800,7 @@ public abstract class TransactionType {
         public static final TransactionType FEEDBACK = new DigitalGoods() {
 
             @Override
-            public final byte getSubtype() {
+            public byte getSubtype() {
                 return TransactionType.SUBTYPE_DIGITAL_GOODS_FEEDBACK;
             }
 
@@ -828,7 +824,7 @@ public abstract class TransactionType {
         public static final TransactionType REFUND = new DigitalGoods() {
 
             @Override
-            public final byte getSubtype() {
+            public byte getSubtype() {
                 return TransactionType.SUBTYPE_DIGITAL_GOODS_REFUND;
             }
 
@@ -864,7 +860,7 @@ public abstract class TransactionType {
         public static final TransactionType EFFECTIVE_BALANCE_LEASING = new AccountControl() {
 
             @Override
-            public final byte getSubtype() {
+            public byte getSubtype() {
                 return TransactionType.SUBTYPE_ACCOUNT_CONTROL_EFFECTIVE_BALANCE_LEASING;
             }
 

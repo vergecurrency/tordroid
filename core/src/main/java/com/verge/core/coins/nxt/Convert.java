@@ -147,7 +147,7 @@ public final class Convert {
     }
 
     public static long fromBurstEpochTime(int epochTime) {
-        return epochTime * 1000l + Constants.BURST_EPOCH_BEGINNING - 500L;
+        return epochTime * 1000L + Constants.BURST_EPOCH_BEGINNING - 500L;
     }
 
     public static int toNxtEpochTime(long currentTime) {

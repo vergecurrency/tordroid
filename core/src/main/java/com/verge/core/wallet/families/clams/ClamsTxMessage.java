@@ -28,7 +28,7 @@ public class ClamsTxMessage implements TxMessage {
         setMessage(message);
     }
 
-    private transient static ClamsMessageFactory instance = new ClamsMessageFactory();
+    private final static ClamsMessageFactory instance = new ClamsMessageFactory();
     public static MessageFactory getFactory() {
         return instance;
     }

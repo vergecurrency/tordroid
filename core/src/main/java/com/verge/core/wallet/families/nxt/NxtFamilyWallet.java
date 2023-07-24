@@ -77,17 +77,17 @@ public class NxtFamilyWallet extends AbstractWallet<NxtTransaction, NxtAddress>
     @Nullable private Sha256Hash lastBlockSeenHash;
     private int lastBlockSeenHeight = -1;
     private long lastBlockSeenTimeSecs = 0;
-    private List<ListenerRegistration<WalletAccountEventListener>> listeners;
+    private final List<ListenerRegistration<WalletAccountEventListener>> listeners;
 
 
-    private Runnable saveLaterRunnable = new Runnable() {
+    private final Runnable saveLaterRunnable = new Runnable() {
         @Override
         public void run() {
             if (wallet != null) wallet.saveLater();
         }
     };
 
-    private Runnable saveNowRunnable = new Runnable() {
+    private final Runnable saveNowRunnable = new Runnable() {
         @Override
         public void run() {
             if (wallet != null) wallet.saveNow();

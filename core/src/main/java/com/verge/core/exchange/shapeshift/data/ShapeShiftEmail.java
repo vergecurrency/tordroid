@@ -21,12 +21,10 @@ public class ShapeShiftEmail  extends ShapeShiftBase {
                 JSONObject innerData = data.getJSONObject("email");
                 message = innerData.getString("message");
                 String statusStr = innerData.getString("status");
-                switch (statusStr) {
-                    case "success":
-                        status = Status.SUCCESS;
-                        break;
-                    default:
-                        status = Status.UNKNOWN;
+                if ("success".equals(statusStr)) {
+                    status = Status.SUCCESS;
+                } else {
+                    status = Status.UNKNOWN;
                 }
             } catch (JSONException e) {
                 throw new ShapeShiftException("Could not parse object", e);

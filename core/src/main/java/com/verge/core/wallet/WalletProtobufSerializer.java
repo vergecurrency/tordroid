@@ -190,7 +190,7 @@ public class WalletProtobufSerializer {
                         key.getEncryptedData().getEncryptedPrivateKey().toByteArray());
                 seed = new DeterministicSeed(data, null, 0);
             } else {
-                throw new UnreadableWalletException("Malformed key proto: " + key.toString());
+                throw new UnreadableWalletException("Malformed key proto: " + key);
             }
         }
 
@@ -275,7 +275,7 @@ public class WalletProtobufSerializer {
                 crypter = null;
             }
             else {
-                throw new KeyCrypterException("Unsupported encryption: " + walletProto.getEncryptionType().toString());
+                throw new KeyCrypterException("Unsupported encryption: " + walletProto.getEncryptionType());
             }
         }
         else {

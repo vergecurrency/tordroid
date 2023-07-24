@@ -186,7 +186,7 @@ public class SelectCoinsFragment extends Fragment {
             config = application.getConfiguration();
             loaderManager = getLoaderManager();
         } catch (ClassCastException e) {
-            throw new ClassCastException(context.toString() + " must implement " + Listener.class);
+            throw new ClassCastException(context + " must implement " + Listener.class);
         }
     }
 

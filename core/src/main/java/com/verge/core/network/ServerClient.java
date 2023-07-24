@@ -34,6 +34,7 @@ import org.slf4j.LoggerFactory;
 import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
@@ -69,7 +70,7 @@ public class ServerClient implements BitBlockchainConnection {
     private static final long CONNECTION_STABILIZATION = 30;
     private final ConnectivityHelper connectivityHelper;
 
-    private CoinType type;
+    private final CoinType type;
     private final ImmutableList<ServerAddress> addresses;
     private final HashSet<ServerAddress> failedAddresses;
     private ServerAddress lastServerAddress;
@@ -82,14 +83,14 @@ public class ServerClient implements BitBlockchainConnection {
     private int cacheSize;
 
     // TODO, only one is supported at the moment. Change when accounts are supported.
-    private transient CopyOnWriteArrayList<ListenerRegistration<ConnectionEventListener>> eventListeners;
+    private final transient CopyOnWriteArrayList<ListenerRegistration<ConnectionEventListener>> eventListeners;
 
     private void reschedule(Runnable r, long delay, TimeUnit unit) {
         connectionExec.remove(r);
         connectionExec.schedule(r, delay, unit);
     }
 
-    private Runnable reconnectTask = new Runnable() {
+    private final Runnable reconnectTask = new Runnable() {
         @Override
         public void run() {
             if (!stopped) {
@@ -111,7 +112,7 @@ public class ServerClient implements BitBlockchainConnection {
         }
     };
 
-    private Runnable connectionCheckTask = new Runnable() {
+    private final Runnable connectionCheckTask = new Runnable() {
         @Override
         public void run() {
             if (isActivelyConnected()) {
@@ -121,7 +122,7 @@ public class ServerClient implements BitBlockchainConnection {
         }
     };
 
-    private Service.Listener serviceListener = new Service.Listener() {
+    private final Service.Listener serviceListener = new Service.Listener() {
         @Override
         public void running() {
             // Check if connection is up as this event is fired even if there is no connection
@@ -611,7 +612,7 @@ public class ServerClient implements BitBlockchainConnection {
         checkNotNull(stratumClient);
 
         CallMessage message = new CallMessage("blockchain.transaction.broadcast",
-                Arrays.asList(Utils.HEX.encode(tx.bitcoinSerialize())));
+                Collections.singletonList(Utils.HEX.encode(tx.bitcoinSerialize())));
         final ListenableFuture<ResultMessage> result = stratumClient.call(message);
 
         Futures.addCallback(result, new FutureCallback<ResultMessage>() {
@@ -644,7 +645,7 @@ public class ServerClient implements BitBlockchainConnection {
         checkNotNull(stratumClient);
 
         CallMessage message = new CallMessage("blockchain.transaction.broadcast",
-                Arrays.asList(Utils.HEX.encode(tx.bitcoinSerialize())));
+                Collections.singletonList(Utils.HEX.encode(tx.bitcoinSerialize())));
 
         try {
             ResultMessage result = stratumClient.call(message).get();

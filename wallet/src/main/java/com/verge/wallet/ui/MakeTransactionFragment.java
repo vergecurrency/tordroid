@@ -101,7 +101,7 @@ public class MakeTransactionFragment extends Fragment {
     private static final String PREPARE_TRANSACTION_BUSY_DIALOG_TAG = "prepare_transaction_busy_dialog_tag";
     private static final String SIGNING_TRANSACTION_BUSY_DIALOG_TAG = "signing_transaction_busy_dialog_tag";
 
-    private Handler handler = new MyHandler(this);
+    private final Handler handler = new MyHandler(this);
     @Nullable private String password;
     private Listener listener;
     private ContentResolver contentResolver;
@@ -349,7 +349,7 @@ public class MakeTransactionFragment extends Fragment {
             application = (WalletApplication) context.getApplicationContext();
             config = application.getConfiguration();
         } catch (ClassCastException e) {
-            throw new ClassCastException(context.toString() + " must implement " + Listener.class);
+            throw new ClassCastException(context + " must implement " + Listener.class);
         }
     }
 
@@ -371,7 +371,7 @@ public class MakeTransactionFragment extends Fragment {
     void onStartTradeCountDown(int secondsLeft) {
         if (countDownTimer != null) return;
 
-        countDownTimer = new CountDownTimer(secondsLeft * 1000, 1000) {
+        countDownTimer = new CountDownTimer(secondsLeft * 1000L, 1000) {
             public void onTick(long millisUntilFinished) {
                 handler.sendMessage(handler.obtainMessage(
                         UPDATE_TRADE_TIMEOUT, (int) (millisUntilFinished / 1000)));

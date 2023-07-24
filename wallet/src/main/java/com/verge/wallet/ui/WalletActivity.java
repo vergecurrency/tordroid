@@ -100,7 +100,7 @@ final public class WalletActivity extends BaseWalletActivity implements
     @Nullable private String lastAccountId;
     private Intent connectCoinIntent;
     private Intent connectAllCoinIntent;
-    private List<NavDrawerItem> navDrawerItems = new ArrayList<>();
+    private final List<NavDrawerItem> navDrawerItems = new ArrayList<>();
     private ActionMode lastActionMode;
     private final Handler handler = new MyHandler(this);
     private boolean isOverviewVisible;

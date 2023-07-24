@@ -56,24 +56,23 @@ public class GenericUtils {
 
     public static String addressSplitToGroupsMultiline(final BitAddress address) {
         String addressStr = address.toString();
-        StringBuilder sb = new StringBuilder();
-        sb.append(addressStr, 0, 4);
-        sb.append(" ");
-        sb.append(addressStr, 4, 8);
-        sb.append(" ");
-        sb.append(addressStr, 8, 12);
-        sb.append(" ");
-        sb.append(addressStr, 12, 17);
-        sb.append("\n");
-        sb.append(addressStr, 17, 21);
-        sb.append(" ");
-        sb.append(addressStr, 21, 25);
-        sb.append(" ");
-        sb.append(addressStr, 25, 29);
-        sb.append(" ");
-        sb.append(addressStr.substring(29));
+        String sb = addressStr.substring(0, 4) +
+                " " +
+                addressStr.substring(4, 8) +
+                " " +
+                addressStr.substring(8, 12) +
+                " " +
+                addressStr.substring(12, 17) +
+                "\n" +
+                addressStr.substring(17, 21) +
+                " " +
+                addressStr.substring(21, 25) +
+                " " +
+                addressStr.substring(25, 29) +
+                " " +
+                addressStr.substring(29);
 
-        return sb.toString();
+        return sb;
     }
 
     public static String addressSplitToGroups(final AbstractAddress address) {
@@ -92,24 +91,23 @@ public class GenericUtils {
 
     public static String addressSplitToGroups(final BitAddress address) {
         String addressStr = address.toString();
-        StringBuilder sb = new StringBuilder();
-        sb.append(addressStr, 0, 5);
-        sb.append(" ");
-        sb.append(addressStr, 5, 9);
-        sb.append(" ");
-        sb.append(addressStr, 9, 13);
-        sb.append(" ");
-        sb.append(addressStr, 13, 17);
-        sb.append(" ");
-        sb.append(addressStr, 17, 21);
-        sb.append(" ");
-        sb.append(addressStr, 21, 25);
-        sb.append(" ");
-        sb.append(addressStr, 25, 29);
-        sb.append(" ");
-        sb.append(addressStr.substring(29));
+        String sb = addressStr.substring(0, 5) +
+                " " +
+                addressStr.substring(5, 9) +
+                " " +
+                addressStr.substring(9, 13) +
+                " " +
+                addressStr.substring(13, 17) +
+                " " +
+                addressStr.substring(17, 21) +
+                " " +
+                addressStr.substring(21, 25) +
+                " " +
+                addressStr.substring(25, 29) +
+                " " +
+                addressStr.substring(29);
 
-        return sb.toString();
+        return sb;
     }
 
     public static String formatValue(@Nonnull final Value value) {

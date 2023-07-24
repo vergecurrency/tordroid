@@ -63,9 +63,9 @@ final class SwipeProgressBar {
     private int mColor2;
     private int mColor3;
     private int mColor4;
-    private View mParent;
+    private final View mParent;
 
-    private Rect mBounds = new Rect();
+    private final Rect mBounds = new Rect();
 
     public SwipeProgressBar(View parent) {
         mParent = parent;

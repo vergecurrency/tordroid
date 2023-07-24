@@ -164,7 +164,7 @@ public class SweepWalletFragment extends Fragment {
             listener = (Listener) context;
             // TODO implement differently
             ConnectivityHelper connHelper = new ConnectivityHelper() {
-                ConnectivityManager connManager = (ConnectivityManager) context
+                final ConnectivityManager connManager = (ConnectivityManager) context
                         .getSystemService(Context.CONNECTIVITY_SERVICE);
 
                 @Override

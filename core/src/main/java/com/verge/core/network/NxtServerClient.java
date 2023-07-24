@@ -61,7 +61,7 @@ public class NxtServerClient implements BlockchainConnection<NxtTransaction> {
     static {
         connectionExec = new ScheduledThreadPoolExecutor(1);
         // FIXME, causing a crash in old Androids
-//        connectionExec.setRemoveOnCancelPolicy(true);
+        // connectionExec.setRemoveOnCancelPolicy(true);
     }
 
     private static final Random RANDOM = new Random();
@@ -93,7 +93,7 @@ public class NxtServerClient implements BlockchainConnection<NxtTransaction> {
     private OkHttpClient client;
 
     // TODO, only one is supported at the moment. Change when accounts are supported.
-    private transient CopyOnWriteArrayList<ListenerRegistration<ConnectionEventListener>> eventListeners;
+    private final transient CopyOnWriteArrayList<ListenerRegistration<ConnectionEventListener>> eventListeners;
     private ScheduledExecutorService blockchainSubscription;
     private ScheduledExecutorService ecSubscription;
     private ScheduledExecutorService addressSubscription;
@@ -102,7 +102,7 @@ public class NxtServerClient implements BlockchainConnection<NxtTransaction> {
 
     public Long getEcBlockId() { return Convert.parseUnsignedLong(ecBlockId); }
 
-    private Runnable reconnectTask = new Runnable() {
+    private final Runnable reconnectTask = new Runnable() {
         public boolean isPolling = true;
         @Override
         public void run() {
@@ -138,25 +138,22 @@ public class NxtServerClient implements BlockchainConnection<NxtTransaction> {
 
     private String getBaseUrl() {
         ServerAddress address = getServerAddress();
-        StringBuilder builder = new StringBuilder();
-        builder.append("http://" + address.getHost()).append(":").append(address.getPort())
-                .append("/nxt?");
-        return builder.toString();
+        String builder = "http://" + address.getHost() + ":" + address.getPort() +
+                "/nxt?";
+        return builder;
     }
 
     private String getAccountInfo(AbstractAddress address) {
-        StringBuilder builder = new StringBuilder();
-        builder.append(getBaseUrl()).append(GET_REQUEST).append(GET_ACCOUNT)
-        .append("&account=").append(address.toString());
-        return builder.toString();
+        String builder = getBaseUrl() + GET_REQUEST + GET_ACCOUNT +
+                "&account=" + address.toString();
+        return builder;
     }
 
     private String getBlockchainStatusUrl() {
         ServerAddress address = getServerAddress();
-        StringBuilder builder = new StringBuilder();
-        builder.append("http://" + address.getHost()).append(":").append(address.getPort())
-                .append("/nxt?").append(GET_REQUEST).append(GET_LAST_BLOCK);
-        return builder.toString();
+        String builder = "http://" + address.getHost() + ":" + address.getPort() +
+                "/nxt?" + GET_REQUEST + GET_LAST_BLOCK;
+        return builder;
     }
 
     private ServerAddress getServerAddress() {
@@ -187,24 +184,21 @@ public class NxtServerClient implements BlockchainConnection<NxtTransaction> {
     }
 
     private String getBlockChainTxsUrl(String address) {
-        StringBuilder builder = new StringBuilder();
-        builder.append(getBaseUrl()).append(GET_REQUEST).append(GET_BLOCKCHAIN_TXS)
-                .append("&account=").append(address);
-        return builder.toString();
+        String builder = getBaseUrl() + GET_REQUEST + GET_BLOCKCHAIN_TXS +
+                "&account=" + address;
+        return builder;
     }
 
     private String getTransactionUrl(String txHash) {
-        StringBuilder builder = new StringBuilder();
-        builder.append(getBaseUrl()).append(GET_REQUEST).append(GET_TRANSACTION)
-                .append("&fullHash=").append(txHash);
-        return builder.toString();
+        String builder = getBaseUrl() + GET_REQUEST + GET_TRANSACTION +
+                "&fullHash=" + txHash;
+        return builder;
     }
 
     private String getTransactionBytesUrl(String txId) {
-        StringBuilder builder = new StringBuilder();
-        builder.append(getBaseUrl()).append(GET_REQUEST).append(GET_TRANSACTION_BYTES)
-                .append("&transaction=").append(txId);
-        return builder.toString();
+        String builder = getBaseUrl() + GET_REQUEST + GET_TRANSACTION_BYTES +
+                "&transaction=" + txId;
+        return builder;
     }
 
     @Override
@@ -526,7 +520,7 @@ public class NxtServerClient implements BlockchainConnection<NxtTransaction> {
                     }
                     JSONObject reply = parseReply(response);
 
-                    log.info("Transaction broadcasted {0}", reply.toString());
+                    log.info("Transaction broadcasted {0}", reply);
 
 
 
@@ -621,7 +615,7 @@ public class NxtServerClient implements BlockchainConnection<NxtTransaction> {
         // TODO implement
     }
 
-    private Service.Listener serviceListener = new Service.Listener() {
+    private final Service.Listener serviceListener = new Service.Listener() {
         @Override
         public void running() {
             // Check if connection is up as this event is fired even if there is no connection

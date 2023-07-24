@@ -69,18 +69,18 @@ public class SwipeRefreshLayout extends ViewGroup {
     private static final int REFRESH_TRIGGER_DISTANCE = 120;
     private static final int INVALID_POINTER = -1;
 
-    private SwipeProgressBar mProgressBar; //the thing that shows progress is going
+    private final SwipeProgressBar mProgressBar; //the thing that shows progress is going
     private View mTarget; //the content that gets pulled down
     private int mOriginalOffsetTop;
     private OnRefreshListener mListener;
     private int mFrom;
     private boolean mRefreshing = false;
-    private int mTouchSlop;
+    private final int mTouchSlop;
     private float mDistanceToTriggerSync = -1;
-    private int mMediumAnimationDuration;
+    private final int mMediumAnimationDuration;
     private float mFromPercentage = 0;
     private float mCurrPercentage = 0;
-    private int mProgressBarHeight;
+    private final int mProgressBarHeight;
     private int mCurrentTargetOffsetTop;
 
     private float mInitialMotionY;
@@ -107,13 +107,13 @@ public class SwipeRefreshLayout extends ViewGroup {
             int offset = targetTop - mTarget.getTop();
             final int currentTop = mTarget.getTop();
             if (offset + currentTop < 0) {
-                offset = 0 - currentTop;
+                offset = -currentTop;
             }
             setTargetOffsetTopAndBottom(offset);
         }
     };
 
-    private Animation mShrinkTrigger = new Animation() {
+    private final Animation mShrinkTrigger = new Animation() {
         @Override
         public void applyTransformation(float interpolatedTime, Transformation t) {
             float percent = mFromPercentage + ((0 - mFromPercentage) * interpolatedTime);

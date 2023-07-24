@@ -85,7 +85,7 @@ public final class ScanActivity extends FragmentActivity implements SurfaceHolde
 
     private static final int DIALOG_CAMERA_PROBLEM = 0;
 
-    private static boolean DISABLE_CONTINUOUS_AUTOFOCUS = Build.MODEL.equals("GT-I9100") // Galaxy S2
+    private static final boolean DISABLE_CONTINUOUS_AUTOFOCUS = Build.MODEL.equals("GT-I9100") // Galaxy S2
             || Build.MODEL.equals("SGH-T989") // Galaxy S2
             || Build.MODEL.equals("SGH-T989D") // Galaxy S2 X
             || Build.MODEL.equals("SAMSUNG-SGH-I727") // Galaxy S2 Skyrocket

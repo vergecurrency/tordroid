@@ -105,7 +105,7 @@ abstract public class TransactionWatcherWallet extends AbstractWallet<BitTransac
     // All transactions together.
     final Map<Sha256Hash, BitTransaction> rawTransactions;
     private BitBlockchainConnection blockchainConnection;
-    private List<ListenerRegistration<WalletAccountEventListener>> listeners;
+    private final List<ListenerRegistration<WalletAccountEventListener>> listeners;
 
     // Wallet that this account belongs
     @Nullable private transient Wallet wallet = null;
@@ -113,14 +113,14 @@ abstract public class TransactionWatcherWallet extends AbstractWallet<BitTransac
     @VisibleForTesting transient Value lastBalance;
     transient WalletConnectivityStatus lastConnectivity = WalletConnectivityStatus.DISCONNECTED;
 
-    private Runnable saveLaterRunnable = new Runnable() {
+    private final Runnable saveLaterRunnable = new Runnable() {
         @Override
         public void run() {
             if (wallet != null) wallet.saveLater();
         }
     };
 
-    private Runnable saveNowRunnable = new Runnable() {
+    private final Runnable saveNowRunnable = new Runnable() {
         @Override
         public void run() {
             if (wallet != null) wallet.saveNow();

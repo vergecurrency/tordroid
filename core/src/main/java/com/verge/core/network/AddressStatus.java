@@ -9,6 +9,7 @@ import org.bitcoinj.core.Sha256Hash;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 
 import javax.annotation.Nullable;
@@ -122,7 +123,7 @@ final public class AddressStatus {
         AddressStatus status1 = (AddressStatus) o;
 
         if (!address.equals(status1.address)) return false;
-        return status != null ? status.equals(status1.status) : status1.status == null;
+        return Objects.equals(status, status1.status);
     }
 
     @Override

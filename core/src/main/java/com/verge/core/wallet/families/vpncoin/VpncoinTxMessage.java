@@ -58,7 +58,7 @@ public class VpncoinTxMessage implements TxMessage {
         setMessage(message);
     }
 
-    private transient static VpncoinMessageFactory instance = new VpncoinMessageFactory();
+    private final static VpncoinMessageFactory instance = new VpncoinMessageFactory();
     public static MessageFactory getFactory() {
         return instance;
     }

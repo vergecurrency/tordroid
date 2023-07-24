@@ -5,6 +5,7 @@ import org.json.JSONException;
 
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 import javax.annotation.Nullable;
@@ -27,13 +28,13 @@ public class CallMessage extends BaseMessage {
     public CallMessage(String method, String param) {
         super();
         setMethod(method);
-        setParams(Arrays.asList(param));
+        setParams(Collections.singletonList(param));
     }
 
     public CallMessage(String method, int param) {
         super();
         setMethod(method);
-        setParams(Arrays.asList(param));
+        setParams(Collections.singletonList(param));
     }
 
     public CallMessage(long id, String method, String param) {
@@ -85,7 +86,7 @@ public class CallMessage extends BaseMessage {
     }
 
     public void setParam(String param) {
-        setParams(Arrays.asList(param));
+        setParams(Collections.singletonList(param));
     }
 
     public void setParams(@Nullable Collection params) {

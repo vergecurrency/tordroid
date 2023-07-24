@@ -64,7 +64,7 @@ public final class Protos {
 
     private final com.google.protobuf.UnknownFieldSet unknownFields;
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
+    public com.google.protobuf.UnknownFieldSet
         getUnknownFields() {
       return this.unknownFields;
     }
@@ -118,7 +118,7 @@ public final class Protos {
         makeExtensionsImmutable();
       }
     }
-    public static final com.google.protobuf.Descriptors.Descriptor
+    public static com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.vergepay.core.protos.Protos.internal_static_com_verge_core_protos_PeerAddress_descriptor;
     }
@@ -197,7 +197,7 @@ public final class Protos {
       services_ = 0L;
     }
     private byte memoizedIsInitialized = -1;
-    public final boolean isInitialized() {
+    public boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized == 1) return true;
       if (isInitialized == 0) return false;
@@ -336,7 +336,7 @@ public final class Protos {
         com.google.protobuf.GeneratedMessage.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:com.vergepay.core.protos.PeerAddress)
         com.vergepay.core.protos.Protos.PeerAddressOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
+      public static com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
         return com.vergepay.core.protos.Protos.internal_static_com_verge_core_protos_PeerAddress_descriptor;
       }
@@ -443,7 +443,7 @@ public final class Protos {
         return this;
       }
 
-      public final boolean isInitialized() {
+      public boolean isInitialized() {
         if (!hasIpAddress()) {
           
           return false;
@@ -647,7 +647,7 @@ public final class Protos {
 
     private final com.google.protobuf.UnknownFieldSet unknownFields;
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
+    public com.google.protobuf.UnknownFieldSet
         getUnknownFields() {
       return this.unknownFields;
     }
@@ -696,7 +696,7 @@ public final class Protos {
         makeExtensionsImmutable();
       }
     }
-    public static final com.google.protobuf.Descriptors.Descriptor
+    public static com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.vergepay.core.protos.Protos.internal_static_com_verge_core_protos_EncryptedData_descriptor;
     }
@@ -775,7 +775,7 @@ public final class Protos {
       encryptedPrivateKey_ = com.google.protobuf.ByteString.EMPTY;
     }
     private byte memoizedIsInitialized = -1;
-    public final boolean isInitialized() {
+    public boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized == 1) return true;
       if (isInitialized == 0) return false;
@@ -903,7 +903,7 @@ public final class Protos {
         com.google.protobuf.GeneratedMessage.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:com.vergepay.core.protos.EncryptedData)
         com.vergepay.core.protos.Protos.EncryptedDataOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
+      public static com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
         return com.vergepay.core.protos.Protos.internal_static_com_verge_core_protos_EncryptedData_descriptor;
       }
@@ -1001,7 +1001,7 @@ public final class Protos {
         return this;
       }
 
-      public final boolean isInitialized() {
+      public boolean isInitialized() {
         if (!hasInitialisationVector()) {
           
           return false;
@@ -1279,7 +1279,7 @@ public final class Protos {
 
     private final com.google.protobuf.UnknownFieldSet unknownFields;
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
+    public com.google.protobuf.UnknownFieldSet
         getUnknownFields() {
       return this.unknownFields;
     }
@@ -1362,7 +1362,7 @@ public final class Protos {
         makeExtensionsImmutable();
       }
     }
-    public static final com.google.protobuf.Descriptors.Descriptor
+    public static com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.vergepay.core.protos.Protos.internal_static_com_verge_core_protos_DeterministicKey_descriptor;
     }
@@ -1535,7 +1535,7 @@ public final class Protos {
       isFollowing_ = false;
     }
     private byte memoizedIsInitialized = -1;
-    public final boolean isInitialized() {
+    public boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized == 1) return true;
       if (isInitialized == 0) return false;
@@ -1586,7 +1586,7 @@ public final class Protos {
             .computeUInt32SizeNoTag(path_.get(i));
         }
         size += dataSize;
-        size += 1 * getPathList().size();
+        size += getPathList().size();
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
@@ -1690,7 +1690,7 @@ public final class Protos {
         com.google.protobuf.GeneratedMessage.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:com.vergepay.core.protos.DeterministicKey)
         com.vergepay.core.protos.Protos.DeterministicKeyOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
+      public static com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
         return com.vergepay.core.protos.Protos.internal_static_com_verge_core_protos_DeterministicKey_descriptor;
       }
@@ -1823,7 +1823,7 @@ public final class Protos {
         return this;
       }
 
-      public final boolean isInitialized() {
+      public boolean isInitialized() {
           return hasChainCode();
       }
 
@@ -2318,7 +2318,7 @@ public final class Protos {
 
     private final com.google.protobuf.UnknownFieldSet unknownFields;
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
+    public com.google.protobuf.UnknownFieldSet
         getUnknownFields() {
       return this.unknownFields;
     }
@@ -2410,7 +2410,7 @@ public final class Protos {
         makeExtensionsImmutable();
       }
     }
-    public static final com.google.protobuf.Descriptors.Descriptor
+    public static com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.vergepay.core.protos.Protos.internal_static_com_verge_core_protos_Key_descriptor;
     }
@@ -2540,7 +2540,7 @@ public final class Protos {
           internalGetValueMap() {
         return internalValueMap;
       }
-      private static com.google.protobuf.Internal.EnumLiteMap<Type>
+      private static final com.google.protobuf.Internal.EnumLiteMap<Type>
           internalValueMap =
             new com.google.protobuf.Internal.EnumLiteMap<Type>() {
               public Type findValueByNumber(int number) {
@@ -2766,7 +2766,7 @@ public final class Protos {
       deterministicKey_ = com.vergepay.core.protos.Protos.DeterministicKey.getDefaultInstance();
     }
     private byte memoizedIsInitialized = -1;
-    public final boolean isInitialized() {
+    public boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized == 1) return true;
       if (isInitialized == 0) return false;
@@ -2939,7 +2939,7 @@ public final class Protos {
         com.google.protobuf.GeneratedMessage.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:com.vergepay.core.protos.Key)
         com.vergepay.core.protos.Protos.KeyOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
+      public static com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
         return com.vergepay.core.protos.Protos.internal_static_com_verge_core_protos_Key_descriptor;
       }
@@ -3093,7 +3093,7 @@ public final class Protos {
         return this;
       }
 
-      public final boolean isInitialized() {
+      public boolean isInitialized() {
         if (!hasType()) {
           
           return false;
@@ -3767,7 +3767,7 @@ public final class Protos {
 
     private final com.google.protobuf.UnknownFieldSet unknownFields;
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
+    public com.google.protobuf.UnknownFieldSet
         getUnknownFields() {
       return this.unknownFields;
     }
@@ -3831,7 +3831,7 @@ public final class Protos {
         makeExtensionsImmutable();
       }
     }
-    public static final com.google.protobuf.Descriptors.Descriptor
+    public static com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.vergepay.core.protos.Protos.internal_static_com_verge_core_protos_TransactionInput_descriptor;
     }
@@ -3982,7 +3982,7 @@ public final class Protos {
       value_ = 0L;
     }
     private byte memoizedIsInitialized = -1;
-    public final boolean isInitialized() {
+    public boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized == 1) return true;
       if (isInitialized == 0) return false;
@@ -4135,7 +4135,7 @@ public final class Protos {
         com.google.protobuf.GeneratedMessage.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:com.vergepay.core.protos.TransactionInput)
         com.vergepay.core.protos.Protos.TransactionInputOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
+      public static com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
         return com.vergepay.core.protos.Protos.internal_static_com_verge_core_protos_TransactionInput_descriptor;
       }
@@ -4260,7 +4260,7 @@ public final class Protos {
         return this;
       }
 
-      public final boolean isInitialized() {
+      public boolean isInitialized() {
         if (!hasTransactionOutPointHash()) {
           
           return false;
@@ -4671,7 +4671,7 @@ public final class Protos {
 
     private final com.google.protobuf.UnknownFieldSet unknownFields;
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
+    public com.google.protobuf.UnknownFieldSet
         getUnknownFields() {
       return this.unknownFields;
     }
@@ -4740,7 +4740,7 @@ public final class Protos {
         makeExtensionsImmutable();
       }
     }
-    public static final com.google.protobuf.Descriptors.Descriptor
+    public static com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.vergepay.core.protos.Protos.internal_static_com_verge_core_protos_TransactionOutput_descriptor;
     }
@@ -4907,7 +4907,7 @@ public final class Protos {
       index_ = 0;
     }
     private byte memoizedIsInitialized = -1;
-    public final boolean isInitialized() {
+    public boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized == 1) return true;
       if (isInitialized == 0) return false;
@@ -5063,7 +5063,7 @@ public final class Protos {
         com.google.protobuf.GeneratedMessage.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:com.vergepay.core.protos.TransactionOutput)
         com.vergepay.core.protos.Protos.TransactionOutputOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
+      public static com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
         return com.vergepay.core.protos.Protos.internal_static_com_verge_core_protos_TransactionOutput_descriptor;
       }
@@ -5197,7 +5197,7 @@ public final class Protos {
         return this;
       }
 
-      public final boolean isInitialized() {
+      public boolean isInitialized() {
         if (!hasValue()) {
           
           return false;
@@ -5627,7 +5627,7 @@ public final class Protos {
 
     private final com.google.protobuf.UnknownFieldSet unknownFields;
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
+    public com.google.protobuf.UnknownFieldSet
         getUnknownFields() {
       return this.unknownFields;
     }
@@ -5691,7 +5691,7 @@ public final class Protos {
         makeExtensionsImmutable();
       }
     }
-    public static final com.google.protobuf.Descriptors.Descriptor
+    public static com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.vergepay.core.protos.Protos.internal_static_com_verge_core_protos_UnspentOutput_descriptor;
     }
@@ -5842,7 +5842,7 @@ public final class Protos {
       isGenerated_ = false;
     }
     private byte memoizedIsInitialized = -1;
-    public final boolean isInitialized() {
+    public boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized == 1) return true;
       if (isInitialized == 0) return false;
@@ -5999,7 +5999,7 @@ public final class Protos {
         com.google.protobuf.GeneratedMessage.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:com.vergepay.core.protos.UnspentOutput)
         com.vergepay.core.protos.Protos.UnspentOutputOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
+      public static com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
         return com.vergepay.core.protos.Protos.internal_static_com_verge_core_protos_UnspentOutput_descriptor;
       }
@@ -6124,7 +6124,7 @@ public final class Protos {
         return this;
       }
 
-      public final boolean isInitialized() {
+      public boolean isInitialized() {
         if (!hasOutPointHash()) {
           
           return false;
@@ -6559,7 +6559,7 @@ public final class Protos {
 
     private final com.google.protobuf.UnknownFieldSet unknownFields;
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
+    public com.google.protobuf.UnknownFieldSet
         getUnknownFields() {
       return this.unknownFields;
     }
@@ -6646,7 +6646,7 @@ public final class Protos {
         makeExtensionsImmutable();
       }
     }
-    public static final com.google.protobuf.Descriptors.Descriptor
+    public static com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.vergepay.core.protos.Protos.internal_static_com_verge_core_protos_TransactionConfidence_descriptor;
     }
@@ -6754,7 +6754,7 @@ public final class Protos {
           internalGetValueMap() {
         return internalValueMap;
       }
-      private static com.google.protobuf.Internal.EnumLiteMap<Type>
+      private static final com.google.protobuf.Internal.EnumLiteMap<Type>
           internalValueMap =
             new com.google.protobuf.Internal.EnumLiteMap<Type>() {
               public Type findValueByNumber(int number) {
@@ -6890,7 +6890,7 @@ public final class Protos {
           internalGetValueMap() {
         return internalValueMap;
       }
-      private static com.google.protobuf.Internal.EnumLiteMap<Source>
+      private static final com.google.protobuf.Internal.EnumLiteMap<Source>
           internalValueMap =
             new com.google.protobuf.Internal.EnumLiteMap<Source>() {
               public Source findValueByNumber(int number) {
@@ -7091,7 +7091,7 @@ public final class Protos {
       source_ = com.vergepay.core.protos.Protos.TransactionConfidence.Source.SOURCE_UNKNOWN;
     }
     private byte memoizedIsInitialized = -1;
-    public final boolean isInitialized() {
+    public boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized == 1) return true;
       if (isInitialized == 0) return false;
@@ -7252,7 +7252,7 @@ public final class Protos {
         com.google.protobuf.GeneratedMessage.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:com.vergepay.core.protos.TransactionConfidence)
         com.vergepay.core.protos.Protos.TransactionConfidenceOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
+      public static com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
         return com.vergepay.core.protos.Protos.internal_static_com_verge_core_protos_TransactionConfidence_descriptor;
       }
@@ -7419,7 +7419,7 @@ public final class Protos {
         return this;
       }
 
-      public final boolean isInitialized() {
+      public boolean isInitialized() {
         for (int i = 0; i < getBroadcastByCount(); i++) {
           if (!getBroadcastBy(i).isInitialized()) {
             
@@ -8290,7 +8290,7 @@ public final class Protos {
 
     private final com.google.protobuf.UnknownFieldSet unknownFields;
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
+    public com.google.protobuf.UnknownFieldSet
         getUnknownFields() {
       return this.unknownFields;
     }
@@ -8470,7 +8470,7 @@ public final class Protos {
         makeExtensionsImmutable();
       }
     }
-    public static final com.google.protobuf.Descriptors.Descriptor
+    public static com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.vergepay.core.protos.Protos.internal_static_com_verge_core_protos_Transaction_descriptor;
     }
@@ -8597,7 +8597,7 @@ public final class Protos {
           internalGetValueMap() {
         return internalValueMap;
       }
-      private static com.google.protobuf.Internal.EnumLiteMap<Pool>
+      private static final com.google.protobuf.Internal.EnumLiteMap<Pool>
           internalValueMap =
             new com.google.protobuf.Internal.EnumLiteMap<Pool>() {
               public Pool findValueByNumber(int number) {
@@ -9105,7 +9105,7 @@ public final class Protos {
       fee_ = 0L;
     }
     private byte memoizedIsInitialized = -1;
-    public final boolean isInitialized() {
+    public boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized == 1) return true;
       if (isInitialized == 0) return false;
@@ -9241,7 +9241,7 @@ public final class Protos {
             .computeBytesSizeNoTag(blockHash_.get(i));
         }
         size += dataSize;
-        size += 1 * getBlockHashList().size();
+        size += getBlockHashList().size();
       }
       {
         int dataSize = 0;
@@ -9250,7 +9250,7 @@ public final class Protos {
             .computeInt32SizeNoTag(blockRelativityOffsets_.get(i));
         }
         size += dataSize;
-        size += 1 * getBlockRelativityOffsetsList().size();
+        size += getBlockRelativityOffsetsList().size();
       }
       if (((bitField0_ & 0x00000080) == 0x00000080)) {
         size += com.google.protobuf.CodedOutputStream
@@ -9373,7 +9373,7 @@ public final class Protos {
         com.google.protobuf.GeneratedMessage.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:com.vergepay.core.protos.Transaction)
         com.vergepay.core.protos.Protos.TransactionOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
+      public static com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
         return com.vergepay.core.protos.Protos.internal_static_com_verge_core_protos_Transaction_descriptor;
       }
@@ -9706,7 +9706,7 @@ public final class Protos {
         return this;
       }
 
-      public final boolean isInitialized() {
+      public boolean isInitialized() {
         if (!hasVersion()) {
           
           return false;
@@ -11246,7 +11246,7 @@ public final class Protos {
 
     private final com.google.protobuf.UnknownFieldSet unknownFields;
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
+    public com.google.protobuf.UnknownFieldSet
         getUnknownFields() {
       return this.unknownFields;
     }
@@ -11297,7 +11297,7 @@ public final class Protos {
         makeExtensionsImmutable();
       }
     }
-    public static final com.google.protobuf.Descriptors.Descriptor
+    public static com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.vergepay.core.protos.Protos.internal_static_com_verge_core_protos_AddressStatus_descriptor;
     }
@@ -11438,7 +11438,7 @@ public final class Protos {
       status_ = "";
     }
     private byte memoizedIsInitialized = -1;
-    public final boolean isInitialized() {
+    public boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized == 1) return true;
       if (isInitialized == 0) return false;
@@ -11566,7 +11566,7 @@ public final class Protos {
         com.google.protobuf.GeneratedMessage.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:com.vergepay.core.protos.AddressStatus)
         com.vergepay.core.protos.Protos.AddressStatusOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
+      public static com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
         return com.vergepay.core.protos.Protos.internal_static_com_verge_core_protos_AddressStatus_descriptor;
       }
@@ -11668,7 +11668,7 @@ public final class Protos {
         return this;
       }
 
-      public final boolean isInitialized() {
+      public boolean isInitialized() {
         if (!hasAddress()) {
           
           return false;
@@ -12144,7 +12144,7 @@ public final class Protos {
 
     private final com.google.protobuf.UnknownFieldSet unknownFields;
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
+    public com.google.protobuf.UnknownFieldSet
         getUnknownFields() {
       return this.unknownFields;
     }
@@ -12260,7 +12260,7 @@ public final class Protos {
         makeExtensionsImmutable();
       }
     }
-    public static final com.google.protobuf.Descriptors.Descriptor
+    public static com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.vergepay.core.protos.Protos.internal_static_com_verge_core_protos_WalletPocket_descriptor;
     }
@@ -12652,7 +12652,7 @@ public final class Protos {
       unspentOutput_ = java.util.Collections.emptyList();
     }
     private byte memoizedIsInitialized = -1;
-    public final boolean isInitialized() {
+    public boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized == 1) return true;
       if (isInitialized == 0) return false;
@@ -12860,7 +12860,7 @@ public final class Protos {
         com.google.protobuf.GeneratedMessage.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:com.vergepay.core.protos.WalletPocket)
         com.vergepay.core.protos.Protos.WalletPocketOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
+      public static com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
         return com.vergepay.core.protos.Protos.internal_static_com_verge_core_protos_WalletPocket_descriptor;
       }
@@ -13168,7 +13168,7 @@ public final class Protos {
         return this;
       }
 
-      public final boolean isInitialized() {
+      public boolean isInitialized() {
         if (!hasNetworkIdentifier()) {
           
           return false;
@@ -14702,7 +14702,7 @@ public final class Protos {
 
     private final com.google.protobuf.UnknownFieldSet unknownFields;
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
+    public com.google.protobuf.UnknownFieldSet
         getUnknownFields() {
       return this.unknownFields;
     }
@@ -14761,7 +14761,7 @@ public final class Protos {
         makeExtensionsImmutable();
       }
     }
-    public static final com.google.protobuf.Descriptors.Descriptor
+    public static com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.vergepay.core.protos.Protos.internal_static_com_verge_core_protos_ScryptParameters_descriptor;
     }
@@ -14888,7 +14888,7 @@ public final class Protos {
       p_ = 1;
     }
     private byte memoizedIsInitialized = -1;
-    public final boolean isInitialized() {
+    public boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized == 1) return true;
       if (isInitialized == 0) return false;
@@ -15034,7 +15034,7 @@ public final class Protos {
         com.google.protobuf.GeneratedMessage.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:com.vergepay.core.protos.ScryptParameters)
         com.vergepay.core.protos.Protos.ScryptParametersOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
+      public static com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
         return com.vergepay.core.protos.Protos.internal_static_com_verge_core_protos_ScryptParameters_descriptor;
       }
@@ -15150,7 +15150,7 @@ public final class Protos {
         return this;
       }
 
-      public final boolean isInitialized() {
+      public boolean isInitialized() {
           return hasSalt();
       }
 
@@ -15512,7 +15512,7 @@ public final class Protos {
 
     private final com.google.protobuf.UnknownFieldSet unknownFields;
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
+    public com.google.protobuf.UnknownFieldSet
         getUnknownFields() {
       return this.unknownFields;
     }
@@ -15622,7 +15622,7 @@ public final class Protos {
         makeExtensionsImmutable();
       }
     }
-    public static final com.google.protobuf.Descriptors.Descriptor
+    public static com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.vergepay.core.protos.Protos.internal_static_com_verge_core_protos_Wallet_descriptor;
     }
@@ -15729,7 +15729,7 @@ public final class Protos {
           internalGetValueMap() {
         return internalValueMap;
       }
-      private static com.google.protobuf.Internal.EnumLiteMap<EncryptionType>
+      private static final com.google.protobuf.Internal.EnumLiteMap<EncryptionType>
           internalValueMap =
             new com.google.protobuf.Internal.EnumLiteMap<EncryptionType>() {
               public EncryptionType findValueByNumber(int number) {
@@ -15936,7 +15936,7 @@ public final class Protos {
       pockets_ = java.util.Collections.emptyList();
     }
     private byte memoizedIsInitialized = -1;
-    public final boolean isInitialized() {
+    public boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized == 1) return true;
       if (isInitialized == 0) return false;
@@ -16121,7 +16121,7 @@ public final class Protos {
         com.google.protobuf.GeneratedMessage.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:com.vergepay.core.protos.Wallet)
         com.vergepay.core.protos.Protos.WalletOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
+      public static com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
         return com.vergepay.core.protos.Protos.internal_static_com_verge_core_protos_Wallet_descriptor;
       }
@@ -16324,7 +16324,7 @@ public final class Protos {
         return this;
       }
 
-      public final boolean isInitialized() {
+      public boolean isInitialized() {
         if (!hasMasterKey()) {
           
           return false;
@@ -17093,68 +17093,68 @@ public final class Protos {
 
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_com_verge_core_protos_PeerAddress_descriptor;
-  private static
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+  private static final
+  com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_com_verge_core_protos_PeerAddress_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_com_verge_core_protos_EncryptedData_descriptor;
-  private static
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+  private static final
+  com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_com_verge_core_protos_EncryptedData_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_com_verge_core_protos_DeterministicKey_descriptor;
-  private static
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+  private static final
+  com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_com_verge_core_protos_DeterministicKey_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_com_verge_core_protos_Key_descriptor;
-  private static
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+  private static final
+  com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_com_verge_core_protos_Key_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_com_verge_core_protos_TransactionInput_descriptor;
-  private static
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+  private static final
+  com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_com_verge_core_protos_TransactionInput_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_com_verge_core_protos_TransactionOutput_descriptor;
-  private static
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+  private static final
+  com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_com_verge_core_protos_TransactionOutput_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_com_verge_core_protos_UnspentOutput_descriptor;
-  private static
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+  private static final
+  com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_com_verge_core_protos_UnspentOutput_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_com_verge_core_protos_TransactionConfidence_descriptor;
-  private static
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+  private static final
+  com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_com_verge_core_protos_TransactionConfidence_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_com_verge_core_protos_Transaction_descriptor;
-  private static
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+  private static final
+  com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_com_verge_core_protos_Transaction_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_com_verge_core_protos_AddressStatus_descriptor;
-  private static
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+  private static final
+  com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_com_verge_core_protos_AddressStatus_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_com_verge_core_protos_WalletPocket_descriptor;
-  private static
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+  private static final
+  com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_com_verge_core_protos_WalletPocket_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_com_verge_core_protos_ScryptParameters_descriptor;
-  private static
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+  private static final
+  com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_com_verge_core_protos_ScryptParameters_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_com_verge_core_protos_Wallet_descriptor;
-  private static
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+  private static final
+  com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_com_verge_core_protos_Wallet_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor

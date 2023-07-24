@@ -31,10 +31,10 @@ public enum CoinID {
     VERGE_MAIN(VergeMain.get()),
     ;
 
-    private static List<CoinType> types;
-    private static HashMap<String, CoinType> idLookup = new HashMap<>();
-    private static HashMap<String, CoinType> symbolLookup = new HashMap<>();
-    private static HashMap<String, ArrayList<CoinType>> uriLookup = new HashMap<>();
+    private static final List<CoinType> types;
+    private static final HashMap<String, CoinType> idLookup = new HashMap<>();
+    private static final HashMap<String, CoinType> symbolLookup = new HashMap<>();
+    private static final HashMap<String, ArrayList<CoinType>> uriLookup = new HashMap<>();
 
     static {
         Set<NetworkParameters> bitcoinjNetworks = Networks.get();

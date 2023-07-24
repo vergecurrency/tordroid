@@ -26,7 +26,7 @@ public class VergeMain extends PeerFamily {
         softDustPolicy = SoftDustPolicy.BASE_FEE_FOR_EACH_SOFT_DUST_TXO;
     }
 
-    private static VergeMain instance = new VergeMain();
+    private static final VergeMain instance = new VergeMain();
     public static synchronized VergeMain get() {
         return instance;
     }

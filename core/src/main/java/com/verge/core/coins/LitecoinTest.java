@@ -27,7 +27,7 @@ public class LitecoinTest extends BitFamily {
         signedMessageHeader = toBytes("Litecoin Signed Message:\n");
     }
 
-    private static LitecoinTest instance = new LitecoinTest();
+    private static final LitecoinTest instance = new LitecoinTest();
     public static synchronized CoinType get() {
         return instance;
     }

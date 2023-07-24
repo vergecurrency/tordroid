@@ -71,14 +71,14 @@ public class WalletUtils {
         int len = bytes.length;
         checkState(len >= 8);
 
-        return   (bytes[len - 1] & 0xFFl) |
-                ((bytes[len - 2] & 0xFFl) << 8) |
-                ((bytes[len - 3] & 0xFFl) << 16) |
-                ((bytes[len - 4] & 0xFFl) << 24) |
-                ((bytes[len - 5] & 0xFFl) << 32) |
-                ((bytes[len - 6] & 0xFFl) << 40) |
-                ((bytes[len - 7] & 0xFFl) << 48) |
-                ((bytes[len - 8] & 0xFFl) << 56);
+        return   (bytes[len - 1] & 0xFFL) |
+                ((bytes[len - 2] & 0xFFL) << 8) |
+                ((bytes[len - 3] & 0xFFL) << 16) |
+                ((bytes[len - 4] & 0xFFL) << 24) |
+                ((bytes[len - 5] & 0xFFL) << 32) |
+                ((bytes[len - 6] & 0xFFL) << 40) |
+                ((bytes[len - 7] & 0xFFL) << 48) |
+                ((bytes[len - 8] & 0xFFL) << 56);
     }
 
     @CheckForNull

@@ -109,7 +109,7 @@ public class SeedFragment extends Fragment {
         try {
             listener = (WelcomeFragment.Listener) context;
         } catch (ClassCastException e) {
-            throw new ClassCastException(context.toString()
+            throw new ClassCastException(context
                     + " must implement " + WelcomeFragment.Listener.class);
         }
     }

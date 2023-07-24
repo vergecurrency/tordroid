@@ -27,7 +27,7 @@ public class BitcoinMain extends BitFamily {
         signedMessageHeader = toBytes("Bitcoin Signed Message:\n");
     }
 
-    private static BitcoinMain instance = new BitcoinMain();
+    private static final BitcoinMain instance = new BitcoinMain();
     public static synchronized CoinType get() {
         return instance;
     }

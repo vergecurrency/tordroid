@@ -12,7 +12,7 @@ import org.spongycastle.util.encoders.Hex;
  * @author John L. Jegutanis
  */
 public class EmptyTransactionOutput extends TransactionOutput {
-    private static EmptyTransactionOutput instance =
+    private static final EmptyTransactionOutput instance =
             new EmptyTransactionOutput(new FakeNetworkParameters(), null, Coin.ZERO,
                     Hex.decode("76a914000000000000000000000000000000000000000088ac"));
 

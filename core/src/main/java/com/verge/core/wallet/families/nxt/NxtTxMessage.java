@@ -27,7 +27,7 @@ public class NxtTxMessage implements TxMessage {
 
     }
 
-    private transient static NxtMessageFactory instance = new NxtMessageFactory();
+    private final static NxtMessageFactory instance = new NxtMessageFactory();
     public static MessageFactory getFactory() { return instance; }
 
     public String toString() {

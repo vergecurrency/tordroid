@@ -49,9 +49,8 @@ public class PreviousAddressesFragment extends Fragment {
 
         @Override
         protected void weakHandleMessage(PreviousAddressesFragment ref, Message msg) {
-            switch (msg.what) {
-                case UPDATE_VIEW:
-                    ref.updateView();
+            if (msg.what == UPDATE_VIEW) {
+                ref.updateView();
             }
         }
     }
@@ -177,7 +176,7 @@ public class PreviousAddressesFragment extends Fragment {
             listener = (Listener) context;
             resolver = context.getContentResolver();
         } catch (ClassCastException e) {
-            throw new ClassCastException(context.toString() + " must implement " + Listener.class);
+            throw new ClassCastException(context + " must implement " + Listener.class);
         }
     }
 

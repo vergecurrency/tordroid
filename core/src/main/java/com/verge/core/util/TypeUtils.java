@@ -14,7 +14,7 @@ public class TypeUtils {
     }
     
     public static boolean is(CoinType myType, ValueType otherType) {
-        return otherType != null && myType.equals(otherType);
+        return myType.equals(otherType);
     }
     
     public static boolean is(CoinType myType, AbstractAddress address) {

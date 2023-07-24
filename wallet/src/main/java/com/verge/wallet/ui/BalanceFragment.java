@@ -406,7 +406,7 @@ public class BalanceFragment extends WalletFragment implements LoaderCallbacks<L
                     try {
                         forceLoad();
                     } catch (final RejectedExecutionException x) {
-                        log.info("rejected execution: " + AbstractTransactionsLoader.this.toString());
+                        log.info("rejected execution: " + AbstractTransactionsLoader.this);
                     }
                 }
             };

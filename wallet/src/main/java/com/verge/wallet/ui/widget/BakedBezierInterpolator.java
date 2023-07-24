@@ -25,7 +25,7 @@ import android.view.animation.Interpolator;
 final class BakedBezierInterpolator implements Interpolator {
     private static final BakedBezierInterpolator INSTANCE = new BakedBezierInterpolator();
 
-    public final static BakedBezierInterpolator getInstance() {
+    public static BakedBezierInterpolator getInstance() {
         return INSTANCE;
     }
 

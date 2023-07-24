@@ -85,7 +85,7 @@ public class OverviewFragment extends Fragment{
     private Wallet wallet;
     private Value currentBalance;
 
-    private boolean isFullAmount = false;
+    private final boolean isFullAmount = false;
     private WalletApplication application;
     private Configuration config;
 
@@ -187,7 +187,7 @@ public class OverviewFragment extends Fragment{
         try {
             listener = (Listener) context;
         } catch (ClassCastException e) {
-            throw new ClassCastException(context.toString() + " must implement " + Listener.class);
+            throw new ClassCastException(context + " must implement " + Listener.class);
         }
         application = (WalletApplication) context.getApplicationContext();
         config = application.getConfiguration();

@@ -15,7 +15,7 @@ public class OrbotStatusReceiver extends BroadcastReceiver {
 
     private static final Logger log = LoggerFactory.getLogger(OrbotStatusReceiver.class);
 
-    private BalanceFragment.Listener listener;
+    private final BalanceFragment.Listener listener;
 
     public OrbotStatusReceiver(BalanceFragment.Listener listener) {
         this.listener = listener;

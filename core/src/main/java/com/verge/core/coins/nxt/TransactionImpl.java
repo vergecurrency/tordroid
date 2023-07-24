@@ -665,7 +665,7 @@ public final class TransactionImpl implements Transaction {
             tx.setConfirmations(confirmations);
             return tx;
         } catch (JSONException e) {
-            log.info("Failed to parse transaction: {} ", transactionData.toString());
+            log.info("Failed to parse transaction: {} ", transactionData);
             throw e;
         }
     }

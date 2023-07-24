@@ -88,7 +88,7 @@ public class PasswordConfirmationFragment extends Fragment {
         try {
             listener = (Listener) context;
         } catch (ClassCastException e) {
-            throw new ClassCastException(context.toString() + " must implement " + Listener.class);
+            throw new ClassCastException(context + " must implement " + Listener.class);
         }
     }
 

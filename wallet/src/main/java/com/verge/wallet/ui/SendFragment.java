@@ -137,8 +137,8 @@ public class SendFragment extends WalletFragment {
     private boolean isTxMessageValid;
     private WalletAccount account;
 
-    private MyHandler handler = new MyHandler(this);
-    private ContentObserver addressBookObserver = new AddressBookObserver(handler);
+    private final MyHandler handler = new MyHandler(this);
+    private final ContentObserver addressBookObserver = new AddressBookObserver(handler);
     private WalletApplication application;
     private Configuration config;
     private Map<String, ExchangeRate> localRates = new HashMap<>();
@@ -1008,14 +1008,11 @@ public class SendFragment extends WalletFragment {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.action_empty_wallet:
-                setAmountForEmptyWallet();
-                return true;
-            default:
-                // Not one of ours. Perform default menu processing
-                return super.onOptionsItemSelected(item);
-        }
+        if (item.getItemId() == R.id.action_empty_wallet) {
+            setAmountForEmptyWallet();
+            return true;
+        }// Not one of ours. Perform default menu processing
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
@@ -1027,7 +1024,7 @@ public class SendFragment extends WalletFragment {
             this.config = application.getConfiguration();
             this.resolver = context.getContentResolver();
         } catch (ClassCastException e) {
-            throw new ClassCastException(context.toString() + " must implement " + Listener.class);
+            throw new ClassCastException(context + " must implement " + Listener.class);
         }
     }
 
@@ -1086,11 +1083,10 @@ public class SendFragment extends WalletFragment {
 
                 @Override
                 public boolean onActionItemClicked(ActionMode mode, MenuItem menuItem) {
-                    switch (menuItem.getItemId()) {
-                        case R.id.action_change_address_type:
-                            if (listener != null) listener.showPayToDialog(getAddress().toString());
-                            mode.finish();
-                            return true;
+                    if (menuItem.getItemId() == R.id.action_change_address_type) {
+                        if (listener != null) listener.showPayToDialog(getAddress().toString());
+                        mode.finish();
+                        return true;
                     }
                     return super.onActionItemClicked(mode, menuItem);
                 }

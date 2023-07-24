@@ -42,7 +42,7 @@ import com.google.zxing.ResultPoint;
  */
 public class ScannerView extends View
 {
-    private static final long LASER_ANIMATION_DELAY_MS = 100l;
+    private static final long LASER_ANIMATION_DELAY_MS = 100L;
     private static final int DOT_OPACITY = 0xa0;
     private static final int DOT_SIZE = 8;
     private static final int DOT_TTL_MS = 500;

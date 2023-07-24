@@ -69,9 +69,9 @@ public final class ExchangeRatesFragment extends ListFragment implements OnShare
     private LoaderManager loaderManager;
 
     private ExchangeRatesAdapter adapter;
-    private String query = null;
+    private final String query = null;
 
-    private Coin balance = null;
+    private final Coin balance = null;
     @CheckForNull
     private String defaultCurrency = null;
 

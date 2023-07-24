@@ -162,7 +162,7 @@ public class RestoreFragment extends Fragment {
         try {
             listener = (WelcomeFragment.Listener) context;
         } catch (ClassCastException e) {
-            throw new ClassCastException(context.toString()
+            throw new ClassCastException(context
                     + " must implement " + WelcomeFragment.Listener.class);
         }
     }
@@ -255,7 +255,7 @@ public class RestoreFragment extends Fragment {
             try {
                 mListener = (WelcomeFragment.Listener) activity;
             } catch (ClassCastException e) {
-                throw new ClassCastException(activity.toString()
+                throw new ClassCastException(activity
                         + " must implement WelcomeFragment.OnFragmentInteractionListener");
             }
         }

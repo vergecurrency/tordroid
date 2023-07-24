@@ -10,8 +10,8 @@ import android.text.format.Time;
 public class TimeUtils {
     public static final long TIME_PRECISION = DateUtils.MINUTE_IN_MILLIS;
 
-    private static Time nowTime = new Time();
-    private static Time thenTime = new Time();
+    private static final Time nowTime = new Time();
+    private static final Time thenTime = new Time();
 
     /**
      * Show time in a human friendly format

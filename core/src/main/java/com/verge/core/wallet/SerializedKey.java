@@ -64,7 +64,7 @@ public class SerializedKey implements Serializable {
         }
     }
 
-    private Type keyType;
+    private final Type keyType;
     private int version;
     private boolean ecMultiply;
     private boolean compressed;

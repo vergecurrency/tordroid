@@ -131,7 +131,7 @@ public class ShowSeedFragment extends Fragment {
             WalletApplication application = (WalletApplication) context.getApplicationContext();
             wallet = application.getWallet();
         } catch (ClassCastException e) {
-            throw new ClassCastException(context.toString() + " must implement " + Listener.class);
+            throw new ClassCastException(context + " must implement " + Listener.class);
         }
     }
 

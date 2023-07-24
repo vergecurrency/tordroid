@@ -305,7 +305,7 @@ public final class Crypto {
             }
             return id;
         } catch (ReedSolomon.DecodeException e) {
-            log.debug("Reed-Solomon decoding failed for " + rsString + ": " + e.toString());
+            log.debug("Reed-Solomon decoding failed for " + rsString + ": " + e);
             throw new RuntimeException(e.toString(), e);
         }
     }

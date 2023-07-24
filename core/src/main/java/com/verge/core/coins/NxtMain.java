@@ -21,7 +21,7 @@ public class NxtMain extends NxtFamily {
         feePolicy = FeePolicy.FLAT_FEE;
     }
 
-    private static NxtMain instance = new NxtMain();
+    private static final NxtMain instance = new NxtMain();
     public static synchronized CoinType get() {
         return instance;
     }

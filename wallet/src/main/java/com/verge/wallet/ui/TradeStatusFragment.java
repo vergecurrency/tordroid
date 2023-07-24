@@ -292,23 +292,21 @@ public class TradeStatusFragment extends Fragment {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.action_delete:
-                new AlertDialog.Builder(getActivity())
-                        .setMessage(R.string.trade_status_delete_message)
-                        .setNegativeButton(R.string.button_cancel, null)
-                        .setPositiveButton(R.string.button_ok, new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                contentResolver.delete(statusUri, null, null);
-                                onExitPressed();
-                            }
-                        })
-                        .create().show();
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
+        if (item.getItemId() == R.id.action_delete) {
+            new AlertDialog.Builder(getActivity())
+                    .setMessage(R.string.trade_status_delete_message)
+                    .setNegativeButton(R.string.button_cancel, null)
+                    .setPositiveButton(R.string.button_ok, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            contentResolver.delete(statusUri, null, null);
+                            onExitPressed();
+                        }
+                    })
+                    .create().show();
+            return true;
         }
+        return super.onOptionsItemSelected(item);
     }
 
     private void updateView() {
@@ -438,7 +436,7 @@ public class TradeStatusFragment extends Fragment {
             application = (WalletApplication) context.getApplicationContext();
             loaderManager = getLoaderManager();
         } catch (ClassCastException e) {
-            throw new ClassCastException(context.toString()
+            throw new ClassCastException(context
                     + " must implement " + TradeStatusFragment.Listener.class);
         }
     }

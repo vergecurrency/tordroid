@@ -59,7 +59,7 @@ public class CoinServiceImpl extends Service implements CoinService {
     private int notificationCount = 0;
     private BigInteger notificationAccumulatedAmount = BigInteger.ZERO;
     private final List<AbstractAddress> notificationAddresses = new LinkedList<>();
-    private AtomicInteger transactionsReceived = new AtomicInteger();
+    private final AtomicInteger transactionsReceived = new AtomicInteger();
     private long serviceCreatedAt;
 
     private static final int MIN_COLLECT_HISTORY = 2;

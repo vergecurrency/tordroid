@@ -27,7 +27,7 @@ public class BitcoinTest extends BitFamily {
         signedMessageHeader = toBytes("Bitcoin Signed Message:\n");
     }
 
-    private static BitcoinTest instance = new BitcoinTest();
+    private static final BitcoinTest instance = new BitcoinTest();
     public static synchronized CoinType get() {
         return instance;
     }
