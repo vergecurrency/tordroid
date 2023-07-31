@@ -35,6 +35,11 @@
 -dontwarn sun.nio.ch.DirectBuffer
 -dontwarn net.jcip.annotations.GuardedBy
 -dontwarn com.subgraph.orchid.**
+-dontwarn com.google.j2objc.annotations.Weak
+-dontwarn com.google.common.base.Objects$ToStringHelper
+-dontwarn com.google.errorprone.annotations.CanIgnoreReturnValue
+-dontwarn com.google.errorprone.annotations.concurrent.LazyInit
+-dontwarn com.google.j2objc.annotations.RetainedWith
 
 # Butterknife
 -keep class butterknife.* { *; }
