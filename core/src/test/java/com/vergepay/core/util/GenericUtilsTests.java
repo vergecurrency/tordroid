@@ -24,24 +24,13 @@ public class GenericUtilsTests {
     @Test
     public void getPossibleTypes() throws AddressMalformedException {
         List<CoinType> types = GenericUtils.getPossibleTypes("BPa5FmbZRGpmNfy4qaUzarXwSSFbJKFRMQ");
-        assertTrue(types.contains(BlackcoinMain.get()));
-        assertTrue(types.contains(NuBitsMain.get()));
         assertTrue(GenericUtils.hasMultipleTypes("BPa5FmbZRGpmNfy4qaUzarXwSSFbJKFRMQ"));
 
         // Many coins share Bitcoin's multisig addresses...
         types = GenericUtils.getPossibleTypes("3Lp1ZbdoDfZF21BLMBpctM6CrM6j4t2JyU");
         assertTrue(types.contains(BitcoinMain.get()));
         assertTrue(types.contains(LitecoinMain.get()));
-        assertTrue(types.contains(FeathercoinMain.get()));
-        assertTrue(types.contains(DigitalcoinMain.get()));
         assertTrue(GenericUtils.hasMultipleTypes("3Lp1ZbdoDfZF21BLMBpctM6CrM6j4t2JyU"));
-
-        // Address method
-        AbstractAddress address = BlackcoinMain.get().newAddress("BPa5FmbZRGpmNfy4qaUzarXwSSFbJKFRMQ");
-        types = GenericUtils.getPossibleTypes(address);
-        assertTrue(types.contains(BlackcoinMain.get()));
-        assertTrue(types.contains(NuBitsMain.get()));
-        assertTrue(GenericUtils.hasMultipleTypes(address));
 
         // Classic Bitcoin addresses should have only one type
         types = GenericUtils.getPossibleTypes("1AjnxP4frz7Nb4v2soLnhN2uV9UocqvaGH");

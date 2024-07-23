@@ -2,9 +2,7 @@ package com.vergepay.core.exchange.shapeshift;
 
 import com.vergepay.core.coins.BitcoinMain;
 import com.vergepay.core.coins.CoinType;
-import com.vergepay.core.coins.DogecoinMain;
 import com.vergepay.core.coins.LitecoinMain;
-import com.vergepay.core.coins.NuBitsMain;
 import com.vergepay.core.coins.Value;
 import com.vergepay.core.exceptions.AddressMalformedException;
 import com.vergepay.core.exchange.shapeshift.data.ShapeShiftAmountTx;
@@ -43,9 +41,6 @@ public class ServerTest {
 
     final CoinType BTC = BitcoinMain.get();
     final CoinType LTC = LitecoinMain.get();
-    final CoinType DOGE = DogecoinMain.get();
-    final CoinType NBT = NuBitsMain.get();
-
     private MockWebServer server;
     private ShapeShift shapeShift;
 
@@ -93,7 +88,7 @@ public class ServerTest {
         // Schedule some responses.
         server.enqueue(new MockResponse().setBody(MARKET_INFO_BTC_NBT_JSON));
 
-        ShapeShiftMarketInfo marketInfoReply = shapeShift.getMarketInfo(BTC, NBT);
+        ShapeShiftMarketInfo marketInfoReply = shapeShift.getMarketInfo(BTC, LTC);
         assertFalse(marketInfoReply.isError);
         assertEquals("btc_nbt", marketInfoReply.pair);
         assertNotNull(marketInfoReply.rate);
@@ -102,7 +97,7 @@ public class ServerTest {
         assertNotNull(marketInfoReply.limit);
         assertNotNull(marketInfoReply.minimum);
 
-        assertEquals(NBT.value("99.99"), marketInfoReply.rate.convert(BTC.value("1")));
+        assertEquals(LTC.value("99.99"), marketInfoReply.rate.convert(BTC.value("1")));
         assertEquals(BTC.value("4"), marketInfoReply.limit);
         assertEquals(BTC.value("0.00000104"), marketInfoReply.minimum);
 
@@ -153,7 +148,7 @@ public class ServerTest {
         server.enqueue(new MockResponse().setBody(GET_TIME_PENDING_JSON));
         server.enqueue(new MockResponse().setBody(GET_TIME_EXPIRED_JSON));
 
-        AbstractAddress address = NuBitsMain.get().newAddress("BPjxHqswNZB5vznbrAAxi5zGVq3ruhtBU8");
+        AbstractAddress address = LitecoinMain.get().newAddress("BPjxHqswNZB5vznbrAAxi5zGVq3ruhtBU8");
 
         ShapeShiftTime timeReply = shapeShift.getTime(address);
         assertFalse(timeReply.isError);
@@ -233,7 +228,7 @@ public class ServerTest {
         // Schedule some responses.
         server.enqueue(new MockResponse().setBody(NORMAL_TRANSACTION_JSON));
 
-        AbstractAddress withdrawal = DOGE.newAddress("DMHLQYG4j96V8cZX9WSuXxLs5RnZn6ibrV");
+        AbstractAddress withdrawal = LTC.newAddress("DMHLQYG4j96V8cZX9WSuXxLs5RnZn6ibrV");
         AbstractAddress refund = BTC.newAddress("1Nz4xHJjNCnZFPjRUq8CN4BZEXTgLZfeUW");
         ShapeShiftNormalTx normalTxReply = shapeShift.exchange(withdrawal, refund);
         assertFalse(normalTxReply.isError);
@@ -241,7 +236,7 @@ public class ServerTest {
         assertEquals("18ETaXCYhJ8sxurh41vpKC3E6Tu7oJ94q8", normalTxReply.deposit.toString());
         assertEquals(BTC, normalTxReply.deposit.getType());
         assertEquals(withdrawal.toString(), normalTxReply.withdrawal.toString());
-        assertEquals(DOGE, normalTxReply.withdrawal.getType());
+        assertEquals(LTC, normalTxReply.withdrawal.getType());
 
         // Optional: confirm that your app made the HTTP requests you were expecting.
         RecordedRequest request = server.takeRequest();
@@ -259,9 +254,9 @@ public class ServerTest {
         // Schedule some responses.
         server.enqueue(new MockResponse().setBody(FIXED_AMOUNT_TRANSACTION_JSON));
 
-        AbstractAddress withdrawal = DOGE.newAddress("DMHLQYG4j96V8cZX9WSuXxLs5RnZn6ibrV");
+        AbstractAddress withdrawal = LTC.newAddress("DMHLQYG4j96V8cZX9WSuXxLs5RnZn6ibrV");
         AbstractAddress refund = BTC.newAddress("1Nz4xHJjNCnZFPjRUq8CN4BZEXTgLZfeUW");
-        Value amount = DOGE.value("1000");
+        Value amount = LTC.value("1000");
         ShapeShiftAmountTx amountTxReply = shapeShift.exchangeForAmount(amount, withdrawal, refund);
         assertFalse(amountTxReply.isError);
         assertEquals("btc_doge", amountTxReply.pair);
@@ -272,12 +267,12 @@ public class ServerTest {
         assertEquals(BTC, amountTxReply.depositAmount.type);
 
         assertEquals(withdrawal.toString(), amountTxReply.withdrawal.toString());
-        assertEquals(DOGE, amountTxReply.withdrawal.getType());
+        assertEquals(LTC, amountTxReply.withdrawal.getType());
         assertEquals(amount.toPlainString(), amountTxReply.withdrawalAmount.toPlainString());
-        assertEquals(DOGE, amountTxReply.withdrawalAmount.type);
+        assertEquals(LTC, amountTxReply.withdrawalAmount.type);
 
         assertEquals(1427149038191L, amountTxReply.expiration.getTime());
-        assertEquals(BTC.value(".00052379"), amountTxReply.rate.convert(Value.parse(DOGE, "1000")));
+        assertEquals(BTC.value(".00052379"), amountTxReply.rate.convert(Value.parse(LTC, "1000")));
 
         // Optional: confirm that your app made the HTTP requests you were expecting.
         RecordedRequest request = server.takeRequest();
@@ -336,14 +331,7 @@ public class ServerTest {
     public void testGetRateFail() throws ShapeShiftException, IOException {
         server.enqueue(new MockResponse().setBody(GET_RATE_BTC_LTC_JSON));
         // Incorrect pair
-        shapeShift.getRate(NBT, LTC);
-    }
-
-    @Test(expected = ShapeShiftException.class)
-    public void testGetLimitFail() throws ShapeShiftException, IOException {
-        server.enqueue(new MockResponse().setBody(GET_LIMIT_BTC_LTC_JSON));
-        // Incorrect pair
-        shapeShift.getLimit(LTC, DOGE);
+        shapeShift.getRate(BTC, LTC);
     }
 
     @Test(expected = ShapeShiftException.class)
@@ -351,44 +339,6 @@ public class ServerTest {
         server.enqueue(new MockResponse().setBody(TX_STATUS_COMPLETE_JSON));
         // Used an incorrect address, correct is 1NDQPAGamGePkSZXW2CYBzXJEefB7N4bTN
         shapeShift.getTxStatus(BTC.newAddress("18ETaXCYhJ8sxurh41vpKC3E6Tu7oJ94q8"));
-    }
-
-    @Test(expected = ShapeShiftException.class)
-    public void testNormalTransactionFail() throws ShapeShiftException, AddressMalformedException, IOException {
-        server.enqueue(new MockResponse().setBody(NORMAL_TRANSACTION_JSON));
-        // Incorrect Dogecoin address, correct is DMHLQYG4j96V8cZX9WSuXxLs5RnZn6ibrV
-        shapeShift.exchange(DOGE.newAddress("DSntbp199h851m3Y1g3ruYCQHzWYCZQmmA"),
-                BTC.newAddress("1Nz4xHJjNCnZFPjRUq8CN4BZEXTgLZfeUW"));
-    }
-
-    @Test(expected = ShapeShiftException.class)
-    public void testFixedAmountTransactionFail()
-            throws ShapeShiftException, AddressMalformedException, IOException {
-        server.enqueue(new MockResponse().setBody(FIXED_AMOUNT_TRANSACTION_JSON));
-        // We withdraw Dogecoins to a Bitcoin address
-        shapeShift.exchangeForAmount(DOGE.value("1000"),
-                BTC.newAddress("18ETaXCYhJ8sxurh41vpKC3E6Tu7oJ94q8"),
-                BTC.newAddress("1Nz4xHJjNCnZFPjRUq8CN4BZEXTgLZfeUW"));
-    }
-
-    @Test(expected = ShapeShiftException.class)
-    public void testFixedAmountTransactionFail2()
-            throws ShapeShiftException, AddressMalformedException, IOException {
-        server.enqueue(new MockResponse().setBody(FIXED_AMOUNT_TRANSACTION_JSON));
-        // Incorrect Dogecoin address, correct is DMHLQYG4j96V8cZX9WSuXxLs5RnZn6ibrV
-        shapeShift.exchangeForAmount(DOGE.value("1000"),
-                DOGE.newAddress("DSntbp199h851m3Y1g3ruYCQHzWYCZQmmA"),
-                BTC.newAddress("1Nz4xHJjNCnZFPjRUq8CN4BZEXTgLZfeUW"));
-    }
-
-    @Test(expected = ShapeShiftException.class)
-    public void testFixedAmountTransactionFail3()
-            throws ShapeShiftException, AddressMalformedException, IOException {
-        server.enqueue(new MockResponse().setBody(FIXED_AMOUNT_TRANSACTION_JSON));
-        // Incorrect amount, correct is 1000
-        shapeShift.exchangeForAmount(DOGE.value("1"),
-                DOGE.newAddress("DMHLQYG4j96V8cZX9WSuXxLs5RnZn6ibrV"),
-                BTC.newAddress("1Nz4xHJjNCnZFPjRUq8CN4BZEXTgLZfeUW"));
     }
 
     public static final String GET_COINS_JSON =

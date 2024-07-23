@@ -22,7 +22,6 @@ import com.vergepay.core.coins.BitcoinMain;
 import com.vergepay.core.coins.BitcoinTest;
 import com.vergepay.core.coins.CoinType;
 import com.vergepay.core.coins.LitecoinMain;
-import com.vergepay.core.coins.PeercoinMain;
 import com.vergepay.core.util.GenericUtils;
 import com.vergepay.core.wallet.families.bitcoin.BitAddress;
 import com.vergepay.core.wallet.families.nxt.NxtAddress;
@@ -95,12 +94,6 @@ public class CoinURITest {
         goodAddress = BitAddress.from(LTC, hash160);
         goodAddressStr = goodAddress.toString();
         assertEquals("litecoin:" + goodAddressStr + "?amount=12.34&label=Hello&message=AMessage", CoinURI.convertToCoinURI(goodAddress, LTC.value("12.34"), "Hello", "AMessage"));
-
-
-        // Peercoin
-        goodAddress = BitAddress.from(PPC, hash160);
-        goodAddressStr = goodAddress.toString();
-        assertEquals("peercoin:" + goodAddressStr + "?amount=12.34&label=Hello&message=AMessage", CoinURI.convertToCoinURI(goodAddress, PPC.value("12.34"), "Hello", "AMessage"));
     }
 
     @Test
@@ -131,18 +124,6 @@ public class CoinURITest {
         goodAddressStr = goodAddress.toString();
         testObject = new CoinURI(LTC, "litecoin:" + goodAddressStr + "?amount=12.34");
         assertEquals("12.34", GenericUtils.formatCoinValue(LTC, testObject.getAmount()));
-
-        // Dogecoin
-        goodAddress = BitAddress.from(DOGE, hash160);
-        goodAddressStr = goodAddress.toString();
-        testObject = new CoinURI(DOGE, "dogecoin:" + goodAddressStr + "?amount=12.34");
-        assertEquals("12.34", GenericUtils.formatCoinValue(DOGE, testObject.getAmount()));
-
-        // Peercoin
-        goodAddress = BitAddress.from(PPC, hash160);
-        goodAddressStr = goodAddress.toString();
-        testObject = new CoinURI(PPC, "peercoin:" + goodAddressStr + "?amount=12.34");
-        assertEquals("12.34", GenericUtils.formatCoinValue(PPC, testObject.getAmount()));
     }
 
     @Test

@@ -27,7 +27,7 @@ import static org.junit.Assert.assertNull;
  */
 public class WalletTest {
     static final List<String> MNEMONIC = ImmutableList.of("citizen", "fever", "scale", "nurse", "brief", "round", "ski", "fiction", "car", "fitness", "pluck", "act");
-    CoinType type = BitcoinTest.get();
+    CoinType type = BitcoinMain.get();
     private Wallet wallet;
     static final byte[] aesKeyBytes = {0, 1, 2, 3, 4, 5, 6, 7, 0, 1, 2, 3, 4, 5, 6, 7, 0, 1, 2, 3, 4, 5, 6, 7, 0, 1, 2, 3, 4, 5, 6, 7};
     KeyParameter aesKey = new KeyParameter(aesKeyBytes);

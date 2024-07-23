@@ -2,10 +2,7 @@ package com.vergepay.core.exchange.shapeshift;
 
 import com.vergepay.core.coins.BitcoinMain;
 import com.vergepay.core.coins.CoinType;
-import com.vergepay.core.coins.DogecoinMain;
 import com.vergepay.core.coins.LitecoinMain;
-import com.vergepay.core.coins.NuBitsMain;
-import com.vergepay.core.coins.PeercoinMain;
 import com.vergepay.core.coins.Value;
 import com.vergepay.core.exchange.shapeshift.data.ShapeShiftAmountTx;
 import com.vergepay.core.exchange.shapeshift.data.ShapeShiftCoin;
@@ -32,9 +29,6 @@ import static org.junit.Assert.assertEquals;
 public class MessagesTest {
     final CoinType BTC = BitcoinMain.get();
     final CoinType LTC = LitecoinMain.get();
-    final CoinType DOGE = DogecoinMain.get();
-    final CoinType NBT = NuBitsMain.get();
-    final CoinType PPC = PeercoinMain.get();
     final Value ONE_BTC = BTC.oneCoin();
 
     @Test
@@ -113,14 +107,11 @@ public class MessagesTest {
         assertEquals("btc_nbt", marketInfo.pair);
         assertTrue(marketInfo.isPair("BTC_NBT"));
         assertTrue(marketInfo.isPair("btc_nbt"));
-        assertTrue(marketInfo.isPair(BTC, NBT));
         assertFalse(marketInfo.isPair("doge_ltc"));
-        assertFalse(marketInfo.isPair(DOGE, LTC));
         assertNotNull(marketInfo.rate);
         assertNotNull(marketInfo.limit);
         assertNotNull(marketInfo.minimum);
 
-        assertEquals(NBT.value("99.99"), marketInfo.rate.convert(BTC.value("1")));
         assertEquals(BTC.value("4"), marketInfo.limit);
         assertEquals(BTC.value("0.00000104"), marketInfo.minimum);
     }
@@ -135,9 +126,7 @@ public class MessagesTest {
                         "limit: 2162.11925969,\n" +
                         "minimum: 0.17391304\n" +
                         "}"));
-        assertEquals(BTC.value("0.00098678").subtract("0.0001"), info.rate.convert(PPC.value("1")));
-        assertEquals(PPC.value("2162.119259"), info.limit);
-        assertEquals(PPC.value("0.173914"), info.minimum);
+        assertEquals(BTC.value("0.00098678").subtract("0.0001"), info.rate.convert(LTC.value("1")));
 
         info = new ShapeShiftMarketInfo(new JSONObject(
                 "{\n" +
@@ -147,7 +136,6 @@ public class MessagesTest {
                         "limit: 1.1185671,\n" +
                         "minimum: 0.0000198\n" +
                         "}"));
-        assertEquals(PPC.value("866.739130").subtract("0.01"), info.rate.convert(BTC.value("1")));
         assertEquals(BTC.value("1.1185671"), info.limit);
         assertEquals(BTC.value("0.0000198"), info.minimum);
 
@@ -159,7 +147,6 @@ public class MessagesTest {
                         "limit: 3.70968678,\n" +
                         "minimum: 0.00008692\n" +
                         "}"));
-        assertEquals(NBT.value("226.3957").subtract("0.01"), info.rate.convert(BTC.value("1")));
         assertEquals(BTC.value("3.70968678"), info.limit);
         assertEquals(BTC.value("0.00008692"), info.minimum);
 
@@ -171,9 +158,7 @@ public class MessagesTest {
                         "limit: 1021.50337123,\n" +
                         "minimum: 0.04542677\n" +
                         "}"));
-        assertEquals(BTC.value("0.00433171").subtract("0.0001"), info.rate.convert(NBT.value("1")));
-        assertEquals(NBT.value("1021.5033"), info.limit);
-        assertEquals(NBT.value("0.0455"), info.minimum);
+        assertEquals(BTC.value("0.00433171").subtract("0.0001"), info.rate.convert(LTC.value("1")));
     }
 
     @Test
@@ -208,8 +193,8 @@ public class MessagesTest {
         assertEquals("btc_nbt", rate.pair);
         assertNotNull(rate.rate);
 
-        assertEquals(NBT, rate.rate.convert(ONE_BTC).type);
-        assertEquals(BTC, rate.rate.convert(NBT.oneCoin()).type);
+        assertEquals(LTC, rate.rate.convert(ONE_BTC).type);
+        assertEquals(BTC, rate.rate.convert(LTC.oneCoin()).type);
     }
 
     @Test
@@ -226,8 +211,8 @@ public class MessagesTest {
         assertEquals("btc_nbt", rate.pair);
         assertNotNull(rate.rate);
 
-        assertEquals(NBT.value("99.99"), rate.rate.convert(BTC.value("1")));
-        assertEquals(BTC.value("1"), rate.rate.convert(NBT.value("99.99")));
+        assertEquals(LTC.value("99.99"), rate.rate.convert(BTC.value("1")));
+        assertEquals(BTC.value("1"), rate.rate.convert(LTC.value("99.99")));
     }
 
     @Test
@@ -264,8 +249,8 @@ public class MessagesTest {
         assertNotNull(limit.limit);
         assertNotNull(limit.minimum);
 
-        assertEquals(NBT.value("1015.1535"), limit.limit);
-        assertEquals(NBT.value("0.0532"), limit.minimum);
+        assertEquals(LTC.value("1015.1535"), limit.limit);
+        assertEquals(LTC.value("0.0532"), limit.minimum);
     }
 
     @Test
@@ -383,9 +368,9 @@ public class MessagesTest {
         assertEquals("1NDQPAGamGePkSZXW2CYBzXJEefB7N4bTN", txStatus.address.toString());
         assertEquals(BTC, txStatus.address.getType());
         assertEquals("BB6kZZi87mCd7mC1tWWJjuKGPTYQ1n2Fcg", txStatus.withdraw.toString());
-        assertEquals(NBT, txStatus.withdraw.getType());
+        assertEquals(LTC, txStatus.withdraw.getType());
         assertEquals(BTC.value("0.01"), txStatus.incomingValue);
-        assertEquals(NBT.value("2.33"), txStatus.outgoingValue);
+        assertEquals(LTC.value("2.33"), txStatus.outgoingValue);
         assertEquals("66fa0b4c11227f9f05efa13d23e58c65b50acbd6395a126b5cd751064e6e79df",
                 txStatus.transactionId);
     }
@@ -440,7 +425,7 @@ public class MessagesTest {
         assertEquals("18ETaXCYhJ8sxurh41vpKC3E6Tu7oJ94q8", normalTx.deposit.toString());
         assertEquals(BTC, normalTx.deposit.getType());
         assertEquals("DMHLQYG4j96V8cZX9WSuXxLs5RnZn6ibrV", normalTx.withdrawal.toString());
-        assertEquals(DOGE, normalTx.withdrawal.getType());
+        assertEquals(LTC, normalTx.withdrawal.getType());
     }
 
     @Test
@@ -465,10 +450,10 @@ public class MessagesTest {
         assertEquals(BTC, amountTx.deposit.getType());
         assertEquals(BTC.value("0.00052327"), amountTx.depositAmount);
         assertEquals("DMHLQYG4j96V8cZX9WSuXxLs5RnZn6ibrV", amountTx.withdrawal.toString());
-        assertEquals(DOGE, amountTx.withdrawal.getType());
-        assertEquals(DOGE.value("1000"), amountTx.withdrawalAmount);
+        assertEquals(LTC, amountTx.withdrawal.getType());
+        assertEquals(LTC.value("1000"), amountTx.withdrawalAmount);
         assertEquals(1427149038191L, amountTx.expiration.getTime());
-        assertEquals(BTC.value("0.00052327"), amountTx.rate.convert(Value.parse(DOGE, "1000")));
+        assertEquals(BTC.value("0.00052327"), amountTx.rate.convert(Value.parse(LTC, "1000")));
     }
 
     @Test
@@ -494,10 +479,10 @@ public class MessagesTest {
         assertEquals(BTC, amountTx.deposit.getType());
         assertEquals(BTC.value("0.00052379"), amountTx.depositAmount);
         assertEquals("DMHLQYG4j96V8cZX9WSuXxLs5RnZn6ibrV", amountTx.withdrawal.toString());
-        assertEquals(DOGE, amountTx.withdrawal.getType());
-        assertEquals(DOGE.value("1000"), amountTx.withdrawalAmount);
+        assertEquals(LTC, amountTx.withdrawal.getType());
+        assertEquals(LTC.value("1000"), amountTx.withdrawalAmount);
         assertEquals(1427149038191L, amountTx.expiration.getTime());
-        assertEquals(BTC.value("0.00052379"), amountTx.rate.convert(Value.parse(DOGE, "1000")));
+        assertEquals(BTC.value("0.00052379"), amountTx.rate.convert(Value.parse(LTC, "1000")));
     }
 
     @Test

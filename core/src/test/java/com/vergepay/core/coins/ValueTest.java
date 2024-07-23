@@ -36,11 +36,10 @@ import java.math.BigDecimal;
 public class ValueTest {
     final CoinType BTC = BitcoinMain.get();
     final CoinType LTC = LitecoinMain.get();
-    final CoinType PPC = PeercoinMain.get();
-    final CoinType NBT = NuBitsMain.get();
+    final CoinType XVG = VergeMain.get();
     final FiatType USD = FiatType.get("USD");
 
-    ValueType[] types = {BTC, LTC, NBT, USD};
+    ValueType[] types = {BTC, LTC, USD};
 
     @Test
     public void parseCoin() {
@@ -52,12 +51,8 @@ public class ValueTest {
         assertEquals(133700, BTC.value("0.001337").value);
 
         // Peercoin family
-        assertEquals(1337000, PPC.value("1.337").value);
-        assertEquals(1337, PPC.value("0.001337").value);
-
-        // NuBits family
-        assertEquals(13370, NBT.value("1.337").value);
-        assertEquals(13, NBT.value("0.0013").value);
+        assertEquals(1337000, XVG.value("1.337").value);
+        assertEquals(1337, XVG.value("0.001337").value);
     }
 
     @Test(expected = ArithmeticException.class)
@@ -66,8 +61,8 @@ public class ValueTest {
     }
 
     @Test(expected = ArithmeticException.class)
-    public void parseCoinErrorPeercoin() {
-        PPC.value("3.14159265");
+    public void parseCoinErrorVerge() {
+        XVG.value("3.14159265");
     }
 
     @Test
@@ -161,7 +156,7 @@ public class ValueTest {
         Value btcSatoshi2 = Value.valueOf(BitcoinMain.get(), 1);
         Value btcValue = Value.parse(BitcoinMain.get(), "3.14159");
         Value ltcSatoshi = Value.valueOf(LitecoinMain.get(), 1);
-        Value ppcValue = Value.parse(PeercoinMain.get(), "3.14159");
+        Value ppcValue = Value.parse(VergeMain.get(), "3.14159");
 
         assertTrue(btcSatoshi.equals(btcSatoshi2));
         assertFalse(btcSatoshi.equals(ltcSatoshi));
@@ -194,8 +189,8 @@ public class ValueTest {
         assertEquals(LTC.value("1"), LTC.value("100").subtract(LTC.value("99")));
         assertEquals(LTC.value("1"), LTC.value("100").subtract("99"));
         assertEquals(100L, USD.value("100").divide(USD.value("1")));
-        assertArrayEquals(new Value[]{NBT.value("0.0001"), NBT.value("0.0002")},
-                NBT.value("0.0012").divideAndRemainder(10));
+        assertArrayEquals(new Value[]{XVG.value("0.0001"), XVG.value("0.0002")},
+                XVG.value("0.0012").divideAndRemainder(10));
         // max
         assertEquals(BTC.value("10"), Value.max(BTC.value("1"), BTC.value("10")));
         assertEquals(BTC.value("0.5"), Value.max(BTC.value("0.5"), BTC.value("-0.5")));

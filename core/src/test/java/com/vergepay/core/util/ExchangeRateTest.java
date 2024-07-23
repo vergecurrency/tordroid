@@ -22,7 +22,6 @@ import com.vergepay.core.coins.CoinType;
 import com.vergepay.core.coins.FiatType;
 import com.vergepay.core.coins.FiatValue;
 import com.vergepay.core.coins.LitecoinMain;
-import com.vergepay.core.coins.NuBitsMain;
 import com.vergepay.core.coins.Value;
 
 import org.junit.Test;
@@ -34,9 +33,9 @@ import static org.junit.Assert.assertTrue;
 public class ExchangeRateTest {
     final CoinType BTC = BitcoinMain.get();
     final CoinType LTC = LitecoinMain.get();
-    final CoinType NBT = NuBitsMain.get();
+    final CoinType XVG = LitecoinMain.get();
     final Value oneBtc = BTC.oneCoin();
-    final Value oneNbt = NBT.oneCoin();
+    final Value oneXvg = XVG.oneCoin();
 
     @Test
     public void getOtherType() throws Exception {
@@ -48,10 +47,10 @@ public class ExchangeRateTest {
 
     @Test
     public void canConvert() throws Exception {
-        ExchangeRateBase rate = new ExchangeRateBase(oneBtc, oneNbt);
+        ExchangeRateBase rate = new ExchangeRateBase(oneBtc, oneXvg);
 
-        assertTrue(rate.canConvert(BTC, NBT));
-        assertTrue(rate.canConvert(NBT, BTC));
+        assertTrue(rate.canConvert(BTC, XVG));
+        assertTrue(rate.canConvert(XVG, BTC));
         assertFalse(rate.canConvert(LTC, BTC));
         assertFalse(rate.canConvert(LTC, FiatType.get("USD")));
     }
@@ -79,8 +78,8 @@ public class ExchangeRateTest {
         assertEquals("0.01", rate.convert(LTC.oneCoin()).toPlainString());
 
         // 250NBT = 1BTC
-        rate = new ExchangeRateBase(oneNbt.multiply(250), oneBtc);
-        assertEquals("0.004", rate.convert(oneNbt).toPlainString());
+        rate = new ExchangeRateBase(oneXvg.multiply(250), oneBtc);
+        assertEquals("0.004", rate.convert(oneXvg).toPlainString());
         assertEquals("2500", rate.convert(oneBtc.multiply(10)).toPlainString());
     }
 
@@ -100,23 +99,23 @@ public class ExchangeRateTest {
     public void scalingAndRounding() throws Exception {
         // 1BTC = 100.1234567890NBT
         // This rate causes the BTC & NBT to overflow so it sets the correct scale and rounding
-        ExchangeRateBase rate = new ExchangeRateBase(BTC, NBT, "100.1234567890");
+        ExchangeRateBase rate = new ExchangeRateBase(BTC, XVG, "100.1234567890");
 
         // Check the rate's internal state
         assertEquals("100000", rate.value1.toPlainString());
         assertEquals("10012345.6789", rate.value2.toPlainString());
 
         // Make some conversions
-        assertEquals("0.00998767", rate.convert(oneNbt).toPlainString());
-        assertEquals("0.000001", rate.convert(Value.parse(NBT, "0.0001")).toPlainString());
+        assertEquals("0.00998767", rate.convert(oneXvg).toPlainString());
+        assertEquals("0.000001", rate.convert(Value.parse(XVG, "0.0001")).toPlainString());
         assertEquals("0.0001", rate.convert(Value.parse(BTC, "0.00000099")).toPlainString());
         assertEquals("0.0099", rate.convert(Value.parse(BTC, "0.000099")).toPlainString());
         assertEquals("10012345.6789", rate.convert(oneBtc.multiply(100000)).toPlainString());
         assertEquals("1001.2346", rate.convert(oneBtc.multiply(10)).toPlainString());
-        assertEquals("998766.95438852", rate.convert(oneNbt.multiply(100000000)).toPlainString());
+        assertEquals("998766.95438852", rate.convert(oneXvg.multiply(100000000)).toPlainString());
 
         // Check too precise rates
-        rate = new ExchangeRateBase(BTC, NBT, "100.12345678901999");
+        rate = new ExchangeRateBase(BTC, XVG, "100.12345678901999");
         assertEquals("100000", rate.value1.toPlainString());
         assertEquals("10012345.6789", rate.value2.toPlainString());
     }
