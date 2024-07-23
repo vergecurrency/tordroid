@@ -1,8 +1,6 @@
 Verge Tor Wallet for Android
 ============================
 
-<p align="left"><img src="https://image.pngaaa.com/864/15864-small.png" alt="android logo"></p>
-
 ## Building the app
 
 Install [Android Studio](https://developer.android.com/sdk/installing/studio.html). Once it is
