@@ -6,10 +6,10 @@ Verge Tor Wallet for Android
 Install [Android Studio](https://developer.android.com/sdk/installing/studio.html). Once it is
 running, import tordroid by navigating to where you cloned or downloaded it and selecting
 settings.gradle. When it is finished importing, click on the SDK Manager ![SDK Manager](https://developer.android.com/images/tools/sdk-manager-studio.png). 
-You will want to install Android 13, SDK version 33 (API 33).
+You will want to install Android 15, SDK version 35 (API 35).
 <br/><br/>
-Make sure that you have JDK 11 installed before building. 
-You can get it [here from Oracle (login required)](https://www.oracle.com/pk/java/technologies/javase/jdk11-archive-downloads.html). 
+Make sure that you have JDK 17 installed before building. 
+You can get it [here from Oracle (login required)](https://www.oracle.com/java/technologies/downloads/?er=221886#java17). 
 Once you have that installed, navigate to File > Project Structure > SDK Location and change the path of your current JDK to 
 the path of the new JDK.
 <br/><br/>
@@ -24,7 +24,4 @@ and enable USB Debugging.
 Then plug your phone into your computer and hit the green play button at the top of
 Android Studio. It will load for a moment before prompting you to select which device to install
 it on. Select your device from the list, and hit continue.
-<br/><br/>
-**NOTE**
-If you are attempting to build on a Lollipop emulator, please ensure that you are using *Android 5.*.* armeabi-v7*. 
-It will not build on an x86/x86_64 emulator.
+<br/>
