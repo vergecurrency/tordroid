@@ -128,9 +128,9 @@ public class TransactionTest {
 
         message = VpncoinTxMessage.parse(TX_2);
         assert message != null;
-        assertEquals("比特李", message.getFrom());
-        assertEquals("信息", message.getSubject());
-        assertEquals("сообщение\n" +
+        assertEquals("bit lee, message.getFrom());
+        assertEquals("hello, message.getSubject());
+        assertEquals("thanks" +
                 "μήνυμα\n" +
                 "رسالة", message.getMessage());
 

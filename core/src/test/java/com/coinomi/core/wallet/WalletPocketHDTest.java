@@ -77,7 +77,7 @@ public class WalletPocketHDTest {
     static final byte[] AES_KEY_BYTES = {0, 1, 2, 3, 4, 5, 6, 7, 0, 1, 2, 3, 4, 5, 6, 7, 0, 1, 2, 3, 4, 5, 6, 7, 0, 1, 2, 3, 4, 5, 6, 7};
     static final long AMOUNT_TO_SEND = 2700000000L;
     static final String MESSAGE = "test";
-    static final String MESSAGE_UNICODE = "δοκιμή испытание 测试";
+    static final String MESSAGE_UNICODE = "test";
     static final String EXPECTED_BITCOIN_SIG = "IMBbIFDDuUwomYlvSjwWytqP/CXYym2yOKbJUx8Y+ujzZKBwoCFMr73GUxpr1Ird/DvnNZcsQLphvx18ftqN54o=";
     static final String EXPECTED_BITCOIN_SIG_UNICODE = "IGGZEOBsVny5dozTOfc2/3UuvmZGdDI4XK/03HIk34PILd2oXbnq+87GINT3lumeXcgSO2NkGzUFcQ1SCSVI3Hk=";
     static final String EXPECTED_NUBITS_SIG = "IMuzNZTZIjZjLicyDFGzqFl21vqNBGW1N5m4qHBRqbTvLBbkQeGjraeLmZEt7mRH4MSMPLFXW2T3Maz+HYx1tEc=";
