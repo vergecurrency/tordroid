@@ -1,8 +1,8 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 35
-    buildToolsVersion '35.0.0'
+    compileSdkVersion 34
+    buildToolsVersion '34.0.0'
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -13,8 +13,8 @@ android {
     defaultConfig {
         applicationId "com.vergepay.wallet"
         minSdk 34
-        targetSdkVersion 35
-        compileSdkVersion 35
+        targetSdkVersion 34
+        compileSdkVersion 34
         ndkVersion "21.3.6528147" //shouldn't matter but gradle complains
         versionCode 2060
         versionName "v2.6"
@@ -35,12 +35,6 @@ android {
     sourceSets {
         androidTest {
             setRoot('src/test')
-        }
-    }
-
-    repositories {
-        flatDir {
-            dirs 'aars'
         }
     }
 

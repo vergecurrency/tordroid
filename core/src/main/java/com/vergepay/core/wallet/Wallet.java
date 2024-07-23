@@ -4,10 +4,8 @@ import com.vergepay.core.CoreUtils;
 import com.vergepay.core.coins.CoinType;
 import com.vergepay.core.coins.Value;
 import com.vergepay.core.coins.families.BitFamily;
-import com.vergepay.core.coins.families.NxtFamily;
 import com.vergepay.core.exceptions.UnsupportedCoinTypeException;
 import com.vergepay.core.protos.Protos;
-import com.vergepay.core.wallet.families.nxt.NxtFamilyWallet;
 import com.google.common.annotations.VisibleForTesting;
 import com.google.common.base.Splitter;
 import com.google.common.collect.ImmutableList;
@@ -290,8 +288,6 @@ final public class Wallet {
 
         if (coinType instanceof BitFamily) {
             newPocket = new WalletPocketHD(rootKey, coinType, getKeyCrypter(), key);
-        } else if (coinType instanceof NxtFamily) {
-            newPocket = new NxtFamilyWallet(rootKey, coinType, getKeyCrypter(), key);
         } else {
             throw new UnsupportedCoinTypeException(coinType);
         }

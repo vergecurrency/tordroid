@@ -2,7 +2,6 @@ package com.vergepay.core.network;
 
 import com.vergepay.core.coins.CoinType;
 import com.vergepay.core.coins.families.BitFamily;
-import com.vergepay.core.coins.families.NxtFamily;
 import com.vergepay.core.exceptions.UnsupportedCoinTypeException;
 import com.vergepay.core.network.interfaces.BlockchainConnection;
 import com.vergepay.core.wallet.WalletAccount;
