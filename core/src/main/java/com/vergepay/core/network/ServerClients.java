@@ -76,11 +76,6 @@ public class ServerClients {
                 client.setCacheDir(cacheDir, cacheSize);
                 connections.put(type, client);
                 return client;
-            } else if (type instanceof NxtFamily) {
-                NxtServerClient client = new NxtServerClient(addresses.get(type), connectivityHelper);
-                client.setCacheDir(cacheDir, cacheSize);
-                connections.put(type, client);
-                return client;
             } else {
                 throw new UnsupportedCoinTypeException(type);
             }
