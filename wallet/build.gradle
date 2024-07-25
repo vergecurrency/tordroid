@@ -1,8 +1,8 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 34
-    buildToolsVersion '34.0.0'
+    compileSdkVersion 33
+    buildToolsVersion '33.0.0'
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -12,12 +12,12 @@ android {
 
     defaultConfig {
         applicationId "com.vergepay.wallet"
-        minSdk 34
-        targetSdkVersion 34
-        compileSdkVersion 34
+        minSdk 31
+        targetSdkVersion 33
+        compileSdkVersion 33
         ndkVersion "21.3.6528147" //shouldn't matter but gradle complains
-        versionCode 2060
-        versionName "v2.6"
+        versionCode 20559
+        versionName "v2.59"
         ndk {
             abiFilters 'armeabi-v7a', 'arm64-v8a', 'x86_64'
         }
@@ -25,9 +25,11 @@ android {
 
     buildTypes {
         release {
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
         debug {
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
@@ -35,6 +37,12 @@ android {
     sourceSets {
         androidTest {
             setRoot('src/test')
+        }
+    }
+
+    repositories {
+        flatDir {
+            dirs 'aars'
         }
     }
 
@@ -53,15 +61,15 @@ android {
         //    androidTestCompile 'org.robolectric:robolectric:2.3'
         //    androidTestCompile 'com.squareup:fest-android:1.0.+'
         implementation project(':core')
-        implementation 'com.android.support:gridlayout-v7:28.0.0' //most recent as of 7/23/2024
-        implementation 'com.android.support:support-v4:28.0.0' //most recent as of 7/23/2024
-        implementation 'com.android.support:appcompat-v7:28.0.0' //most recent as of 7/23/2024
+        implementation 'com.android.support:gridlayout-v7:28.0.0'
+        implementation 'com.android.support:support-v4:28.0.0'
+        implementation 'com.android.support:appcompat-v7:28.0.0'
         implementation 'com.google.guava:guava:21.0' //TODO ToStringHelper update for 19.0+
         implementation 'com.google.code.findbugs:jsr305:3.0.2' // most recent as of 7/2023
         implementation 'com.madgag.spongycastle:core:1.58.0.0' // most recent as of 7/2023
-        implementation 'com.google.protobuf:protobuf-java:3.25.3' // most used as of 7/23/2024
-        implementation 'com.google.zxing:core:3.5.3' //most recent as of 7/23/2024
-        implementation 'ch.acra:acra:4.11.1' //most recent as of 7/23/2024
+        implementation 'com.google.protobuf:protobuf-java:3.24.3' //latest as of 10/2023
+        implementation 'com.google.zxing:core:3.5.2' //most recent as of 10/2023
+        implementation 'ch.acra:acra:4.11.1' //most recent as of 10/2023
         implementation 'com.android.support:support-v4-preferencefragment:1.0.0@aar'
         implementation 'com.jakewharton:butterknife:8.8.1' // ButterKnife.findById() is deprecated, needs FindByViewId() updates
         annotationProcessor 'com.jakewharton:butterknife-compiler:9.0.0'

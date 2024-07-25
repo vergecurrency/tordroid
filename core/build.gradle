@@ -17,13 +17,13 @@ dependencies {
     api 'com.google.code.findbugs:jsr305:3.0.2' //latest as of 10/2023
     api 'com.madgag.spongycastle:core:1.58.0.0' //latest as of 10/2023
     api 'com.lambdaworks:scrypt:1.4.0' //latest as of 10/2023
-    api 'com.google.protobuf:protobuf-java:3.25.3' // updated on 7/22/2024
-    api 'org.slf4j:slf4j-jdk14:2.0.13' //latest release ver as of 7/22/2024
-    api 'org.json:json:20240303' //latest as of 7/22/2024
+    api 'com.google.protobuf:protobuf-java:3.24.3' //latest as of 9/23
+    api 'org.slf4j:slf4j-jdk14:2.0.9' //latest release ver as of 10/23
+    api 'org.json:json:20231013' //latest as of 10/23
     api 'com.squareup.okhttp:okhttp:2.7.5' //latest as of 10/23
 
     testImplementation 'junit:junit:4.13.2'
-    testImplementation 'org.mockito:mockito-all:1.10.19'
+    testImplementation 'org.mockito:mockito-all:1.9.5'
     testImplementation 'com.squareup.okhttp:mockwebserver:2.7.5'
 }
 
