@@ -11,10 +11,11 @@
       "type": "SINGLE",
       "filters": [],
       "attributes": [],
-      "versionCode": 8513,
-      "versionName": "v2.51",
+      "versionCode": 20561,
+      "versionName": "v2.6",
       "outputFile": "wallet-release.apk"
     }
   ],
-  "elementType": "File"
+  "elementType": "File",
+  "minSdkVersionForDexing": 31
 }
