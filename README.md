@@ -1,7 +1,11 @@
 Verge Tor Wallet for Android
 ============================
 
-<p align="left"><img src="https://image.pngaaa.com/864/15864-small.png" alt="android logo"></p>
+<p align="left">
+  <a href="https://github.com/vergecurrency/tordroid/actions/workflows/android.yml">
+  <img src="https://github.com/vergecurrency/tordroid/actions/workflows/android.yml/badge.svg">
+  </a>
+</p>
 
 ## Building the app
 
