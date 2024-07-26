@@ -1,8 +1,11 @@
 package com.vergepay.wallet.ui;
 
+
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.ActivityNotFoundException;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -120,7 +123,7 @@ final public class WalletActivity extends BaseWalletActivity implements
         orbotStatusReceiver = new OrbotStatusReceiver(this);
 
         IntentFilter intentFilter = new IntentFilter("org.torproject.android.intent.action.STATUS");
-        registerReceiver(orbotStatusReceiver, intentFilter);
+        registerReceiver(orbotStatusReceiver, intentFilter, Context.RECEIVER_EXPORTED);
 
         if (getWalletApplication().getWallet() == null) {
             startIntro();
