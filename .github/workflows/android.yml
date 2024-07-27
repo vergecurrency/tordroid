@@ -31,4 +31,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: tordroid
-          path: tordroid/wallet/release/*.apk
+          path: home/runner/work/tordroid/tordroid/wallet/release/*.apk
