@@ -35,7 +35,7 @@ jobs:
         uses: hkusu/apk-info-action@v1
         with:
           apk-path: ${{ steps.apk-path.outputs.path }}
-      - name: Show apk info
+      - name: Show everyone the .apk info here:
         run: |
           echo '${{ steps.apk-info.outputs.application-name }}'
           echo '${{ steps.apk-info.outputs.application-id }}'
@@ -54,4 +54,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: tordroid
-          path: tordroid/build/outputs/apk/release/*.apk
+          path: ./wallet/build/outputs/apk/release/wallet-release-unsigned.apk
