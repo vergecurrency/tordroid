@@ -7,6 +7,9 @@ Verge Tor Wallet for Android
   </a>
 </p>
 
+Active Users: Latest release: (<b>v2.7</b>) <b>4,540</b> installs, across <b>177</b> countries/regions! 
+Manual Downloads:  <a href="https://github.com/vergecurrency/tordroid/releases/latest"><img alt="GitHub all releases" src="https://img.shields.io/github/downloads/vergecurrency/tordroid/total?logo=GitHub"></a>
+
 ## Building the app
 
 Install [Android Studio](https://developer.android.com/sdk/installing/studio.html). Once it is
