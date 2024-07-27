@@ -36,9 +36,9 @@ public class AppLockFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_app_lock, container, false);
-        fingerPrintButton = (Button) view.findViewById(R.id.fingerprint_button);
-        pincodeButton = (Button) view.findViewById(R.id.pincode_button);
-        skipButton = (Button) view.findViewById(R.id.skip_button);
+        fingerPrintButton = view.findViewById(R.id.fingerprint_button);
+        pincodeButton = view.findViewById(R.id.pincode_button);
+        skipButton = view.findViewById(R.id.skip_button);
 
         pincodeButton.setOnClickListener(new View.OnClickListener() {
             @Override

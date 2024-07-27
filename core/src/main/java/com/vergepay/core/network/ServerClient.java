@@ -431,7 +431,7 @@ public class ServerClient implements BitBlockchainConnection {
         checkNotNull(stratumClient);
 
         CallMessage message = new CallMessage("blockchain.address.listunspent",
-                Arrays.asList(status.getAddress().toString()));
+                Collections.singletonList(status.getAddress().toString()));
         final ListenableFuture<ResultMessage> result = stratumClient.call(message);
 
         Futures.addCallback(result, new FutureCallback<ResultMessage>() {
@@ -464,7 +464,7 @@ public class ServerClient implements BitBlockchainConnection {
         checkNotNull(stratumClient);
 
         final CallMessage message = new CallMessage("blockchain.address.get_history",
-                Arrays.asList(status.getAddress().toString()));
+                Collections.singletonList(status.getAddress().toString()));
         final ListenableFuture<ResultMessage> result = stratumClient.call(message);
 
         Futures.addCallback(result, new FutureCallback<ResultMessage>() {

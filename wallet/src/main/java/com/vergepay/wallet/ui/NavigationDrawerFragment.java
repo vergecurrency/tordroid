@@ -94,7 +94,7 @@ public class NavigationDrawerFragment extends Fragment {
             Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_navigation_drawer, container, false);
 
-        mDrawerListView = (ListView) view.findViewById(R.id.coins_list);
+        mDrawerListView = view.findViewById(R.id.coins_list);
         mDrawerListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {

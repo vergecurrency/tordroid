@@ -66,14 +66,14 @@ public class SetPasswordFragment extends Fragment {
 
         Fonts.setTypeface(view.findViewById(R.id.key_icon), Fonts.Font.COINOMI_FONT_ICONS);
 
-        errorPassword = (TextView) view.findViewById(R.id.password_error);
-        errorPasswordsMismatch = (TextView) view.findViewById(R.id.passwords_mismatch);
+        errorPassword = view.findViewById(R.id.password_error);
+        errorPasswordsMismatch = view.findViewById(R.id.passwords_mismatch);
 
         clearError(errorPassword);
         clearError(errorPasswordsMismatch);
 
-        password1 = (EditText) view.findViewById(R.id.password1);
-        password2 = (EditText) view.findViewById(R.id.password2);
+        password1 = view.findViewById(R.id.password1);
+        password2 = view.findViewById(R.id.password2);
 
         password1.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
@@ -98,7 +98,7 @@ public class SetPasswordFragment extends Fragment {
         });
 
         // Next button
-        Button finishButton = (Button) view.findViewById(R.id.button_next);
+        Button finishButton = view.findViewById(R.id.button_next);
         finishButton.setOnClickListener(getOnFinishListener());
         finishButton.setImeOptions(EditorInfo.IME_ACTION_DONE);
 

@@ -73,7 +73,7 @@ public class CreateNewAddressDialog extends DialogFragment {
             if (pocketHD.canCreateFreshReceiveAddress()) {
                 final LayoutInflater inflater = LayoutInflater.from(getActivity());
                 final View view = inflater.inflate(R.layout.new_address_dialog, null);
-                final TextView viewLabel = (TextView) view.findViewById(R.id.new_address_label);
+                final TextView viewLabel = view.findViewById(R.id.new_address_label);
 
                 final DialogBuilder builder = new DialogBuilder(getActivity());
                 builder.setView(view);

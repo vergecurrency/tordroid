@@ -101,7 +101,7 @@ public final class NxtTransaction implements AbstractTransaction {
 
     @Override
     public List<AbstractAddress> getReceivedFrom() {
-        return ImmutableList.of((AbstractAddress) new NxtAddress(type, tx.getSenderId()));
+        return ImmutableList.of(new NxtAddress(type, tx.getSenderId()));
     }
 
     @Override

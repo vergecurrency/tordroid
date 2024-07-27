@@ -290,7 +290,7 @@ public class AddressRequestFragment extends WalletFragment {
     }
 
     private void updateExchangeRate(ExchangeRate exchangeRate) {
-        amountCalculatorLink.setExchangeRate((ExchangeRate) exchangeRate);
+        amountCalculatorLink.setExchangeRate(exchangeRate);
     }
 
     @Override

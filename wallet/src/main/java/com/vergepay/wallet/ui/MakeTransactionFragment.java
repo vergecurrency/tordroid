@@ -218,7 +218,7 @@ public class MakeTransactionFragment extends Fragment {
 
         transactionInfo.setVisibility(View.GONE);
 
-        final TextView passwordLabelView = (TextView) view.findViewById(R.id.enter_password_label);
+        final TextView passwordLabelView = view.findViewById(R.id.enter_password_label);
         if (sourceAccount != null && sourceAccount.isEncrypted()) {
             passwordView.requestFocus();
             passwordView.setVisibility(View.VISIBLE);
@@ -231,7 +231,7 @@ public class MakeTransactionFragment extends Fragment {
         tradeWithdrawSendOutput.setVisibility(View.GONE);
         showTransaction();
 
-        TextView poweredByShapeShift = (TextView) view.findViewById(R.id.powered_by_shapeshift);
+        TextView poweredByShapeShift = view.findViewById(R.id.powered_by_shapeshift);
         poweredByShapeShift.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

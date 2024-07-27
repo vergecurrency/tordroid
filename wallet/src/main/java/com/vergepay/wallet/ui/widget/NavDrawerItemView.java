@@ -27,8 +27,8 @@ public class NavDrawerItemView extends LinearLayout implements Checkable {
         super(context);
 
         view = LayoutInflater.from(context).inflate(R.layout.nav_drawer_item, this, true);
-        title = (TextView) findViewById(R.id.item_text);
-        icon = (ImageView) findViewById(R.id.item_icon);
+        title = findViewById(R.id.item_text);
+        icon = findViewById(R.id.item_icon);
     }
 
     public void setData(String titleStr, int iconRes) {

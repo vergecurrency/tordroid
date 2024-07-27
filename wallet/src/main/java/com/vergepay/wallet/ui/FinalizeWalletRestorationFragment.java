@@ -95,7 +95,7 @@ public class FinalizeWalletRestorationFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_finalize_wallet_restoration, container, false);
-        status = (TextView) view.findViewById(R.id.restoration_status);
+        status = view.findViewById(R.id.restoration_status);
         return view;
     }
 

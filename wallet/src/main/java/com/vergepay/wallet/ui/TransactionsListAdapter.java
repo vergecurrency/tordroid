@@ -213,17 +213,17 @@ public class TransactionsListAdapter extends BaseAdapter {
 
         // TODO set colors as theme, not here in code
 
-        final TextView rowDirectionText = (TextView) row.findViewById(R.id.transaction_row_direction_text);
-        final TextView rowDirectionFontIcon = (TextView) row.findViewById(R.id.transaction_row_direction_font_icon);
+        final TextView rowDirectionText = row.findViewById(R.id.transaction_row_direction_text);
+        final TextView rowDirectionFontIcon = row.findViewById(R.id.transaction_row_direction_font_icon);
         Fonts.setTypeface(rowDirectionFontIcon, Fonts.Font.COINOMI_FONT_ICONS);
-        final TextView rowConfirmationsFontIcon = (TextView) row.findViewById(R.id.transaction_row_confirmations_font_icon);
+        final TextView rowConfirmationsFontIcon = row.findViewById(R.id.transaction_row_confirmations_font_icon);
         Fonts.setTypeface(rowConfirmationsFontIcon, Fonts.Font.COINOMI_FONT_ICONS);
-        final TextView rowMessageFontIcon = (TextView) row.findViewById(R.id.transaction_row_message_font_icon);
+        final TextView rowMessageFontIcon = row.findViewById(R.id.transaction_row_message_font_icon);
         Fonts.setTypeface(rowMessageFontIcon, Fonts.Font.COINOMI_FONT_ICONS);
-        final TextView rowDate = (TextView) row.findViewById(R.id.transaction_row_time);
-        final TextView rowLabel = (TextView) row.findViewById(R.id.transaction_row_label);
-        final TextView rowAddress = (TextView) row.findViewById(R.id.transaction_row_address);
-        final CurrencyTextView rowValue = (CurrencyTextView) row.findViewById(R.id.transaction_row_value);
+        final TextView rowDate = row.findViewById(R.id.transaction_row_time);
+        final TextView rowLabel = row.findViewById(R.id.transaction_row_label);
+        final TextView rowAddress = row.findViewById(R.id.transaction_row_address);
+        final CurrencyTextView rowValue = row.findViewById(R.id.transaction_row_value);
 
         // confidence
         if (confidenceType == ConfidenceType.PENDING) {

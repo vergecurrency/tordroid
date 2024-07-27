@@ -96,8 +96,8 @@ public class FingerprintScanDialog extends DialogFragment implements View.OnClic
         super.onCreateView(inflater, container, savedInstanceState);
         View view = inflater.inflate(R.layout.fragment_scan_fingerprint, container, false);
 
-        TextView titleAdd = (TextView) view.findViewById(R.id.title_add);
-        TextView titleCheck = (TextView) view.findViewById(R.id.title_check);
+        TextView titleAdd = view.findViewById(R.id.title_add);
+        TextView titleCheck = view.findViewById(R.id.title_check);
 
         switch (mode) {
             case CHECK:
@@ -108,7 +108,7 @@ public class FingerprintScanDialog extends DialogFragment implements View.OnClic
                 break;
         }
 
-        Button pincodeButton = (Button) view.findViewById(R.id.pincode_button);
+        Button pincodeButton = view.findViewById(R.id.pincode_button);
 
         if (mode == Mode.ADD) {
             pincodeButton.setVisibility(View.GONE);

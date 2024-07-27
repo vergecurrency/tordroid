@@ -51,9 +51,9 @@ public class AddressView extends LinearLayout {
 
     private void inflateLayout(Context context) {
         LayoutInflater.from(context).inflate(R.layout.address, this, true);
-        iconView = (ImageView) findViewById(R.id.icon);
-        addressLabelView = (TextView) findViewById(R.id.address_label);
-        addressView = (TextView) findViewById(R.id.address);
+        iconView = findViewById(R.id.icon);
+        addressLabelView = findViewById(R.id.address_label);
+        addressView = findViewById(R.id.address);
     }
 
     public void setAddressAndLabel(AbstractAddress address) {

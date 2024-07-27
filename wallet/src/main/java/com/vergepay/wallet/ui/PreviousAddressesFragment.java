@@ -95,7 +95,7 @@ public class PreviousAddressesFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_previous_addresses, container, false);
 
-        final ListView previousAddresses = (ListView) view.findViewById(R.id.previous_addresses);
+        final ListView previousAddresses = view.findViewById(R.id.previous_addresses);
 
         // Set a space to the beginning and end of the list. If possible find a better way
         View spacerView = new View(getActivity());

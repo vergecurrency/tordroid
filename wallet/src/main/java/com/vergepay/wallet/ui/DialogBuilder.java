@@ -50,8 +50,8 @@ public class DialogBuilder extends AlertDialog.Builder {
         super(context);
 
         this.customTitle = LayoutInflater.from(context).inflate(R.layout.dialog_title, null);
-        this.iconView = (ImageView) customTitle.findViewById(android.R.id.icon);
-        this.titleView = (TextView) customTitle.findViewById(android.R.id.title);
+        this.iconView = customTitle.findViewById(android.R.id.icon);
+        this.titleView = customTitle.findViewById(android.R.id.title);
     }
 
     @Override

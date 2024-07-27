@@ -132,8 +132,8 @@ public class AddressesListAdapter extends BaseAdapter {
     }
 
     public void bindView(@Nonnull final View row, @Nonnull final AbstractAddress address) {
-        TextView addressLabel = (TextView) row.findViewById(R.id.address_row_label);
-        TextView addressRaw = (TextView) row.findViewById(R.id.address_row_address);
+        TextView addressLabel = row.findViewById(R.id.address_row_label);
+        TextView addressRaw = row.findViewById(R.id.address_row_address);
 
         String label = resolveLabel(address);
 
@@ -147,8 +147,8 @@ public class AddressesListAdapter extends BaseAdapter {
             addressRaw.setVisibility(View.GONE);
         }
 
-        TextView addressUsageLabel = (TextView) row.findViewById(R.id.address_row_usage);
-        TextView addressUsageFontIcon = (TextView) row.findViewById(R.id.address_row_usage_font_icon);
+        TextView addressUsageLabel = row.findViewById(R.id.address_row_usage);
+        TextView addressUsageFontIcon = row.findViewById(R.id.address_row_usage_font_icon);
         Fonts.setTypeface(addressUsageFontIcon, Fonts.Font.COINOMI_FONT_ICONS);
 
         if (usedAddresses.contains(address)) {

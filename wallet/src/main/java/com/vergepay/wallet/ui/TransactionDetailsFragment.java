@@ -92,22 +92,22 @@ public class TransactionDetailsFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_transaction_details, container, false);
 
-        outputRows = (ListView) view.findViewById(R.id.output_rows);
+        outputRows = view.findViewById(R.id.output_rows);
         outputRows.setOnItemClickListener(getListener());
 
         // Header
         View header = inflater.inflate(R.layout.fragment_transaction_details_header, null);
         outputRows.addHeaderView(header, null, false);
-        txStatusView = (TextView) header.findViewById(R.id.tx_status);
-        txDateLabel = (TextView) header.findViewById(R.id.tx_date_label);
-        txDate = (TextView) header.findViewById(R.id.tx_date);
+        txStatusView = header.findViewById(R.id.tx_status);
+        txDateLabel = header.findViewById(R.id.tx_date_label);
+        txDate = header.findViewById(R.id.tx_date);
 
         // Footer
         View footer = inflater.inflate(R.layout.fragment_transaction_details_footer, null);
         outputRows.addFooterView(footer, null, false);
-        txIdView = (TextView) footer.findViewById(R.id.tx_id);
-        txMessageLabel = (TextView) footer.findViewById(R.id.tx_message_label);
-        txMessage = (TextView) footer.findViewById(R.id.tx_message);
+        txIdView = footer.findViewById(R.id.tx_id);
+        txMessageLabel = footer.findViewById(R.id.tx_message_label);
+        txMessage = footer.findViewById(R.id.tx_message);
 
         pocket.addEventListener(walletListener);
 

@@ -20,8 +20,8 @@ public class HeaderWithFontIcon extends LinearLayout {
 
         LayoutInflater.from(context).inflate(R.layout.header_with_font_icon, this, true);
 
-        messageView = (TextView) findViewById(R.id.message);
-        fontIconView = (TextView) findViewById(R.id.font_icon);
+        messageView = findViewById(R.id.message);
+        fontIconView = findViewById(R.id.font_icon);
         Fonts.setTypeface(fontIconView, Fonts.Font.COINOMI_FONT_ICONS);
     }
 

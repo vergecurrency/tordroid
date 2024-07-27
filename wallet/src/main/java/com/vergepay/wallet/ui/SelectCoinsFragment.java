@@ -98,7 +98,7 @@ public class SelectCoinsFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_select_coins_list, container, false);
 
-        nextButton = (Button) view.findViewById(R.id.button_next);
+        nextButton = view.findViewById(R.id.button_next);
         if (isMultipleChoice) {
             nextButton.setEnabled(false);
             nextButton.setOnClickListener(getNextOnClickListener());
@@ -106,7 +106,7 @@ public class SelectCoinsFragment extends Fragment {
             nextButton.setVisibility(View.GONE);
         }
 
-        coinList = (ListView) view.findViewById(R.id.coins_list);
+        coinList = view.findViewById(R.id.coins_list);
         // Set header if needed
         if (message != null) {
             HeaderWithFontIcon header = new HeaderWithFontIcon(context);

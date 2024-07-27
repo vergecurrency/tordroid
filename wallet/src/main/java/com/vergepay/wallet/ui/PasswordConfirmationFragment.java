@@ -57,14 +57,14 @@ public class PasswordConfirmationFragment extends Fragment {
 
         Fonts.setTypeface(view.findViewById(R.id.key_icon), Fonts.Font.COINOMI_FONT_ICONS);
 
-        TextView messageView = (TextView) view.findViewById(R.id.message);
+        TextView messageView = view.findViewById(R.id.message);
         if (message != null) {
             messageView.setText(message);
         } else {
             messageView.setVisibility(View.GONE);
         }
 
-        final EditText password = (EditText) view.findViewById(R.id.password);
+        final EditText password = view.findViewById(R.id.password);
 
         view.findViewById(R.id.button_confirm).setOnClickListener(new View.OnClickListener() {
             @Override

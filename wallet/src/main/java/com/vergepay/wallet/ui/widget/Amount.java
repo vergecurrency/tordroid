@@ -27,7 +27,7 @@ public class Amount extends LinearLayout {
 
         LayoutInflater.from(context).inflate(R.layout.amount, this, true);
 
-        symbolView = (TextView) findViewById(R.id.symbol);
+        symbolView = findViewById(R.id.symbol);
 //        amountPending = (TextView) findViewById(R.id.amount_pending);
 //        amountPending.setVisibility(GONE);
 
@@ -41,7 +41,7 @@ public class Amount extends LinearLayout {
             a.recycle();
         }
 
-        amountView = (FontFitTextView) findViewById(R.id.amount_text);
+        amountView = findViewById(R.id.amount_text);
 
         if (!getRootView().isInEditMode()) {
             if (isBig) {

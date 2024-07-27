@@ -19,7 +19,7 @@ public class ApplockActivity extends AppCompatActivity implements AppLockFragmen
 
         boolean hasPincodeHash = ((WalletApplication) getApplication()).getConfiguration().hasPincodeHash();
 
-        Button removeAppLock = (Button) findViewById(R.id.remove_app_lock);
+        Button removeAppLock = findViewById(R.id.remove_app_lock);
 
         if (hasPincodeHash) {
             removeAppLock.setOnClickListener(new View.OnClickListener() {

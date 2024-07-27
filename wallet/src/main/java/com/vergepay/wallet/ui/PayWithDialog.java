@@ -70,7 +70,7 @@ public class PayWithDialog extends DialogFragment {
         }
 
         // Setup accounts that we can send from directly
-        ViewGroup typeAccounts = (ViewGroup) view.findViewById(R.id.pay_with_layout);
+        ViewGroup typeAccounts = view.findViewById(R.id.pay_with_layout);
         boolean canSend = false;
         for (WalletAccount account : app.getAccounts(type)) {
             if (account.getBalance().isPositive()) {
@@ -85,7 +85,7 @@ public class PayWithDialog extends DialogFragment {
         }
 
         // Setup possible exchange accounts
-        ViewGroup exchangeAccounts = (ViewGroup) view.findViewById(R.id.exchange_and_pay_layout);
+        ViewGroup exchangeAccounts = view.findViewById(R.id.exchange_and_pay_layout);
         boolean canExchange = false;
         for (WalletAccount account : app.getAllAccounts()) {
             if (!account.isType(type) && account.getBalance().isPositive()) {
@@ -95,7 +95,7 @@ public class PayWithDialog extends DialogFragment {
         }
 
         if (canExchange) {
-            TextView poweredByShapeShift = (TextView) view.findViewById(R.id.powered_by_shapeshift);
+            TextView poweredByShapeShift = view.findViewById(R.id.powered_by_shapeshift);
             poweredByShapeShift.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

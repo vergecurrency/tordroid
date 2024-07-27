@@ -98,18 +98,18 @@ public class AccountListAdapter extends BaseAdapter {
     }
 
     private void bindView(View row, WalletAccount account) {
-        final ImageView icon = (ImageView) row.findViewById(R.id.account_icon);
+        final ImageView icon = row.findViewById(R.id.account_icon);
         icon.setImageResource(Constants.COINS_ICONS.get(account.getCoinType()));
 
-        final TextView rowLabel = (TextView) row.findViewById(R.id.account_description);
+        final TextView rowLabel = row.findViewById(R.id.account_description);
         rowLabel.setText(account.getDescriptionOrCoinName());
 
-        final Amount rowValue = (Amount) row.findViewById(R.id.account_balance);
+        final Amount rowValue = row.findViewById(R.id.account_balance);
         rowValue.setAmount(GenericUtils.formatFiatValue(account.getBalance(), 4, 0));
         rowValue.setSymbol(account.getCoinType().getSymbol());
 
         ExchangeRatesProvider.ExchangeRate rate = rates.get(account.getCoinType().getSymbol());
-        final Amount rowBalanceRateValue = (Amount) row.findViewById(R.id.account_balance_rate);
+        final Amount rowBalanceRateValue = row.findViewById(R.id.account_balance_rate);
         if (rate != null && account.getCoinType() != null) {
             Value localAmount = rate.rate.convert(account.getBalance());
             GenericUtils.formatCoinValue(localAmount.type, localAmount,true);
@@ -120,7 +120,7 @@ public class AccountListAdapter extends BaseAdapter {
             rowBalanceRateValue.setVisibility(View.GONE);
         }
 
-        final Amount rowRateValue = (Amount) row.findViewById(R.id.exchange_rate_row_rate);
+        final Amount rowRateValue = row.findViewById(R.id.exchange_rate_row_rate);
         if (rate != null && account.getCoinType() != null) {
             Value localAmount = rate.rate.convert(account.getCoinType().oneCoin());
             GenericUtils.formatCoinValue(localAmount.type, localAmount, true);

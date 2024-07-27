@@ -70,7 +70,7 @@ public class SelectCoinTypeDialog extends DialogFragment {
 
         final LayoutInflater inflater = LayoutInflater.from(getActivity());
         final View view = inflater.inflate(R.layout.select_coin_for_address, null);
-        ViewGroup container = (ViewGroup) view.findViewById(R.id.pay_as_layout);
+        ViewGroup container = view.findViewById(R.id.pay_as_layout);
         int paddingBottom = getResources().getDimensionPixelSize(R.dimen.activity_vertical_margin);
 
         AddressView addressView = null;

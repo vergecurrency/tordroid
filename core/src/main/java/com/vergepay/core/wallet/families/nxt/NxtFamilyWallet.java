@@ -371,7 +371,7 @@ public class NxtFamilyWallet extends AbstractWallet<NxtTransaction, NxtAddress>
 
     @Override
     public List<AbstractAddress> getActiveAddresses() {
-        return ImmutableList.of((AbstractAddress) address);
+        return ImmutableList.of(address);
     }
 
     @Override

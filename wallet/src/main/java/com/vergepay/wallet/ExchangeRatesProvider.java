@@ -100,8 +100,8 @@ public class ExchangeRatesProvider extends ContentProvider {
     private String lastCryptoCurrency = null;
 
     private static final String BASE_URL = "https://www.binance.com/api/v3/ticker/price?symbol=XVGUSDT";
-    private static final String TO_LOCAL_URL = BASE_URL + ""; // "/to-local/%s";
-    private static final String TO_CRYPTO_URL = BASE_URL + ""; //"/to-crypto/%s";
+    private static final String TO_LOCAL_URL = BASE_URL; // "/to-local/%s";
+    private static final String TO_CRYPTO_URL = BASE_URL; //"/to-crypto/%s";
     private static final String COINOMI_SOURCE = "http://dvzs4zoxkg6z43dd.onion";
 
     private static final Logger log = LoggerFactory.getLogger(ExchangeRatesProvider.class);

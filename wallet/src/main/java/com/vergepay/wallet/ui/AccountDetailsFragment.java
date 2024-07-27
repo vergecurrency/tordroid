@@ -57,11 +57,11 @@ public class AccountDetailsFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_account_details, container, false);
 
-        TextView publicKey = (TextView) view.findViewById(R.id.public_key);
+        TextView publicKey = view.findViewById(R.id.public_key);
         publicKey.setOnClickListener(getPubKeyOnClickListener());
         publicKey.setText(publicKeySerialized);
 
-        ImageView qrView = (ImageView) view.findViewById(R.id.qr_code_public_key);
+        ImageView qrView = view.findViewById(R.id.qr_code_public_key);
         QrUtils.setQr(qrView, getResources(), publicKeySerialized);
 
         return view;

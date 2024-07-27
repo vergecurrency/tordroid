@@ -104,7 +104,7 @@ public class WalletProtobufSerializer {
             } else {
                 // Some other form of encryption has been specified that we do not know how to persist.
                 throw new RuntimeException("The wallet has encryption of type '" +
-                        keyCrypter.getClass().toString() + "' but this WalletProtobufSerializer " +
+                        keyCrypter.getClass() + "' but this WalletProtobufSerializer " +
                         "does not know how to persist this.");
             }
         }

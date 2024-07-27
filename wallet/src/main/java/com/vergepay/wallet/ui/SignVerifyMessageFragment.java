@@ -97,19 +97,19 @@ public class SignVerifyMessageFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_sign_message, container, false);
 
-        signingAddressView = (AutoCompleteTextView) view.findViewById(R.id.signing_address);
+        signingAddressView = view.findViewById(R.id.signing_address);
         ArrayAdapter adapter = new ArrayAdapter<>(getActivity(), R.layout.item_simple,
                 account.getActiveAddresses());
         signingAddressView.setAdapter(adapter);
 
-        messageView = (EditText) view.findViewById(R.id.message);
-        signatureView = (EditText) view.findViewById(R.id.signature);
+        messageView = view.findViewById(R.id.message);
+        signatureView = view.findViewById(R.id.signature);
 
-        addressError = (TextView) view.findViewById(R.id.address_error_message);
-        signatureOK = (TextView) view.findViewById(R.id.signature_ok);
-        signatureError = (TextView) view.findViewById(R.id.signature_error);
+        addressError = view.findViewById(R.id.address_error_message);
+        signatureOK = view.findViewById(R.id.signature_ok);
+        signatureError = view.findViewById(R.id.signature_error);
 
-        verifyButton = (Button) view.findViewById(R.id.button_verify);
+        verifyButton = view.findViewById(R.id.button_verify);
         verifyButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -118,7 +118,7 @@ public class SignVerifyMessageFragment extends Fragment {
             }
         });
 
-        signButton = (Button) view.findViewById(R.id.button_sign);
+        signButton = view.findViewById(R.id.button_sign);
         signButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {

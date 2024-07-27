@@ -201,21 +201,21 @@ public class TradeStatusFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_trade_status, container, false);
 
-        exchangeInfo = (TextView) view.findViewById(R.id.exchange_status_info);
-        depositIcon = (TextView) view.findViewById(R.id.trade_deposit_status_icon);
-        depositProgress = (ProgressBar) view.findViewById(R.id.trade_deposit_status_progress);
-        depositText = (TextView) view.findViewById(R.id.trade_deposit_status_text);
-        exchangeIcon = (TextView) view.findViewById(R.id.trade_exchange_status_icon);
-        exchangeProgress = (ProgressBar) view.findViewById(R.id.trade_exchange_status_progress);
-        exchangeText = (TextView) view.findViewById(R.id.trade_exchange_status_text);
-        errorIcon = (TextView) view.findViewById(R.id.trade_error_status_icon);
-        errorText = (TextView) view.findViewById(R.id.trade_error_status_text);
+        exchangeInfo = view.findViewById(R.id.exchange_status_info);
+        depositIcon = view.findViewById(R.id.trade_deposit_status_icon);
+        depositProgress = view.findViewById(R.id.trade_deposit_status_progress);
+        depositText = view.findViewById(R.id.trade_deposit_status_text);
+        exchangeIcon = view.findViewById(R.id.trade_exchange_status_icon);
+        exchangeProgress = view.findViewById(R.id.trade_exchange_status_progress);
+        exchangeText = view.findViewById(R.id.trade_exchange_status_text);
+        errorIcon = view.findViewById(R.id.trade_error_status_icon);
+        errorText = view.findViewById(R.id.trade_error_status_text);
         Fonts.setTypeface(depositIcon, Fonts.Font.COINOMI_FONT_ICONS);
         Fonts.setTypeface(exchangeIcon, Fonts.Font.COINOMI_FONT_ICONS);
         Fonts.setTypeface(errorIcon, Fonts.Font.COINOMI_FONT_ICONS);
 
-        viewTransaction = (Button) view.findViewById(R.id.trade_view_transaction);
-        emailReceipt = (Button) view.findViewById(R.id.trade_email_receipt);
+        viewTransaction = view.findViewById(R.id.trade_view_transaction);
+        emailReceipt = view.findViewById(R.id.trade_email_receipt);
 
         if (showExitButton) {
             view.findViewById(R.id.button_exit).setOnClickListener(new View.OnClickListener() {

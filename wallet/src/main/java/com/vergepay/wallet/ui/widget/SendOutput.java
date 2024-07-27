@@ -59,13 +59,13 @@ public class SendOutput extends LinearLayout {
     private void inflateView(Context context) {
         LayoutInflater.from(context).inflate(R.layout.transaction_output, this, true);
 
-        sendTypeText = (TextView) findViewById(R.id.send_output_type_text);
-        amount = (TextView) findViewById(R.id.amount);
-        symbol = (TextView) findViewById(R.id.symbol);
-        amountLocal = (TextView) findViewById(R.id.local_amount);
-        symbolLocal = (TextView) findViewById(R.id.local_symbol);
-        addressLabelView = (TextView) findViewById(R.id.output_label);
-        addressView = (TextView) findViewById(R.id.output_address);
+        sendTypeText = findViewById(R.id.send_output_type_text);
+        amount = findViewById(R.id.amount);
+        symbol = findViewById(R.id.symbol);
+        amountLocal = findViewById(R.id.local_amount);
+        symbolLocal = findViewById(R.id.local_symbol);
+        addressLabelView = findViewById(R.id.output_label);
+        addressView = findViewById(R.id.output_address);
 
         amountLocal.setVisibility(GONE);
         symbolLocal.setVisibility(GONE);

@@ -177,7 +177,7 @@ final public class WalletActivity extends BaseWalletActivity implements
         createNavDrawerItems();
         mNavigationDrawerFragment.setUp(
                 R.id.navigation_drawer,
-                (DrawerLayout) findViewById(R.id.drawer_layout),
+                findViewById(R.id.drawer_layout),
                 navDrawerItems);
 
         if (getIntent().hasExtra(Constants.ARG_URI)) {

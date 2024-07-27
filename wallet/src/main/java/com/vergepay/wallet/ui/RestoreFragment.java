@@ -86,7 +86,7 @@ public class RestoreFragment extends Fragment {
 
         Fonts.setTypeface(view.findViewById(R.id.coins_icon), Fonts.Font.COINOMI_FONT_ICONS);
 
-        ImageButton scanQrButton = (ImageButton) view.findViewById(R.id.scan_qr_code);
+        ImageButton scanQrButton = view.findViewById(R.id.scan_qr_code);
         scanQrButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -97,7 +97,7 @@ public class RestoreFragment extends Fragment {
         // Setup auto complete the mnemonic words
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this.getActivity(),
                 R.layout.item_simple, MnemonicCode.INSTANCE.getWordList());
-        mnemonicTextView = (MultiAutoCompleteTextView) view.findViewById(R.id.seed);
+        mnemonicTextView = view.findViewById(R.id.seed);
         mnemonicTextView.setAdapter(adapter);
         mnemonicTextView.setTokenizer(new SpaceTokenizer() {
             @Override
@@ -107,10 +107,10 @@ public class RestoreFragment extends Fragment {
         });
 
         // Restore message
-        errorMnemonicΜessage = (TextView) view.findViewById(R.id.restore_message);
+        errorMnemonicΜessage = view.findViewById(R.id.restore_message);
         errorMnemonicΜessage.setVisibility(View.GONE);
 
-        bip39Passphrase = (EditText) view.findViewById(R.id.bip39_passphrase);
+        bip39Passphrase = view.findViewById(R.id.bip39_passphrase);
         final View bip39PassphraseTitle = view.findViewById(R.id.bip39_passphrase_title);
 
         bip39Passphrase.setVisibility(View.GONE);
@@ -119,7 +119,7 @@ public class RestoreFragment extends Fragment {
         // For existing seed
         final View bip39Info = view.findViewById(R.id.bip39_info);
         bip39Info.setVisibility(View.GONE);
-        final CheckBox useBip39Checkbox = (CheckBox) view.findViewById(R.id.use_bip39);
+        final CheckBox useBip39Checkbox = view.findViewById(R.id.use_bip39);
         if (isNewSeed) useBip39Checkbox.setVisibility(View.GONE);
 
         useBip39Checkbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -142,7 +142,7 @@ public class RestoreFragment extends Fragment {
         });
 
         // Skip link
-        skipButton = (Button) view.findViewById(R.id.seed_entry_skip);
+        skipButton = view.findViewById(R.id.seed_entry_skip);
         if (isNewSeed) {
             skipButton.setOnClickListener(getOnSkipListener());
             skipButton.setVisibility(View.VISIBLE);

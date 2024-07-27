@@ -59,7 +59,7 @@ public class AmountEditView extends LinearLayout {
         super(context, attrs);
         LayoutInflater.from(context).inflate(R.layout.amount_edit, this, true);
 
-        LinearLayout layout = (LinearLayout) findViewById(R.id.amount_layout);
+        LinearLayout layout = findViewById(R.id.amount_layout);
         amountText = (EditText) layout.getChildAt(0);
         amountText.addTextChangedListener(amountTextListener);
         amountText.setOnFocusChangeListener(amountTextListener);

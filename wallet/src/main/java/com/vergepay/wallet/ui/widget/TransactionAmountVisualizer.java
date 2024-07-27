@@ -47,12 +47,12 @@ public class TransactionAmountVisualizer extends LinearLayout {
 
         LayoutInflater.from(context).inflate(R.layout.transaction_amount_visualizer, this, true);
 
-        output = (SendOutput) findViewById(R.id.transaction_output);
+        output = findViewById(R.id.transaction_output);
         output.setVisibility(View.GONE);
-        fee = (SendOutput) findViewById(R.id.transaction_fee);
+        fee = findViewById(R.id.transaction_fee);
         fee.setVisibility(View.GONE);
-        txMessageLabel = (TextView) findViewById(R.id.tx_message_label);
-        txMessage = (TextView) findViewById(R.id.tx_message);
+        txMessageLabel = findViewById(R.id.tx_message_label);
+        txMessage = findViewById(R.id.tx_message);
 
         if (isInEditMode()) {
             output.setVisibility(View.VISIBLE);

@@ -27,10 +27,10 @@ public class EnterPincodeFragment extends DialogFragment {
         super.onCreateView(inflater, container, savedInstanceState);
         View view = inflater.inflate(R.layout.fragment_pincode, container, false);
 
-        pinCode1 = ((EditText) view.findViewById(R.id.pincode_1));
-        pinCode2 = ((EditText) view.findViewById(R.id.pincode_2));
-        pinCode3 = ((EditText) view.findViewById(R.id.pincode_3));
-        pinCode4 = ((EditText) view.findViewById(R.id.pincode_4));
+        pinCode1 = view.findViewById(R.id.pincode_1);
+        pinCode2 = view.findViewById(R.id.pincode_2);
+        pinCode3 = view.findViewById(R.id.pincode_3);
+        pinCode4 = view.findViewById(R.id.pincode_4);
 
         pinCode1.addTextChangedListener(new ViewSwitcher(pinCode2));
         pinCode2.addTextChangedListener(new ViewSwitcher(pinCode3));

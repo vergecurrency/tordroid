@@ -1259,9 +1259,9 @@ public class SendFragment extends WalletFragment {
             CoinType type = CoinID.typeFromId(coinId);
 
             final ViewGroup viewGroup = (ViewGroup) view;
-            final TextView labelView = (TextView) viewGroup.findViewById(R.id.address_book_row_label);
+            final TextView labelView = viewGroup.findViewById(R.id.address_book_row_label);
             labelView.setText(label);
-            final TextView addressView = (TextView) viewGroup.findViewById(R.id.address_book_row_address);
+            final TextView addressView = viewGroup.findViewById(R.id.address_book_row_address);
             try {
                 addressView.setText(GenericUtils.addressSplitToGroupsMultiline(type.newAddress(addressStr)));
             } catch (AddressMalformedException e) {

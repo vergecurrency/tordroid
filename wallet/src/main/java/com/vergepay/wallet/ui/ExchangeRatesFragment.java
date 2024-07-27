@@ -120,7 +120,7 @@ public final class ExchangeRatesFragment extends ListFragment implements OnShare
 
     @Override
     public void setEmptyText(final CharSequence text) {
-        final TextView emptyView = (TextView) getView().findViewById(android.R.id.empty);
+        final TextView emptyView = getView().findViewById(android.R.id.empty);
         emptyView.setText(text);
     }
 
@@ -279,10 +279,10 @@ public final class ExchangeRatesFragment extends ListFragment implements OnShare
 
             view.setBackgroundResource(isDefaultCurrency ? R.color.bg_list_selected : R.color.bg_list);
 
-            final TextView currencyCodeView = (TextView) view.findViewById(R.id.exchange_rate_row_currency_code);
+            final TextView currencyCodeView = view.findViewById(R.id.exchange_rate_row_currency_code);
             currencyCodeView.setText(exchangeRate.currencyCodeId);
 
-            final TextView currencyNameView = (TextView) view.findViewById(R.id.exchange_rate_row_currency_name);
+            final TextView currencyNameView = view.findViewById(R.id.exchange_rate_row_currency_name);
             String currencyName = WalletUtils.getCurrencyName(exchangeRate.currencyCodeId);
             if (currencyName != null) {
                 currencyNameView.setText(currencyName);
@@ -292,11 +292,11 @@ public final class ExchangeRatesFragment extends ListFragment implements OnShare
                 currencyNameView.setVisibility(View.INVISIBLE);
             }
 
-            final Amount rateAmountUnitView = (Amount) view.findViewById(R.id.exchange_rate_row_rate_unit);
+            final Amount rateAmountUnitView = view.findViewById(R.id.exchange_rate_row_rate_unit);
             rateAmountUnitView.setAmount(GenericUtils.formatCoinValue(type, rateBase, true));
             rateAmountUnitView.setSymbol(type.getSymbol());
 
-            final Amount rateAmountView = (Amount) view.findViewById(R.id.exchange_rate_row_rate);
+            final Amount rateAmountView = view.findViewById(R.id.exchange_rate_row_rate);
             Value fiatAmount = exchangeRate.rate.convert(type, rateBase);
             rateAmountView.setAmount(GenericUtils.formatFiatValue(fiatAmount));
             rateAmountView.setSymbol(fiatAmount.type.getSymbol());

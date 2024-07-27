@@ -23,7 +23,7 @@ public class AboutActivity extends BaseWalletActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(false);
 
-        TextView version = (TextView) findViewById(R.id.about_version);
+        TextView version = findViewById(R.id.about_version);
         if (getWalletApplication().packageInfo() != null) {
             version.setText(getWalletApplication().packageInfo().versionName);
         } else {

@@ -103,7 +103,7 @@ public final class ScanActivity extends FragmentActivity implements SurfaceHolde
 
         setContentView(R.layout.scan_activity);
 
-        scannerView = (ScannerView) findViewById(R.id.scan_activity_mask);
+        scannerView = findViewById(R.id.scan_activity_mask);
     }
 
     @Override
@@ -115,7 +115,7 @@ public final class ScanActivity extends FragmentActivity implements SurfaceHolde
         cameraThread.start();
         cameraHandler = new Handler(cameraThread.getLooper());
 
-        final SurfaceView surfaceView = (SurfaceView) findViewById(R.id.scan_activity_preview);
+        final SurfaceView surfaceView = findViewById(R.id.scan_activity_preview);
         surfaceHolder = surfaceView.getHolder();
         surfaceHolder.addCallback(this);
         surfaceHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);

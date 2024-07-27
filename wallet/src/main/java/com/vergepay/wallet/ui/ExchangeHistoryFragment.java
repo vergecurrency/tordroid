@@ -91,7 +91,7 @@ public final class ExchangeHistoryFragment extends ListFragment {
     @Override
     public void setEmptyText(final CharSequence text) {
         if (getView() != null) {
-            final TextView emptyView = (TextView) getView().findViewById(android.R.id.empty);
+            final TextView emptyView = getView().findViewById(android.R.id.empty);
             emptyView.setText(text);
         }
     }
@@ -136,11 +136,11 @@ public final class ExchangeHistoryFragment extends ListFragment {
             Fonts.setTypeface(errorIcon, Fonts.Font.COINOMI_FONT_ICONS);
             Fonts.setTypeface(view.findViewById(R.id.exchange_arrow), Fonts.Font.COINOMI_FONT_ICONS);
             final View progress = view.findViewById(R.id.exchange_status_progress);
-            final TextView statusText = (TextView) view.findViewById(R.id.exchange_status_text);
+            final TextView statusText = view.findViewById(R.id.exchange_status_text);
             final View values = view.findViewById(R.id.exchange_values);
-            final Amount deposit = (Amount) view.findViewById(R.id.exchange_deposit);
-            final Amount withdraw = (Amount) view.findViewById(R.id.exchange_withdraw);
-            final AddressView addressView = (AddressView) view.findViewById(R.id.withdraw_address);
+            final Amount deposit = view.findViewById(R.id.exchange_deposit);
+            final Amount withdraw = view.findViewById(R.id.exchange_withdraw);
+            final AddressView addressView = view.findViewById(R.id.withdraw_address);
 
             switch (entry.status) {
                 case ExchangeEntry.STATUS_INITIAL:

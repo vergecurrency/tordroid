@@ -99,12 +99,12 @@ public class ShowSeedFragment extends Fragment {
         seedEncryptedLayout.setVisibility(View.GONE);
         // Hide layout as maybe we have to show the password dialog
         seedLayout.setVisibility(View.GONE);
-        seedView = (TextView) view.findViewById(R.id.seed);
+        seedView = view.findViewById(R.id.seed);
         seedPasswordProtectedView = view.findViewById(R.id.seed_password_protected);
         Fonts.setTypeface(view.findViewById(R.id.seed_password_protected_lock), Fonts.Font.COINOMI_FONT_ICONS);
-        qrView = (ImageView) view.findViewById(R.id.qr_code_seed);
+        qrView = view.findViewById(R.id.qr_code_seed);
 
-        TextView lockIcon = (TextView) view.findViewById(R.id.lock_icon);
+        TextView lockIcon = view.findViewById(R.id.lock_icon);
         Fonts.setTypeface(lockIcon, Fonts.Font.COINOMI_FONT_ICONS);
         lockIcon.setOnClickListener(new View.OnClickListener() {
             @Override

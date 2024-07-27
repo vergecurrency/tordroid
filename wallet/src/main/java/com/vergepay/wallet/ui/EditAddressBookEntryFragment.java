@@ -112,10 +112,10 @@ public final class EditAddressBookEntryFragment extends DialogFragment {
 
         final View view = inflater.inflate(R.layout.edit_address_book_entry_dialog, null);
 
-        final TextView viewAddress = (TextView) view.findViewById(R.id.edit_address_book_entry_address);
+        final TextView viewAddress = view.findViewById(R.id.edit_address_book_entry_address);
         viewAddress.setText(GenericUtils.addressSplitToGroups(address));
 
-        final TextView viewLabel = (TextView) view.findViewById(R.id.edit_address_book_entry_label);
+        final TextView viewLabel = view.findViewById(R.id.edit_address_book_entry_label);
         viewLabel.setText(label != null ? label : suggestedAddressLabel);
 
         dialog.setView(view);

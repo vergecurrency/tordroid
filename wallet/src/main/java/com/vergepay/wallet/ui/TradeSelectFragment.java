@@ -149,16 +149,16 @@ public class TradeSelectFragment extends Fragment implements ExchangeCheckSuppor
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_trade_select, container, false);
 
-        sourceSpinner = (Spinner) view.findViewById(R.id.from_coin);
+        sourceSpinner = view.findViewById(R.id.from_coin);
         sourceSpinner.setAdapter(getSourceSpinnerAdapter());
         sourceSpinner.setOnItemSelectedListener(getSourceSpinnerListener());
 
-        destinationSpinner = (Spinner) view.findViewById(R.id.to_coin);
+        destinationSpinner = view.findViewById(R.id.to_coin);
         destinationSpinner.setAdapter(getDestinationSpinnerAdapter());
         destinationSpinner.setOnItemSelectedListener(getDestinationSpinnerListener());
 
-        sourceAmountView = (AmountEditView) view.findViewById(R.id.trade_coin_amount);
-        destinationAmountView = (AmountEditView) view.findViewById(R.id.receive_coin_amount);
+        sourceAmountView = view.findViewById(R.id.trade_coin_amount);
+        destinationAmountView = view.findViewById(R.id.receive_coin_amount);
 
         amountCalculatorLink = new CurrencyCalculatorLink(sourceAmountView, destinationAmountView);
 
@@ -166,9 +166,9 @@ public class TradeSelectFragment extends Fragment implements ExchangeCheckSuppor
 //        receiveCoinWarning.setVisibility(View.GONE);
 //        addressError = (TextView) view.findViewById(R.id.address_error_message);
 //        addressError.setVisibility(View.GONE);
-        amountError = (TextView) view.findViewById(R.id.amount_error_message);
+        amountError = view.findViewById(R.id.amount_error_message);
         amountError.setVisibility(View.GONE);
-        amountWarning = (TextView) view.findViewById(R.id.amount_warning_message);
+        amountWarning = view.findViewById(R.id.amount_warning_message);
         amountWarning.setVisibility(View.GONE);
 
 //        scanQrCodeButton = (ImageButton) view.findViewById(R.id.scan_qr_code);
@@ -190,7 +190,7 @@ public class TradeSelectFragment extends Fragment implements ExchangeCheckSuppor
             }
         });
 
-        nextButton = (Button) view.findViewById(R.id.button_next);
+        nextButton = view.findViewById(R.id.button_next);
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

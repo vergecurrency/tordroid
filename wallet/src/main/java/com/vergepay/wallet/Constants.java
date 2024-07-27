@@ -135,13 +135,13 @@ public class Constants {
     }
 
     public static final CoinType DEFAULT_COIN = VergeMain.get();
-    public static final List<CoinType> DEFAULT_COINS = ImmutableList.of((CoinType) VergeMain.get());
+    public static final List<CoinType> DEFAULT_COINS = ImmutableList.of(VergeMain.get());
     public static final ArrayList<String> DEFAULT_TEST_COIN_IDS = Lists.newArrayList(
             BitcoinTest.get().getId(),
             LitecoinTest.get().getId()
     );
 
     public static final List<CoinType> SUPPORTED_COINS = ImmutableList.of(
-            (CoinType) VergeMain.get()
+            VergeMain.get()
     );
 }

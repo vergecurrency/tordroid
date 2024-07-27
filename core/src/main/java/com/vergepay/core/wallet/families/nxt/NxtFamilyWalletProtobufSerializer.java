@@ -43,7 +43,7 @@ final public class NxtFamilyWalletProtobufSerializer {
     private static final Logger log = LoggerFactory.getLogger(NxtFamilyWalletProtobufSerializer.class);
 
     // Used for de-serialization
-    private Map<ByteString, Transaction> txMap = new HashMap<ByteString, Transaction>();
+    private final Map<ByteString, Transaction> txMap = new HashMap<ByteString, Transaction>();
 
     public static Protos.WalletPocket toProtobuf(NxtFamilyWallet account) {
 
