@@ -40,26 +40,9 @@ android {
         }
     }
 
-    repositories {
-        flatDir {
-            dirs 'aars'
-        }
-    }
-
-//sourceSets {
-//    unitTest {
-//        java.srcDir file('src/test/java')
-//        resources.srcDir file('src/test/resources')
-//    }
-//}
-
     dependencies {
         implementation fileTree(dir: 'libs', include: ['*.jar'])
         implementation fileTree(dir: '../core/libs', include: ['*.jar'])
-        // Testing
-        //    androidTestCompile 'junit:junit:4.11'
-        //    androidTestCompile 'org.robolectric:robolectric:2.3'
-        //    androidTestCompile 'com.squareup:fest-android:1.0.+'
         implementation project(':core')
         implementation 'com.android.support:gridlayout-v7:28.0.0'
         implementation 'com.android.support:support-v4:28.0.0'
@@ -84,20 +67,6 @@ android {
         }
     }
 
-//apply plugin: 'robolectric'
-
-//robolectric {
-//    include '**/*Test.class'
-//    exclude '**/espresso/**/*.class'
-//}
-
-//apply plugin: 'idea'
-
-//idea {
-//    module {
-//        testOutputDir = file('build/test-classes/debug')
-//    }
-//}
     namespace 'com.vergepay.wallet'
     lint {
         abortOnError false
