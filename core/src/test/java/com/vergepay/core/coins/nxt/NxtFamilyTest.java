@@ -15,7 +15,7 @@ import org.bitcoinj.crypto.HDKeyDerivation;
 import org.bitcoinj.crypto.MnemonicException;
 import org.bitcoinj.store.UnreadableWalletException;
 import org.bitcoinj.wallet.DeterministicSeed;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.spongycastle.util.encoders.Hex;
 
 import java.io.UnsupportedEncodingException;

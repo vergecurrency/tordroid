@@ -11,7 +11,6 @@ import com.vergepay.core.coins.nxt.NxtException;
 import com.vergepay.core.coins.nxt.Transaction;
 import com.vergepay.core.coins.nxt.TransactionImpl;
 import com.vergepay.core.protos.Protos;
-import com.vergepay.core.wallet.SendRequest;
 import com.vergepay.core.wallet.Wallet;
 import com.vergepay.core.wallet.WalletAccount;
 
@@ -23,8 +22,8 @@ import org.bitcoinj.crypto.KeyCrypterScrypt;
 import org.bitcoinj.crypto.MnemonicException;
 import org.bitcoinj.store.UnreadableWalletException;
 import org.bitcoinj.wallet.DeterministicSeed;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.BeforeEach;
 import org.spongycastle.crypto.params.KeyParameter;
 import org.spongycastle.util.encoders.Hex;
 
@@ -53,7 +52,7 @@ public class NxtFamilyWalletTest {
     NxtFamilyWallet nxtAccount;
     NxtFamilyWallet otherAccount;
 
-    @Before
+    @BeforeEach
     public void setup() throws MnemonicException, UnreadableWalletException {
         DeterministicSeed seed = new DeterministicSeed(recoveryPhrase, null, "", 0);
         DeterministicKey masterKey = HDKeyDerivation.createMasterPrivateKey(seed.getSeedBytes());
@@ -75,7 +74,7 @@ public class NxtFamilyWalletTest {
     }
 
 
-    @Test
+    @org.junit.jupiter.api.Test
     public void testAccountLegacyNXT() throws UnsupportedEncodingException {
         byte[] pub = nxtAccount.getPublicKey();
         long id = Account.getId(pub);
@@ -85,7 +84,7 @@ public class NxtFamilyWalletTest {
         assertEquals(nxtAccountId, id);
     }
 
-    @Test
+    @org.junit.jupiter.api.Test
     public void testHDAccountNxt() throws MnemonicException {
         byte[] privateKey = nxtAccount.rootKey.getPrivateKey();
         byte[] publicKey = nxtAccount.getPublicKey();
