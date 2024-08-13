@@ -34,3 +34,6 @@ it on. Select your device from the list, and hit continue.
 **NOTE**
 If you are attempting to build on a Lollipop emulator, please ensure that you are using *Android 5.*.* armeabi-v7*. 
 It will not build on an x86/x86_64 emulator.
+
+Original code by Coinomi 2017
+Continued and updated from 2017 to now, by justinvforvendetta
