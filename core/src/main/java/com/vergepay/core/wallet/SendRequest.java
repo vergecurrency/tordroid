@@ -17,8 +17,6 @@
 package com.vergepay.core.wallet;
 
 
-import com.google.common.base.Objects;
-import com.google.common.base.Objects.ToStringHelper;
 import com.vergepay.core.coins.CoinType;
 import com.vergepay.core.coins.Value;
 import com.vergepay.core.messages.TxMessage;
@@ -184,17 +182,20 @@ public class SendRequest<T extends AbstractTransaction> implements Serializable 
 
     @Override
     public String toString() {
-        // print only the user-settable fields
-        ToStringHelper helper = Objects.toStringHelper(this).omitNullValues();
-        helper.add("emptyWallet", emptyWallet);
-        helper.add("changeAddress", changeAddress);
-        helper.add("fee", fee);
-        helper.add("feePerTxSize", feePerTxSize);
-        helper.add("ensureMinRequiredFee", ensureMinRequiredFee);
-        helper.add("signTransaction", signTransaction);
-        helper.add("aesKey", aesKey != null ? "set" : null); // careful to not leak the key
-        helper.add("coinSelector", coinSelector);
-        helper.add("shuffleOutputs", shuffleOutputs);
-        return helper.toString();
+        StringBuilder sb = new StringBuilder();
+        sb.append("SendRequest{");
+
+        if (emptyWallet) sb.append("emptyWallet=").append(emptyWallet).append(", ");
+        if (changeAddress != null) sb.append("changeAddress=").append(changeAddress).append(", ");
+        if (fee != null) sb.append("fee=").append(fee).append(", ");
+        if (feePerTxSize != null) sb.append("feePerTxSize=").append(feePerTxSize).append(", ");
+        sb.append("ensureMinRequiredFee=").append(ensureMinRequiredFee).append(", ");
+        sb.append("signTransaction=").append(signTransaction).append(", ");
+        if (aesKey != null) sb.append("aesKey=set, ");
+        if (coinSelector != null) sb.append("coinSelector=").append(coinSelector).append(", ");
+        sb.append("shuffleOutputs=").append(shuffleOutputs);
+
+        sb.append("}");
+        return sb.toString();
     }
 }
