@@ -1,6 +1,6 @@
 /*
  * Copyright 2012, 2014 the original author or authors.
- * 
+ *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -13,11 +13,15 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- * 
+ *
  */
 
 package com.vergepay.core.uri;
 
+import static com.vergepay.core.Preconditions.checkNotNull;
+import static com.vergepay.core.Preconditions.checkState;
+
+import com.google.common.collect.Lists;
 import com.vergepay.core.coins.CoinID;
 import com.vergepay.core.coins.CoinType;
 import com.vergepay.core.coins.Value;
@@ -27,7 +31,6 @@ import com.vergepay.core.util.GenericUtils;
 import com.vergepay.core.wallet.AbstractAddress;
 import com.vergepay.core.wallet.families.bitcoin.BitAddress;
 import com.vergepay.core.wallet.families.nxt.NxtAddress;
-import com.google.common.collect.Lists;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -43,9 +46,6 @@ import java.util.Locale;
 import java.util.Map;
 
 import javax.annotation.Nullable;
-
-import static com.vergepay.core.Preconditions.checkNotNull;
-import static com.vergepay.core.Preconditions.checkState;
 
 /**
  * <p>Provides a standard implementation of a Bitcoin URI with support for the following:</p>
@@ -80,7 +80,7 @@ import static com.vergepay.core.Preconditions.checkState;
  * <li>{@code label} any URL encoded alphanumeric</li>
  * <li>{@code message} any URL encoded alphanumeric</li>
  * </ul>
- * 
+ *
  * @author Andreas Schildbach (initial code)
  * @author Jim Burton (enhancements for MultiBit)
  * @author Gary Rowe (BIP21 support)
@@ -88,11 +88,6 @@ import static com.vergepay.core.Preconditions.checkState;
  * @see <a href="https://github.com/bitcoin/bips/blob/master/bip-0021.mediawiki">BIP 0021</a>
  */
 public class CoinURI implements Serializable {
-    /**
-     * Provides logging for this class
-     */
-    private static final Logger log = LoggerFactory.getLogger(CoinURI.class);
-
     // Not worth turning into an enum
     public static final String FIELD_MESSAGE = "message";
     public static final String FIELD_LABEL = "label";
@@ -102,18 +97,19 @@ public class CoinURI implements Serializable {
     public static final String FIELD_ADDRESS_REQUEST_URI = "req-addressrequest";
     public static final String FIELD_NETWORK = "req-network";
     public static final String FIELD_PUBKEY = "pubkey";
-
+    /**
+     * Provides logging for this class
+     */
+    private static final Logger log = LoggerFactory.getLogger(CoinURI.class);
     private static final String ENCODED_SPACE_CHARACTER = "%20";
     private static final String AMPERSAND_SEPARATOR = "&";
     private static final String QUESTION_MARK_SEPARATOR = "?";
-
-    @Nullable
-    private CoinType type;
-
     /**
      * Contains all the parameters in the order in which they were processed
      */
     private final Map<String, Object> parameterMap = new LinkedHashMap<String, Object>();
+    @Nullable
+    private CoinType type;
 
     /**
      * Constructs a new CoinURI from the given string. Can be for any network.
@@ -129,9 +125,8 @@ public class CoinURI implements Serializable {
      * Constructs a new object by trying to parse the input as a valid coin URI.
      *
      * @param uriType The network parameters that determine which network the URI is from, or null if you don't have
-     *               any expectation about what network the URI is for and wish to check yourself.
-     * @param input The raw URI data to be parsed (see class comments for accepted formats)
-     *
+     *                any expectation about what network the URI is for and wish to check yourself.
+     * @param input   The raw URI data to be parsed (see class comments for accepted formats)
      * @throws CoinURIParseException If the input fails coin URI syntax and semantic checks.
      */
     public CoinURI(@Nullable CoinType uriType, String input) throws CoinURIParseException {
@@ -148,7 +143,7 @@ public class CoinURI implements Serializable {
         // URI is formed as  bitcoin:<address>?<query parameters>
         // blockchain.info generates URIs of non-BIP compliant form bitcoin://address?....
         // We support both until Ben fixes his code.
-        
+
         // Remove the bitcoin scheme.
         // (Note: getSchemeSpecificPart() is not used as it unescapes the label and parse then fails.
         // For instance with : bitcoin:129mVqKUmJ9uwPxKJBnNdABbuaaNfho4Ha?amount=0.06&label=Tom%20%26%20Jerry
@@ -192,7 +187,7 @@ public class CoinURI implements Serializable {
         String[] nameValuePairTokens;
         if (addressSplitTokens.length == 1) {
             // Only an address is specified - use an empty '<name>=<value>' token array.
-            nameValuePairTokens = new String[] {};
+            nameValuePairTokens = new String[]{};
         } else {
             if (addressSplitTokens.length == 2) {
                 // Split into '<name>=<value>' tokens.
@@ -226,7 +221,7 @@ public class CoinURI implements Serializable {
                 throw new CoinURIParseException("Bad address: " + addressToken);
             }
 
-            if (type == null){
+            if (type == null) {
                 type = address.getType();
             } else {
                 checkState(type.equals(address.getType()));
@@ -260,7 +255,111 @@ public class CoinURI implements Serializable {
         return uri;
     }
 
+    /**
+     * Simple coin URI builder using known good fields.
+     *
+     * @param address The coin address
+     * @return A String containing the coin URI
+     */
+    public static String convertToCoinURI(AbstractAddress address) {
+        return convertToCoinURI(address, null, null, null, null);
 
+    }
+
+    /**
+     * Simple coin URI builder using known good fields.
+     *
+     * @param address The coin address
+     * @param amount  The amount
+     * @param label   A label
+     * @param message A message
+     * @return A String containing the coin URI
+     */
+    public static String convertToCoinURI(AbstractAddress address, @Nullable Value amount,
+                                          @Nullable String label, @Nullable String message) {
+        return convertToCoinURI(address, amount, label, message, null);
+
+    }
+
+    /**
+     * Simple coin URI builder using known good fields.
+     *
+     * @param address The coin address
+     * @param amount  The amount
+     * @param label   A label
+     * @param message A message
+     * @param pubkey  A public key
+     * @return A String containing the coin URI
+     */
+    public static String convertToCoinURI(AbstractAddress address, @Nullable Value amount,
+                                          @Nullable String label, @Nullable String message,
+                                          @Nullable String pubkey) {
+        checkNotNull(address);
+
+        CoinType type = address.getType();
+        String addressStr = address.toString();
+
+        if (amount != null && amount.signum() < 0) {
+            throw new IllegalArgumentException("Coin must be positive");
+        }
+
+        StringBuilder builder = new StringBuilder();
+        // Removing appending verge: to all data
+//        builder.append(type.getUriScheme()).append(":").append(addressStr);
+        builder.append(addressStr);
+
+        boolean questionMarkHasBeenOutput = false;
+
+        if (amount != null) {
+            builder.append(QUESTION_MARK_SEPARATOR).append(FIELD_AMOUNT).append("=");
+            builder.append(GenericUtils.formatCoinValue(type, amount, true));
+            questionMarkHasBeenOutput = true;
+        }
+
+        if (label != null && !"".equals(label)) {
+            if (questionMarkHasBeenOutput) {
+                builder.append(AMPERSAND_SEPARATOR);
+            } else {
+                builder.append(QUESTION_MARK_SEPARATOR);
+                questionMarkHasBeenOutput = true;
+            }
+            builder.append(FIELD_LABEL).append("=").append(encodeURLString(label));
+        }
+
+        if (message != null && !"".equals(message)) {
+            if (questionMarkHasBeenOutput) {
+                builder.append(AMPERSAND_SEPARATOR);
+            } else {
+                builder.append(QUESTION_MARK_SEPARATOR);
+            }
+            builder.append(FIELD_MESSAGE).append("=").append(encodeURLString(message));
+        }
+
+        if (pubkey != null && !"".equals(pubkey)) {
+            if (questionMarkHasBeenOutput) {
+                builder.append(AMPERSAND_SEPARATOR);
+            } else {
+                builder.append(QUESTION_MARK_SEPARATOR);
+            }
+            builder.append(FIELD_PUBKEY).append("=").append(encodeURLString(pubkey));
+        }
+
+        return builder.toString();
+    }
+
+    /**
+     * Encode a string using URL encoding
+     *
+     * @param stringToEncode The string to URL encode
+     */
+    static String encodeURLString(String stringToEncode) {
+        try {
+            return java.net.URLEncoder.encode(stringToEncode, "UTF-8").replace("+", ENCODED_SPACE_CHARACTER);
+        } catch (UnsupportedEncodingException e) {
+            // should not happen - UTF-8 is a valid encoding
+            throw new RuntimeException(e);
+        }
+    }
 
     /**
      * @param nameValuePairTokens The tokens representing the name value pairs (assumed to be
@@ -369,8 +468,8 @@ public class CoinURI implements Serializable {
 
     /**
      * Put the value against the key in the map checking for duplication. This avoids address field overwrite etc.
-     * 
-     * @param key The key for the map
+     *
+     * @param key   The key for the map
      * @param value The value to store
      */
     private void putWithValidation(String key, Object value) throws CoinURIParseException {
@@ -383,6 +482,7 @@ public class CoinURI implements Serializable {
 
     /**
      * Same as {@link #getType()} but throws an exception if the uri has no type
+     *
      * @return The {@link com.vergepay.core.coins.CoinType} of this URI
      */
     public CoinType getTypeRequired() throws CoinURIParseException {
@@ -416,7 +516,7 @@ public class CoinURI implements Serializable {
 
     /**
      * @return The amount name encoded using a pure integer value based at
-     *         10,000,000 units is 1 BTC. May be null if no amount is specified
+     * 10,000,000 units is 1 BTC. May be null if no amount is specified
      */
     public Value getAmount() {
         return (Value) parameterMap.get(FIELD_AMOUNT);
@@ -436,7 +536,6 @@ public class CoinURI implements Serializable {
         return (String) parameterMap.get(FIELD_MESSAGE);
     }
 
-
     /**
      * @return The public key.
      */
@@ -446,7 +545,7 @@ public class CoinURI implements Serializable {
 
     /**
      * @return The URL where a payment request (as specified in BIP 70) may
-     *         be fetched.
+     * be fetched.
      */
     public String getPaymentRequestUrl() {
         return (String) parameterMap.get(FIELD_PAYMENT_REQUEST_URL);
@@ -479,7 +578,7 @@ public class CoinURI implements Serializable {
         }
         return null;
     }
-    
+
     /**
      * @param name The name of the parameter
      * @return The parameter value, or null if not present
@@ -502,112 +601,6 @@ public class CoinURI implements Serializable {
         }
         builder.append("]");
         return builder.toString();
-    }
-
-    /**
-     * Simple coin URI builder using known good fields.
-     *
-     * @param address The coin address
-     * @return A String containing the coin URI
-     */
-    public static String convertToCoinURI(AbstractAddress address) {
-        return convertToCoinURI(address, null, null, null, null);
-
-    }
-
-    /**
-     * Simple coin URI builder using known good fields.
-     *
-     * @param address The coin address
-     * @param amount The amount
-     * @param label A label
-     * @param message A message
-     * @return A String containing the coin URI
-     */
-    public static String convertToCoinURI(AbstractAddress address, @Nullable Value amount,
-                                          @Nullable String label, @Nullable String message) {
-        return convertToCoinURI(address, amount, label, message, null);
-
-    }
-
-    /**
-     * Simple coin URI builder using known good fields.
-     *
-     * @param address The coin address
-     * @param amount The amount
-     * @param label A label
-     * @param message A message
-     * @param pubkey A public key
-     * @return A String containing the coin URI
-     */
-    public static String convertToCoinURI(AbstractAddress address, @Nullable Value amount,
-                                          @Nullable String label, @Nullable String message,
-                                          @Nullable String pubkey) {
-        checkNotNull(address);
-
-        CoinType type = address.getType();
-        String addressStr = address.toString();
-
-        if (amount != null && amount.signum() < 0) {
-            throw new IllegalArgumentException("Coin must be positive");
-        }
-        
-        StringBuilder builder = new StringBuilder();
-        // Removing appending verge: to all data
-//        builder.append(type.getUriScheme()).append(":").append(addressStr);
-        builder.append(addressStr);
-
-        boolean questionMarkHasBeenOutput = false;
-        
-        if (amount != null) {
-            builder.append(QUESTION_MARK_SEPARATOR).append(FIELD_AMOUNT).append("=");
-            builder.append(GenericUtils.formatCoinValue(type, amount, true));
-            questionMarkHasBeenOutput = true;
-        }
-        
-        if (label != null && !"".equals(label)) {
-            if (questionMarkHasBeenOutput) {
-                builder.append(AMPERSAND_SEPARATOR);
-            } else {
-                builder.append(QUESTION_MARK_SEPARATOR);                
-                questionMarkHasBeenOutput = true;
-            }
-            builder.append(FIELD_LABEL).append("=").append(encodeURLString(label));
-        }
-        
-        if (message != null && !"".equals(message)) {
-            if (questionMarkHasBeenOutput) {
-                builder.append(AMPERSAND_SEPARATOR);
-            } else {
-                builder.append(QUESTION_MARK_SEPARATOR);
-            }
-            builder.append(FIELD_MESSAGE).append("=").append(encodeURLString(message));
-        }
-
-        if (pubkey != null && !"".equals(pubkey)) {
-            if (questionMarkHasBeenOutput) {
-                builder.append(AMPERSAND_SEPARATOR);
-            } else {
-                builder.append(QUESTION_MARK_SEPARATOR);
-            }
-            builder.append(FIELD_PUBKEY).append("=").append(encodeURLString(pubkey));
-        }
-        
-        return builder.toString();
-    }
-
-    /**
-     * Encode a string using URL encoding
-     * 
-     * @param stringToEncode The string to URL encode
-     */
-    static String encodeURLString(String stringToEncode) {
-        try {
-            return java.net.URLEncoder.encode(stringToEncode, "UTF-8").replace("+", ENCODED_SPACE_CHARACTER);
-        } catch (UnsupportedEncodingException e) {
-            // should not happen - UTF-8 is a valid encoding
-            throw new RuntimeException(e);
-        }
     }
 
     public String toUriString() {

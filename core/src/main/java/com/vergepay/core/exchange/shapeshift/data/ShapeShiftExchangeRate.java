@@ -3,13 +3,13 @@ package com.vergepay.core.exchange.shapeshift.data;
 /**
  * Copyright 2014 Andreas Schildbach
  * Copyright 2015 John L. Jegutanis
- *
+ * <p>
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
- *    http://www.apache.org/licenses/LICENSE-2.0
- *
+ * <p>
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * <p>
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -18,17 +18,14 @@ package com.vergepay.core.exchange.shapeshift.data;
  */
 
 
+import static com.google.common.base.Preconditions.checkArgument;
+
 import com.vergepay.core.coins.CoinType;
 import com.vergepay.core.coins.Value;
 import com.vergepay.core.coins.ValueType;
 import com.vergepay.core.util.ExchangeRateBase;
 
 import org.bitcoinj.core.Coin;
-
-import javax.annotation.Nullable;
-
-import static com.google.common.base.Preconditions.checkArgument;
-import static com.google.common.base.Preconditions.checkState;
 
 /**
  * An exchange rate is expressed as a ratio of a pair of {@link com.vergepay.core.coins.Value} amounts.

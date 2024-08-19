@@ -1,5 +1,15 @@
 package com.vergepay.core.network;
 
+import static com.google.common.util.concurrent.Service.State.NEW;
+import static com.vergepay.core.Preconditions.checkNotNull;
+import static com.vergepay.core.Preconditions.checkState;
+
+import com.google.common.collect.ImmutableList;
+import com.google.common.io.Files;
+import com.google.common.util.concurrent.FutureCallback;
+import com.google.common.util.concurrent.Futures;
+import com.google.common.util.concurrent.ListenableFuture;
+import com.google.common.util.concurrent.Service;
 import com.vergepay.core.coins.CoinType;
 import com.vergepay.core.exceptions.AddressMalformedException;
 import com.vergepay.core.network.interfaces.ConnectionEventListener;
@@ -13,12 +23,6 @@ import com.vergepay.stratumj.ServerAddress;
 import com.vergepay.stratumj.StratumClient;
 import com.vergepay.stratumj.messages.CallMessage;
 import com.vergepay.stratumj.messages.ResultMessage;
-import com.google.common.collect.ImmutableList;
-import com.google.common.io.Files;
-import com.google.common.util.concurrent.FutureCallback;
-import com.google.common.util.concurrent.Futures;
-import com.google.common.util.concurrent.ListenableFuture;
-import com.google.common.util.concurrent.Service;
 
 import org.bitcoinj.core.Sha256Hash;
 import org.bitcoinj.core.TransactionOutPoint;
@@ -33,7 +37,6 @@ import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
@@ -46,10 +49,6 @@ import java.util.concurrent.TimeUnit;
 
 import javax.annotation.Nullable;
 
-import static com.vergepay.core.Preconditions.checkNotNull;
-import static com.vergepay.core.Preconditions.checkState;
-import static com.google.common.util.concurrent.Service.State.NEW;
-
 /**
  * @author John L. Jegutanis
  */
@@ -58,39 +57,49 @@ public class ServerClient implements BitBlockchainConnection {
 
     private static final ScheduledThreadPoolExecutor connectionExec;
     private static final String CLIENT_PROTOCOL = "0.9";
+    private static final Random RANDOM = new Random();
+    private static final long MAX_WAIT = 16;
+    private static final long CONNECTION_STABILIZATION = 30;
 
     static {
         connectionExec = new ScheduledThreadPoolExecutor(1);
         // FIXME, causing a crash in old Androids
 //        connectionExec.setRemoveOnCancelPolicy(true);
     }
-    private static final Random RANDOM = new Random();
 
-    private static final long MAX_WAIT = 16;
-    private static final long CONNECTION_STABILIZATION = 30;
     private final ConnectivityHelper connectivityHelper;
 
     private final CoinType type;
     private final ImmutableList<ServerAddress> addresses;
     private final HashSet<ServerAddress> failedAddresses;
+    // TODO, only one is supported at the moment. Change when accounts are supported.
+    private final transient CopyOnWriteArrayList<ListenerRegistration<ConnectionEventListener>> eventListeners;
     private ServerAddress lastServerAddress;
     private StratumClient stratumClient;
     private long retrySeconds = 0;
     private long reconnectAt = 0;
+    private final Runnable connectionCheckTask = new Runnable() {
+        @Override
+        public void run() {
+            if (isActivelyConnected()) {
+                reconnectAt = 0;
+                retrySeconds = 0;
+            }
+        }
+    };
     private boolean stopped = false;
-
     private File cacheDir;
     private int cacheSize;
 
-    // TODO, only one is supported at the moment. Change when accounts are supported.
-    private final transient CopyOnWriteArrayList<ListenerRegistration<ConnectionEventListener>> eventListeners;
+    public ServerClient(CoinAddress coinAddress, ConnectivityHelper connectivityHelper) {
+        this.connectivityHelper = connectivityHelper;
+        eventListeners = new CopyOnWriteArrayList<ListenerRegistration<ConnectionEventListener>>();
+        failedAddresses = new HashSet<ServerAddress>();
+        type = coinAddress.getType();
+        addresses = ImmutableList.copyOf(coinAddress.getAddresses());
 
-    private void reschedule(Runnable r, long delay, TimeUnit unit) {
-        connectionExec.remove(r);
-        connectionExec.schedule(r, delay, unit);
-    }
-
-    private final Runnable reconnectTask = new Runnable() {
+        createStratumClient();
+    }    private final Runnable reconnectTask = new Runnable() {
         @Override
         public void run() {
             if (!stopped) {
@@ -112,17 +121,18 @@ public class ServerClient implements BitBlockchainConnection {
         }
     };
 
-    private final Runnable connectionCheckTask = new Runnable() {
-        @Override
-        public void run() {
-            if (isActivelyConnected()) {
-                reconnectAt = 0;
-                retrySeconds = 0;
-            }
-        }
-    };
+    private void reschedule(Runnable r, long delay, TimeUnit unit) {
+        connectionExec.remove(r);
+        connectionExec.schedule(r, delay, unit);
+    }
 
-    private final Service.Listener serviceListener = new Service.Listener() {
+    private StratumClient createStratumClient() {
+        checkState(stratumClient == null);
+        lastServerAddress = getServerAddress();
+        stratumClient = new StratumClient(lastServerAddress);
+        stratumClient.addListener(serviceListener, Threading.USER_THREAD);
+        return stratumClient;
+    }    private final Service.Listener serviceListener = new Service.Listener() {
         @Override
         public void running() {
             // Check if connection is up as this event is fired even if there is no connection
@@ -157,24 +167,6 @@ public class ServerClient implements BitBlockchainConnection {
         }
     };
 
-    public ServerClient(CoinAddress coinAddress, ConnectivityHelper connectivityHelper) {
-        this.connectivityHelper = connectivityHelper;
-        eventListeners = new CopyOnWriteArrayList<ListenerRegistration<ConnectionEventListener>>();
-        failedAddresses = new HashSet<ServerAddress>();
-        type = coinAddress.getType();
-        addresses = ImmutableList.copyOf(coinAddress.getAddresses());
-
-        createStratumClient();
-    }
-
-    private StratumClient createStratumClient() {
-        checkState(stratumClient == null);
-        lastServerAddress = getServerAddress();
-        stratumClient = new StratumClient(lastServerAddress);
-        stratumClient.addListener(serviceListener, Threading.USER_THREAD);
-        return stratumClient;
-    }
-
     private ServerAddress getServerAddress() {
         // If we blacklisted all servers, reset
         if (failedAddresses.size() == addresses.size()) {
@@ -192,7 +184,7 @@ public class ServerClient implements BitBlockchainConnection {
     }
 
     public void startAsync() {
-        if (stratumClient == null){
+        if (stratumClient == null) {
             log.info("Forcing service start");
             connectionExec.remove(reconnectTask);
             createStratumClient();
@@ -231,6 +223,24 @@ public class ServerClient implements BitBlockchainConnection {
         return stratumClient != null && stratumClient.isConnected() && stratumClient.isRunning();
     }
 
+    /**
+     * Will disconnect from the server and immediately will try to reconnect
+     */
+    public void resetConnection() {
+        if (stratumClient != null) {
+            stratumClient.disconnect();
+        }
+    }
+
+    /**
+     * Adds an event listener object. Methods on this object are called when something interesting happens,
+     * like new connection to a server. The listener is executed by {@link org.bitcoinj.utils.Threading#USER_THREAD}.
+     */
+    @Override
+    public void addEventListener(ConnectionEventListener listener) {
+        addEventListener(listener, Threading.USER_THREAD);
+    }
+
 //    // TODO support more than one pocket
 //    public void maybeSetWalletPocket(WalletPocketHD pocket) {
 //        if (eventListeners.isEmpty()) {
@@ -250,24 +260,6 @@ public class ServerClient implements BitBlockchainConnection {
 //            if (isActivelyConnected()) broadcastOnConnection();
 //        }
 //    }
-
-    /**
-     * Will disconnect from the server and immediately will try to reconnect
-     */
-    public void resetConnection() {
-        if (stratumClient != null) {
-            stratumClient.disconnect();
-        }
-    }
-
-    /**
-     * Adds an event listener object. Methods on this object are called when something interesting happens,
-     * like new connection to a server. The listener is executed by {@link org.bitcoinj.utils.Threading#USER_THREAD}.
-     */
-    @Override
-    public void addEventListener(ConnectionEventListener listener) {
-        addEventListener(listener, Threading.USER_THREAD);
-    }
 
     /**
      * Adds an event listener object. Methods on this object are called when something interesting happens,
@@ -334,7 +326,7 @@ public class ServerClient implements BitBlockchainConnection {
 
         log.info("Going to subscribe to block chain headers");
 
-        final CallMessage callMessage = new CallMessage("blockchain.headers.subscribe", (List)null);
+        final CallMessage callMessage = new CallMessage("blockchain.headers.subscribe", (List) null);
         ListenableFuture<ResultMessage> reply = stratumClient.subscribe(callMessage, blockchainHeaderHandler);
 
         Futures.addCallback(reply, new FutureCallback<ResultMessage>() {
@@ -365,7 +357,7 @@ public class ServerClient implements BitBlockchainConnection {
     public void subscribeToAddresses(List<AbstractAddress> addresses, final TransactionEventListener<BitTransaction> listener) {
         checkNotNull(stratumClient);
 
-        final CallMessage callMessage = new CallMessage("blockchain.address.subscribe", (List)null);
+        final CallMessage callMessage = new CallMessage("blockchain.address.subscribe", (List) null);
 
         // TODO use TransactionEventListener directly because the current solution leaks memory
         StratumClient.SubscribeResultHandler addressHandler = new StratumClient.SubscribeResultHandler() {
@@ -376,8 +368,7 @@ public class ServerClient implements BitBlockchainConnection {
                     AddressStatus status;
                     if (message.getParams().isNull(1)) {
                         status = new AddressStatus(address, null);
-                    }
-                    else {
+                    } else {
                         status = new AddressStatus(address, message.getParams().getString(1));
                     }
                     listener.onAddressStatusUpdate(status);
@@ -682,7 +673,8 @@ public class ServerClient implements BitBlockchainConnection {
                     try {
                         log.debug("Server {} version {} OK", type.getName(),
                                 checkNotNull(result).getResult().get(0));
-                    } catch (Exception ignore) { }
+                    } catch (Exception ignore) {
+                    }
                 }
             }
 
@@ -701,7 +693,6 @@ public class ServerClient implements BitBlockchainConnection {
         this.cacheDir = cacheDir;
         this.cacheSize = cacheSize;
     }
-
 
     public static class HistoryTx {
         protected final Sha256Hash txHash;
@@ -786,4 +777,9 @@ public class ServerClient implements BitBlockchainConnection {
             return result;
         }
     }
+
+
+
+
+
 }

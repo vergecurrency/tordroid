@@ -1,9 +1,11 @@
 package com.vergepay.core.wallet;
 
-import com.vergepay.core.coins.CoinType;
-import com.vergepay.core.wallet.families.bitcoin.BitAddress;
+import static com.vergepay.core.Preconditions.checkNotNull;
+
 import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.ImmutableList;
+import com.vergepay.core.coins.CoinType;
+import com.vergepay.core.wallet.families.bitcoin.BitAddress;
 
 import org.bitcoinj.core.ECKey;
 import org.bitcoinj.crypto.KeyCrypter;
@@ -16,8 +18,6 @@ import org.spongycastle.crypto.params.KeyParameter;
 import java.util.List;
 
 import javax.annotation.Nullable;
-
-import static com.vergepay.core.Preconditions.checkNotNull;
 
 /**
  * @author John L. Jegutanis
@@ -113,7 +113,8 @@ public class BitWalletSingleKey extends BitWalletBase {
     }
 
     @Override
-    public void markAddressAsUsed(AbstractAddress address) { }
+    public void markAddressAsUsed(AbstractAddress address) {
+    }
 
     @Override
     public boolean isEncryptable() {

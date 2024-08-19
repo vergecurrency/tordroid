@@ -1,5 +1,9 @@
 package com.vergepay.core.wallet.families.bitcoin;
 
+import static com.vergepay.core.Preconditions.checkNotNull;
+import static com.vergepay.core.Preconditions.checkState;
+
+import com.google.common.collect.ImmutableList;
 import com.vergepay.core.coins.CoinType;
 import com.vergepay.core.coins.Value;
 import com.vergepay.core.messages.MessageFactory;
@@ -8,7 +12,6 @@ import com.vergepay.core.wallet.AbstractAddress;
 import com.vergepay.core.wallet.AbstractTransaction;
 import com.vergepay.core.wallet.AbstractWallet;
 import com.vergepay.core.wallet.TransactionWatcherWallet;
-import com.google.common.collect.ImmutableList;
 
 import org.bitcoinj.core.Sha256Hash;
 import org.bitcoinj.core.Transaction;
@@ -27,9 +30,6 @@ import java.util.Map;
 
 import javax.annotation.Nullable;
 
-import static com.vergepay.core.Preconditions.checkNotNull;
-import static com.vergepay.core.Preconditions.checkState;
-
 /**
  * @author vbcs
  * @author John L. Jegutanis
@@ -44,7 +44,8 @@ public final class BitTransaction implements AbstractTransaction {
     final Value valueSent;
     final Value valueReceived;
     final Value value;
-    @Nullable final Value fee;
+    @Nullable
+    final Value fee;
 
     public BitTransaction(Sha256Hash transactionId, Transaction transaction, boolean isTrimmed,
                           Value valueSent, Value valueReceived, @Nullable Value fee) {

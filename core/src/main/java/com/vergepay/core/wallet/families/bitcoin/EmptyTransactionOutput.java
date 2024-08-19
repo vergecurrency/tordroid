@@ -1,7 +1,5 @@
 package com.vergepay.core.wallet.families.bitcoin;
 
-import com.vergepay.core.coins.CoinType;
-
 import org.bitcoinj.core.Coin;
 import org.bitcoinj.core.NetworkParameters;
 import org.bitcoinj.core.Transaction;
@@ -16,13 +14,6 @@ public class EmptyTransactionOutput extends TransactionOutput {
             new EmptyTransactionOutput(new FakeNetworkParameters(), null, Coin.ZERO,
                     Hex.decode("76a914000000000000000000000000000000000000000088ac"));
 
-    static class FakeNetworkParameters extends NetworkParameters {
-        @Override
-        public String getPaymentProtocolId() {
-            return "";
-        }
-    }
-
     private EmptyTransactionOutput(NetworkParameters params, Transaction parent, Coin value, byte[] scriptBytes) {
         super(params, parent, value, scriptBytes);
     }
@@ -34,5 +25,12 @@ public class EmptyTransactionOutput extends TransactionOutput {
     @Override
     public int getIndex() {
         throw new IllegalArgumentException("Empty outputs don't have indexes");
+    }
+
+    static class FakeNetworkParameters extends NetworkParameters {
+        @Override
+        public String getPaymentProtocolId() {
+            return "";
+        }
     }
 }

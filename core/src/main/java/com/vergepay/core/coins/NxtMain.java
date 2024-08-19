@@ -7,6 +7,8 @@ import com.vergepay.core.coins.families.NxtFamily;
  */
 public class NxtMain extends NxtFamily {
 
+    private static final NxtMain instance = new NxtMain();
+
     private NxtMain() {
         id = "nxt.main";
 
@@ -21,7 +23,6 @@ public class NxtMain extends NxtFamily {
         feePolicy = FeePolicy.FLAT_FEE;
     }
 
-    private static final NxtMain instance = new NxtMain();
     public static synchronized CoinType get() {
         return instance;
     }

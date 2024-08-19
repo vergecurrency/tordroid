@@ -1,5 +1,13 @@
 package com.vergepay.core.wallet;
 
+import static com.google.common.base.Preconditions.checkNotNull;
+import static com.google.common.base.Preconditions.checkState;
+import static com.vergepay.core.CoreUtils.bytesToMnemonic;
+
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.base.Splitter;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
 import com.vergepay.core.CoreUtils;
 import com.vergepay.core.coins.CoinType;
 import com.vergepay.core.coins.Value;
@@ -8,10 +16,6 @@ import com.vergepay.core.coins.families.NxtFamily;
 import com.vergepay.core.exceptions.UnsupportedCoinTypeException;
 import com.vergepay.core.protos.Protos;
 import com.vergepay.core.wallet.families.nxt.NxtFamilyWallet;
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.base.Splitter;
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
 
 import org.bitcoinj.crypto.DeterministicHierarchy;
 import org.bitcoinj.crypto.DeterministicKey;
@@ -33,7 +37,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.io.UnsupportedEncodingException;
 import java.nio.charset.StandardCharsets;
 import java.security.SecureRandom;
 import java.util.ArrayList;
@@ -45,30 +48,23 @@ import java.util.concurrent.locks.ReentrantLock;
 import javax.annotation.Nullable;
 import javax.annotation.concurrent.GuardedBy;
 
-import static com.vergepay.core.CoreUtils.bytesToMnemonic;
-import static com.google.common.base.Preconditions.checkNotNull;
-import static com.google.common.base.Preconditions.checkState;
-
 /**
  * @author John L. Jegutanis
  */
 final public class Wallet {
     private static final Logger log = LoggerFactory.getLogger(Wallet.class);
-    public static int ENTROPY_SIZE_DEBUG = -1;
-
-    private final ReentrantLock lock = Threading.lock("KeyChain");
-
-    @GuardedBy("lock") private final LinkedHashMap<CoinType, ArrayList<WalletAccount>> accountsByType;
-    @GuardedBy("lock") private final LinkedHashMap<String, WalletAccount> accounts;
-
-    @Nullable private DeterministicSeed seed;
-    private DeterministicKey masterKey;
-
-    private volatile WalletFiles vFileManager;
-
     // FIXME, make multi account capable
     private final static int ACCOUNT_ZERO = 0;
-
+    public static int ENTROPY_SIZE_DEBUG = -1;
+    private final ReentrantLock lock = Threading.lock("KeyChain");
+    @GuardedBy("lock")
+    private final LinkedHashMap<CoinType, ArrayList<WalletAccount>> accountsByType;
+    @GuardedBy("lock")
+    private final LinkedHashMap<String, WalletAccount> accounts;
+    @Nullable
+    private DeterministicSeed seed;
+    private DeterministicKey masterKey;
+    private volatile WalletFiles vFileManager;
     private int version = 2;
 
     public Wallet(String mnemonic) throws MnemonicException {
@@ -131,17 +127,45 @@ final public class Wallet {
         return Hex.toHexString(randomIdBytes);
     }
 
+    /**
+     * Returns a wallet deserialized from the given file.
+     */
+    public static Wallet loadFromFile(File f) throws UnreadableWalletException {
+        try {
+            FileInputStream stream = null;
+            try {
+                stream = new FileInputStream(f);
+                return loadFromFileStream(stream);
+            } finally {
+                if (stream != null) stream.close();
+            }
+        } catch (IOException e) {
+            throw new UnreadableWalletException("Could not open file", e);
+        }
+    }
+
+    /**
+     * Returns a wallet deserialized from the given input stream.
+     */
+    public static Wallet loadFromFileStream(InputStream stream) throws UnreadableWalletException {
+        return WalletProtobufSerializer.readWallet(stream);
+    }
+
+    private static List<String> decodeMnemonicCode(byte[] mnemonicCode) throws UnreadableWalletException {
+        return Splitter.on(" ").splitToList(new String(mnemonicCode, StandardCharsets.UTF_8));
+    }
+
     public WalletAccount createAccount(CoinType coin, @Nullable KeyParameter key) {
         return createAccount(coin, false, key);
     }
 
     public WalletAccount createAccount(CoinType coin, boolean generateAllKeys,
-                                  @Nullable KeyParameter key) {
+                                       @Nullable KeyParameter key) {
         return createAccounts(Lists.newArrayList(coin), generateAllKeys, key).get(0);
     }
 
     public List<WalletAccount> createAccounts(List<CoinType> coins, boolean generateAllKeys,
-                                  @Nullable KeyParameter key) {
+                                              @Nullable KeyParameter key) {
         lock.lock();
         try {
             ImmutableList.Builder<WalletAccount> newAccounts = ImmutableList.builder();
@@ -253,7 +277,6 @@ final public class Wallet {
         }
     }
 
-
     public List getAccountIds() {
         lock.lock();
         try {
@@ -281,7 +304,7 @@ final public class Wallet {
         if (isEncrypted()) {
             hierarchy = new DeterministicHierarchy(masterKey.decrypt(getKeyCrypter(), key));
         } else {
-            hierarchy= new DeterministicHierarchy(masterKey);
+            hierarchy = new DeterministicHierarchy(masterKey);
         }
         int newIndex = getLastAccountIndex(coinType) + 1;
         DeterministicKey rootKey = hierarchy.get(coinType.getBip44Path(newIndex), false, true);
@@ -394,7 +417,9 @@ final public class Wallet {
         }
     }
 
-    /** Returns a list of words that represent the seed or null if this chain is a watching chain. */
+    /**
+     * Returns a list of words that represent the seed or null if this chain is a watching chain.
+     */
     @Nullable
     public List<String> getMnemonicCode() {
         if (seed == null) return null;
@@ -417,7 +442,9 @@ final public class Wallet {
         }
     }
 
-    /** Returns the {@link KeyCrypter} in use or null if the key chain is not encrypted. */
+    /**
+     * Returns the {@link KeyCrypter} in use or null if the key chain is not encrypted.
+     */
     @Nullable
     public KeyCrypter getKeyCrypter() {
         lock.lock();
@@ -428,12 +455,18 @@ final public class Wallet {
         }
     }
 
-    public void setVersion(int version) {
-        this.version = version;
-    }
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Serialization support
+    //
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     public int getVersion() {
         return version;
+    }
+
+    public void setVersion(int version) {
+        this.version = version;
     }
 
     public WalletAccount refresh(String accountIdToReset) {
@@ -450,12 +483,6 @@ final public class Wallet {
         }
     }
 
-    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    //
-    // Serialization support
-    //
-    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
     @VisibleForTesting
     Protos.Wallet toProtobuf() {
         lock.lock();
@@ -464,29 +491,6 @@ final public class Wallet {
         } finally {
             lock.unlock();
         }
-    }
-    /**
-     * Returns a wallet deserialized from the given file.
-     */
-    public static Wallet loadFromFile(File f) throws UnreadableWalletException {
-        try {
-            FileInputStream stream = null;
-            try {
-                stream = new FileInputStream(f);
-                return loadFromFileStream(stream);
-            } finally {
-                if (stream != null) stream.close();
-            }
-        } catch (IOException e) {
-            throw new UnreadableWalletException("Could not open file", e);
-        }
-    }
-
-    /**
-     * Returns a wallet deserialized from the given input stream.
-     */
-    public static Wallet loadFromFileStream(InputStream stream) throws UnreadableWalletException {
-        return WalletProtobufSerializer.readWallet(stream);
     }
 
     /**
@@ -502,7 +506,9 @@ final public class Wallet {
         }
     }
 
-    /** Saves the wallet first to the given temp file, then renames to the dest file. */
+    /**
+     * Saves the wallet first to the given temp file, then renames to the dest file.
+     */
     public void saveToFile(File temp, File destFile) throws IOException {
         FileOutputStream stream = null;
         lock.lock();
@@ -549,9 +555,9 @@ final public class Wallet {
      * with the wallet locked when an auto-save occurs. If delay is zero or you do something that always triggers
      * an immediate save, like adding a key, the event listener will be invoked on the calling threads.</p>
      *
-     * @param f The destination file to save to.
-     * @param delayTime How many time units to wait until saving the wallet on a background thread.
-     * @param timeUnit the unit of measurement for delayTime.
+     * @param f             The destination file to save to.
+     * @param delayTime     How many time units to wait until saving the wallet on a background thread.
+     * @param timeUnit      the unit of measurement for delayTime.
      * @param eventListener callback to be informed when the auto-save thread does things, or null
      */
     public WalletFiles autosaveToFile(File f, long delayTime, TimeUnit timeUnit,
@@ -590,7 +596,9 @@ final public class Wallet {
         }
     }
 
-    /** Requests an asynchronous save on a background thread */
+    /**
+     * Requests an asynchronous save on a background thread
+     */
     public void saveLater() {
         lock.lock();
         try {
@@ -603,7 +611,16 @@ final public class Wallet {
         }
     }
 
-    /** If auto saving is enabled, do an immediate sync write to disk ignoring any delays. */
+
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Encryption support
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    /**
+     * If auto saving is enabled, do an immediate sync write to disk ignoring any delays.
+     */
     public void saveNow() {
         lock.lock();
         try {
@@ -624,13 +641,6 @@ final public class Wallet {
         }
     }
 
-
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    //
-    // Encryption support
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
     public boolean isEncrypted() {
         lock.lock();
         try {
@@ -645,7 +655,7 @@ final public class Wallet {
      * {@link org.bitcoinj.crypto.KeyCrypterScrypt}.
      *
      * @throws org.bitcoinj.crypto.KeyCrypterException Thrown if the wallet encryption fails for some reason,
-     *         leaving the group unchanged.
+     *                                                 leaving the group unchanged.
      */
     public void encrypt(KeyCrypter keyCrypter, KeyParameter aesKey) {
         checkNotNull(keyCrypter, "Attempting to encrypt with a null KeyCrypter");
@@ -694,10 +704,6 @@ final public class Wallet {
         } finally {
             lock.unlock();
         }
-    }
-
-    private static List<String> decodeMnemonicCode(byte[] mnemonicCode) throws UnreadableWalletException {
-        return Splitter.on(" ").splitToList(new String(mnemonicCode, StandardCharsets.UTF_8));
     }
 
     public List<Value> getBalances() {

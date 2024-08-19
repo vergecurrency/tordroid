@@ -1,11 +1,7 @@
 package com.vergepay.core.exchange.shapeshift.data;
 
-import com.vergepay.core.exchange.shapeshift.ShapeShift;
-
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.util.Stack;
 
 /**
  * @author John L. Jegutanis
@@ -13,10 +9,6 @@ import java.util.Stack;
 public class ShapeShiftTime extends ShapeShiftBase {
     public final Status status;
     public final int secondsRemaining;
-
-    public enum Status {
-        PENDING, EXPIRED, UNKNOWN
-    }
 
     public ShapeShiftTime(JSONObject data) throws ShapeShiftException {
         super(data);
@@ -41,6 +33,10 @@ public class ShapeShiftTime extends ShapeShiftBase {
             status = null;
             secondsRemaining = -1;
         }
+    }
+
+    public enum Status {
+        PENDING, EXPIRED, UNKNOWN
     }
 }
 

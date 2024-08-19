@@ -6,12 +6,14 @@ import com.vergepay.core.coins.families.BitFamily;
  * @author John L. Jegutanis
  */
 public class BitcoinTest extends BitFamily {
+    private static final BitcoinTest instance = new BitcoinTest();
+
     private BitcoinTest() {
         id = "bitcoin.test";
 
         addressHeader = 111;
         p2shHeader = 196;
-        acceptableAddressCodes = new int[] { addressHeader, p2shHeader };
+        acceptableAddressCodes = new int[]{addressHeader, p2shHeader};
         spendableCoinbaseDepth = 100;
         dumpedPrivateKeyHeader = 239;
 
@@ -27,7 +29,6 @@ public class BitcoinTest extends BitFamily {
         signedMessageHeader = toBytes("Bitcoin Signed Message:\n");
     }
 
-    private static final BitcoinTest instance = new BitcoinTest();
     public static synchronized CoinType get() {
         return instance;
     }

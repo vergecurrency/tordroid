@@ -1,5 +1,8 @@
 package com.vergepay.core.wallet.families.bitcoin;
 
+import static com.google.common.base.Preconditions.checkNotNull;
+import static com.vergepay.core.Preconditions.checkState;
+
 import com.vergepay.core.coins.CoinType;
 import com.vergepay.core.coins.Value;
 import com.vergepay.core.coins.families.BitFamily;
@@ -8,9 +11,6 @@ import com.vergepay.core.wallet.SendRequest;
 
 import org.bitcoinj.core.Coin;
 import org.bitcoinj.core.Transaction;
-
-import static com.vergepay.core.Preconditions.checkState;
-import static com.google.common.base.Preconditions.checkNotNull;
 
 /**
  * @author John L. Jegutanis

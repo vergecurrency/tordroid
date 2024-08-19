@@ -1,5 +1,17 @@
 package com.vergepay.core.wallet;
 
+import static com.vergepay.core.Preconditions.checkNotNull;
+import static com.vergepay.core.Preconditions.checkState;
+import static org.bitcoinj.core.TransactionConfidence.ConfidenceType.BUILDING;
+import static org.bitcoinj.core.TransactionConfidence.ConfidenceType.PENDING;
+import static org.bitcoinj.core.TransactionConfidence.ConfidenceType.UNKNOWN;
+
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.google.common.math.LongMath;
 import com.vergepay.core.coins.CoinType;
 import com.vergepay.core.coins.Value;
 import com.vergepay.core.exceptions.TransactionBroadcastException;
@@ -18,12 +30,6 @@ import com.vergepay.core.wallet.families.bitcoin.BitWalletTransaction;
 import com.vergepay.core.wallet.families.bitcoin.OutPointOutput;
 import com.vergepay.core.wallet.families.bitcoin.TrimmedOutPoint;
 import com.vergepay.core.wallet.families.bitcoin.TrimmedTransaction;
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.google.common.math.LongMath;
 
 import org.bitcoinj.core.ScriptException;
 import org.bitcoinj.core.Sha256Hash;
@@ -55,12 +61,6 @@ import java.util.concurrent.Executor;
 
 import javax.annotation.Nullable;
 
-import static com.vergepay.core.Preconditions.checkNotNull;
-import static com.vergepay.core.Preconditions.checkState;
-import static org.bitcoinj.core.TransactionConfidence.ConfidenceType.BUILDING;
-import static org.bitcoinj.core.TransactionConfidence.ConfidenceType.PENDING;
-import static org.bitcoinj.core.TransactionConfidence.ConfidenceType.UNKNOWN;
-
 /**
  * @author John L. Jegutanis
  */
@@ -69,50 +69,51 @@ abstract public class TransactionWatcherWallet extends AbstractWallet<BitTransac
     private static final Logger log = LoggerFactory.getLogger(TransactionWatcherWallet.class);
 
     private final static int TX_DEPTH_SAVE_THRESHOLD = 4;
-
-    boolean DISABLE_TX_TRIMMING = false;
-
-    @Nullable private Sha256Hash lastBlockSeenHash;
-    private int lastBlockSeenHeight = -1;
-    private long lastBlockSeenTimeSecs = 0;
-
     @VisibleForTesting
     final Map<TrimmedOutPoint, OutPointOutput> unspentOutputs;
-
     // Holds the status of every address we are watching. When connecting to the server, if we get a
     // different status for a particular address this means that there are new transactions for that
     // address and we have to fetch them. The status String could be null when an address is unused.
     @VisibleForTesting
     final Map<AbstractAddress, String> addressesStatus;
-
-    @VisibleForTesting final transient ArrayList<AbstractAddress> addressesSubscribed;
-    @VisibleForTesting final transient ArrayList<AbstractAddress> addressesPendingSubscription;
-    @VisibleForTesting final transient Map<AbstractAddress, AddressStatus> statusPendingUpdates;
-    @VisibleForTesting final transient Map<Sha256Hash, Integer> fetchingTransactions;
-    @VisibleForTesting final transient Map<Integer, Long> blockTimes;
-    @VisibleForTesting final transient Map<Integer, Set<Sha256Hash>> missingTimestamps;
+    @VisibleForTesting
+    final transient ArrayList<AbstractAddress> addressesSubscribed;
+    @VisibleForTesting
+    final transient ArrayList<AbstractAddress> addressesPendingSubscription;
+    @VisibleForTesting
+    final transient Map<AbstractAddress, AddressStatus> statusPendingUpdates;
+    @VisibleForTesting
+    final transient Map<Sha256Hash, Integer> fetchingTransactions;
+    @VisibleForTesting
+    final transient Map<Integer, Long> blockTimes;
+    @VisibleForTesting
+    final transient Map<Integer, Set<Sha256Hash>> missingTimestamps;
     // Transactions that are waiting to be added once transactions that they depend on are added
     final transient Map<Sha256Hash, Map.Entry<BitTransaction, Set<Sha256Hash>>> outOfOrderTransactions;
+    @VisibleForTesting
+    final Map<Sha256Hash, BitTransaction> pending;
+    @VisibleForTesting
+    final Map<Sha256Hash, BitTransaction> confirmed;
+    // All transactions together.
+    final Map<Sha256Hash, BitTransaction> rawTransactions;
+    private final List<ListenerRegistration<WalletAccountEventListener>> listeners;
 
     // The various pools below give quick access to wallet-relevant transactions by the state they're in:
     //
     // Pending:  Transactions that didn't make it into the best chain yet.
     // Confirmed:Transactions that appeared in the best chain.
-
-    @VisibleForTesting final Map<Sha256Hash, BitTransaction> pending;
-    @VisibleForTesting final Map<Sha256Hash, BitTransaction> confirmed;
-
-    // All transactions together.
-    final Map<Sha256Hash, BitTransaction> rawTransactions;
-    private BitBlockchainConnection blockchainConnection;
-    private final List<ListenerRegistration<WalletAccountEventListener>> listeners;
-
-    // Wallet that this account belongs
-    @Nullable private transient Wallet wallet = null;
-
-    @VisibleForTesting transient Value lastBalance;
+    boolean DISABLE_TX_TRIMMING = false;
+    @VisibleForTesting
+    transient Value lastBalance;
     transient WalletConnectivityStatus lastConnectivity = WalletConnectivityStatus.DISCONNECTED;
-
+    @Nullable
+    private Sha256Hash lastBlockSeenHash;
+    private int lastBlockSeenHeight = -1;
+    private long lastBlockSeenTimeSecs = 0;
+    private BitBlockchainConnection blockchainConnection;
+    // Wallet that this account belongs
+    @Nullable
+    private transient Wallet wallet = null;
     private final Runnable saveLaterRunnable = new Runnable() {
         @Override
         public void run() {
@@ -146,6 +147,20 @@ abstract public class TransactionWatcherWallet extends AbstractWallet<BitTransac
         lastBalance = type.value(0);
     }
 
+    private static void addWalletTransactionsToSet(Set<BitWalletTransaction> txs,
+                                                   WalletTransaction.Pool poolType, Collection<BitTransaction> pool) {
+        for (BitTransaction tx : pool) {
+            txs.add(new BitWalletTransaction(poolType, tx));
+        }
+    }
+
+    static Map<Sha256Hash, Transaction> toRawTransactions(Map<Sha256Hash, BitTransaction> txs) {
+        Map<Sha256Hash, Transaction> rawTxs = new HashMap<>(txs.size());
+        for (Map.Entry<Sha256Hash, BitTransaction> tx : txs.entrySet()) {
+            rawTxs.put(tx.getKey(), tx.getValue().getRawTransaction());
+        }
+        return rawTxs;
+    }
 
     @Override
     public CoinType getCoinType() {
@@ -158,14 +173,14 @@ abstract public class TransactionWatcherWallet extends AbstractWallet<BitTransac
     }
 
     @Override
-    public void setWallet(@Nullable Wallet wallet) {
-        this.wallet = wallet;
-    }
-
-    @Override
     @Nullable
     public Wallet getWallet() {
         return wallet;
+    }
+
+    @Override
+    public void setWallet(@Nullable Wallet wallet) {
+        this.wallet = wallet;
     }
 
     // Util
@@ -216,13 +231,6 @@ abstract public class TransactionWatcherWallet extends AbstractWallet<BitTransac
             }
         } finally {
             lock.unlock();
-        }
-    }
-
-    private static void addWalletTransactionsToSet(Set<BitWalletTransaction> txs,
-                                                   WalletTransaction.Pool poolType, Collection<BitTransaction> pool) {
-        for (BitTransaction tx : pool) {
-            txs.add(new BitWalletTransaction(poolType, tx));
         }
     }
 
@@ -464,7 +472,9 @@ abstract public class TransactionWatcherWallet extends AbstractWallet<BitTransac
         }
     }
 
-    /** Returns the hash of the last seen best-chain block, or null if the wallet is too old to store this data. */
+    /**
+     * Returns the hash of the last seen best-chain block, or null if the wallet is too old to store this data.
+     */
     @Nullable
     public Sha256Hash getLastBlockSeenHash() {
         lock.lock();
@@ -485,26 +495,6 @@ abstract public class TransactionWatcherWallet extends AbstractWallet<BitTransac
         walletSaveLater();
     }
 
-    public void setLastBlockSeenHeight(int lastBlockSeenHeight) {
-        lock.lock();
-        try {
-            this.lastBlockSeenHeight = lastBlockSeenHeight;
-        } finally {
-            lock.unlock();
-        }
-        walletSaveLater();
-    }
-
-    public void setLastBlockSeenTimeSecs(long timeSecs) {
-        lock.lock();
-        try {
-            lastBlockSeenTimeSecs = timeSecs;
-        } finally {
-            lock.unlock();
-        }
-        walletSaveLater();
-    }
-
     /**
      * Returns the UNIX time in seconds since the epoch extracted from the last best seen block header. This timestamp
      * is <b>not</b> the local time at which the block was first observed by this application but rather what the block
@@ -519,6 +509,16 @@ abstract public class TransactionWatcherWallet extends AbstractWallet<BitTransac
         } finally {
             lock.unlock();
         }
+    }
+
+    public void setLastBlockSeenTimeSecs(long timeSecs) {
+        lock.lock();
+        try {
+            lastBlockSeenTimeSecs = timeSecs;
+        } finally {
+            lock.unlock();
+        }
+        walletSaveLater();
     }
 
     /**
@@ -550,6 +550,16 @@ abstract public class TransactionWatcherWallet extends AbstractWallet<BitTransac
         }
     }
 
+    public void setLastBlockSeenHeight(int lastBlockSeenHeight) {
+        lock.lock();
+        try {
+            this.lastBlockSeenHeight = lastBlockSeenHeight;
+        } finally {
+            lock.unlock();
+        }
+        walletSaveLater();
+    }
+
     @Override
     public Value getBalance() {
         return getBalance(false);
@@ -570,10 +580,11 @@ abstract public class TransactionWatcherWallet extends AbstractWallet<BitTransac
 
     /**
      * Sets that the specified status is currently updating i.e. getting transactions.
-     *
+     * <p>
      * Returns true if registered successfully or false if status already updating
      */
-    @VisibleForTesting boolean registerStatusForUpdate(AddressStatus status) {
+    @VisibleForTesting
+    boolean registerStatusForUpdate(AddressStatus status) {
         checkNotNull(status.getStatus());
 
         lock.lock();
@@ -594,8 +605,7 @@ abstract public class TransactionWatcherWallet extends AbstractWallet<BitTransac
                 statusPendingUpdates.put(status.getAddress(), status);
                 return true;
             }
-        }
-        finally {
+        } finally {
             lock.unlock();
         }
     }
@@ -615,8 +625,7 @@ abstract public class TransactionWatcherWallet extends AbstractWallet<BitTransac
             }
             addressesStatus.put(newStatus.getAddress(), newStatus.getStatus());
             queueOnConnectivity();
-        }
-        finally {
+        } finally {
             lock.unlock();
         }
         // Skip saving null statuses
@@ -637,8 +646,7 @@ abstract public class TransactionWatcherWallet extends AbstractWallet<BitTransac
                 } else {
                     return !previousStatus.equals(newStatus);
                 }
-            }
-            else {
+            } else {
                 // Unused address, just mark it that we watch it
                 if (newStatus == null) {
                     commitAddressStatus(addressStatus);
@@ -658,12 +666,10 @@ abstract public class TransactionWatcherWallet extends AbstractWallet<BitTransac
         try {
             if (addressesStatus.containsKey(address)) {
                 return new AddressStatus(address, addressesStatus.get(address));
-            }
-            else {
+            } else {
                 return null;
             }
-        }
-        finally {
+        } finally {
             lock.unlock();
         }
     }
@@ -676,8 +682,7 @@ abstract public class TransactionWatcherWallet extends AbstractWallet<BitTransac
                 statuses.add(new AddressStatus(status.getKey(), status.getValue()));
             }
             return statuses;
-        }
-        finally {
+        } finally {
             lock.unlock();
         }
     }
@@ -685,7 +690,8 @@ abstract public class TransactionWatcherWallet extends AbstractWallet<BitTransac
     /**
      * Returns all the addresses that are not currently watched
      */
-    @VisibleForTesting List<AbstractAddress> getAddressesToWatch() {
+    @VisibleForTesting
+    List<AbstractAddress> getAddressesToWatch() {
         lock.lock();
         try {
             ImmutableList.Builder<AbstractAddress> addressesToWatch = ImmutableList.builder();
@@ -696,8 +702,7 @@ abstract public class TransactionWatcherWallet extends AbstractWallet<BitTransac
                 }
             }
             return addressesToWatch.build();
-        }
-        finally {
+        } finally {
             lock.unlock();
         }
     }
@@ -758,8 +763,7 @@ abstract public class TransactionWatcherWallet extends AbstractWallet<BitTransac
         try {
             updateTransactionTimes(header);
             queueOnNewBlock();
-        }
-        finally {
+        } finally {
             lock.unlock();
         }
     }
@@ -808,14 +812,12 @@ abstract public class TransactionWatcherWallet extends AbstractWallet<BitTransac
                         log.info("Status {} already updating", status.getStatus());
                     }
                 }
-            }
-            else {
+            } else {
                 // Address not used, just update the status
                 commitAddressStatus(status);
                 tryToApplyState();
             }
-        }
-        finally {
+        } finally {
             lock.unlock();
         }
     }
@@ -830,12 +832,10 @@ abstract public class TransactionWatcherWallet extends AbstractWallet<BitTransac
                 updatingStatus.queueUnspentTransactions(unspentTxes);
                 fetchTransactionsIfNeeded(unspentTxes);
                 tryToApplyState(updatingStatus);
-            }
-            else {
+            } else {
                 log.info("Ignoring unspent tx call because no entry found or newer entry.");
             }
-        }
-        finally {
+        } finally {
             lock.unlock();
         }
     }
@@ -853,8 +853,7 @@ abstract public class TransactionWatcherWallet extends AbstractWallet<BitTransac
             } else {
                 log.info("Ignoring history tx call because no entry found or newer entry.");
             }
-        }
-        finally {
+        } finally {
             lock.unlock();
         }
     }
@@ -1010,7 +1009,8 @@ abstract public class TransactionWatcherWallet extends AbstractWallet<BitTransac
         if (blockTimes.containsKey(height)) {
             tx.setTimestamp(blockTimes.get(height));
         } else {
-            if (log.isDebugEnabled()) log.debug("Must get timestamp for {} block on height {}", type.getName(), height);
+            if (log.isDebugEnabled())
+                log.debug("Must get timestamp for {} block on height {}", type.getName(), height);
             if (!missingTimestamps.containsKey(height)) {
                 missingTimestamps.put(height, new HashSet<Sha256Hash>());
                 missingTimestamps.get(height).add(tx.getHash());
@@ -1079,7 +1079,6 @@ abstract public class TransactionWatcherWallet extends AbstractWallet<BitTransac
         return outOfOrderTransactions.containsKey(txHash) ||
                 fetchingTransactions.containsKey(txHash);
     }
-
 
     @VisibleForTesting
     void addNewTransactionIfNeeded(Transaction tx) {
@@ -1160,8 +1159,7 @@ abstract public class TransactionWatcherWallet extends AbstractWallet<BitTransac
                 log.debug("Could not parse tx input script: {}", e.toString());
                 return false;
             }
-        }
-        finally {
+        } finally {
             lock.unlock();
         }
     }
@@ -1323,14 +1321,6 @@ abstract public class TransactionWatcherWallet extends AbstractWallet<BitTransac
         } finally {
             lock.unlock();
         }
-    }
-
-    static Map<Sha256Hash, Transaction> toRawTransactions(Map<Sha256Hash, BitTransaction> txs) {
-        Map<Sha256Hash, Transaction> rawTxs = new HashMap<>(txs.size());
-        for (Map.Entry<Sha256Hash, BitTransaction> tx : txs.entrySet()) {
-            rawTxs.put(tx.getKey(), tx.getValue().getRawTransaction());
-        }
-        return rawTxs;
     }
 
     void queueOnNewBalance() {

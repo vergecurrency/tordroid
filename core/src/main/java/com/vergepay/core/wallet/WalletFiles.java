@@ -3,13 +3,13 @@ package com.vergepay.core.wallet;
 /**
  * Copyright 2013 Google Inc.
  * Copyright 2014 Andreas Schildbach
- *
+ * <p>
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
- *    http://www.apache.org/licenses/LICENSE-2.0
- *
+ * <p>
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * <p>
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -17,18 +17,22 @@ package com.vergepay.core.wallet;
  * limitations under the License.
  */
 
-import org.bitcoinj.utils.Threading;
+import static com.google.common.base.Preconditions.checkNotNull;
+
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
+
+import org.bitcoinj.utils.Threading;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.annotation.Nonnull;
 import java.io.File;
 import java.io.IOException;
-import java.util.concurrent.*;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ScheduledThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-import static com.google.common.base.Preconditions.checkNotNull;
+import javax.annotation.Nonnull;
 
 /**
  * A class that handles atomic and optionally delayed writing of the wallet file to disk. In future: backups too.
@@ -48,22 +52,6 @@ public class WalletFiles {
     private final Callable<Void> saver;
 
     private volatile Listener vListener;
-
-    /**
-     * Implementors can do pre/post treatment of the wallet file. Useful for adjusting permissions and other things.
-     */
-    public interface Listener {
-        /**
-         * Called on the auto-save thread when a new temporary file is created but before the wallet data is saved
-         * to it. If you want to do something here like adjust permissions, go ahead and do so.
-         */
-        void onBeforeAutoSave(File tempFile);
-
-        /**
-         * Called on the auto-save thread after the newly created temporary file has been filled with data and renamed.
-         */
-        void onAfterAutoSave(File newlySavedFile);
-    }
 
     public WalletFiles(final Wallet wallet, File file, long delay, TimeUnit delayTimeUnit) {
         final ThreadFactoryBuilder builder = new ThreadFactoryBuilder()
@@ -86,7 +74,8 @@ public class WalletFiles {
         this.delayTimeUnit = checkNotNull(delayTimeUnit, "Cannot use a null delay time unit");
 
         this.saver = new Callable<Void>() {
-            @Override public Void call() throws Exception {
+            @Override
+            public Void call() throws Exception {
                 // Runs in an auto save thread.
                 if (!savePending.getAndSet(false)) {
                     // Some other scheduled request already beat us to it.
@@ -142,6 +131,22 @@ public class WalletFiles {
         } catch (InterruptedException x) {
             throw new RuntimeException(x);
         }
+    }
+
+    /**
+     * Implementors can do pre/post treatment of the wallet file. Useful for adjusting permissions and other things.
+     */
+    public interface Listener {
+        /**
+         * Called on the auto-save thread when a new temporary file is created but before the wallet data is saved
+         * to it. If you want to do something here like adjust permissions, go ahead and do so.
+         */
+        void onBeforeAutoSave(File tempFile);
+
+        /**
+         * Called on the auto-save thread after the newly created temporary file has been filled with data and renamed.
+         */
+        void onAfterAutoSave(File newlySavedFile);
     }
 }
 

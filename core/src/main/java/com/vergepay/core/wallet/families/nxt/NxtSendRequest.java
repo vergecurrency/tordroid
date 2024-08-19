@@ -1,5 +1,8 @@
 package com.vergepay.core.wallet.families.nxt;
 
+import static com.google.common.base.Preconditions.checkNotNull;
+import static com.vergepay.core.Preconditions.checkState;
+
 import com.vergepay.core.coins.BurstMain;
 import com.vergepay.core.coins.CoinType;
 import com.vergepay.core.coins.FeePolicy;
@@ -12,9 +15,6 @@ import com.vergepay.core.coins.nxt.Convert;
 import com.vergepay.core.coins.nxt.TransactionImpl;
 import com.vergepay.core.util.TypeUtils;
 import com.vergepay.core.wallet.SendRequest;
-
-import static com.vergepay.core.Preconditions.checkState;
-import static com.google.common.base.Preconditions.checkNotNull;
 
 /**
  * @author John L. Jegutanis

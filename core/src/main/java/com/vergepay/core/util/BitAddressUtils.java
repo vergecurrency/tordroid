@@ -1,18 +1,12 @@
 package com.vergepay.core.util;
 
-import com.vergepay.core.coins.CoinType;
+import static com.vergepay.core.Preconditions.checkArgument;
+
 import com.vergepay.core.exceptions.AddressMalformedException;
 import com.vergepay.core.wallet.AbstractAddress;
 import com.vergepay.core.wallet.families.bitcoin.BitAddress;
 
-import org.bitcoinj.core.Address;
-import org.bitcoinj.core.AddressFormatException;
-import org.bitcoinj.core.ECKey;
-import org.bitcoinj.core.ScriptException;
-import org.bitcoinj.core.WrongNetworkException;
 import org.bitcoinj.script.Script;
-
-import static com.vergepay.core.Preconditions.checkArgument;
 
 /**
  * @author John L. Jegutanis

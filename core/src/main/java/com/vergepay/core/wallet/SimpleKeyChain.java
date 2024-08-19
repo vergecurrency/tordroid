@@ -1,19 +1,14 @@
 package com.vergepay.core.wallet;
 
 import com.vergepay.core.protos.Protos;
+import com.vergepay.core.util.KeyUtils;
+
 import org.bitcoinj.core.ECKey;
-import org.bitcoinj.crypto.EncryptableItem;
-import org.bitcoinj.crypto.EncryptedData;
 import org.bitcoinj.crypto.KeyCrypter;
 import org.bitcoinj.wallet.BasicKeyChain;
 
-import com.vergepay.core.util.KeyUtils;
-import com.google.protobuf.ByteString;
-
 import java.util.LinkedHashMap;
 import java.util.Map;
-
-import static com.google.common.base.Preconditions.checkState;
 
 /**
  * @author John L. Jegutanis

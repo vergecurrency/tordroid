@@ -1,15 +1,14 @@
 package com.vergepay.core.exchange.shapeshift.data;
 
+import static com.vergepay.core.Preconditions.checkState;
+
 import com.vergepay.core.coins.CoinID;
 import com.vergepay.core.coins.CoinType;
 import com.vergepay.core.coins.Value;
 
 import org.json.JSONObject;
 
-import java.math.BigDecimal;
 import java.math.RoundingMode;
-
-import static com.vergepay.core.Preconditions.checkState;
 
 /**
  * @author John L. Jegutanis

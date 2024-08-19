@@ -2,13 +2,13 @@
  * Copyright 2013 Google Inc.
  * Copyright 2014 Andreas Schildbach
  * Copyright 2014 John L. Jegutanis
- *
+ * <p>
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
- *    http://www.apache.org/licenses/LICENSE-2.0
- *
+ * <p>
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * <p>
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -18,19 +18,22 @@
 
 package com.vergepay.core.wallet;
 
+import static com.vergepay.core.Preconditions.checkArgument;
+import static com.vergepay.core.Preconditions.checkNotNull;
+import static com.vergepay.core.util.BitAddressUtils.getHash160;
+import static org.bitcoinj.wallet.KeyChain.KeyPurpose.CHANGE;
+import static org.bitcoinj.wallet.KeyChain.KeyPurpose.RECEIVE_FUNDS;
+import static org.bitcoinj.wallet.KeyChain.KeyPurpose.REFUND;
+
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.ImmutableList;
 import com.vergepay.core.coins.CoinType;
-import com.vergepay.core.coins.Value;
-import com.vergepay.core.exceptions.AddressMalformedException;
 import com.vergepay.core.exceptions.Bip44KeyLookAheadExceededException;
 import com.vergepay.core.protos.Protos;
 import com.vergepay.core.util.KeyUtils;
 import com.vergepay.core.wallet.families.bitcoin.BitAddress;
-import com.vergepay.core.wallet.families.bitcoin.BitSendRequest;
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.ImmutableList;
 
 import org.bitcoinj.core.ECKey;
-import org.bitcoinj.core.InsufficientMoneyException;
 import org.bitcoinj.crypto.ChildNumber;
 import org.bitcoinj.crypto.DeterministicKey;
 import org.bitcoinj.crypto.KeyCrypter;
@@ -40,9 +43,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.spongycastle.crypto.params.KeyParameter;
 
-import java.security.SignatureException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashSet;
@@ -52,15 +53,6 @@ import java.util.Set;
 
 import javax.annotation.Nullable;
 
-import static com.vergepay.core.Preconditions.checkArgument;
-import static com.vergepay.core.Preconditions.checkNotNull;
-import static com.vergepay.core.Preconditions.checkState;
-import static com.vergepay.core.util.BitAddressUtils.getHash160;
-import static com.vergepay.core.util.BitAddressUtils.isP2SHAddress;
-import static org.bitcoinj.wallet.KeyChain.KeyPurpose.CHANGE;
-import static org.bitcoinj.wallet.KeyChain.KeyPurpose.RECEIVE_FUNDS;
-import static org.bitcoinj.wallet.KeyChain.KeyPurpose.REFUND;
-
 /**
  * @author John L. Jegutanis
  *
@@ -68,7 +60,16 @@ import static org.bitcoinj.wallet.KeyChain.KeyPurpose.REFUND;
  */
 public class WalletPocketHD extends BitWalletBase {
     private static final Logger log = LoggerFactory.getLogger(WalletPocketHD.class);
-
+    private static final Comparator<DeterministicKey> HD_KEY_COMPARATOR =
+            new Comparator<DeterministicKey>() {
+                @Override
+                public int compare(final DeterministicKey k1, final DeterministicKey k2) {
+                    int key1Num = k1.getChildNumber().num();
+                    int key2Num = k2.getChildNumber().num();
+                    // In reality Integer.compare(key2Num, key1Num) but is not available on older devices
+                    return (key2Num < key1Num) ? -1 : ((key2Num == key1Num) ? 0 : 1);
+                }
+            };
     @VisibleForTesting
     protected SimpleHDKeyChain keys;
 
@@ -81,6 +82,12 @@ public class WalletPocketHD extends BitWalletBase {
         this(KeyUtils.getPublicKeyId(coinType, keys.getRootKey().getPubKey()), keys, coinType);
     }
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Region vending transactions and other internal state
+    //
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
     WalletPocketHD(String id, SimpleHDKeyChain keys, CoinType coinType) {
         super(checkNotNull(coinType), id);
         this.keys = checkNotNull(keys);
@@ -88,7 +95,7 @@ public class WalletPocketHD extends BitWalletBase {
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
     //
-    // Region vending transactions and other internal state
+    // Serialization support
     //
     ////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -104,25 +111,10 @@ public class WalletPocketHD extends BitWalletBase {
         }
     }
 
-    ////////////////////////////////////////////////////////////////////////////////////////////////
-    //
-    // Serialization support
-    //
-    ////////////////////////////////////////////////////////////////////////////////////////////////
-
     List<Protos.Key> serializeKeychainToProtobuf() {
         lock.lock();
         try {
             return keys.toProtobuf();
-        } finally {
-            lock.unlock();
-        }
-    }
-
-    @VisibleForTesting Protos.WalletPocket toProtobuf() {
-        lock.lock();
-        try {
-            return WalletPocketProtobufSerializer.toProtobuf(this);
         } finally {
             lock.unlock();
         }
@@ -134,6 +126,15 @@ public class WalletPocketHD extends BitWalletBase {
     //
     ////////////////////////////////////////////////////////////////////////////////////////////////
 
+    @VisibleForTesting
+    Protos.WalletPocket toProtobuf() {
+        lock.lock();
+        try {
+            return WalletPocketProtobufSerializer.toProtobuf(this);
+        } finally {
+            lock.unlock();
+        }
+    }
 
     @Override
     public boolean isEncryptable() {
@@ -282,7 +283,9 @@ public class WalletPocketHD extends BitWalletBase {
         return currentAddress(RECEIVE_FUNDS);
     }
 
-    public BitAddress getRefundAddress() { return currentAddress(REFUND); }
+    public BitAddress getRefundAddress() {
+        return currentAddress(REFUND);
+    }
 
     @Override
     public boolean hasUsedAddresses() {
@@ -392,17 +395,6 @@ public class WalletPocketHD extends BitWalletBase {
         }
     }
 
-    private static final Comparator<DeterministicKey> HD_KEY_COMPARATOR =
-            new Comparator<DeterministicKey>() {
-                @Override
-                public int compare(final DeterministicKey k1, final DeterministicKey k2) {
-                    int key1Num = k1.getChildNumber().num();
-                    int key2Num = k2.getChildNumber().num();
-                    // In reality Integer.compare(key2Num, key1Num) but is not available on older devices
-                    return (key2Num < key1Num) ? -1 : ((key2Num == key1Num) ? 0 : 1);
-                }
-            };
-
     /**
      * Returns the number of issued receiving keys
      */
@@ -457,7 +449,7 @@ public class WalletPocketHD extends BitWalletBase {
     }
 
     public BitAddress getAddress(SimpleHDKeyChain.KeyPurpose purpose,
-                              boolean isManualAddressManagement) {
+                                 boolean isManualAddressManagement) {
         BitAddress receiveAddress = null;
         if (isManualAddressManagement) {
             receiveAddress = getLastUsedAddress(purpose);
@@ -472,7 +464,8 @@ public class WalletPocketHD extends BitWalletBase {
     /**
      * Get the currently latest unused address by purpose.
      */
-    @VisibleForTesting BitAddress currentAddress(SimpleHDKeyChain.KeyPurpose purpose) {
+    @VisibleForTesting
+    BitAddress currentAddress(SimpleHDKeyChain.KeyPurpose purpose) {
         lock.lock();
         try {
             return BitAddress.from(type, keys.getCurrentUnusedKey(purpose));
@@ -519,7 +512,7 @@ public class WalletPocketHD extends BitWalletBase {
     public void markAddressAsUsed(AbstractAddress address) {
         checkArgument(address.getType().equals(type), "Wrong address type");
         if (address instanceof BitAddress) {
-            markAddressAsUsed((BitAddress)address);
+            markAddressAsUsed((BitAddress) address);
         } else {
             throw new IllegalArgumentException("Wrong address class");
         }
@@ -532,6 +525,6 @@ public class WalletPocketHD extends BitWalletBase {
 
     @Override
     public String toString() {
-        return WalletPocketHD.class.getSimpleName() + " " + id.substring(0, 4)+ " " + type;
+        return WalletPocketHD.class.getSimpleName() + " " + id.substring(0, 4) + " " + type;
     }
 }

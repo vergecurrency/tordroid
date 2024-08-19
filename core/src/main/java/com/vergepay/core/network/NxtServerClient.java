@@ -1,50 +1,44 @@
 package com.vergepay.core.network;
 
+import com.google.common.collect.ImmutableList;
+import com.google.common.util.concurrent.Service;
+import com.squareup.okhttp.Callback;
+import com.squareup.okhttp.FormEncodingBuilder;
+import com.squareup.okhttp.OkHttpClient;
+import com.squareup.okhttp.Request;
+import com.squareup.okhttp.RequestBody;
+import com.squareup.okhttp.Response;
 import com.vergepay.core.coins.CoinType;
 import com.vergepay.core.coins.nxt.Convert;
-import com.vergepay.core.wallet.AbstractAddress;
 import com.vergepay.core.coins.nxt.NxtException;
 import com.vergepay.core.coins.nxt.TransactionImpl;
 import com.vergepay.core.network.interfaces.BlockchainConnection;
 import com.vergepay.core.network.interfaces.ConnectionEventListener;
 import com.vergepay.core.network.interfaces.TransactionEventListener;
-
+import com.vergepay.core.wallet.AbstractAddress;
 import com.vergepay.core.wallet.families.nxt.NxtTransaction;
 import com.vergepay.stratumj.ServerAddress;
 
-import com.google.common.collect.ImmutableList;
-import com.google.common.util.concurrent.Service;
-
-import com.squareup.okhttp.Request;
-import com.squareup.okhttp.Response;
-import com.squareup.okhttp.Callback;
-import com.squareup.okhttp.RequestBody;
-import com.squareup.okhttp.OkHttpClient;
-import com.squareup.okhttp.FormEncodingBuilder;
-
 import org.bitcoinj.core.Sha256Hash;
-import org.bitcoinj.utils.Threading;
 import org.bitcoinj.utils.ListenerRegistration;
-
+import org.bitcoinj.utils.Threading;
 import org.json.JSONArray;
-import org.json.JSONObject;
 import org.json.JSONException;
-
+import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.io.IOException;
-
+import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
-import java.util.HashSet;
-import java.util.concurrent.Executor;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.Executors;
 import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
 
 /**
@@ -58,27 +52,8 @@ public class NxtServerClient implements BlockchainConnection<NxtTransaction> {
     private static final Logger log = LoggerFactory.getLogger(NxtServerClient.class);
 
     private static final ScheduledThreadPoolExecutor connectionExec;
-    static {
-        connectionExec = new ScheduledThreadPoolExecutor(1);
-        // FIXME, causing a crash in old Androids
-        // connectionExec.setRemoveOnCancelPolicy(true);
-    }
-
     private static final Random RANDOM = new Random();
-
     private static final long MAX_WAIT = 16;
-    private final ConnectivityHelper connectivityHelper;
-
-    private CoinType type;
-    private long retrySeconds = 0;
-    private boolean stopped = false;
-    private ServerAddress lastServerAddress;
-    private final ImmutableList<ServerAddress> addresses;
-    private final HashSet<ServerAddress> failedAddresses;
-
-    private String lastBalance = "";
-    private BlockHeader lastBlockHeader = new BlockHeader(type, 0, 0);
-
     private static final String GET_ACCOUNT = "getAccount";
     private static final String GET_EC_BLOCK = "getECBlock";
     private static final String GET_LAST_BLOCK = "getBlock";
@@ -87,23 +62,47 @@ public class NxtServerClient implements BlockchainConnection<NxtTransaction> {
     private static final String GET_TRANSACTION_BYTES = "getTransactionBytes";
     private static final String GET_BLOCKCHAIN_TXS = "getBlockchainTransactions";
 
-    private int ecBlockHeight = 0;
-    private String ecBlockId = "";
+    static {
+        connectionExec = new ScheduledThreadPoolExecutor(1);
+        // FIXME, causing a crash in old Androids
+        // connectionExec.setRemoveOnCancelPolicy(true);
+    }
 
-    private OkHttpClient client;
-
+    private final ConnectivityHelper connectivityHelper;
+    private final ImmutableList<ServerAddress> addresses;
+    private final HashSet<ServerAddress> failedAddresses;
     // TODO, only one is supported at the moment. Change when accounts are supported.
     private final transient CopyOnWriteArrayList<ListenerRegistration<ConnectionEventListener>> eventListeners;
+    private CoinType type;
+    private long retrySeconds = 0;
+    private boolean stopped = false;
+    private ServerAddress lastServerAddress;
+    private String lastBalance = "";
+    private BlockHeader lastBlockHeader = new BlockHeader(type, 0, 0);
+    private int ecBlockHeight = 0;
+    private String ecBlockId = "";
+    private OkHttpClient client;
     private ScheduledExecutorService blockchainSubscription;
     private ScheduledExecutorService ecSubscription;
     private ScheduledExecutorService addressSubscription;
 
-    public int getEcBlockHeight() { return ecBlockHeight; }
+    public NxtServerClient(CoinAddress coinAddress, ConnectivityHelper connectivityHelper) {
+        this.connectivityHelper = connectivityHelper;
+        eventListeners = new CopyOnWriteArrayList<ListenerRegistration<ConnectionEventListener>>();
+        failedAddresses = new HashSet<ServerAddress>();
+        type = coinAddress.getType();
+        addresses = ImmutableList.copyOf(coinAddress.getAddresses());
+    }
 
-    public Long getEcBlockId() { return Convert.parseUnsignedLong(ecBlockId); }
+    private static JSONObject parseReply(Response response) throws IOException, JSONException {
+        return new JSONObject(response.body().string());
+    }
 
-    private final Runnable reconnectTask = new Runnable() {
+    public int getEcBlockHeight() {
+        return ecBlockHeight;
+    }    private final Runnable reconnectTask = new Runnable() {
         public boolean isPolling = true;
+
         @Override
         public void run() {
             if (!stopped) {
@@ -123,17 +122,8 @@ public class NxtServerClient implements BlockchainConnection<NxtTransaction> {
         }
     };
 
-
-    public NxtServerClient(CoinAddress coinAddress, ConnectivityHelper connectivityHelper) {
-        this.connectivityHelper = connectivityHelper;
-        eventListeners = new CopyOnWriteArrayList<ListenerRegistration<ConnectionEventListener>>();
-        failedAddresses = new HashSet<ServerAddress>();
-        type = coinAddress.getType();
-        addresses = ImmutableList.copyOf(coinAddress.getAddresses());
-    }
-
-    private static JSONObject parseReply(Response response) throws IOException, JSONException {
-        return new JSONObject(response.body().string());
+    public Long getEcBlockId() {
+        return Convert.parseUnsignedLong(ecBlockId);
     }
 
     private String getBaseUrl() {
@@ -172,7 +162,7 @@ public class NxtServerClient implements BlockchainConnection<NxtTransaction> {
         return address;
     }
 
-    private OkHttpClient getHttpClient(){
+    private OkHttpClient getHttpClient() {
         if (client == null) {
             client = new OkHttpClient();
         }
@@ -221,12 +211,13 @@ public class NxtServerClient implements BlockchainConnection<NxtTransaction> {
                         log.info("Failed to communicate with server:  " + request.toString());
 
                     }
+
                     @Override
                     public void onResponse(Response response) throws IOException {
                         try {
                             if (!response.isSuccessful()) {
                                 log.info("Unable to fetch blockchain status.");
-                                log.info("[Error code] = " + response.code() );
+                                log.info("[Error code] = " + response.code());
                             }
                             JSONObject reply = parseReply(response);
                             long timestamp = reply.getLong("timestamp");
@@ -333,11 +324,11 @@ public class NxtServerClient implements BlockchainConnection<NxtTransaction> {
                             try {
                                 if (!response.isSuccessful()) {
                                     log.info("Unable to check address status.");
-                                    log.info("[Error code] = " + response.code() );
+                                    log.info("[Error code] = " + response.code());
                                 }
                                 JSONObject reply = parseReply(response);
                                 String status = reply.getString("unconfirmedBalanceNQT");
-                                AddressStatus addressStatus = new AddressStatus(address,status);
+                                AddressStatus addressStatus = new AddressStatus(address, status);
 
                                 if (!lastBalance.equals(status)) {
                                     lastBalance = status;
@@ -446,7 +437,7 @@ public class NxtServerClient implements BlockchainConnection<NxtTransaction> {
                     log.info("IOException: " + e.getMessage());
                 } catch (JSONException e) {
                     log.info("Could not parse JSON: " + e.getMessage());
-                }catch (NxtException.NotValidException e) {
+                } catch (NxtException.NotValidException e) {
                     log.info("Not valid transaction: " + e.getMessage());
                 }
             }
@@ -500,8 +491,8 @@ public class NxtServerClient implements BlockchainConnection<NxtTransaction> {
 
     @Override
     public boolean broadcastTxSync(final NxtTransaction tx) {
-        RequestBody formBody = new FormEncodingBuilder().add("requestType","broadcastTransaction")
-            .add("transactionBytes", Convert.toHexString(tx.getRawTransaction().getBytes())).build();
+        RequestBody formBody = new FormEncodingBuilder().add("requestType", "broadcastTransaction")
+                .add("transactionBytes", Convert.toHexString(tx.getRawTransaction().getBytes())).build();
         Request request = new Request.Builder().url(getBaseUrl()).post(formBody).build();
 
         // FIXME this is not a sync call
@@ -521,7 +512,6 @@ public class NxtServerClient implements BlockchainConnection<NxtTransaction> {
                     JSONObject reply = parseReply(response);
 
                     log.info("Transaction broadcasted {0}", reply);
-
 
 
                 } catch (IOException e) {
@@ -615,6 +605,10 @@ public class NxtServerClient implements BlockchainConnection<NxtTransaction> {
         // TODO implement
     }
 
+    public void setCacheDir(File cacheDir, int cacheSize) {
+        // TODO
+    }
+
     private final Service.Listener serviceListener = new Service.Listener() {
         @Override
         public void running() {
@@ -645,7 +639,5 @@ public class NxtServerClient implements BlockchainConnection<NxtTransaction> {
         }
     };
 
-    public void setCacheDir(File cacheDir, int cacheSize) {
-        // TODO
-    }
+
 }

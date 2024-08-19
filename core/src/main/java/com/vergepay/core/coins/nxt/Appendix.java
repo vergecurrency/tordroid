@@ -6,12 +6,13 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.nio.ByteBuffer;
-import java.util.Arrays;
 
 public interface Appendix {
 
     int getSize();
+
     void putBytes(ByteBuffer buffer);
+
     //JSONObject getJSONObject();
     byte getVersion();
 
@@ -37,7 +38,7 @@ public interface Appendix {
         }
 
         AbstractAppendix() {
-            this.version = (byte)(1);
+            this.version = (byte) (1);
         }
 
         abstract String getAppendixName();
@@ -84,17 +85,8 @@ public interface Appendix {
 
     class Message extends AbstractAppendix {
 
-        static Message parse(JSONObject attachmentData) throws NxtException.NotValidException, JSONException {
-            if (!attachmentData.has("message")) {
-                return null;
-            }
-            return new Message(attachmentData);
-        }
-
-
         private final byte[] message;
         private final boolean isText;
-
         Message(ByteBuffer buffer, byte transactionVersion) throws NxtException.NotValidException {
             super(buffer, transactionVersion);
             int messageLength = buffer.getInt();
@@ -111,20 +103,27 @@ public interface Appendix {
 
         Message(JSONObject attachmentData) throws JSONException {
             super(attachmentData);
-            String messageString = (String)attachmentData.get("message");
+            String messageString = (String) attachmentData.get("message");
             this.isText = Boolean.TRUE.equals(attachmentData.get("messageIsText"));
             this.message = isText ? Convert.toBytes(messageString) : Convert.parseHexString(messageString);
         }
-
 
         public Message(byte[] message) {
             this.message = message;
             this.isText = false;
         }
 
+
         public Message(String string) {
             this.message = Convert.toBytes(string);
             this.isText = true;
+        }
+
+        static Message parse(JSONObject attachmentData) throws NxtException.NotValidException, JSONException {
+            if (!attachmentData.has("message")) {
+                return null;
+            }
+            return new Message(attachmentData);
         }
 
         @Override
@@ -175,8 +174,8 @@ public interface Appendix {
 
         private AbstractEncryptedMessage(JSONObject attachmentJSON, JSONObject encryptedMessageJSON) throws JSONException {
             super(attachmentJSON);
-            byte[] data = Convert.parseHexString((String)encryptedMessageJSON.get("data"));
-            byte[] nonce = Convert.parseHexString((String)encryptedMessageJSON.get("nonce"));
+            byte[] data = Convert.parseHexString((String) encryptedMessageJSON.get("data"));
+            byte[] nonce = Convert.parseHexString((String) encryptedMessageJSON.get("nonce"));
             this.encryptedData = new EncryptedData(data, nonce);
             this.isText = Boolean.TRUE.equals(encryptedMessageJSON.get("isText"));
         }
@@ -218,26 +217,25 @@ public interface Appendix {
 
     class EncryptedMessage extends AbstractEncryptedMessage {
 
-        static EncryptedMessage parse(JSONObject attachmentData) throws NxtException.NotValidException, JSONException {
-            if (!attachmentData.has("encryptedMessage") ) {
-                return null;
-            }
-            return new EncryptedMessage(attachmentData);
-        }
-
-
         EncryptedMessage(ByteBuffer buffer, byte transactionVersion) throws NxtException.ValidationException {
             super(buffer, transactionVersion);
         }
 
+
         EncryptedMessage(JSONObject attachmentData) throws NxtException.NotValidException, JSONException {
-            super(attachmentData, (JSONObject)attachmentData.get("encryptedMessage"));
+            super(attachmentData, (JSONObject) attachmentData.get("encryptedMessage"));
         }
 
         public EncryptedMessage(EncryptedData encryptedData, boolean isText) {
             super(encryptedData, isText);
         }
 
+        static EncryptedMessage parse(JSONObject attachmentData) throws NxtException.NotValidException, JSONException {
+            if (!attachmentData.has("encryptedMessage")) {
+                return null;
+            }
+            return new EncryptedMessage(attachmentData);
+        }
 
         @Override
         String getAppendixName() {
@@ -256,24 +254,24 @@ public interface Appendix {
 
     class EncryptToSelfMessage extends AbstractEncryptedMessage {
 
-        static EncryptToSelfMessage parse(JSONObject attachmentData) throws NxtException.NotValidException, JSONException {
-            if (!attachmentData.has("encryptToSelfMessage") ) {
-                return null;
-            }
-            return new EncryptToSelfMessage(attachmentData);
-        }
-
-
         EncryptToSelfMessage(ByteBuffer buffer, byte transactionVersion) throws NxtException.ValidationException {
             super(buffer, transactionVersion);
         }
 
+
         EncryptToSelfMessage(JSONObject attachmentData) throws NxtException.NotValidException, JSONException {
-            super(attachmentData, (JSONObject)attachmentData.get("encryptToSelfMessage"));
+            super(attachmentData, (JSONObject) attachmentData.get("encryptToSelfMessage"));
         }
 
         public EncryptToSelfMessage(EncryptedData encryptedData, boolean isText) {
             super(encryptedData, isText);
+        }
+
+        static EncryptToSelfMessage parse(JSONObject attachmentData) throws NxtException.NotValidException, JSONException {
+            if (!attachmentData.has("encryptToSelfMessage")) {
+                return null;
+            }
+            return new EncryptToSelfMessage(attachmentData);
         }
 
         @Override
@@ -293,13 +291,6 @@ public interface Appendix {
 
     class PublicKeyAnnouncement extends AbstractAppendix {
 
-        static PublicKeyAnnouncement parse(JSONObject attachmentData) throws NxtException.NotValidException, JSONException {
-            if (!attachmentData.has("recipientPublicKey")) {
-                return null;
-            }
-            return new PublicKeyAnnouncement(attachmentData);
-        }
-
         private final byte[] publicKey;
 
         PublicKeyAnnouncement(ByteBuffer buffer, byte transactionVersion) {
@@ -310,11 +301,18 @@ public interface Appendix {
 
         PublicKeyAnnouncement(JSONObject attachmentData) throws JSONException {
             super(attachmentData);
-            this.publicKey = Convert.parseHexString((String)attachmentData.get("recipientPublicKey"));
+            this.publicKey = Convert.parseHexString((String) attachmentData.get("recipientPublicKey"));
         }
 
         public PublicKeyAnnouncement(byte[] publicKey) {
             this.publicKey = publicKey;
+        }
+
+        static PublicKeyAnnouncement parse(JSONObject attachmentData) throws NxtException.NotValidException, JSONException {
+            if (!attachmentData.has("recipientPublicKey")) {
+                return null;
+            }
+            return new PublicKeyAnnouncement(attachmentData);
         }
 
         @Override

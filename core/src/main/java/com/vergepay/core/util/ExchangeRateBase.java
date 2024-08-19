@@ -3,13 +3,13 @@ package com.vergepay.core.util;
 /**
  * Copyright 2014 Andreas Schildbach
  * Copyright 2015 John L. Jegutanis
- *
+ * <p>
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
- *    http://www.apache.org/licenses/LICENSE-2.0
- *
+ * <p>
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * <p>
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -18,25 +18,24 @@ package com.vergepay.core.util;
  */
 
 
+import static com.google.common.base.Preconditions.checkArgument;
+import static com.google.common.base.Preconditions.checkState;
+
 import com.vergepay.core.coins.CoinType;
 import com.vergepay.core.coins.Value;
 import com.vergepay.core.coins.ValueType;
 
-import static com.google.common.base.Preconditions.checkArgument;
-import static com.google.common.base.Preconditions.checkState;
+import org.bitcoinj.core.Coin;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-
-import org.bitcoinj.core.Coin;
 
 /**
  * An exchange rate is expressed as a ratio of a pair of {@link Value} amounts.
  */
 public class ExchangeRateBase implements ExchangeRate {
-    private static final int RATE_SCALE = 10;
     public static final String ZERO_RATE_ERROR_MESSAGE = "Exchange rate cannot be zero";
-
+    private static final int RATE_SCALE = 10;
     public final Value value1;
     public final Value value2;
 

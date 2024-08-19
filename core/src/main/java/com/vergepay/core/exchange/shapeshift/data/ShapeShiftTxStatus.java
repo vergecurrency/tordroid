@@ -20,10 +20,6 @@ public class ShapeShiftTxStatus extends ShapeShiftBase {
     public final Value outgoingValue;
     public final String transactionId;
 
-    public enum Status {
-        NO_DEPOSITS, RECEIVED, COMPLETE, FAILED, UNKNOWN
-    }
-
     public ShapeShiftTxStatus(JSONObject data) throws ShapeShiftException {
         super(data);
 
@@ -113,6 +109,10 @@ public class ShapeShiftTxStatus extends ShapeShiftBase {
         this.incomingValue = incomingValue;
         this.outgoingValue = outgoingValue;
         this.transactionId = transactionId;
+    }
+
+    public enum Status {
+        NO_DEPOSITS, RECEIVED, COMPLETE, FAILED, UNKNOWN
     }
 }
 

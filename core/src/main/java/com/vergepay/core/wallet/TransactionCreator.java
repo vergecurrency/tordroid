@@ -1,5 +1,10 @@
 package com.vergepay.core.wallet;
 
+import static com.vergepay.core.Preconditions.checkArgument;
+import static com.vergepay.core.Preconditions.checkNotNull;
+import static com.vergepay.core.Preconditions.checkState;
+
+import com.google.common.collect.Lists;
 import com.vergepay.core.coins.CoinType;
 import com.vergepay.core.coins.FeePolicy;
 import com.vergepay.core.coins.Value;
@@ -7,7 +12,6 @@ import com.vergepay.core.wallet.families.bitcoin.BitSendRequest;
 import com.vergepay.core.wallet.families.bitcoin.CoinSelection;
 import com.vergepay.core.wallet.families.bitcoin.CoinSelector;
 import com.vergepay.core.wallet.families.bitcoin.OutPointOutput;
-import com.google.common.collect.Lists;
 
 import org.bitcoinj.core.Address;
 import org.bitcoinj.core.Coin;
@@ -35,10 +39,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.locks.ReentrantLock;
 
-import static com.vergepay.core.Preconditions.checkArgument;
-import static com.vergepay.core.Preconditions.checkNotNull;
-import static com.vergepay.core.Preconditions.checkState;
-
 /**
  * @author John L. Jegutanis
  */
@@ -60,9 +60,10 @@ public class TransactionCreator {
         softDustLimit = coinType.getSoftDustLimit().toCoin();
     }
 
-    private static class FeeCalculation {
-        CoinSelection bestCoinSelection;
-        TransactionOutput bestChangeOutput;
+    private static void resetTxInputs(Transaction tx, List<TransactionInput> originalInputs) {
+        tx.clearInputs();
+        for (TransactionInput input : originalInputs)
+            tx.addInput(input);
     }
 
     /**
@@ -250,6 +251,7 @@ public class TransactionCreator {
      * Returns a list of all possible outputs we could possibly spend, potentially even including immature coinbases
      * (which the protocol may forbid us from spending). In other words, return all outputs that this wallet holds
      * keys for and which are not already marked as spent.
+     *
      * @param req
      */
     LinkedList<OutPointOutput> calculateAllSpendCandidates(BitSendRequest req) {
@@ -558,9 +560,8 @@ public class TransactionCreator {
         return size;
     }
 
-    private static void resetTxInputs(Transaction tx, List<TransactionInput> originalInputs) {
-        tx.clearInputs();
-        for (TransactionInput input : originalInputs)
-            tx.addInput(input);
+    private static class FeeCalculation {
+        CoinSelection bestCoinSelection;
+        TransactionOutput bestChangeOutput;
     }
 }

@@ -1,13 +1,10 @@
 package com.vergepay.core.exchange.shapeshift;
 
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.Lists;
 import com.squareup.okhttp.Cache;
 import com.squareup.okhttp.ConnectionSpec;
 import com.squareup.okhttp.OkHttpClient;
 
 import java.io.File;
-import java.net.URL;
 import java.util.Collections;
 
 /**

@@ -1,5 +1,7 @@
 package com.vergepay.core.wallet.families.bitcoin;
 
+import static org.bitcoinj.core.TransactionInput.EMPTY_ARRAY;
+
 import com.vergepay.core.coins.CoinType;
 import com.vergepay.core.coins.Value;
 
@@ -8,8 +10,6 @@ import org.bitcoinj.core.TransactionInput;
 import org.bitcoinj.core.TransactionOutPoint;
 import org.bitcoinj.core.TransactionOutput;
 import org.bitcoinj.script.Script;
-
-import static org.bitcoinj.core.TransactionInput.EMPTY_ARRAY;
 
 /**
  * @author John L. Jegutanis
@@ -31,14 +31,6 @@ public class OutPointOutput {
         this.isGenerated = isGenerated;
     }
 
-    private TrimmedOutput ensureDetached(TrimmedOutput output) {
-        if (output.isDetached()) {
-            return output;
-        } else {
-            return new TrimmedOutput(output, output.getIndex(), output.getTxHash());
-        }
-    }
-
     public OutPointOutput(BitTransaction tx, long index) {
         this(new TrimmedOutput(tx.getOutput((int) index), index, tx.getHash()), tx.isGenerated());
     }
@@ -50,6 +42,14 @@ public class OutPointOutput {
     public OutPointOutput(TransactionOutPoint outPoint, TransactionOutput output,
                           boolean isGenerated) {
         this(new TrimmedOutput(output, outPoint.getIndex(), outPoint.getHash()), isGenerated);
+    }
+
+    private TrimmedOutput ensureDetached(TrimmedOutput output) {
+        if (output.isDetached()) {
+            return output;
+        } else {
+            return new TrimmedOutput(output, output.getIndex(), output.getTxHash());
+        }
     }
 
     public TrimmedOutPoint getOutPoint() {

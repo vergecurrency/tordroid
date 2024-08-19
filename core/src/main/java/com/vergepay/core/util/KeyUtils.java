@@ -1,9 +1,12 @@
 package com.vergepay.core.util;
 
-import com.vergepay.core.coins.CoinType;
-import com.vergepay.core.protos.Protos;
+import static com.google.common.base.Preconditions.checkNotNull;
+import static com.google.common.base.Preconditions.checkState;
+
 import com.google.common.collect.ImmutableList;
 import com.google.protobuf.ByteString;
+import com.vergepay.core.coins.CoinType;
+import com.vergepay.core.protos.Protos;
 
 import org.bitcoinj.core.ECKey;
 import org.bitcoinj.core.Utils;
@@ -19,9 +22,6 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 import javax.annotation.Nullable;
-
-import static com.google.common.base.Preconditions.checkNotNull;
-import static com.google.common.base.Preconditions.checkState;
 
 /**
  * @author John L. Jegutanis

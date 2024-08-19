@@ -1,15 +1,10 @@
 package com.vergepay.core.exchange.shapeshift.data;
 
 import com.vergepay.core.coins.CoinType;
-import com.vergepay.core.coins.Value;
 import com.vergepay.core.exchange.shapeshift.ShapeShift;
-import com.vergepay.core.util.ExchangeRate;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.math.BigDecimal;
-import java.math.RoundingMode;
 
 /**
  * @author John L. Jegutanis

@@ -1,8 +1,8 @@
 package com.vergepay.core.exchange.shapeshift.data;
 
+import com.google.common.collect.ImmutableList;
 import com.vergepay.core.coins.CoinID;
 import com.vergepay.core.coins.CoinType;
-import com.google.common.collect.ImmutableList;
 
 import org.json.JSONObject;
 

@@ -4,6 +4,9 @@ package com.vergepay.core.coins.nxt;
  * @author John L. Jegutanis
  */
 
+import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
+
 import com.vergepay.core.coins.NxtMain;
 import com.vergepay.core.coins.nxt.Appendix.EncryptedMessage;
 import com.vergepay.core.wallet.families.nxt.NxtAddress;
@@ -19,9 +22,6 @@ import org.junit.jupiter.api.Test;
 import org.spongycastle.util.encoders.Hex;
 
 import java.io.UnsupportedEncodingException;
-
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertEquals;
 
 public class NxtFamilyTest {
     String recoveryPhrase = "heavy virus hollow shrug shadow double dwarf affair novel weird image prize frame anxiety wait";

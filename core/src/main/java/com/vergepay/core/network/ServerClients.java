@@ -21,15 +21,15 @@ import javax.annotation.Nullable;
  */
 public class ServerClients {
     private static final Logger log = LoggerFactory.getLogger(ServerClient.class);
+    private static final ConnectivityHelper DEFAULT_CONNECTIVITY_HELPER = new ConnectivityHelper() {
+        @Override
+        public boolean isConnected() {
+            return true;
+        }
+    };
     private final ConnectivityHelper connectivityHelper;
     private final HashMap<CoinType, BlockchainConnection> connections = new HashMap<>();
     private final HashMap<CoinType, CoinAddress> addresses = new HashMap<>();
-
-
-    private static final ConnectivityHelper DEFAULT_CONNECTIVITY_HELPER = new ConnectivityHelper() {
-        @Override
-        public boolean isConnected() { return true; }
-    };
     private File cacheDir;
     private int cacheSize;
 

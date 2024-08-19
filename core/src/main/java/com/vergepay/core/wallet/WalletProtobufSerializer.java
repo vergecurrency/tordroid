@@ -1,5 +1,11 @@
 package com.vergepay.core.wallet;
 
+import static com.google.common.base.Preconditions.checkState;
+import static org.bitcoinj.core.TransactionConfidence.ConfidenceType.BUILDING;
+
+import com.google.common.base.Splitter;
+import com.google.protobuf.ByteString;
+import com.google.protobuf.TextFormat;
 import com.vergepay.core.coins.CoinID;
 import com.vergepay.core.coins.CoinType;
 import com.vergepay.core.coins.families.BitFamily;
@@ -10,9 +16,6 @@ import com.vergepay.core.wallet.families.bitcoin.BitTransaction;
 import com.vergepay.core.wallet.families.bitcoin.OutPointOutput;
 import com.vergepay.core.wallet.families.nxt.NxtFamilyWallet;
 import com.vergepay.core.wallet.families.nxt.NxtFamilyWalletProtobufSerializer;
-import com.google.common.base.Splitter;
-import com.google.protobuf.ByteString;
-import com.google.protobuf.TextFormat;
 
 import org.bitcoinj.core.Sha256Hash;
 import org.bitcoinj.core.TransactionOutput;
@@ -32,9 +35,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import static com.google.common.base.Preconditions.checkState;
-import static org.bitcoinj.core.TransactionConfidence.ConfidenceType.BUILDING;
-
 /**
  * @author John L. Jegutanis
  */
@@ -42,7 +42,7 @@ public class WalletProtobufSerializer {
 
     /**
      * Formats the given wallet (transactions and keys) to the given output stream in protocol buffer format.<p>
-     *
+     * <p>
      * Equivalent to <tt>walletToProto(wallet).writeTo(output);</tt>
      */
     public static void writeWallet(Wallet wallet, OutputStream output) throws IOException {
@@ -270,15 +270,12 @@ public class WalletProtobufSerializer {
                 bitcoinjCrypter.setR(encryptionParameters.getR());
 
                 crypter = new KeyCrypterScrypt(bitcoinjCrypter.build());
-            }
-            else if (walletProto.getEncryptionType() == Protos.Wallet.EncryptionType.UNENCRYPTED) {
+            } else if (walletProto.getEncryptionType() == Protos.Wallet.EncryptionType.UNENCRYPTED) {
                 crypter = null;
-            }
-            else {
+            } else {
                 throw new KeyCrypterException("Unsupported encryption: " + walletProto.getEncryptionType());
             }
-        }
-        else {
+        } else {
             crypter = null;
         }
 

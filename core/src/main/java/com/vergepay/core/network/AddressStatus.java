@@ -1,9 +1,9 @@
 package com.vergepay.core.network;
 
+import com.google.common.collect.Sets;
 import com.vergepay.core.network.ServerClient.HistoryTx;
 import com.vergepay.core.network.ServerClient.UnspentTx;
 import com.vergepay.core.wallet.AbstractAddress;
-import com.google.common.collect.Sets;
 
 import org.bitcoinj.core.Sha256Hash;
 
@@ -19,7 +19,8 @@ import javax.annotation.Nullable;
  */
 final public class AddressStatus {
     final AbstractAddress address;
-    @Nullable final String status;
+    @Nullable
+    final String status;
 
     HashSet<HistoryTx> historyTransactions;
     HashSet<UnspentTx> unspentTransactions;
@@ -39,7 +40,8 @@ final public class AddressStatus {
         return address;
     }
 
-    @Nullable public String getStatus() {
+    @Nullable
+    public String getStatus() {
         return status;
     }
 

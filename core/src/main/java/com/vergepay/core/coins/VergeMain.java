@@ -6,12 +6,14 @@ import com.vergepay.core.coins.families.PeerFamily;
  * @author John L. Jegutanis
  */
 public class VergeMain extends PeerFamily {
+    private static final VergeMain instance = new VergeMain();
+
     private VergeMain() {
         id = "verge.main";
 
         addressHeader = 30;
         p2shHeader = 33;
-        acceptableAddressCodes = new int[] { addressHeader, p2shHeader };
+        acceptableAddressCodes = new int[]{addressHeader, p2shHeader};
         spendableCoinbaseDepth = 100;
         dumpedPrivateKeyHeader = 158;
 
@@ -26,7 +28,6 @@ public class VergeMain extends PeerFamily {
         softDustPolicy = SoftDustPolicy.BASE_FEE_FOR_EACH_SOFT_DUST_TXO;
     }
 
-    private static final VergeMain instance = new VergeMain();
     public static synchronized VergeMain get() {
         return instance;
     }

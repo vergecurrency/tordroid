@@ -11,10 +11,11 @@ public interface TxMessage extends Serializable {
     // TODO use an abstract transaction
     void serializeTo(AbstractTransaction transaction);
 
+    Type getType();
+
+    String toString();
+
     enum Type {
         PUBLIC, PRIVATE
     }
-
-    Type getType();
-    String toString();
 }

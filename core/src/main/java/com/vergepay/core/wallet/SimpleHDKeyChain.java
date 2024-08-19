@@ -1,15 +1,21 @@
 package com.vergepay.core.wallet;
 
 
+import static com.google.common.base.Preconditions.checkArgument;
+import static com.google.common.base.Preconditions.checkNotNull;
+import static com.google.common.base.Preconditions.checkState;
+import static com.google.common.collect.Lists.newLinkedList;
+
+import com.google.common.collect.ImmutableList;
+import com.google.protobuf.ByteString;
 import com.vergepay.core.protos.Protos;
+import com.vergepay.core.util.KeyUtils;
+
 import org.bitcoinj.core.BloomFilter;
 import org.bitcoinj.core.ECKey;
-import org.bitcoinj.core.Sha256Hash;
-import org.bitcoinj.core.Utils;
 import org.bitcoinj.crypto.ChildNumber;
 import org.bitcoinj.crypto.DeterministicHierarchy;
 import org.bitcoinj.crypto.DeterministicKey;
-import org.bitcoinj.crypto.EncryptedData;
 import org.bitcoinj.crypto.HDKeyDerivation;
 import org.bitcoinj.crypto.HDUtils;
 import org.bitcoinj.crypto.KeyCrypter;
@@ -21,20 +27,10 @@ import org.bitcoinj.wallet.EncryptableKeyChain;
 import org.bitcoinj.wallet.KeyBag;
 import org.bitcoinj.wallet.KeyChainEventListener;
 import org.bitcoinj.wallet.RedeemData;
-
-import com.vergepay.core.util.KeyUtils;
-import com.google.common.collect.ImmutableList;
-import com.google.protobuf.ByteString;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.spongycastle.crypto.digests.RIPEMD160Digest;
 import org.spongycastle.crypto.params.KeyParameter;
-import org.spongycastle.math.ec.ECPoint;
 
-import java.math.BigInteger;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -44,11 +40,6 @@ import java.util.concurrent.locks.ReentrantLock;
 
 import javax.annotation.Nullable;
 
-import static com.google.common.base.Preconditions.checkArgument;
-import static com.google.common.base.Preconditions.checkNotNull;
-import static com.google.common.base.Preconditions.checkState;
-import static com.google.common.collect.Lists.newLinkedList;
-
 /**
  * @author John L. Jegutanis
  * @author 2013 The bitcoinj developers.
@@ -56,15 +47,7 @@ import static com.google.common.collect.Lists.newLinkedList;
 
 
 public class SimpleHDKeyChain implements EncryptableKeyChain, KeyBag {
-    private static final Logger log = LoggerFactory.getLogger(SimpleHDKeyChain.class);
-
     public static final int LOOKAHEAD = 20; // BIP 44
-
-    private final ReentrantLock lock = Threading.lock("KeyChain");
-
-    private DeterministicHierarchy hierarchy;
-    private DeterministicKey rootKey;
-
     // Paths through the key tree. External keys are ones that are communicated to other parties. Internal keys are
     // keys created for change addresses, coinbases, mixing, etc - anything that isn't communicated. The distinction
     // is somewhat arbitrary but can be useful for audits.
@@ -72,32 +55,29 @@ public class SimpleHDKeyChain implements EncryptableKeyChain, KeyBag {
     public static final ChildNumber INTERNAL_PATH_NUM = ChildNumber.ONE;
     public static final ImmutableList<ChildNumber> EXTERNAL_PATH = ImmutableList.of(EXTERNAL_PATH_NUM);
     public static final ImmutableList<ChildNumber> INTERNAL_PATH = ImmutableList.of(INTERNAL_PATH_NUM);
-
+    private static final Logger log = LoggerFactory.getLogger(SimpleHDKeyChain.class);
     // We try to ensure we have at least this many keys ready and waiting to be handed out via getKey().
     // See docs for getLookaheadSize() for more info on what this is for. The -1 value means it hasn't been calculated
     // yet. For new chains it's set to whatever the default is, unless overridden by setLookaheadSize. For deserialized
     // chains, it will be calculated on demand from the number of loaded keys.
     private static final int LAZY_CALCULATE_LOOKAHEAD = -1;
+    private final ReentrantLock lock = Threading.lock("KeyChain");
+    // We simplify by wrapping a basic key chain and that way we get some functionality like key lookup and event
+    // listeners "for free". All keys in the key tree appear here, even if they aren't meant to be used for receiving
+    // money.
+    private final SimpleKeyChain simpleKeyChain;
+    private DeterministicHierarchy hierarchy;
+    private DeterministicKey rootKey;
     private int lookaheadSize = LOOKAHEAD;
     // The lookahead threshold causes us to batch up creation of new keys to minimize the frequency of Bloom filter
     // regenerations, which are expensive and will (in future) trigger chain download stalls/retries. One third
     // is an efficiency tradeoff.
     private int lookaheadThreshold = calcDefaultLookaheadThreshold();
-
-    private int calcDefaultLookaheadThreshold() {
-        return lookaheadSize / 3;
-    }
-
     // The parent keys for external keys (handed out to other people) and internal keys (used for change addresses).
     private DeterministicKey externalKey, internalKey;
     // How many keys on each path have actually been used. This may be fewer than the number that have been deserialized
     // or held in memory, because of the lookahead zone.
     private int issuedExternalKeys, issuedInternalKeys;
-
-    // We simplify by wrapping a basic key chain and that way we get some functionality like key lookup and event
-    // listeners "for free". All keys in the key tree appear here, even if they aren't meant to be used for receiving
-    // money.
-    private final SimpleKeyChain simpleKeyChain;
 
     /**
      * Creates a deterministic key chain that watches the given (public only) root key. You can use this to calculate
@@ -164,6 +144,80 @@ public class SimpleHDKeyChain implements EncryptableKeyChain, KeyBag {
         }
     }
 
+    /**
+     * Returns the key chain found in the given list of keys. Used for unencrypted chains
+     */
+    public static SimpleHDKeyChain fromProtobuf(List<Protos.Key> keys) throws UnreadableWalletException {
+        return fromProtobuf(keys, null);
+    }
+
+    /**
+     * Returns the key chain found in the given list of keys.
+     */
+    public static SimpleHDKeyChain fromProtobuf(List<Protos.Key> keys, @Nullable KeyCrypter crypter) throws UnreadableWalletException {
+        SimpleHDKeyChain chain = null;
+        int lookaheadSize = -1;
+        // If the root key is a child of another hierarchy, the depth will be > 0
+        int rootTreeSize = 0;
+        for (Protos.Key key : keys) {
+            final Protos.Key.Type t = key.getType();
+            if (t == Protos.Key.Type.DETERMINISTIC_KEY) {
+                if (!key.hasDeterministicKey())
+                    throw new UnreadableWalletException("Deterministic key missing extra data: " + key);
+
+                if (chain == null) {
+                    DeterministicKey rootKey = KeyUtils.getDeterministicKey(key, null, crypter);
+                    chain = new SimpleHDKeyChain(rootKey, crypter);
+                    chain.lookaheadSize = LAZY_CALCULATE_LOOKAHEAD;
+                    rootTreeSize = rootKey.getPath().size();
+                }
+                LinkedList<ChildNumber> path = newLinkedList(KeyUtils.getKeyProtoPath(key));
+                // Find the parent key assuming this is not the root key, and not an account key for a watching chain.
+                DeterministicKey parent = null;
+                if (path.size() > rootTreeSize) {
+                    ChildNumber index = path.removeLast();
+                    parent = chain.hierarchy.get(path, false, false);
+                    path.add(index);
+                }
+                DeterministicKey detkey = KeyUtils.getDeterministicKey(key, parent, crypter);
+                if (log.isDebugEnabled()) {
+                    log.debug("Deserializing: DETERMINISTIC_KEY: {}", detkey);
+                }
+                // If the non-encrypted case, the non-leaf keys (account, internal, external) have already been
+                // rederived and inserted at this point and the two lines below are just a no-op. In the encrypted
+                // case though, we can't rederive and we must reinsert, potentially building the heirarchy object
+                // if need be.
+                if (path.size() == rootTreeSize) {
+                    // Master key.
+                    chain.rootKey = detkey;
+                    chain.hierarchy = new DeterministicHierarchy(detkey);
+                } else if (path.size() == rootTreeSize + EXTERNAL_PATH.size()) {
+                    if (EXTERNAL_PATH_NUM.equals(detkey.getChildNumber())) {
+                        chain.externalKey = detkey;
+                        chain.issuedExternalKeys = key.getDeterministicKey().getIssuedSubkeys();
+                        lookaheadSize = Math.max(lookaheadSize, key.getDeterministicKey().getLookaheadSize());
+                    } else if (INTERNAL_PATH_NUM.equals(detkey.getChildNumber())) {
+                        chain.internalKey = detkey;
+                        chain.issuedInternalKeys = key.getDeterministicKey().getIssuedSubkeys();
+                    }
+                }
+                chain.hierarchy.putKey(detkey);
+                chain.simpleKeyChain.importKey(detkey);
+            }
+        }
+        if (chain == null) {
+            throw new UnreadableWalletException("Could not create a key chain.");
+        }
+        checkState(lookaheadSize >= 0, "Negative lookahead size");
+        chain.setLookaheadSize(lookaheadSize);
+        chain.maybeLookAhead();
+        return chain;
+    }
+
+    private int calcDefaultLookaheadThreshold() {
+        return lookaheadSize / 3;
+    }
+
     private DeterministicKey encryptNonLeaf(KeyParameter aesKey, SimpleHDKeyChain chain,
                                             DeterministicKey parent, ImmutableList<ChildNumber> path) {
         DeterministicKey key = chain.hierarchy.get(path, true, false);
@@ -189,8 +243,7 @@ public class SimpleHDKeyChain implements EncryptableKeyChain, KeyBag {
         lock.lock();
         try {
             return rootKey.isEncrypted();
-        }
-        finally {
+        } finally {
             lock.unlock();
         }
     }
@@ -249,13 +302,17 @@ public class SimpleHDKeyChain implements EncryptableKeyChain, KeyBag {
         }
     }
 
-    /** Returns a freshly derived key that has not been returned by this method before. */
+    /**
+     * Returns a freshly derived key that has not been returned by this method before.
+     */
     @Override
     public DeterministicKey getKey(KeyPurpose purpose) {
         return getKeys(purpose, 1).get(0);
     }
 
-    /** Returns freshly derived key/s that have not been returned by this method before. */
+    /**
+     * Returns freshly derived key/s that have not been returned by this method before.
+     */
     @Override
     public List<DeterministicKey> getKeys(KeyPurpose purpose, int numberOfKeys) {
         checkArgument(numberOfKeys > 0, "Need at least 1 key");
@@ -413,12 +470,16 @@ public class SimpleHDKeyChain implements EncryptableKeyChain, KeyBag {
         }
     }
 
-    /** Returns the deterministic key for the given absolute path in the hierarchy. */
+    /**
+     * Returns the deterministic key for the given absolute path in the hierarchy.
+     */
     protected DeterministicKey getKeyByPath(ChildNumber... path) {
         return getKeyByPath(ImmutableList.copyOf(path));
     }
 
-    /** Returns the deterministic key for the given absolute path in the hierarchy. */
+    /**
+     * Returns the deterministic key for the given absolute path in the hierarchy.
+     */
     protected DeterministicKey getKeyByPath(ImmutableList<ChildNumber> path) {
         return hierarchy.get(path, false, false);
     }
@@ -474,6 +535,12 @@ public class SimpleHDKeyChain implements EncryptableKeyChain, KeyBag {
         simpleKeyChain.addEventListener(listener, executor);
     }
 
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Serialization support
+    //
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
     @Override
     public boolean removeEventListener(KeyChainEventListener listener) {
         return simpleKeyChain.removeEventListener(listener);
@@ -485,12 +552,6 @@ public class SimpleHDKeyChain implements EncryptableKeyChain, KeyBag {
     public boolean isFollowing() {
         return false; // No support for now
     }
-
-    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    //
-    // Serialization support
-    //
-    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     List<Protos.Key> toProtobuf() {
         LinkedList<Protos.Key> entries = newLinkedList();
@@ -533,76 +594,6 @@ public class SimpleHDKeyChain implements EncryptableKeyChain, KeyBag {
         } finally {
             lock.unlock();
         }
-    }
-
-    /**
-     * Returns the key chain found in the given list of keys. Used for unencrypted chains
-     */
-    public static SimpleHDKeyChain fromProtobuf(List<Protos.Key> keys) throws UnreadableWalletException {
-        return fromProtobuf(keys, null);
-    }
-
-    /**
-     * Returns the key chain found in the given list of keys.
-     */
-    public static SimpleHDKeyChain fromProtobuf(List<Protos.Key> keys, @Nullable KeyCrypter crypter) throws UnreadableWalletException {
-        SimpleHDKeyChain chain = null;
-        int lookaheadSize = -1;
-        // If the root key is a child of another hierarchy, the depth will be > 0
-        int rootTreeSize = 0;
-        for (Protos.Key key : keys) {
-            final Protos.Key.Type t = key.getType();
-            if (t == Protos.Key.Type.DETERMINISTIC_KEY) {
-                if (!key.hasDeterministicKey())
-                    throw new UnreadableWalletException("Deterministic key missing extra data: " + key);
-
-                if (chain == null) {
-                    DeterministicKey rootKey = KeyUtils.getDeterministicKey(key, null, crypter);
-                    chain = new SimpleHDKeyChain(rootKey, crypter);
-                    chain.lookaheadSize = LAZY_CALCULATE_LOOKAHEAD;
-                    rootTreeSize = rootKey.getPath().size();
-                }
-                LinkedList<ChildNumber> path = newLinkedList(KeyUtils.getKeyProtoPath(key));
-                // Find the parent key assuming this is not the root key, and not an account key for a watching chain.
-                DeterministicKey parent = null;
-                if (path.size() > rootTreeSize) {
-                    ChildNumber index = path.removeLast();
-                    parent = chain.hierarchy.get(path, false, false);
-                    path.add(index);
-                }
-                DeterministicKey detkey = KeyUtils.getDeterministicKey(key, parent, crypter);
-                if (log.isDebugEnabled()) {
-                    log.debug("Deserializing: DETERMINISTIC_KEY: {}", detkey);
-                }
-                // If the non-encrypted case, the non-leaf keys (account, internal, external) have already been
-                // rederived and inserted at this point and the two lines below are just a no-op. In the encrypted
-                // case though, we can't rederive and we must reinsert, potentially building the heirarchy object
-                // if need be.
-                if (path.size() == rootTreeSize) {
-                    // Master key.
-                    chain.rootKey = detkey;
-                    chain.hierarchy = new DeterministicHierarchy(detkey);
-                } else if (path.size() == rootTreeSize + EXTERNAL_PATH.size()) {
-                    if (EXTERNAL_PATH_NUM.equals(detkey.getChildNumber())) {
-                        chain.externalKey = detkey;
-                        chain.issuedExternalKeys = key.getDeterministicKey().getIssuedSubkeys();
-                        lookaheadSize = Math.max(lookaheadSize, key.getDeterministicKey().getLookaheadSize());
-                    } else if (INTERNAL_PATH_NUM.equals(detkey.getChildNumber())) {
-                        chain.internalKey = detkey;
-                        chain.issuedInternalKeys = key.getDeterministicKey().getIssuedSubkeys();
-                    }
-                }
-                chain.hierarchy.putKey(detkey);
-                chain.simpleKeyChain.importKey(detkey);
-            }
-        }
-        if (chain == null) {
-            throw new UnreadableWalletException("Could not create a key chain.");
-        }
-        checkState(lookaheadSize >= 0, "Negative lookahead size");
-        chain.setLookaheadSize(lookaheadSize);
-        chain.maybeLookAhead();
-        return chain;
     }
 
     @Override
@@ -675,7 +666,7 @@ public class SimpleHDKeyChain implements EncryptableKeyChain, KeyBag {
 
     @Override
     public boolean checkPassword(CharSequence password) {
-        checkNotNull(password,"Password is null");
+        checkNotNull(password, "Password is null");
         checkState(getKeyCrypter() != null, "Key chain not encrypted");
         return checkAESKey(getKeyCrypter().deriveKey(password));
     }
@@ -757,6 +748,21 @@ public class SimpleHDKeyChain implements EncryptableKeyChain, KeyBag {
     }
 
     /**
+     * Gets the threshold for the key pre-generation.
+     * See {@link #setLookaheadThreshold(int)} for details on what this is.
+     */
+    public int getLookaheadThreshold() {
+        lock.lock();
+        try {
+            if (lookaheadThreshold >= lookaheadSize)
+                return 0;
+            return lookaheadThreshold;
+        } finally {
+            lock.unlock();
+        }
+    }
+
+    /**
      * Sets the threshold for the key pre-generation.
      * If a key is used in a transaction, the keychain would pre-generate a new key, for every issued key,
      * even if it is only one. If the blockchain is replayed, every key would trigger a regeneration
@@ -769,21 +775,6 @@ public class SimpleHDKeyChain implements EncryptableKeyChain, KeyBag {
             if (num >= lookaheadSize)
                 throw new IllegalArgumentException("Threshold larger or equal to the lookaheadSize");
             this.lookaheadThreshold = num;
-        } finally {
-            lock.unlock();
-        }
-    }
-
-    /**
-     * Gets the threshold for the key pre-generation.
-     * See {@link #setLookaheadThreshold(int)} for details on what this is.
-     */
-    public int getLookaheadThreshold() {
-        lock.lock();
-        try {
-            if (lookaheadThreshold >= lookaheadSize)
-                return 0;
-            return lookaheadThreshold;
         } finally {
             lock.unlock();
         }
@@ -815,7 +806,7 @@ public class SimpleHDKeyChain implements EncryptableKeyChain, KeyBag {
     /**
      * Pre-generate enough keys to reach the lookahead size, but only if there are more than the lookaheadThreshold to
      * be generated, so that the Bloom filter does not have to be regenerated that often.
-     *
+     * <p>
      * The returned mutable list of keys must be inserted into the basic key chain.
      */
     private List<DeterministicKey> maybeLookAhead(DeterministicKey parent, int issued, int lookaheadSize, int lookaheadThreshold) {
@@ -829,7 +820,7 @@ public class SimpleHDKeyChain implements EncryptableKeyChain, KeyBag {
         log.info("{} keys needed for {} = {} issued + {} lookahead size + {} lookahead threshold - {} num children",
                 needed, parent.getPathAsString(), issued, lookaheadSize, lookaheadThreshold, numChildren);
 
-        List<DeterministicKey> result  = new ArrayList<DeterministicKey>(needed);
+        List<DeterministicKey> result = new ArrayList<DeterministicKey>(needed);
         long now = System.currentTimeMillis();
         int nextChild = numChildren;
         for (int i = 0; i < needed; i++) {
@@ -859,7 +850,8 @@ public class SimpleHDKeyChain implements EncryptableKeyChain, KeyBag {
                 if (parent == null) continue;
                 if (detkey.getPath().size() <= treeSize) continue;
                 if (parent.equals(internalKey)) continue;
-                if (parent.equals(externalKey) && detkey.getChildNumber().num() >= issuedExternalKeys) continue;
+                if (parent.equals(externalKey) && detkey.getChildNumber().num() >= issuedExternalKeys)
+                    continue;
                 issuedKeys.add(detkey);
             }
             return issuedKeys;
@@ -906,8 +898,10 @@ public class SimpleHDKeyChain implements EncryptableKeyChain, KeyBag {
                 DeterministicKey parent = detkey.getParent();
                 if (parent == null) continue;
                 if (detkey.getPath().size() <= treeSize) continue;
-                if (parent.equals(internalKey) && detkey.getChildNumber().num() > issuedInternalKeys) continue;
-                if (parent.equals(externalKey) && detkey.getChildNumber().num() > issuedExternalKeys) continue;
+                if (parent.equals(internalKey) && detkey.getChildNumber().num() > issuedInternalKeys)
+                    continue;
+                if (parent.equals(externalKey) && detkey.getChildNumber().num() > issuedExternalKeys)
+                    continue;
                 issuedKeys.add(detkey);
             }
             return issuedKeys;
@@ -924,8 +918,10 @@ public class SimpleHDKeyChain implements EncryptableKeyChain, KeyBag {
         for (ECKey key : getKeys(true)) {
             DeterministicKey dKey = (DeterministicKey) key;
             if (isLeaf(dKey)) {
-                if (dKey.getParent().equals(internalKey) && dKey.getChildNumber().num() >= issuedInternalKeys + lookaheadSize) continue;
-                if (dKey.getParent().equals(externalKey) && dKey.getChildNumber().num() >= issuedExternalKeys + lookaheadSize) continue;
+                if (dKey.getParent().equals(internalKey) && dKey.getChildNumber().num() >= issuedInternalKeys + lookaheadSize)
+                    continue;
+                if (dKey.getParent().equals(externalKey) && dKey.getChildNumber().num() >= issuedExternalKeys + lookaheadSize)
+                    continue;
 
                 keys.add(dKey);
             }

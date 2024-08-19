@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
  */
 public class NxtTxMessage implements TxMessage {
     public static final int MAX_MESSAGE_BYTES = 0;
-
+    private final static NxtMessageFactory instance = new NxtMessageFactory();
     Type type;
     byte[] message;
 
@@ -27,8 +27,9 @@ public class NxtTxMessage implements TxMessage {
 
     }
 
-    private final static NxtMessageFactory instance = new NxtMessageFactory();
-    public static MessageFactory getFactory() { return instance; }
+    public static MessageFactory getFactory() {
+        return instance;
+    }
 
     public String toString() {
         return Convert.toString(message);

@@ -6,13 +6,9 @@ import org.json.JSONObject;
 /**
  * @author John L. Jegutanis
  */
-public class ShapeShiftEmail  extends ShapeShiftBase {
+public class ShapeShiftEmail extends ShapeShiftBase {
     public final Status status;
     public final String message;
-
-    public enum Status {
-        SUCCESS, UNKNOWN
-    }
 
     public ShapeShiftEmail(JSONObject data) throws ShapeShiftException {
         super(data);
@@ -33,5 +29,9 @@ public class ShapeShiftEmail  extends ShapeShiftBase {
             status = null;
             message = null;
         }
+    }
+
+    public enum Status {
+        SUCCESS, UNKNOWN
     }
 }

@@ -23,14 +23,35 @@ import java.security.SecureRandom;
 
 public final class EncryptedData {
 
+    public static final EncryptedData EMPTY_DATA = new EncryptedData(new byte[0], new byte[0]);
     private static final ThreadLocal<SecureRandom> secureRandom = new ThreadLocal<SecureRandom>() {
         @Override
         protected SecureRandom initialValue() {
             return new SecureRandom();
         }
     };
+    private final byte[] data;
+    private final byte[] nonce;
 
-    public static final EncryptedData EMPTY_DATA = new EncryptedData(new byte[0], new byte[0]);
+    /*
+    public static EncryptedData readEncryptedData(ByteBuffer buffer, int length, int maxLength, long nonce)
+            throws NxtException.NotValidException {
+        if (length == 0) {
+            return EMPTY_DATA;
+        }
+        if (length > maxLength) {
+            throw new NxtException.NotValidException("Max encrypted data length exceeded: " + length);
+        }
+        byte[] data = new byte[length];
+        buffer.get(data);
+        return new EncryptedData(data, ByteBuffer.allocate(8).putLong(nonce).array());
+    }
+    */
+
+    public EncryptedData(byte[] data, byte[] nonce) {
+        this.data = data;
+        this.nonce = nonce;
+    }
 
     public static EncryptedData encrypt(byte[] plaintext, byte[] myPrivateKey, byte[] theirPublicKey) {
         if (plaintext.length == 0) {
@@ -57,21 +78,6 @@ public final class EncryptedData {
         return new EncryptedData(data, nonce);
     }
 
-    /*
-    public static EncryptedData readEncryptedData(ByteBuffer buffer, int length, int maxLength, long nonce)
-            throws NxtException.NotValidException {
-        if (length == 0) {
-            return EMPTY_DATA;
-        }
-        if (length > maxLength) {
-            throw new NxtException.NotValidException("Max encrypted data length exceeded: " + length);
-        }
-        byte[] data = new byte[length];
-        buffer.get(data);
-        return new EncryptedData(data, ByteBuffer.allocate(8).putLong(nonce).array());
-    }
-    */
-
     public static EncryptedData readEncryptedData(byte[] bytes) {
         if (bytes.length == 0) {
             return EMPTY_DATA;
@@ -83,14 +89,6 @@ public final class EncryptedData {
         } catch (NxtException.NotValidException e) {
             throw new RuntimeException(e.toString(), e); // never
         }
-    }
-
-    private final byte[] data;
-    private final byte[] nonce;
-
-    public EncryptedData(byte[] data, byte[] nonce) {
-        this.data = data;
-        this.nonce = nonce;
     }
 
     /*

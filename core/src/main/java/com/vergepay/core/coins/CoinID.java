@@ -1,8 +1,8 @@
 package com.vergepay.core.coins;
 
+import com.google.common.collect.ImmutableList;
 import com.vergepay.core.exceptions.AddressMalformedException;
 import com.vergepay.core.util.GenericUtils;
-import com.google.common.collect.ImmutableList;
 
 import org.bitcoinj.core.NetworkParameters;
 import org.bitcoinj.params.Networks;
@@ -79,15 +79,6 @@ public enum CoinID {
         this.type = type;
     }
 
-    @Override
-    public String toString() {
-        return type.getId();
-    }
-
-    public CoinType getCoinType() {
-        return type;
-    }
-
     public static List<CoinType> getSupportedCoins() {
         return types;
     }
@@ -133,5 +124,14 @@ public enum CoinID {
         } else {
             throw new IllegalArgumentException("Unsupported coin symbol: " + symbol);
         }
+    }
+
+    @Override
+    public String toString() {
+        return type.getId();
+    }
+
+    public CoinType getCoinType() {
+        return type;
     }
 }

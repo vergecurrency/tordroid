@@ -2,8 +2,6 @@ package com.vergepay.core.network;
 
 import com.vergepay.core.coins.CoinType;
 
-import java.util.Date;
-
 /**
  * @author John L. Jegutanis
  */
@@ -35,6 +33,6 @@ public class BlockHeader {
 
     public boolean equals(BlockHeader blockHeader) {
         return (this.getBlockHeight() == blockHeader.getBlockHeight() &&
-                 this.getTimestamp() == this.getTimestamp());
+                this.getTimestamp() == this.getTimestamp());
     }
 }

@@ -1,14 +1,11 @@
 package com.vergepay.core.wallet.families.bitcoin;
 
+import static com.vergepay.core.Preconditions.checkNotNull;
+
 import org.bitcoinj.core.Coin;
 import org.bitcoinj.core.NetworkParameters;
 import org.bitcoinj.core.Sha256Hash;
-import org.bitcoinj.core.TransactionOutPoint;
 import org.bitcoinj.core.TransactionOutput;
-
-import javax.annotation.Nullable;
-
-import static com.vergepay.core.Preconditions.checkNotNull;
 
 /**
  * @author John L. Jegutanis

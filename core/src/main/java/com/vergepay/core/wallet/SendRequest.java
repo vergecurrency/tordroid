@@ -1,13 +1,13 @@
 /**
  * Copyright 2013 Google Inc.
  * Copyright 2014 Andreas Schildbach
- *
+ * <p>
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
- *    http://www.apache.org/licenses/LICENSE-2.0
- *
+ * <p>
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * <p>
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -17,13 +17,12 @@
 package com.vergepay.core.wallet;
 
 
+import com.google.common.base.Objects;
+import com.google.common.base.Objects.ToStringHelper;
 import com.vergepay.core.coins.CoinType;
 import com.vergepay.core.coins.Value;
 import com.vergepay.core.messages.TxMessage;
 import com.vergepay.core.wallet.families.bitcoin.CoinSelector;
-import com.google.common.base.Objects;
-import com.google.common.base.Objects.ToStringHelper;
-
 
 import org.bitcoinj.core.Transaction;
 import org.bitcoinj.core.Wallet.MissingSigsMode;
@@ -150,22 +149,12 @@ public class SendRequest<T extends AbstractTransaction> implements Serializable 
      * @see MissingSigsMode
      */
     transient public MissingSigsMode missingSigsMode = MissingSigsMode.THROW;
-
-    public boolean isCompleted() {
-        return completed;
-    }
-
-    public void setCompleted(boolean completed) {
-        this.completed = completed;
-    }
-
     /**
      * Attaches a message to the transaction. There is no guarantee that the coin supports messages
      * or that the recipient will ultimately get them or if the message will be recorded to on the
      * blockchain i.e. Bitcoin, Litecoin messages could be stored on a public server
      */
     public TxMessage txMessage;
-
     // Tracks if this has been passed to wallet.completeTransaction already: just a safety check.
     private boolean completed;
 
@@ -183,6 +172,14 @@ public class SendRequest<T extends AbstractTransaction> implements Serializable 
             default:
                 throw new RuntimeException("Unknown fee policy: " + type.getFeePolicy());
         }
+    }
+
+    public boolean isCompleted() {
+        return completed;
+    }
+
+    public void setCompleted(boolean completed) {
+        this.completed = completed;
     }
 
     @Override

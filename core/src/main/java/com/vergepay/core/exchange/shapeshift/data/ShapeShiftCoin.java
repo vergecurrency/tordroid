@@ -1,7 +1,5 @@
 package com.vergepay.core.exchange.shapeshift.data;
 
-import com.vergepay.core.exchange.shapeshift.ShapeShift;
-
 import org.json.JSONObject;
 
 import java.net.URL;

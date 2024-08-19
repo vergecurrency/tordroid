@@ -1,6 +1,7 @@
 package com.vergepay.core.util;
 
 
+import com.google.common.collect.ImmutableList;
 import com.vergepay.core.coins.CoinID;
 import com.vergepay.core.coins.CoinType;
 import com.vergepay.core.coins.Value;
@@ -9,7 +10,6 @@ import com.vergepay.core.exceptions.AddressMalformedException;
 import com.vergepay.core.wallet.AbstractAddress;
 import com.vergepay.core.wallet.families.bitcoin.BitAddress;
 import com.vergepay.core.wallet.families.nxt.NxtAddress;
-import com.google.common.collect.ImmutableList;
 
 import org.bitcoinj.core.AddressFormatException;
 import org.bitcoinj.core.Monetary;
@@ -233,14 +233,18 @@ public class GenericUtils {
 
     /**
      * Tries to parse the addressStr as a Bitcoin style address and find potential compatible coin types
+     *
      * @param addressStr possible bitcoin type address
-     * @param builder for the types list
+     * @param builder    for the types list
      */
     private static void tryBitcoinFamilyAddresses(final String addressStr, ImmutableList.Builder<CoinType> builder) {
         VersionedChecksummedBytes parsed;
         try {
-            parsed = new VersionedChecksummedBytes(addressStr) { };
-        } catch (AddressFormatException e) { return; }
+            parsed = new VersionedChecksummedBytes(addressStr) {
+            };
+        } catch (AddressFormatException e) {
+            return;
+        }
         int version = parsed.getVersion();
         for (CoinType type : CoinID.getSupportedCoins()) {
             if (type.getAcceptableAddressCodes() == null) continue;

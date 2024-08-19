@@ -5,7 +5,7 @@ package com.vergepay.core.uri;
  * to pass the associated test (such as {@code amount} not being a valid number).</p>
  *
  * @since 0.3.0
- *         
+ *  
  */
 public class OptionalFieldValidationException extends CoinURIParseException {
 

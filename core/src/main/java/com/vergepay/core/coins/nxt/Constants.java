@@ -138,11 +138,19 @@ public final class Constants {
 
 //    public static final int LAST_KNOWN_BLOCK = isTestnet ? 300000 : 445000;
 
-    public static final int[] MIN_VERSION = new int[] {1, 5};
+    public static final int[] MIN_VERSION = new int[]{1, 5};
 
 //    static final long UNCONFIRMED_POOL_DEPOSIT_NQT = (isTestnet ? 50 : 100) * ONE_NXT;
 
     public static final long NXT_EPOCH_BEGINNING;
+    public static final long BURST_EPOCH_BEGINNING;
+    public static final String ALPHABET = "0123456789abcdefghijklmnopqrstuvwxyz";
+    public static final String ALLOWED_CURRENCY_CODE_LETTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    public static final int EC_RULE_TERMINATOR = 600; /* cfb: This constant defines a straight edge when "longest chain"
+                                                        rule is outweighed by "economic majority" rule; the terminator
+                                                        is set as number of seconds before the current time. */
+    public static final int EC_BLOCK_DISTANCE_LIMIT = 60;
+
     static {
         Calendar calendar = Calendar.getInstance(TimeZone.getTimeZone("UTC"));
         calendar.set(Calendar.YEAR, 2013);
@@ -155,7 +163,6 @@ public final class Constants {
         NXT_EPOCH_BEGINNING = calendar.getTimeInMillis();
     }
 
-    public static final long BURST_EPOCH_BEGINNING;
     static {
         Calendar calendar = Calendar.getInstance(TimeZone.getTimeZone("UTC"));
         calendar.set(Calendar.YEAR, 2014);
@@ -168,16 +175,8 @@ public final class Constants {
         BURST_EPOCH_BEGINNING = calendar.getTimeInMillis();
     }
 
-    public static final String ALPHABET = "0123456789abcdefghijklmnopqrstuvwxyz";
-    public static final String ALLOWED_CURRENCY_CODE_LETTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-
-    public static final int EC_RULE_TERMINATOR = 600; /* cfb: This constant defines a straight edge when "longest chain"
-                                                        rule is outweighed by "economic majority" rule; the terminator
-                                                        is set as number of seconds before the current time. */
-
-    public static final int EC_BLOCK_DISTANCE_LIMIT = 60;
-
-    private Constants() {} // never
+    private Constants() {
+    } // never
 
 }
 

@@ -3,7 +3,6 @@ package com.vergepay.stratumj.messages;
 import org.json.JSONArray;
 import org.json.JSONException;
 
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
@@ -85,10 +84,6 @@ public class CallMessage extends BaseMessage {
         }
     }
 
-    public void setParam(String param) {
-        setParams(Collections.singletonList(param));
-    }
-
     public void setParams(@Nullable Collection params) {
         if (params == null) return;
         try {
@@ -97,6 +92,10 @@ public class CallMessage extends BaseMessage {
             // Should never happen because "params" is a valid JSON name
             throw new RuntimeException(e);
         }
+    }
+
+    public void setParam(String param) {
+        setParams(Collections.singletonList(param));
     }
 //
 //    public void addParams(Collection params) {

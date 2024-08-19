@@ -5,29 +5,6 @@ import java.util.List;
 public interface Transaction extends Comparable<Transaction> {
 
 
-
-    interface Builder {
-
-        Builder recipientId(long recipientId);
-
-        Builder referencedTransactionFullHash(String referencedTransactionFullHash);
-
-        Builder message(Appendix.Message message);
-
-        Builder encryptedMessage(Appendix.EncryptedMessage encryptedMessage);
-
-        Builder encryptToSelfMessage(Appendix.EncryptToSelfMessage encryptToSelfMessage);
-
-        Builder publicKeyAnnouncement(Appendix.PublicKeyAnnouncement publicKeyAnnouncement);
-
-        Transaction build() throws NxtException.NotValidException;
-
-    }
-
-    void setHeight(int height);
-
-    void setConfirmations(int confirmations);
-
     long getId();
 
     String getStringId();
@@ -40,9 +17,13 @@ public interface Transaction extends Comparable<Transaction> {
 
     int getHeight();
 
+    void setHeight(int height);
+
     int getTimestamp();
 
     int getConfirmations();
+
+    void setConfirmations(int confirmations);
 
     int getBlockTimestamp();
 
@@ -72,9 +53,9 @@ public interface Transaction extends Comparable<Transaction> {
 
     byte[] getUnsignedBytes();
 
-    //JSONObject getJSONObject();
-
     byte getVersion();
+
+    //JSONObject getJSONObject();
 
     Appendix.Message getMessage();
 
@@ -84,14 +65,32 @@ public interface Transaction extends Comparable<Transaction> {
 
     List<? extends Appendix> getAppendages();
 
+    int getECBlockHeight();
+
     /*
     Collection<TransactionType> getPhasingTransactionTypes();
 
     Collection<TransactionType> getPhasedTransactionTypes();
     */
 
-    int getECBlockHeight();
-
     long getECBlockId();
+
+    interface Builder {
+
+        Builder recipientId(long recipientId);
+
+        Builder referencedTransactionFullHash(String referencedTransactionFullHash);
+
+        Builder message(Appendix.Message message);
+
+        Builder encryptedMessage(Appendix.EncryptedMessage encryptedMessage);
+
+        Builder encryptToSelfMessage(Appendix.EncryptToSelfMessage encryptToSelfMessage);
+
+        Builder publicKeyAnnouncement(Appendix.PublicKeyAnnouncement publicKeyAnnouncement);
+
+        Transaction build() throws NxtException.NotValidException;
+
+    }
 
 }

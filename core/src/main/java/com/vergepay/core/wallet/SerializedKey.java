@@ -1,13 +1,15 @@
 package com.vergepay.core.wallet;
 
-import com.vergepay.core.coins.CoinID;
-import com.vergepay.core.coins.CoinType;
-import com.vergepay.core.exceptions.AddressMalformedException;
-import com.vergepay.core.util.GenericUtils;
+import static com.google.common.base.Preconditions.checkState;
+
 import com.google.common.base.Charsets;
 import com.google.common.collect.ImmutableList;
 import com.google.common.primitives.Bytes;
 import com.lambdaworks.crypto.SCrypt;
+import com.vergepay.core.coins.CoinID;
+import com.vergepay.core.coins.CoinType;
+import com.vergepay.core.exceptions.AddressMalformedException;
+import com.vergepay.core.util.GenericUtils;
 
 import org.bitcoinj.core.AddressFormatException;
 import org.bitcoinj.core.Base58;
@@ -27,8 +29,6 @@ import javax.annotation.Nullable;
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
 
-import static com.google.common.base.Preconditions.checkState;
-
 /**
  * @author John L. Jegutanis
  * @author Andreas Schildbach
@@ -38,32 +38,6 @@ public class SerializedKey implements Serializable {
     public static final Pattern PATTERN_WIF_PRIVATE_KEY = Pattern.compile("[123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz]{51,52}");
     public static final Pattern PATTERN_BIP38_PRIVATE_KEY = Pattern.compile("6P[123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz]{56}");
     public static final Pattern PATTERN_MINI_PRIVATE_KEY = Pattern.compile("S[123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz]{29}");
-
-    public static class TypedKey {
-        public final List<CoinType> possibleType;
-        public final ECKey key;
-
-        TypedKey(List<CoinType> possibleType, ECKey key) {
-            this.possibleType = possibleType;
-            this.key = key;
-        }
-    }
-
-    enum Type {
-        WIF, BIP38, MINI
-    }
-
-    public static final class BadPassphraseException extends Exception { }
-    public static final class KeyFormatException extends Exception {
-        public KeyFormatException(String message) {
-            super(message);
-        }
-
-        public KeyFormatException(Throwable cause) {
-            super(cause);
-        }
-    }
-
     private final Type keyType;
     private int version;
     private boolean ecMultiply;
@@ -71,7 +45,6 @@ public class SerializedKey implements Serializable {
     private boolean hasLotAndSequence;
     private byte[] addressHash;
     private byte[] content;
-
     public SerializedKey(String key) throws KeyFormatException {
         if (PATTERN_WIF_PRIVATE_KEY.matcher(key).matches()) {
             parseWif(key);
@@ -91,6 +64,16 @@ public class SerializedKey implements Serializable {
         return PATTERN_WIF_PRIVATE_KEY.matcher(key).matches() ||
                 PATTERN_BIP38_PRIVATE_KEY.matcher(key).matches() ||
                 PATTERN_MINI_PRIVATE_KEY.matcher(key).matches();
+    }
+
+    private static void clearData(List<byte[]> bytes) {
+        for (byte[] b : bytes) {
+            clearData(b);
+        }
+    }
+
+    private static void clearData(byte[] bytes) {
+        Arrays.fill(bytes, (byte) 0);
     }
 
     private void parseWif(String key) throws KeyFormatException {
@@ -201,16 +184,6 @@ public class SerializedKey implements Serializable {
     private void clearDataAndThrow(byte[] bytes, String message) throws KeyFormatException {
         clearData(bytes);
         throw new KeyFormatException(message);
-    }
-
-    private static void clearData(List<byte[]> bytes) {
-        for (byte[] b : bytes) {
-            clearData(b);
-        }
-    }
-
-    private static void clearData(byte[] bytes) {
-        Arrays.fill(bytes, (byte) 0);
     }
 
     public boolean isEncrypted() {
@@ -346,5 +319,32 @@ public class SerializedKey implements Serializable {
     private TypedKey getFromMiniKey() {
         final ECKey key = ECKey.fromPrivate(content).decompress();
         return new TypedKey(CoinID.getSupportedCoins(), key);
+    }
+
+    enum Type {
+        WIF, BIP38, MINI
+    }
+
+    public static class TypedKey {
+        public final List<CoinType> possibleType;
+        public final ECKey key;
+
+        TypedKey(List<CoinType> possibleType, ECKey key) {
+            this.possibleType = possibleType;
+            this.key = key;
+        }
+    }
+
+    public static final class BadPassphraseException extends Exception {
+    }
+
+    public static final class KeyFormatException extends Exception {
+        public KeyFormatException(String message) {
+            super(message);
+        }
+
+        public KeyFormatException(Throwable cause) {
+            super(cause);
+        }
     }
 }

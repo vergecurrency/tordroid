@@ -7,6 +7,8 @@ import com.vergepay.core.coins.families.NxtFamily;
  */
 public class BurstMain extends NxtFamily {
 
+    private static final BurstMain instance = new BurstMain();
+
     private BurstMain() {
         id = "burst.main";
 
@@ -21,7 +23,6 @@ public class BurstMain extends NxtFamily {
         feePolicy = FeePolicy.FLAT_FEE;
     }
 
-    private static final BurstMain instance = new BurstMain();
     public static synchronized CoinType get() {
         return instance;
     }

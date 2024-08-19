@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
  */
 public class BaseMessage extends JSONObject {
 
-    protected  BaseMessage(String source) throws JSONException {
+    protected BaseMessage(String source) throws JSONException {
         super(source);
     }
 

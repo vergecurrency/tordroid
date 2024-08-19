@@ -1,5 +1,13 @@
 package com.vergepay.core.exchange.shapeshift;
 
+import static com.vergepay.core.Preconditions.checkNotNull;
+import static com.vergepay.core.Preconditions.checkState;
+
+import com.squareup.okhttp.MediaType;
+import com.squareup.okhttp.OkHttpClient;
+import com.squareup.okhttp.Request;
+import com.squareup.okhttp.RequestBody;
+import com.squareup.okhttp.Response;
 import com.vergepay.core.coins.CoinID;
 import com.vergepay.core.coins.CoinType;
 import com.vergepay.core.coins.Value;
@@ -14,11 +22,6 @@ import com.vergepay.core.exchange.shapeshift.data.ShapeShiftRate;
 import com.vergepay.core.exchange.shapeshift.data.ShapeShiftTime;
 import com.vergepay.core.exchange.shapeshift.data.ShapeShiftTxStatus;
 import com.vergepay.core.wallet.AbstractAddress;
-import com.squareup.okhttp.MediaType;
-import com.squareup.okhttp.OkHttpClient;
-import com.squareup.okhttp.Request;
-import com.squareup.okhttp.RequestBody;
-import com.squareup.okhttp.Response;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -26,9 +29,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
-
-import static com.vergepay.core.Preconditions.checkNotNull;
-import static com.vergepay.core.Preconditions.checkState;
 
 /**
  * @author John L. Jegutanis
@@ -55,7 +55,25 @@ public class ShapeShift extends Connection {
         super(client);
     }
 
-    public ShapeShift() {}
+    public ShapeShift() {
+    }
+
+    /**
+     * Convert types to the ShapeShift format. For example Bitcoin to Litecoin will become btc_ltc.
+     */
+    public static String getPair(CoinType typeFrom, CoinType typeTo) {
+        return typeFrom.getSymbol().toLowerCase() + "_" + typeTo.getSymbol().toLowerCase();
+    }
+
+    private static JSONObject parseReply(Response response) throws IOException, JSONException {
+        return new JSONObject(response.body().string());
+    }
+
+    public static CoinType[] parsePair(String pair) {
+        String[] pairs = pair.split("_");
+        checkState(pairs.length == 2);
+        return new CoinType[]{CoinID.typeFromSymbol(pairs[0]), CoinID.typeFromSymbol(pairs[1])};
+    }
 
     public void setApiPublicKey(String apiPublicKey) {
         this.apiPublicKey = apiPublicKey;
@@ -63,7 +81,7 @@ public class ShapeShift extends Connection {
 
     /**
      * Get List of Supported Coins
-     *
+     * <p>
      * List of all the currencies that Shapeshift currently supports at any given time. Sometimes
      * coins become temporarily unavailable during updates or unexpected service issues.
      */
@@ -74,7 +92,7 @@ public class ShapeShift extends Connection {
 
     /**
      * Get Market Info
-     *
+     * <p>
      * This is a combined call for {@link #getRate(CoinType, CoinType) getRate()} and
      * {@link #getLimit(CoinType, CoinType) getLimit()} API calls.
      */
@@ -85,7 +103,7 @@ public class ShapeShift extends Connection {
 
     /**
      * Get Market Info
-     *
+     * <p>
      * This is a combined call for {@link #getRate(CoinType, CoinType) getRate()} and
      * {@link #getLimit(CoinType, CoinType) getLimit()} API calls.
      */
@@ -101,7 +119,7 @@ public class ShapeShift extends Connection {
 
     /**
      * Rate
-     *
+     * <p>
      * Gets the current rate offered by Shapeshift. This is an estimate because the rate can
      * occasionally change rapidly depending on the markets. The rate is also a 'use-able' rate not
      * a direct market rate. Meaning multiplying your input coin amount times the rate should give
@@ -120,7 +138,7 @@ public class ShapeShift extends Connection {
 
     /**
      * Deposit Limit
-     *
+     * <p>
      * Gets the current deposit limit set by Shapeshift. Amounts deposited over this limit will be
      * sent to the return address if one was entered, otherwise the user will need to contact
      * ShapeShift support to retrieve their coins. This is an estimate because a sudden market swing
@@ -138,7 +156,7 @@ public class ShapeShift extends Connection {
 
     /**
      * Time Remaining on Fixed Amount Transaction
-     *
+     * <p>
      * When a transaction is created with a fixed amount requested there is a 10 minute window for
      * the deposit. After the 10 minute window if the deposit has not been received the transaction
      * expires and a new one must be created. This api call returns how many seconds are left before
@@ -152,7 +170,7 @@ public class ShapeShift extends Connection {
 
     /**
      * Status of deposit to address
-     *
+     * <p>
      * This returns the status of the most recent deposit transaction to the address.
      */
     public ShapeShiftTxStatus getTxStatus(AbstractAddress address)
@@ -166,7 +184,7 @@ public class ShapeShift extends Connection {
 
     /**
      * Normal Transaction
-     *
+     * <p>
      * Make a normal exchange and receive with {@code withdrawal} address. The exchange pair is
      * determined from the {@link CoinType}s of {@code refund} and {@code withdrawal}.
      */
@@ -191,15 +209,14 @@ public class ShapeShift extends Connection {
         return reply;
     }
 
-
     /**
      * Fixed Amount Transaction
-     *
+     * <p>
      * This call allows you to request a fixed amount to be sent to the {@code withdrawal} address.
      * You provide a withdrawal address and the amount you want sent to it. We return the amount
      * to deposit and the address to deposit to. This allows you to use shapeshift as a payment
      * mechanism.
-     *
+     * <p>
      * The exchange pair is determined from the {@link CoinType}s of {@code refund} and
      * {@code withdrawal}.
      */
@@ -232,12 +249,12 @@ public class ShapeShift extends Connection {
 
     /**
      * Request email receipt
-     *
+     * <p>
      * This call allows you to request a fixed amount to be sent to the {@code withdrawal} address.
      * You provide a withdrawal address and the amount you want sent to it. We return the amount
      * to deposit and the address to deposit to. This allows you to use shapeshift as a payment
      * mechanism.
-     *
+     * <p>
      * The exchange pair is determined from the {@link CoinType}s of {@code refund} and
      * {@code withdrawal}.
      */
@@ -260,14 +277,6 @@ public class ShapeShift extends Connection {
         return new ShapeShiftEmail(getMakeApiCall(request));
     }
 
-
-    /**
-     * Convert types to the ShapeShift format. For example Bitcoin to Litecoin will become btc_ltc.
-     */
-    public static String getPair(CoinType typeFrom, CoinType typeTo) {
-        return typeFrom.getSymbol().toLowerCase() + "_" + typeTo.getSymbol().toLowerCase();
-    }
-
     private void checkPair(String expectedPair, String pair)
             throws ShapeShiftException {
         if (!expectedPair.equals(pair)) {
@@ -287,7 +296,7 @@ public class ShapeShift extends Connection {
 
     private void checkAddress(AbstractAddress expected, AbstractAddress address) throws ShapeShiftException {
         if (!expected.getType().equals(address.getType()) ||
-            !expected.toString().equals(address.toString())) {
+                !expected.toString().equals(address.toString())) {
             String errorMsg = String.format("Address mismatch, expected %s but got %s.",
                     expected, address);
             throw new ShapeShiftException(errorMsg);
@@ -307,15 +316,5 @@ public class ShapeShift extends Connection {
         } catch (JSONException e) {
             throw new ShapeShiftException("Could not parse JSON", e);
         }
-    }
-
-    private static JSONObject parseReply(Response response) throws IOException, JSONException {
-        return new JSONObject(response.body().string());
-    }
-
-    public static CoinType[] parsePair(String pair) {
-        String[] pairs = pair.split("_");
-        checkState(pairs.length == 2);
-        return new CoinType[]{CoinID.typeFromSymbol(pairs[0]), CoinID.typeFromSymbol(pairs[1])};
     }
 }

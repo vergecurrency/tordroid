@@ -1,7 +1,5 @@
 package com.vergepay.core.exchange.shapeshift.data;
 
-import java.io.IOException;
-
 /**
  * @author John L. Jegutanis
  */

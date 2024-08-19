@@ -1,14 +1,14 @@
 package com.vergepay.stratumj;
 
-import com.vergepay.stratumj.messages.BaseMessage;
-import com.vergepay.stratumj.messages.CallMessage;
-import com.vergepay.stratumj.messages.MessageException;
-import com.vergepay.stratumj.messages.ResultMessage;
 import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.ImmutableList;
 import com.google.common.util.concurrent.AbstractExecutionThreadService;
 import com.google.common.util.concurrent.ListenableFuture;
 import com.google.common.util.concurrent.SettableFuture;
+import com.vergepay.stratumj.messages.BaseMessage;
+import com.vergepay.stratumj.messages.CallMessage;
+import com.vergepay.stratumj.messages.MessageException;
+import com.vergepay.stratumj.messages.ResultMessage;
 
 import org.json.JSONException;
 import org.slf4j.Logger;
@@ -40,81 +40,17 @@ public class StratumClient extends AbstractExecutionThreadService {
 
     private final AtomicLong idCounter = new AtomicLong();
     private final ServerAddress serverAddress;
-    private Socket socket;
-    @VisibleForTesting DataOutputStream toServer;
-    BufferedReader fromServer;
-
     final private ExecutorService pool = Executors.newFixedThreadPool(NUM_OF_WORKERS);
-
     final private ConcurrentHashMap<Long, SettableFuture<ResultMessage>> callers =
             new ConcurrentHashMap<>();
-
     final private ConcurrentHashMap<String, List<SubscribeResultHandler>> subscribersHandlers =
             new ConcurrentHashMap<>();
-
     final private BlockingQueue<BaseMessage> queue = new LinkedBlockingDeque<BaseMessage>();
+    @VisibleForTesting
+    DataOutputStream toServer;
+    BufferedReader fromServer;
+    private Socket socket;
 
-
-    public interface SubscribeResultHandler {
-        void handle(CallMessage message);
-    }
-
-    private class MessageHandler implements Runnable {
-        @Override
-        public void run() {
-            while (!pool.isShutdown()) {
-                BaseMessage message = null;
-                try {
-                    message = queue.take();
-                } catch (InterruptedException ignored) { }
-
-                if (message != null) {
-                    handle(message);
-                }
-            }
-            log.info("Shutdown message handler thread: {}", Thread.currentThread().getName());
-        }
-
-        private void handle(BaseMessage message) {
-            if (message instanceof ResultMessage) {
-                ResultMessage reply = (ResultMessage) message;
-                if (callers.containsKey(reply.getId())) {
-                    SettableFuture<ResultMessage> future = callers.get(reply.getId());
-                    future.set(reply);
-                    callers.remove(reply.getId());
-                } else {
-                    log.error("Received reply from server, but could not find caller",
-                            new MessageException("Orphaned reply", reply.toString()));
-                }
-            } else if (message instanceof CallMessage) {
-                CallMessage reply = (CallMessage) message;
-                if (subscribersHandlers.containsKey(reply.getMethod())) {
-                    List<SubscribeResultHandler> subs;
-
-                    synchronized (subscribersHandlers.get(reply.getMethod())) {
-                        // Make a defensive copy
-                        subs = ImmutableList.copyOf(subscribersHandlers.get(reply.getMethod()));
-                    }
-
-                    for (SubscribeResultHandler handler : subs) {
-                        try {
-                            log.debug("Running subscriber handler with result: " + reply);
-                            handler.handle(reply);
-                        } catch (Exception e) {
-                            log.error("Error while executing subscriber handler", e);
-                        }
-                    }
-                } else {
-                    log.error("Received call from server, but not could find subscriber",
-                            new MessageException("Orphaned call", reply.toString()));
-                }
-
-            } else {
-                log.error("Unable to handle message",
-                        new MessageException("Unhandled message", message.toString()));
-            }
-        }
-    }
 
     public StratumClient(ServerAddress address) {
         serverAddress = address;
@@ -189,7 +125,7 @@ public class StratumClient extends AbstractExecutionThreadService {
                 break;
             }
 
-            if(serverMessage == null) {
+            if (serverMessage == null) {
                 log.info("Server closed communications. Shutting down");
                 triggerShutdown();
                 break;
@@ -247,7 +183,6 @@ public class StratumClient extends AbstractExecutionThreadService {
         return socket != null && socket.isConnected();
     }
 
-
     public void disconnect() {
         if (isConnected()) {
             try {
@@ -292,5 +227,67 @@ public class StratumClient extends AbstractExecutionThreadService {
 
         // Make the subscription call, the server will reply immediately
         return call(message);
+    }
+
+    public interface SubscribeResultHandler {
+        void handle(CallMessage message);
+    }
+
+    private class MessageHandler implements Runnable {
+        @Override
+        public void run() {
+            while (!pool.isShutdown()) {
+                BaseMessage message = null;
+                try {
+                    message = queue.take();
+                } catch (InterruptedException ignored) {
+                }
+
+                if (message != null) {
+                    handle(message);
+                }
+            }
+            log.info("Shutdown message handler thread: {}", Thread.currentThread().getName());
+        }
+
+        private void handle(BaseMessage message) {
+            if (message instanceof ResultMessage) {
+                ResultMessage reply = (ResultMessage) message;
+                if (callers.containsKey(reply.getId())) {
+                    SettableFuture<ResultMessage> future = callers.get(reply.getId());
+                    future.set(reply);
+                    callers.remove(reply.getId());
+                } else {
+                    log.error("Received reply from server, but could not find caller",
+                            new MessageException("Orphaned reply", reply.toString()));
+                }
+            } else if (message instanceof CallMessage) {
+                CallMessage reply = (CallMessage) message;
+                if (subscribersHandlers.containsKey(reply.getMethod())) {
+                    List<SubscribeResultHandler> subs;
+
+                    synchronized (subscribersHandlers.get(reply.getMethod())) {
+                        // Make a defensive copy
+                        subs = ImmutableList.copyOf(subscribersHandlers.get(reply.getMethod()));
+                    }
+
+                    for (SubscribeResultHandler handler : subs) {
+                        try {
+                            log.debug("Running subscriber handler with result: " + reply);
+                            handler.handle(reply);
+                        } catch (Exception e) {
+                            log.error("Error while executing subscriber handler", e);
+                        }
+                    }
+                } else {
+                    log.error("Received call from server, but not could find subscriber",
+                            new MessageException("Orphaned call", reply.toString()));
+                }
+
+            } else {
+                log.error("Unable to handle message",
+                        new MessageException("Unhandled message", message.toString()));
+            }
+        }
     }
 }

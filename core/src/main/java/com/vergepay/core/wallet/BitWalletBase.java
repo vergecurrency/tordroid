@@ -2,13 +2,13 @@
  * Copyright 2013 Google Inc.
  * Copyright 2014 Andreas Schildbach
  * Copyright 2014 John L. Jegutanis
- *
+ * <p>
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
- *    http://www.apache.org/licenses/LICENSE-2.0
- *
+ * <p>
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * <p>
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -17,6 +17,11 @@
  */
 
 package com.vergepay.core.wallet;
+
+import static com.vergepay.core.Preconditions.checkNotNull;
+import static com.vergepay.core.Preconditions.checkState;
+import static com.vergepay.core.util.BitAddressUtils.getHash160;
+import static com.vergepay.core.util.BitAddressUtils.isP2SHAddress;
 
 import com.vergepay.core.coins.CoinType;
 import com.vergepay.core.coins.Value;
@@ -35,11 +40,6 @@ import java.security.SignatureException;
 import java.util.Arrays;
 
 import javax.annotation.Nullable;
-
-import static com.vergepay.core.Preconditions.checkNotNull;
-import static com.vergepay.core.Preconditions.checkState;
-import static com.vergepay.core.util.BitAddressUtils.getHash160;
-import static com.vergepay.core.util.BitAddressUtils.isP2SHAddress;
 
 /**
  * @author John L. Jegutanis

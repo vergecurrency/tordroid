@@ -6,12 +6,14 @@ import com.vergepay.core.coins.families.BitFamily;
  * @author John L. Jegutanis
  */
 public class LitecoinTest extends BitFamily {
+    private static final LitecoinTest instance = new LitecoinTest();
+
     private LitecoinTest() {
         id = "litecoin.test";
 
         addressHeader = 111;
         p2shHeader = 196;
-        acceptableAddressCodes = new int[] { addressHeader, p2shHeader };
+        acceptableAddressCodes = new int[]{addressHeader, p2shHeader};
         spendableCoinbaseDepth = 100;
         dumpedPrivateKeyHeader = 239;
 
@@ -27,7 +29,6 @@ public class LitecoinTest extends BitFamily {
         signedMessageHeader = toBytes("Litecoin Signed Message:\n");
     }
 
-    private static final LitecoinTest instance = new LitecoinTest();
     public static synchronized CoinType get() {
         return instance;
     }

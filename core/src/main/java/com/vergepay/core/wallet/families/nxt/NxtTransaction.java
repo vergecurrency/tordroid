@@ -1,5 +1,8 @@
 package com.vergepay.core.wallet.families.nxt;
 
+import static com.vergepay.core.Preconditions.checkNotNull;
+
+import com.google.common.collect.ImmutableList;
 import com.vergepay.core.coins.CoinType;
 import com.vergepay.core.coins.Value;
 import com.vergepay.core.coins.nxt.Transaction;
@@ -7,14 +10,11 @@ import com.vergepay.core.messages.TxMessage;
 import com.vergepay.core.wallet.AbstractAddress;
 import com.vergepay.core.wallet.AbstractTransaction;
 import com.vergepay.core.wallet.AbstractWallet;
-import com.google.common.collect.ImmutableList;
 
 import org.bitcoinj.core.Sha256Hash;
 import org.bitcoinj.core.TransactionConfidence;
 
 import java.util.List;
-
-import static com.vergepay.core.Preconditions.checkNotNull;
 
 /**
  * @author vbcs
@@ -22,18 +22,13 @@ import static com.vergepay.core.Preconditions.checkNotNull;
  */
 public final class NxtTransaction implements AbstractTransaction {
     final CoinType type;
-    Sha256Hash hash;
     final Transaction tx;
-
+    Sha256Hash hash;
     TransactionConfidence.ConfidenceType confidence = TransactionConfidence.ConfidenceType.BUILDING;
 
     public NxtTransaction(CoinType type, Transaction transaction) {
         this.type = type;
         tx = checkNotNull(transaction);
-    }
-
-    public void setConfidenceType(TransactionConfidence.ConfidenceType conf) {
-        confidence = conf;
     }
 
     @Override
@@ -43,7 +38,11 @@ public final class NxtTransaction implements AbstractTransaction {
 
     @Override
     public TransactionConfidence.ConfidenceType getConfidenceType() {
-        return (tx.getConfirmations() > 0 ) ? confidence : TransactionConfidence.ConfidenceType.PENDING;
+        return (tx.getConfirmations() > 0) ? confidence : TransactionConfidence.ConfidenceType.PENDING;
+    }
+
+    public void setConfidenceType(TransactionConfidence.ConfidenceType conf) {
+        confidence = conf;
     }
 
     @Override
@@ -69,6 +68,11 @@ public final class NxtTransaction implements AbstractTransaction {
     @Override
     public int getDepthInBlocks() {
         return tx.getConfirmations();
+    }
+
+    @Override
+    public void setDepthInBlocks(int depthInBlocks) {
+
     }
 
     @Override
@@ -115,11 +119,6 @@ public final class NxtTransaction implements AbstractTransaction {
     @Override
     public byte[] getHashBytes() {
         return getHash().getBytes();
-    }
-
-    @Override
-    public void setDepthInBlocks(int depthInBlocks) {
-
     }
 
     @Override

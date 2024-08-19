@@ -1,6 +1,5 @@
 package com.vergepay.core.coins;
 
-import com.vergepay.core.coins.families.Families;
 import com.vergepay.core.util.MonetaryFormat;
 
 import org.bitcoinj.core.Coin;
@@ -12,8 +11,11 @@ import java.io.Serializable;
  */
 public interface ValueType extends Serializable {
     String getId();
+
     String getName();
+
     String getSymbol();
+
     int getUnitExponent();
 
     /**
@@ -31,6 +33,7 @@ public interface ValueType extends Serializable {
     Value value(long units);
 
     MonetaryFormat getMonetaryFormat();
+
     MonetaryFormat getPlainFormat();
 
     boolean equals(ValueType obj);

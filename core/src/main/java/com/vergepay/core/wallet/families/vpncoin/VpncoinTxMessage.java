@@ -1,10 +1,12 @@
 package com.vergepay.core.wallet.families.vpncoin;
 
+import static com.vergepay.core.Preconditions.checkArgument;
+
+import com.google.common.base.Charsets;
 import com.vergepay.core.messages.MessageFactory;
 import com.vergepay.core.messages.TxMessage;
 import com.vergepay.core.wallet.AbstractTransaction;
 import com.vergepay.core.wallet.families.bitcoin.BitTransaction;
-import com.google.common.base.Charsets;
 
 import org.bitcoinj.core.Transaction;
 import org.slf4j.Logger;
@@ -20,33 +22,34 @@ import java.util.zip.Inflater;
 
 import javax.annotation.Nullable;
 
-import static com.vergepay.core.Preconditions.checkArgument;
-
 /**
  * @author John L. Jegutanis
  */
 public class VpncoinTxMessage implements TxMessage {
-    private static final Logger log = LoggerFactory.getLogger(VpncoinTxMessage.class);
-
-    static final int SIZE_LENGTH = 4;
-
-    public static final int MAX_TX_DATA      = 65536;
+    public static final int MAX_TX_DATA = 65536;
     public static final int MAX_TX_DATA_FROM = 128;
     public static final int MAX_TX_DATA_SUBJ = 128;
-    public static final int MAX_TX_DATA_MSG  = MAX_TX_DATA - MAX_TX_DATA_FROM - MAX_TX_DATA_SUBJ;
-
+    public static final int MAX_TX_DATA_MSG = MAX_TX_DATA - MAX_TX_DATA_FROM - MAX_TX_DATA_SUBJ;
+    static final int SIZE_LENGTH = 4;
     static final Pattern MESSAGE_REGEX =
             Pattern.compile("(?s)@(?:FROM|SUBJ|MSG)=.*?(?=@(?:FROM|SUBJ|MSG)=|$)");
-
     static final String FROM = "@FROM=";
     static final String SUBJ = "@SUBJ=";
-    static final String MSG  = "@MSG=";
-
+    static final String MSG = "@MSG=";
+    static final int[] CRC_TBL = {
+            0x0000, 0x1081, 0x2102, 0x3183,
+            0x4204, 0x5285, 0x6306, 0x7387,
+            0x8408, 0x9489, 0xa50a, 0xb58b,
+            0xc60c, 0xd68d, 0xe70e, 0xf78f
+    };
+    private static final Logger log = LoggerFactory.getLogger(VpncoinTxMessage.class);
+    private final static VpncoinMessageFactory instance = new VpncoinMessageFactory();
     private String from;
     private String subject;
     private String message;
 
-    VpncoinTxMessage() { }
+    VpncoinTxMessage() {
+    }
 
     VpncoinTxMessage(String message) {
         setMessage(message);
@@ -58,40 +61,12 @@ public class VpncoinTxMessage implements TxMessage {
         setMessage(message);
     }
 
-    private final static VpncoinMessageFactory instance = new VpncoinMessageFactory();
     public static MessageFactory getFactory() {
         return instance;
     }
 
     public static VpncoinTxMessage create(String message) throws IllegalArgumentException {
         return new VpncoinTxMessage(message);
-    }
-
-    public String getFrom() {
-        return from;
-    }
-
-    public String getSubject() {
-        return subject;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public void setFrom(String from) {
-        checkArgument(from.length() <= MAX_TX_DATA_FROM, "'From' field size exceeded");
-        this.from = from;
-    }
-
-    public void setSubject(String subject) {
-        checkArgument(subject.length() <= MAX_TX_DATA_SUBJ, "'Subject' field size exceeded");
-        this.subject = subject;
-    }
-
-    public void setMessage(String message) {
-        checkArgument(message.length() <= MAX_TX_DATA_MSG, "'Message' field size exceeded");
-        this.message = message;
     }
 
     @Nullable
@@ -131,61 +106,8 @@ public class VpncoinTxMessage implements TxMessage {
         }
     }
 
-    public boolean isEmpty() {
-        return isNullOrEmpty(from) && isNullOrEmpty(subject) && isNullOrEmpty(message);
-    }
-
     private static boolean isNullOrEmpty(String str) {
         return str == null || str.trim().isEmpty();
-    }
-
-    @Override
-    public Type getType() {
-        return Type.PUBLIC; // Only public is supported
-    }
-
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        if (!isNullOrEmpty(from)) {
-            sb.append(from);
-        }
-        if (!isNullOrEmpty(subject)) {
-            if (sb.length() != 0) sb.append("\n\n");
-            sb.append(subject);
-        }
-        if (!isNullOrEmpty(message)) {
-            if (sb.length() != 0) sb.append("\n\n");
-            sb.append(message);
-        }
-
-        return sb.toString();
-    }
-
-    @Override
-    public void serializeTo(AbstractTransaction transaction) {
-        if (transaction instanceof BitTransaction) {
-            Transaction rawTx = ((BitTransaction) transaction).getRawTransaction();
-            rawTx.setExtraBytes(serialize());
-        }
-    }
-
-    byte[] serialize() {
-        StringBuilder sb = new StringBuilder();
-        if (!isNullOrEmpty(from)) {
-            sb.append(FROM);
-            sb.append(from);
-        }
-        if (!isNullOrEmpty(subject)) {
-            sb.append(SUBJ);
-            sb.append(subject);
-        }
-        if (!isNullOrEmpty(message)) {
-            sb.append(MSG);
-            sb.append(message);
-        }
-
-        return sb.toString().getBytes(Charsets.UTF_8);
     }
 
     static VpncoinTxMessage parseEncrypted(long key, String fullMessage) throws Exception {
@@ -272,7 +194,7 @@ public class VpncoinTxMessage implements TxMessage {
             int pos = buffer.position();
             byte curByte = buffer.get();
             buffer.position(pos);
-            buffer.put((byte)(curByte ^ lastByte ^ m_keyParts[pos % 8]));
+            buffer.put((byte) (curByte ^ lastByte ^ m_keyParts[pos % 8]));
             lastByte = curByte;
         }
         buffer.rewind();
@@ -299,9 +221,9 @@ public class VpncoinTxMessage implements TxMessage {
 
     private static byte[] makeKey(long key) {
         byte[] m_keyParts = new byte[8];
-        for (int i=0;i<8;i++) {
+        for (int i = 0; i < 8; i++) {
             long part = key;
-            for (int j=i; j>0; j--)
+            for (int j = i; j > 0; j--)
                 part = part >> 8;
             part = part & 0xff;
             m_keyParts[i] = (byte) part;
@@ -309,11 +231,91 @@ public class VpncoinTxMessage implements TxMessage {
         return m_keyParts;
     }
 
+    public String getFrom() {
+        return from;
+    }
+
+    public void setFrom(String from) {
+        checkArgument(from.length() <= MAX_TX_DATA_FROM, "'From' field size exceeded");
+        this.from = from;
+    }
+
+    public String getSubject() {
+        return subject;
+    }
+
+    public void setSubject(String subject) {
+        checkArgument(subject.length() <= MAX_TX_DATA_SUBJ, "'Subject' field size exceeded");
+        this.subject = subject;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        checkArgument(message.length() <= MAX_TX_DATA_MSG, "'Message' field size exceeded");
+        this.message = message;
+    }
+
+    public boolean isEmpty() {
+        return isNullOrEmpty(from) && isNullOrEmpty(subject) && isNullOrEmpty(message);
+    }
+
+    @Override
+    public Type getType() {
+        return Type.PUBLIC; // Only public is supported
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        if (!isNullOrEmpty(from)) {
+            sb.append(from);
+        }
+        if (!isNullOrEmpty(subject)) {
+            if (sb.length() != 0) sb.append("\n\n");
+            sb.append(subject);
+        }
+        if (!isNullOrEmpty(message)) {
+            if (sb.length() != 0) sb.append("\n\n");
+            sb.append(message);
+        }
+
+        return sb.toString();
+    }
+
+    @Override
+    public void serializeTo(AbstractTransaction transaction) {
+        if (transaction instanceof BitTransaction) {
+            Transaction rawTx = ((BitTransaction) transaction).getRawTransaction();
+            rawTx.setExtraBytes(serialize());
+        }
+    }
+
+    byte[] serialize() {
+        StringBuilder sb = new StringBuilder();
+        if (!isNullOrEmpty(from)) {
+            sb.append(FROM);
+            sb.append(from);
+        }
+        if (!isNullOrEmpty(subject)) {
+            sb.append(SUBJ);
+            sb.append(subject);
+        }
+        if (!isNullOrEmpty(message)) {
+            sb.append(MSG);
+            sb.append(message);
+        }
+
+        return sb.toString().getBytes(Charsets.UTF_8);
+    }
+
     enum CryptoFlag {
-        CryptoFlagNone((byte)0),
-        CryptoFlagCompression((byte)0x01),
-        CryptoFlagChecksum((byte)0x02),
-        CryptoFlagHash((byte)0x04);
+        CryptoFlagNone((byte) 0),
+        CryptoFlagCompression((byte) 0x01),
+        CryptoFlagChecksum((byte) 0x02),
+        CryptoFlagHash((byte) 0x04);
 
         private final byte flag;
 
@@ -325,13 +327,6 @@ public class VpncoinTxMessage implements TxMessage {
             return (flags & flag) == flag;
         }
     }
-
-    static final int[] CRC_TBL = {
-            0x0000, 0x1081, 0x2102, 0x3183,
-            0x4204, 0x5285, 0x6306, 0x7387,
-            0x8408, 0x9489, 0xa50a, 0xb58b,
-            0xc60c, 0xd68d, 0xe70e, 0xf78f
-    };
 
     public static class VpncoinMessageFactory implements MessageFactory {
         @Override

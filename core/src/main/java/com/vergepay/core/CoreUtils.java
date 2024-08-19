@@ -1,6 +1,5 @@
 package com.vergepay.core;
 
-import com.vergepay.core.wallet.AbstractAddress;
 import com.google.common.base.Joiner;
 
 import org.bitcoinj.crypto.MnemonicCode;

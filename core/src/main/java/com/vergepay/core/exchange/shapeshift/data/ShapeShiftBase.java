@@ -2,7 +2,6 @@ package com.vergepay.core.exchange.shapeshift.data;
 
 import com.vergepay.core.coins.CoinType;
 import com.vergepay.core.coins.Value;
-import com.vergepay.core.exchange.shapeshift.ShapeShift;
 
 import org.json.JSONObject;
 

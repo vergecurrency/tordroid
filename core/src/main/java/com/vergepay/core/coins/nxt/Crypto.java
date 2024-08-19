@@ -1,5 +1,7 @@
 package com.vergepay.core.coins.nxt;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.spongycastle.crypto.CipherParameters;
 import org.spongycastle.crypto.InvalidCipherTextException;
 import org.spongycastle.crypto.engines.AESEngine;
@@ -7,9 +9,6 @@ import org.spongycastle.crypto.modes.CBCBlockCipher;
 import org.spongycastle.crypto.paddings.PaddedBufferedBlockCipher;
 import org.spongycastle.crypto.params.KeyParameter;
 import org.spongycastle.crypto.params.ParametersWithIV;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -29,7 +28,8 @@ public final class Crypto {
         }
     };
 
-    private Crypto() {} //never
+    private Crypto() {
+    } //never
 
     public static MessageDigest getMessageDigest(String algorithm) {
         try {
@@ -51,7 +51,7 @@ public final class Crypto {
     public static byte[] getPublicKey(byte[] privateKey) {
         byte[] publicKey = new byte[32];
         Curve25519.keygen(publicKey, null, privateKey);
-        if (! Curve25519.isCanonicalPublicKey(publicKey)) {
+        if (!Curve25519.isCanonicalPublicKey(publicKey)) {
             throw new RuntimeException("Public key not canonical");
         }
         return publicKey;
@@ -255,7 +255,7 @@ public final class Crypto {
             byte[] key = sha256.digest(seed);
             for (int j = 0; j < 32; j++) {
                 data[position++] ^= key[j];
-                seed[j] = (byte)(~seed[j]);
+                seed[j] = (byte) (~seed[j]);
             }
             seed = sha256.digest(seed);
         }
@@ -299,7 +299,7 @@ public final class Crypto {
         rsString = rsString.toUpperCase();
         try {
             long id = ReedSolomon.decode(rsString);
-            if (! rsString.equals(ReedSolomon.encode(id))) {
+            if (!rsString.equals(ReedSolomon.encode(id))) {
                 throw new RuntimeException("ERROR: Reed-Solomon decoding of " + rsString
                         + " not reversible, decoded to " + id);
             }

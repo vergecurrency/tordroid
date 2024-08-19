@@ -3,13 +3,13 @@ package com.vergepay.core.coins;
 /**
  * Copyright 2014 Andreas Schildbach
  * Copyright 2015 John L. Jegutanis
- *
+ * <p>
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
- *    http://www.apache.org/licenses/LICENSE-2.0
- *
+ * <p>
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * <p>
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -17,9 +17,13 @@ package com.vergepay.core.coins;
  * limitations under the License.
  */
 
+import static com.google.common.base.Preconditions.checkArgument;
+import static com.google.common.base.Preconditions.checkNotNull;
+
+import com.google.common.math.LongMath;
+
 import org.bitcoinj.core.Coin;
 import org.bitcoinj.core.Monetary;
-import com.google.common.math.LongMath;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -27,10 +31,6 @@ import java.math.BigInteger;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-
-import static com.google.common.base.Preconditions.checkArgument;
-import static com.google.common.base.Preconditions.checkNotNull;
-import static com.google.common.base.Preconditions.checkState;
 
 /**
  * Represents a monetary value. This class is immutable.
@@ -68,23 +68,6 @@ public class Value implements Monetary, Comparable<Value>, Serializable {
         return valueOf(type, new BigInteger(unitsStr));
     }
 
-    @Override
-    public int smallestUnitExponent() {
-        return type.getUnitExponent();
-    }
-
-    /**
-     * Returns the number of units of this monetary value.
-     */
-    @Override
-    public long getValue() {
-        return value;
-    }
-
-    public Coin toCoin() {
-        return Coin.valueOf(value);
-    }
-
     /**
      * Convert an amount expressed in the way humans are used to into units.
      */
@@ -117,6 +100,35 @@ public class Value implements Monetary, Comparable<Value>, Serializable {
     public static Value parse(final ValueType type, final BigDecimal decimal) {
         return Value.valueOf(type, decimal.movePointRight(type.getUnitExponent())
                 .toBigIntegerExact().longValue());
+    }
+
+    public static Value max(Value value1, Value value2) {
+        return value1.compareTo(value2) >= 0 ? value1 : value2;
+    }
+
+    public static Value min(Value value1, Value value2) {
+        return value1.compareTo(value2) <= 0 ? value1 : value2;
+    }
+
+    public static boolean canCompare(@Nullable Value amount1, @Nullable Value amount2) {
+        return amount1 != null && amount2 != null && amount1.isOfType(amount2);
+    }
+
+    @Override
+    public int smallestUnitExponent() {
+        return type.getUnitExponent();
+    }
+
+    /**
+     * Returns the number of units of this monetary value.
+     */
+    @Override
+    public long getValue() {
+        return value;
+    }
+
+    public Coin toCoin() {
+        return Coin.valueOf(value);
     }
 
     public Value add(final Value value) {
@@ -158,8 +170,8 @@ public class Value implements Monetary, Comparable<Value>, Serializable {
     }
 
     public Value[] divideAndRemainder(final long divisor) {
-        return new Value[] { new Value(this.type, this.value / divisor),
-                             new Value(this.type, this.value % divisor) };
+        return new Value[]{new Value(this.type, this.value / divisor),
+                new Value(this.type, this.value % divisor)};
     }
 
     public long divide(final Value divisor) {
@@ -296,22 +308,10 @@ public class Value implements Monetary, Comparable<Value>, Serializable {
      * Check if the value is within the [min, max] range
      */
     public boolean within(Value min, Value max) {
-        return compareTo(min) >=0 && compareTo(max) <= 0;
-    }
-
-    public static Value max(Value value1, Value value2) {
-        return value1.compareTo(value2) >= 0 ? value1 : value2;
-    }
-
-    public static Value min(Value value1, Value value2) {
-        return value1.compareTo(value2) <= 0 ? value1 : value2;
+        return compareTo(min) >= 0 && compareTo(max) <= 0;
     }
 
     public boolean canCompare(Value other) {
         return canCompare(this, other);
-    }
-
-    public static boolean canCompare(@Nullable Value amount1, @Nullable Value amount2) {
-        return amount1 != null && amount2 != null && amount1.isOfType(amount2);
     }
 }

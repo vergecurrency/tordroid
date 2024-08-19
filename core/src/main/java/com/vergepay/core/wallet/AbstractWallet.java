@@ -16,9 +16,9 @@ import javax.annotation.Nullable;
 public abstract class AbstractWallet<T extends AbstractTransaction, A extends AbstractAddress>
         implements WalletAccount<T, A> {
     protected final String id;
-    protected String description;
     protected final CoinType type;
     protected final ReentrantLock lock = Threading.lock("AbstractWallet");
+    protected String description;
 
     public AbstractWallet(CoinType coinType, String id) {
         this.type = coinType;
@@ -36,6 +36,15 @@ public abstract class AbstractWallet<T extends AbstractTransaction, A extends Ab
     }
 
     /**
+     * Get the description of the wallet. See {@link WalletPocketHD#setDescription(String))}
+     */
+    @Override
+    @Nullable
+    public String getDescription() {
+        return description;
+    }
+
+    /**
      * Set the description of the wallet.
      * This is a Unicode encoding string typically entered by the user as descriptive text for the wallet.
      */
@@ -45,15 +54,6 @@ public abstract class AbstractWallet<T extends AbstractTransaction, A extends Ab
         this.description = description;
         lock.unlock();
         walletSaveNow();
-    }
-
-    /**
-     * Get the description of the wallet. See {@link WalletPocketHD#setDescription(String))}
-     */
-    @Override
-    @Nullable
-    public String getDescription() {
-        return description;
     }
 
     /**

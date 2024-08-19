@@ -1,6 +1,5 @@
 package com.vergepay.core.coins;
 
-import com.vergepay.core.coins.families.Families;
 import com.vergepay.core.util.Currencies;
 import com.vergepay.core.util.MonetaryFormat;
 

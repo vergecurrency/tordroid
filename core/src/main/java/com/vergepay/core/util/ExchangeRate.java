@@ -23,6 +23,7 @@ public interface ExchangeRate extends Serializable {
     ValueType getOtherType(ValueType type);
 
     ValueType getSourceType();
+
     ValueType getDestinationType();
 
     boolean canConvert(ValueType type1, ValueType type2);

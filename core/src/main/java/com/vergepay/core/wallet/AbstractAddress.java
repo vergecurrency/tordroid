@@ -9,6 +9,8 @@ import java.io.Serializable;
  */
 public interface AbstractAddress extends Serializable {
     CoinType getType();
+
     String toString();
+
     long getId();
 }

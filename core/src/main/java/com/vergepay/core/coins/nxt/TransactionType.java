@@ -7,11 +7,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.nio.ByteBuffer;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
 
 
 public abstract class TransactionType {
@@ -21,7 +16,7 @@ public abstract class TransactionType {
     private static final byte TYPE_COLORED_COINS = 2;
     private static final byte TYPE_DIGITAL_GOODS = 3;
     private static final byte TYPE_ACCOUNT_CONTROL = 4;
-    
+
     private static final byte TYPE_BURST_MINING = 20; // jump some for easier nxt updating
     private static final byte TYPE_ADVANCED_PAYMENT = 21;
     private static final byte TYPE_AUTOMATED_TRANSACTIONS = 22;
@@ -52,14 +47,14 @@ public abstract class TransactionType {
     private static final byte SUBTYPE_DIGITAL_GOODS_DELIVERY = 5;
     private static final byte SUBTYPE_DIGITAL_GOODS_FEEDBACK = 6;
     private static final byte SUBTYPE_DIGITAL_GOODS_REFUND = 7;
-    
+
     private static final byte SUBTYPE_AT_CREATION = 0;
     private static final byte SUBTYPE_AT_NXT_PAYMENT = 1;
 
     private static final byte SUBTYPE_ACCOUNT_CONTROL_EFFECTIVE_BALANCE_LEASING = 0;
-    
+
     private static final byte SUBTYPE_BURST_MINING_REWARD_RECIPIENT_ASSIGNMENT = 0;
-    
+
     private static final byte SUBTYPE_ADVANCED_PAYMENT_ESCROW_CREATION = 0;
     private static final byte SUBTYPE_ADVANCED_PAYMENT_ESCROW_SIGN = 1;
     private static final byte SUBTYPE_ADVANCED_PAYMENT_ESCROW_RESULT = 2;
@@ -73,6 +68,9 @@ public abstract class TransactionType {
     private static final int NEXT_FEE_HEIGHT = Integer.MAX_VALUE;
     private static final Fee NEXT_FEE = new Fee(Constants.ONE_NXT, 0);
     private static final Fee NEXT_ASSET_ISSUANCE_FEE = new Fee(1000 * Constants.ONE_NXT, 0);
+
+    private TransactionType() {
+    }
 
     public static TransactionType findTransactionType(byte type, byte subtype) {
         switch (type) {
@@ -183,9 +181,6 @@ public abstract class TransactionType {
         }
     }
 
-    private TransactionType() {
-    }
-
     public abstract byte getType();
 
     public abstract byte getSubtype();
@@ -197,10 +192,10 @@ public abstract class TransactionType {
     //abstract void validateAttachment(Transaction transaction) throws NxtException.ValidationException;
 
     // return false iff double spending
-    
+
 
     public abstract boolean hasRecipient();
-    
+
     public boolean isSigned() {
         return true;
     }
@@ -220,20 +215,28 @@ public abstract class TransactionType {
     }
     */
 
+    long minimumFeeNQT(int height, int appendagesSize) {
+        if (height < BASELINE_FEE_HEIGHT) {
+            return 0; // No need to validate fees before baseline block
+        }
+        Fee fee;
+        if (height >= NEXT_FEE_HEIGHT) {
+            fee = getNextFee();
+        } else {
+            fee = getBaselineFee();
+        }
+        return Convert.safeAdd(fee.getConstantFee(), Convert.safeMultiply(appendagesSize, fee.getAppendagesFee()));
+    }
+
+    protected Fee getBaselineFee() {
+        return BASELINE_FEE;
+    }
+
+    protected Fee getNextFee() {
+        return NEXT_FEE;
+    }
+
     public static abstract class Payment extends TransactionType {
-
-        private Payment() {
-        }
-
-        @Override
-        public final byte getType() {
-            return TransactionType.TYPE_PAYMENT;
-        }
-
-        @Override
-        final public boolean hasRecipient() {
-            return true;
-        }
 
         public static final TransactionType ORDINARY = new Payment() {
 
@@ -255,19 +258,22 @@ public abstract class TransactionType {
 
         };
 
-    }
-
-    public static abstract class Messaging extends TransactionType {
-
-        private Messaging() {
+        private Payment() {
         }
 
         @Override
         public final byte getType() {
-            return TransactionType.TYPE_MESSAGING;
+            return TransactionType.TYPE_PAYMENT;
         }
 
-     
+        @Override
+        final public boolean hasRecipient() {
+            return true;
+        }
+
+    }
+
+    public static abstract class Messaging extends TransactionType {
 
         public final static TransactionType ARBITRARY_MESSAGE = new Messaging() {
 
@@ -293,7 +299,6 @@ public abstract class TransactionType {
             }
 
         };
-
         public static final TransactionType ALIAS_ASSIGNMENT = new Messaging() {
 
             @Override
@@ -318,7 +323,6 @@ public abstract class TransactionType {
             }
 
         };
-
         public static final TransactionType ALIAS_SELL = new Messaging() {
 
             @Override
@@ -342,7 +346,6 @@ public abstract class TransactionType {
             }
 
         };
-
         public static final TransactionType ALIAS_BUY = new Messaging() {
 
             @Override
@@ -366,7 +369,6 @@ public abstract class TransactionType {
             }
 
         };
-
         public final static TransactionType POLL_CREATION = new Messaging() {
             @Override
             public byte getSubtype() {
@@ -382,14 +384,13 @@ public abstract class TransactionType {
             Attachment.MessagingPollCreation parseAttachment(JSONObject attachmentData) throws JSONException {
                 return new Attachment.MessagingPollCreation(attachmentData);
             }
-            
+
             @Override
             public boolean hasRecipient() {
                 return false;
             }
 
         };
-
         public final static TransactionType VOTE_CASTING = new Messaging() {
 
             @Override
@@ -413,7 +414,6 @@ public abstract class TransactionType {
             }
 
         };
-
         public static final TransactionType HUB_ANNOUNCEMENT = new Messaging() {
 
             @Override
@@ -437,7 +437,6 @@ public abstract class TransactionType {
             }
 
         };
-
         public static final Messaging ACCOUNT_INFO = new Messaging() {
 
             @Override
@@ -462,425 +461,13 @@ public abstract class TransactionType {
 
         };
 
-    }
-
-    public static abstract class ColoredCoins extends TransactionType {
-
-        private ColoredCoins() {}
-
-        @Override
-        public final byte getType() {
-            return TransactionType.TYPE_COLORED_COINS;
-        }
-
-        public static final TransactionType ASSET_ISSUANCE = new ColoredCoins() {
-
-            @Override
-            public byte getSubtype() {
-                return TransactionType.SUBTYPE_COLORED_COINS_ASSET_ISSUANCE;
-            }
-
-            @Override
-            public Fee getBaselineFee() {
-                return BASELINE_ASSET_ISSUANCE_FEE;
-            }
-
-            @Override
-            public Fee getNextFee() {
-                return NEXT_ASSET_ISSUANCE_FEE;
-            }
-
-            @Override
-            Attachment.ColoredCoinsAssetIssuance parseAttachment(ByteBuffer buffer, byte transactionVersion) throws NxtException.NotValidException {
-                return new Attachment.ColoredCoinsAssetIssuance(buffer, transactionVersion);
-            }
-
-            @Override
-            Attachment.ColoredCoinsAssetIssuance parseAttachment(JSONObject attachmentData) throws NxtException.NotValidException, JSONException {
-                return new Attachment.ColoredCoinsAssetIssuance(attachmentData);
-            }
-
-            @Override
-            public boolean hasRecipient() {
-                return false;
-            }
-
-        };
-
-        public static final TransactionType ASSET_TRANSFER = new ColoredCoins() {
-
-            @Override
-            public byte getSubtype() {
-                return TransactionType.SUBTYPE_COLORED_COINS_ASSET_TRANSFER;
-            }
-
-            @Override
-            Attachment.ColoredCoinsAssetTransfer parseAttachment(ByteBuffer buffer, byte transactionVersion) throws NxtException.NotValidException {
-                return new Attachment.ColoredCoinsAssetTransfer(buffer, transactionVersion);
-            }
-
-            @Override
-            Attachment.ColoredCoinsAssetTransfer parseAttachment(JSONObject attachmentData) throws NxtException.NotValidException, JSONException {
-                return new Attachment.ColoredCoinsAssetTransfer(attachmentData);
-            }
-
-         
-
-            @Override
-            public boolean hasRecipient() {
-                return true;
-            }
-
-        };
-
-        abstract static class ColoredCoinsOrderPlacement extends ColoredCoins {
-
-           
-
-            @Override
-            final public boolean hasRecipient() {
-                return false;
-            }
-
-        }
-
-        public static final TransactionType ASK_ORDER_PLACEMENT = new ColoredCoinsOrderPlacement() {
-
-            @Override
-            public byte getSubtype() {
-                return TransactionType.SUBTYPE_COLORED_COINS_ASK_ORDER_PLACEMENT;
-            }
-
-            @Override
-            Attachment.ColoredCoinsAskOrderPlacement parseAttachment(ByteBuffer buffer, byte transactionVersion) throws NxtException.NotValidException {
-                return new Attachment.ColoredCoinsAskOrderPlacement(buffer, transactionVersion);
-            }
-
-            @Override
-            Attachment.ColoredCoinsAskOrderPlacement parseAttachment(JSONObject attachmentData) throws NxtException.NotValidException, JSONException {
-                return new Attachment.ColoredCoinsAskOrderPlacement(attachmentData);
-            }
-
-            
-
-        };
-
-        public final static TransactionType BID_ORDER_PLACEMENT = new ColoredCoinsOrderPlacement() {
-
-            @Override
-            public byte getSubtype() {
-                return TransactionType.SUBTYPE_COLORED_COINS_BID_ORDER_PLACEMENT;
-            }
-
-            @Override
-            Attachment.ColoredCoinsBidOrderPlacement parseAttachment(ByteBuffer buffer, byte transactionVersion) throws NxtException.NotValidException {
-                return new Attachment.ColoredCoinsBidOrderPlacement(buffer, transactionVersion);
-            }
-
-            @Override
-            Attachment.ColoredCoinsBidOrderPlacement parseAttachment(JSONObject attachmentData) throws NxtException.NotValidException, JSONException {
-                return new Attachment.ColoredCoinsBidOrderPlacement(attachmentData);
-            }
-
-           
-
-        };
-
-        abstract static class ColoredCoinsOrderCancellation extends ColoredCoins {
-
-            @Override
-            public boolean hasRecipient() {
-                return false;
-            }
-
-        }
-
-        public static final TransactionType ASK_ORDER_CANCELLATION = new ColoredCoinsOrderCancellation() {
-
-            @Override
-            public byte getSubtype() {
-                return TransactionType.SUBTYPE_COLORED_COINS_ASK_ORDER_CANCELLATION;
-            }
-
-            @Override
-            Attachment.ColoredCoinsAskOrderCancellation parseAttachment(ByteBuffer buffer, byte transactionVersion) throws NxtException.NotValidException {
-                return new Attachment.ColoredCoinsAskOrderCancellation(buffer, transactionVersion);
-            }
-
-            @Override
-            Attachment.ColoredCoinsAskOrderCancellation parseAttachment(JSONObject attachmentData) throws NxtException.NotValidException, JSONException {
-                return new Attachment.ColoredCoinsAskOrderCancellation(attachmentData);
-            }
-        };
-
-        public static final TransactionType BID_ORDER_CANCELLATION = new ColoredCoinsOrderCancellation() {
-
-            @Override
-            public byte getSubtype() {
-                return TransactionType.SUBTYPE_COLORED_COINS_BID_ORDER_CANCELLATION;
-            }
-
-            @Override
-            Attachment.ColoredCoinsBidOrderCancellation parseAttachment(ByteBuffer buffer, byte transactionVersion) throws NxtException.NotValidException {
-                return new Attachment.ColoredCoinsBidOrderCancellation(buffer, transactionVersion);
-            }
-
-            @Override
-            Attachment.ColoredCoinsBidOrderCancellation parseAttachment(JSONObject attachmentData) throws NxtException.NotValidException, JSONException {
-                return new Attachment.ColoredCoinsBidOrderCancellation(attachmentData);
-            }
-
-       
-        };
-    }
-
-    public static abstract class DigitalGoods extends TransactionType {
-
-        private DigitalGoods() {
+        private Messaging() {
         }
 
         @Override
         public final byte getType() {
-            return TransactionType.TYPE_DIGITAL_GOODS;
+            return TransactionType.TYPE_MESSAGING;
         }
-
-       
-
-
-        public static final TransactionType LISTING = new DigitalGoods() {
-
-            @Override
-            public byte getSubtype() {
-                return TransactionType.SUBTYPE_DIGITAL_GOODS_LISTING;
-            }
-
-            @Override
-            Attachment.DigitalGoodsListing parseAttachment(ByteBuffer buffer, byte transactionVersion) throws NxtException.NotValidException {
-                return new Attachment.DigitalGoodsListing(buffer, transactionVersion);
-            }
-
-            @Override
-            Attachment.DigitalGoodsListing parseAttachment(JSONObject attachmentData) throws NxtException.NotValidException, JSONException {
-                return new Attachment.DigitalGoodsListing(attachmentData);
-            }
-
-
-            @Override
-            public boolean hasRecipient() {
-                return false;
-            }
-
-        };
-
-        public static final TransactionType DELISTING = new DigitalGoods() {
-
-            @Override
-            public byte getSubtype() {
-                return TransactionType.SUBTYPE_DIGITAL_GOODS_DELISTING;
-            }
-
-            @Override
-            Attachment.DigitalGoodsDelisting parseAttachment(ByteBuffer buffer, byte transactionVersion) throws NxtException.NotValidException {
-                return new Attachment.DigitalGoodsDelisting(buffer, transactionVersion);
-            }
-
-            @Override
-            Attachment.DigitalGoodsDelisting parseAttachment(JSONObject attachmentData) throws NxtException.NotValidException, JSONException {
-                return new Attachment.DigitalGoodsDelisting(attachmentData);
-            }
-
-         
-
-            @Override
-            public boolean hasRecipient() {
-                return false;
-            }
-
-        };
-
-        public static final TransactionType PRICE_CHANGE = new DigitalGoods() {
-
-            @Override
-            public byte getSubtype() {
-                return TransactionType.SUBTYPE_DIGITAL_GOODS_PRICE_CHANGE;
-            }
-
-            @Override
-            Attachment.DigitalGoodsPriceChange parseAttachment(ByteBuffer buffer, byte transactionVersion) throws NxtException.NotValidException {
-                return new Attachment.DigitalGoodsPriceChange(buffer, transactionVersion);
-            }
-
-            @Override
-            Attachment.DigitalGoodsPriceChange parseAttachment(JSONObject attachmentData) throws NxtException.NotValidException, JSONException {
-                return new Attachment.DigitalGoodsPriceChange(attachmentData);
-            }
-
-            @Override
-            public boolean hasRecipient() {
-                return false;
-            }
-
-        };
-
-        public static final TransactionType QUANTITY_CHANGE = new DigitalGoods() {
-
-            @Override
-            public byte getSubtype() {
-                return TransactionType.SUBTYPE_DIGITAL_GOODS_QUANTITY_CHANGE;
-            }
-
-            @Override
-            Attachment.DigitalGoodsQuantityChange parseAttachment(ByteBuffer buffer, byte transactionVersion) throws NxtException.NotValidException {
-                return new Attachment.DigitalGoodsQuantityChange(buffer, transactionVersion);
-            }
-
-            @Override
-            Attachment.DigitalGoodsQuantityChange parseAttachment(JSONObject attachmentData) throws NxtException.NotValidException, JSONException {
-                return new Attachment.DigitalGoodsQuantityChange(attachmentData);
-            }
-
-        
-
-            @Override
-            public boolean hasRecipient() {
-                return false;
-            }
-
-        };
-
-        public static final TransactionType PURCHASE = new DigitalGoods() {
-
-            @Override
-            public byte getSubtype() {
-                return TransactionType.SUBTYPE_DIGITAL_GOODS_PURCHASE;
-            }
-
-            @Override
-            Attachment.DigitalGoodsPurchase parseAttachment(ByteBuffer buffer, byte transactionVersion) throws NxtException.NotValidException {
-                return new Attachment.DigitalGoodsPurchase(buffer, transactionVersion);
-            }
-
-            @Override
-            Attachment.DigitalGoodsPurchase parseAttachment(JSONObject attachmentData) throws NxtException.NotValidException, JSONException {
-                return new Attachment.DigitalGoodsPurchase(attachmentData);
-            }
-
-
-            @Override
-            public boolean hasRecipient() {
-                return true;
-            }
-
-        };
-
-        public static final TransactionType DELIVERY = new DigitalGoods() {
-
-            @Override
-            public byte getSubtype() {
-                return TransactionType.SUBTYPE_DIGITAL_GOODS_DELIVERY;
-            }
-
-            @Override
-            Attachment.DigitalGoodsDelivery parseAttachment(ByteBuffer buffer, byte transactionVersion) throws NxtException.NotValidException {
-                return new Attachment.DigitalGoodsDelivery(buffer, transactionVersion);
-            }
-
-            @Override
-            Attachment.DigitalGoodsDelivery parseAttachment(JSONObject attachmentData) throws NxtException.NotValidException, JSONException {
-                return new Attachment.DigitalGoodsDelivery(attachmentData);
-            }
-
-            @Override
-            public boolean hasRecipient() {
-                return true;
-            }
-
-        };
-
-        public static final TransactionType FEEDBACK = new DigitalGoods() {
-
-            @Override
-            public byte getSubtype() {
-                return TransactionType.SUBTYPE_DIGITAL_GOODS_FEEDBACK;
-            }
-
-            @Override
-            Attachment.DigitalGoodsFeedback parseAttachment(ByteBuffer buffer, byte transactionVersion) throws NxtException.NotValidException {
-                return new Attachment.DigitalGoodsFeedback(buffer, transactionVersion);
-            }
-
-            @Override
-            Attachment.DigitalGoodsFeedback parseAttachment(JSONObject attachmentData) throws NxtException.NotValidException, JSONException {
-                return new Attachment.DigitalGoodsFeedback(attachmentData);
-            }
-
-            @Override
-            public boolean hasRecipient() {
-                return true;
-            }
-
-        };
-
-        public static final TransactionType REFUND = new DigitalGoods() {
-
-            @Override
-            public byte getSubtype() {
-                return TransactionType.SUBTYPE_DIGITAL_GOODS_REFUND;
-            }
-
-            @Override
-            Attachment.DigitalGoodsRefund parseAttachment(ByteBuffer buffer, byte transactionVersion) throws NxtException.NotValidException {
-                return new Attachment.DigitalGoodsRefund(buffer, transactionVersion);
-            }
-
-            @Override
-            Attachment.DigitalGoodsRefund parseAttachment(JSONObject attachmentData) throws NxtException.NotValidException, JSONException {
-                return new Attachment.DigitalGoodsRefund(attachmentData);
-            }
-
-            @Override
-            public boolean hasRecipient() {
-                return true;
-            }
-
-        };
-
-    }
-
-    public static abstract class AccountControl extends TransactionType {
-
-        private AccountControl() {
-        }
-
-        @Override
-        public final byte getType() {
-            return TransactionType.TYPE_ACCOUNT_CONTROL;
-        }
-
-        public static final TransactionType EFFECTIVE_BALANCE_LEASING = new AccountControl() {
-
-            @Override
-            public byte getSubtype() {
-                return TransactionType.SUBTYPE_ACCOUNT_CONTROL_EFFECTIVE_BALANCE_LEASING;
-            }
-
-            @Override
-            Attachment.AccountControlEffectiveBalanceLeasing parseAttachment(ByteBuffer buffer, byte transactionVersion) throws NxtException.NotValidException {
-                return new Attachment.AccountControlEffectiveBalanceLeasing(buffer, transactionVersion);
-            }
-
-            @Override
-            Attachment.AccountControlEffectiveBalanceLeasing parseAttachment(JSONObject attachmentData) throws NxtException.NotValidException {
-                return new Attachment.AccountControlEffectiveBalanceLeasing(attachmentData);
-            }
-
-
-            @Override
-            public boolean hasRecipient() {
-                return true;
-            }
-
-        };
 
     }
     
@@ -1310,25 +897,404 @@ public abstract class TransactionType {
         };
     }*/
 
-    long minimumFeeNQT(int height, int appendagesSize) {
-        if (height < BASELINE_FEE_HEIGHT) {
-            return 0; // No need to validate fees before baseline block
+    public static abstract class ColoredCoins extends TransactionType {
+
+        public static final TransactionType ASSET_ISSUANCE = new ColoredCoins() {
+
+            @Override
+            public byte getSubtype() {
+                return TransactionType.SUBTYPE_COLORED_COINS_ASSET_ISSUANCE;
+            }
+
+            @Override
+            public Fee getBaselineFee() {
+                return BASELINE_ASSET_ISSUANCE_FEE;
+            }
+
+            @Override
+            public Fee getNextFee() {
+                return NEXT_ASSET_ISSUANCE_FEE;
+            }
+
+            @Override
+            Attachment.ColoredCoinsAssetIssuance parseAttachment(ByteBuffer buffer, byte transactionVersion) throws NxtException.NotValidException {
+                return new Attachment.ColoredCoinsAssetIssuance(buffer, transactionVersion);
+            }
+
+            @Override
+            Attachment.ColoredCoinsAssetIssuance parseAttachment(JSONObject attachmentData) throws NxtException.NotValidException, JSONException {
+                return new Attachment.ColoredCoinsAssetIssuance(attachmentData);
+            }
+
+            @Override
+            public boolean hasRecipient() {
+                return false;
+            }
+
+        };
+        public static final TransactionType ASSET_TRANSFER = new ColoredCoins() {
+
+            @Override
+            public byte getSubtype() {
+                return TransactionType.SUBTYPE_COLORED_COINS_ASSET_TRANSFER;
+            }
+
+            @Override
+            Attachment.ColoredCoinsAssetTransfer parseAttachment(ByteBuffer buffer, byte transactionVersion) throws NxtException.NotValidException {
+                return new Attachment.ColoredCoinsAssetTransfer(buffer, transactionVersion);
+            }
+
+            @Override
+            Attachment.ColoredCoinsAssetTransfer parseAttachment(JSONObject attachmentData) throws NxtException.NotValidException, JSONException {
+                return new Attachment.ColoredCoinsAssetTransfer(attachmentData);
+            }
+
+
+            @Override
+            public boolean hasRecipient() {
+                return true;
+            }
+
+        };
+        public static final TransactionType ASK_ORDER_PLACEMENT = new ColoredCoinsOrderPlacement() {
+
+            @Override
+            public byte getSubtype() {
+                return TransactionType.SUBTYPE_COLORED_COINS_ASK_ORDER_PLACEMENT;
+            }
+
+            @Override
+            Attachment.ColoredCoinsAskOrderPlacement parseAttachment(ByteBuffer buffer, byte transactionVersion) throws NxtException.NotValidException {
+                return new Attachment.ColoredCoinsAskOrderPlacement(buffer, transactionVersion);
+            }
+
+            @Override
+            Attachment.ColoredCoinsAskOrderPlacement parseAttachment(JSONObject attachmentData) throws NxtException.NotValidException, JSONException {
+                return new Attachment.ColoredCoinsAskOrderPlacement(attachmentData);
+            }
+
+
+        };
+        public final static TransactionType BID_ORDER_PLACEMENT = new ColoredCoinsOrderPlacement() {
+
+            @Override
+            public byte getSubtype() {
+                return TransactionType.SUBTYPE_COLORED_COINS_BID_ORDER_PLACEMENT;
+            }
+
+            @Override
+            Attachment.ColoredCoinsBidOrderPlacement parseAttachment(ByteBuffer buffer, byte transactionVersion) throws NxtException.NotValidException {
+                return new Attachment.ColoredCoinsBidOrderPlacement(buffer, transactionVersion);
+            }
+
+            @Override
+            Attachment.ColoredCoinsBidOrderPlacement parseAttachment(JSONObject attachmentData) throws NxtException.NotValidException, JSONException {
+                return new Attachment.ColoredCoinsBidOrderPlacement(attachmentData);
+            }
+
+
+        };
+        public static final TransactionType ASK_ORDER_CANCELLATION = new ColoredCoinsOrderCancellation() {
+
+            @Override
+            public byte getSubtype() {
+                return TransactionType.SUBTYPE_COLORED_COINS_ASK_ORDER_CANCELLATION;
+            }
+
+            @Override
+            Attachment.ColoredCoinsAskOrderCancellation parseAttachment(ByteBuffer buffer, byte transactionVersion) throws NxtException.NotValidException {
+                return new Attachment.ColoredCoinsAskOrderCancellation(buffer, transactionVersion);
+            }
+
+            @Override
+            Attachment.ColoredCoinsAskOrderCancellation parseAttachment(JSONObject attachmentData) throws NxtException.NotValidException, JSONException {
+                return new Attachment.ColoredCoinsAskOrderCancellation(attachmentData);
+            }
+        };
+        public static final TransactionType BID_ORDER_CANCELLATION = new ColoredCoinsOrderCancellation() {
+
+            @Override
+            public byte getSubtype() {
+                return TransactionType.SUBTYPE_COLORED_COINS_BID_ORDER_CANCELLATION;
+            }
+
+            @Override
+            Attachment.ColoredCoinsBidOrderCancellation parseAttachment(ByteBuffer buffer, byte transactionVersion) throws NxtException.NotValidException {
+                return new Attachment.ColoredCoinsBidOrderCancellation(buffer, transactionVersion);
+            }
+
+            @Override
+            Attachment.ColoredCoinsBidOrderCancellation parseAttachment(JSONObject attachmentData) throws NxtException.NotValidException, JSONException {
+                return new Attachment.ColoredCoinsBidOrderCancellation(attachmentData);
+            }
+
+
+        };
+
+        private ColoredCoins() {
         }
-        Fee fee;
-        if (height >= NEXT_FEE_HEIGHT) {
-            fee = getNextFee();
-        } else {
-            fee = getBaselineFee();
+
+        @Override
+        public final byte getType() {
+            return TransactionType.TYPE_COLORED_COINS;
         }
-        return Convert.safeAdd(fee.getConstantFee(), Convert.safeMultiply(appendagesSize, fee.getAppendagesFee()));
+
+        abstract static class ColoredCoinsOrderPlacement extends ColoredCoins {
+
+
+            @Override
+            final public boolean hasRecipient() {
+                return false;
+            }
+
+        }
+
+        abstract static class ColoredCoinsOrderCancellation extends ColoredCoins {
+
+            @Override
+            public boolean hasRecipient() {
+                return false;
+            }
+
+        }
     }
 
-    protected Fee getBaselineFee() {
-        return BASELINE_FEE;
+    public static abstract class DigitalGoods extends TransactionType {
+
+        public static final TransactionType LISTING = new DigitalGoods() {
+
+            @Override
+            public byte getSubtype() {
+                return TransactionType.SUBTYPE_DIGITAL_GOODS_LISTING;
+            }
+
+            @Override
+            Attachment.DigitalGoodsListing parseAttachment(ByteBuffer buffer, byte transactionVersion) throws NxtException.NotValidException {
+                return new Attachment.DigitalGoodsListing(buffer, transactionVersion);
+            }
+
+            @Override
+            Attachment.DigitalGoodsListing parseAttachment(JSONObject attachmentData) throws NxtException.NotValidException, JSONException {
+                return new Attachment.DigitalGoodsListing(attachmentData);
+            }
+
+
+            @Override
+            public boolean hasRecipient() {
+                return false;
+            }
+
+        };
+        public static final TransactionType DELISTING = new DigitalGoods() {
+
+            @Override
+            public byte getSubtype() {
+                return TransactionType.SUBTYPE_DIGITAL_GOODS_DELISTING;
+            }
+
+            @Override
+            Attachment.DigitalGoodsDelisting parseAttachment(ByteBuffer buffer, byte transactionVersion) throws NxtException.NotValidException {
+                return new Attachment.DigitalGoodsDelisting(buffer, transactionVersion);
+            }
+
+            @Override
+            Attachment.DigitalGoodsDelisting parseAttachment(JSONObject attachmentData) throws NxtException.NotValidException, JSONException {
+                return new Attachment.DigitalGoodsDelisting(attachmentData);
+            }
+
+
+            @Override
+            public boolean hasRecipient() {
+                return false;
+            }
+
+        };
+        public static final TransactionType PRICE_CHANGE = new DigitalGoods() {
+
+            @Override
+            public byte getSubtype() {
+                return TransactionType.SUBTYPE_DIGITAL_GOODS_PRICE_CHANGE;
+            }
+
+            @Override
+            Attachment.DigitalGoodsPriceChange parseAttachment(ByteBuffer buffer, byte transactionVersion) throws NxtException.NotValidException {
+                return new Attachment.DigitalGoodsPriceChange(buffer, transactionVersion);
+            }
+
+            @Override
+            Attachment.DigitalGoodsPriceChange parseAttachment(JSONObject attachmentData) throws NxtException.NotValidException, JSONException {
+                return new Attachment.DigitalGoodsPriceChange(attachmentData);
+            }
+
+            @Override
+            public boolean hasRecipient() {
+                return false;
+            }
+
+        };
+        public static final TransactionType QUANTITY_CHANGE = new DigitalGoods() {
+
+            @Override
+            public byte getSubtype() {
+                return TransactionType.SUBTYPE_DIGITAL_GOODS_QUANTITY_CHANGE;
+            }
+
+            @Override
+            Attachment.DigitalGoodsQuantityChange parseAttachment(ByteBuffer buffer, byte transactionVersion) throws NxtException.NotValidException {
+                return new Attachment.DigitalGoodsQuantityChange(buffer, transactionVersion);
+            }
+
+            @Override
+            Attachment.DigitalGoodsQuantityChange parseAttachment(JSONObject attachmentData) throws NxtException.NotValidException, JSONException {
+                return new Attachment.DigitalGoodsQuantityChange(attachmentData);
+            }
+
+
+            @Override
+            public boolean hasRecipient() {
+                return false;
+            }
+
+        };
+        public static final TransactionType PURCHASE = new DigitalGoods() {
+
+            @Override
+            public byte getSubtype() {
+                return TransactionType.SUBTYPE_DIGITAL_GOODS_PURCHASE;
+            }
+
+            @Override
+            Attachment.DigitalGoodsPurchase parseAttachment(ByteBuffer buffer, byte transactionVersion) throws NxtException.NotValidException {
+                return new Attachment.DigitalGoodsPurchase(buffer, transactionVersion);
+            }
+
+            @Override
+            Attachment.DigitalGoodsPurchase parseAttachment(JSONObject attachmentData) throws NxtException.NotValidException, JSONException {
+                return new Attachment.DigitalGoodsPurchase(attachmentData);
+            }
+
+
+            @Override
+            public boolean hasRecipient() {
+                return true;
+            }
+
+        };
+        public static final TransactionType DELIVERY = new DigitalGoods() {
+
+            @Override
+            public byte getSubtype() {
+                return TransactionType.SUBTYPE_DIGITAL_GOODS_DELIVERY;
+            }
+
+            @Override
+            Attachment.DigitalGoodsDelivery parseAttachment(ByteBuffer buffer, byte transactionVersion) throws NxtException.NotValidException {
+                return new Attachment.DigitalGoodsDelivery(buffer, transactionVersion);
+            }
+
+            @Override
+            Attachment.DigitalGoodsDelivery parseAttachment(JSONObject attachmentData) throws NxtException.NotValidException, JSONException {
+                return new Attachment.DigitalGoodsDelivery(attachmentData);
+            }
+
+            @Override
+            public boolean hasRecipient() {
+                return true;
+            }
+
+        };
+        public static final TransactionType FEEDBACK = new DigitalGoods() {
+
+            @Override
+            public byte getSubtype() {
+                return TransactionType.SUBTYPE_DIGITAL_GOODS_FEEDBACK;
+            }
+
+            @Override
+            Attachment.DigitalGoodsFeedback parseAttachment(ByteBuffer buffer, byte transactionVersion) throws NxtException.NotValidException {
+                return new Attachment.DigitalGoodsFeedback(buffer, transactionVersion);
+            }
+
+            @Override
+            Attachment.DigitalGoodsFeedback parseAttachment(JSONObject attachmentData) throws NxtException.NotValidException, JSONException {
+                return new Attachment.DigitalGoodsFeedback(attachmentData);
+            }
+
+            @Override
+            public boolean hasRecipient() {
+                return true;
+            }
+
+        };
+        public static final TransactionType REFUND = new DigitalGoods() {
+
+            @Override
+            public byte getSubtype() {
+                return TransactionType.SUBTYPE_DIGITAL_GOODS_REFUND;
+            }
+
+            @Override
+            Attachment.DigitalGoodsRefund parseAttachment(ByteBuffer buffer, byte transactionVersion) throws NxtException.NotValidException {
+                return new Attachment.DigitalGoodsRefund(buffer, transactionVersion);
+            }
+
+            @Override
+            Attachment.DigitalGoodsRefund parseAttachment(JSONObject attachmentData) throws NxtException.NotValidException, JSONException {
+                return new Attachment.DigitalGoodsRefund(attachmentData);
+            }
+
+            @Override
+            public boolean hasRecipient() {
+                return true;
+            }
+
+        };
+
+        private DigitalGoods() {
+        }
+
+        @Override
+        public final byte getType() {
+            return TransactionType.TYPE_DIGITAL_GOODS;
+        }
+
     }
 
-    protected Fee getNextFee() {
-        return NEXT_FEE;
+    public static abstract class AccountControl extends TransactionType {
+
+        public static final TransactionType EFFECTIVE_BALANCE_LEASING = new AccountControl() {
+
+            @Override
+            public byte getSubtype() {
+                return TransactionType.SUBTYPE_ACCOUNT_CONTROL_EFFECTIVE_BALANCE_LEASING;
+            }
+
+            @Override
+            Attachment.AccountControlEffectiveBalanceLeasing parseAttachment(ByteBuffer buffer, byte transactionVersion) throws NxtException.NotValidException {
+                return new Attachment.AccountControlEffectiveBalanceLeasing(buffer, transactionVersion);
+            }
+
+            @Override
+            Attachment.AccountControlEffectiveBalanceLeasing parseAttachment(JSONObject attachmentData) throws NxtException.NotValidException {
+                return new Attachment.AccountControlEffectiveBalanceLeasing(attachmentData);
+            }
+
+
+            @Override
+            public boolean hasRecipient() {
+                return true;
+            }
+
+        };
+
+        private AccountControl() {
+        }
+
+        @Override
+        public final byte getType() {
+            return TransactionType.TYPE_ACCOUNT_CONTROL;
+        }
+
     }
 
     public static final class Fee {

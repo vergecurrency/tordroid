@@ -4,8 +4,8 @@ import com.vergepay.core.coins.CoinType;
 import com.vergepay.core.coins.nxt.Account;
 import com.vergepay.core.coins.nxt.Convert;
 import com.vergepay.core.coins.nxt.Crypto;
-import com.vergepay.core.wallet.AbstractAddress;
 import com.vergepay.core.exceptions.AddressMalformedException;
+import com.vergepay.core.wallet.AbstractAddress;
 
 import javax.annotation.Nullable;
 

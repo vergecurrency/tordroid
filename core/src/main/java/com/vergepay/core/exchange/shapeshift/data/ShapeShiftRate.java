@@ -1,13 +1,12 @@
 package com.vergepay.core.exchange.shapeshift.data;
 
+import static com.vergepay.core.Preconditions.checkState;
+
 import com.vergepay.core.coins.CoinID;
 import com.vergepay.core.coins.CoinType;
 import com.vergepay.core.util.ExchangeRate;
-import com.vergepay.core.util.ExchangeRateBase;
 
 import org.json.JSONObject;
-
-import static com.vergepay.core.Preconditions.checkState;
 
 /**
  * @author John L. Jegutanis

@@ -1,7 +1,5 @@
 package com.vergepay.core.coins.families;
 
-import com.vergepay.core.coins.ValueType;
-
 /**
  * @author John L. Jegutanis
  */
