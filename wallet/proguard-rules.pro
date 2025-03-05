@@ -24,6 +24,7 @@
 
 -dontoptimize
 -dontobfuscate
+-dontwarn com.google.protobuf.GeneratedMessage$BuilderParent
 -dontwarn sun.misc.Unsafe
 -dontwarn com.google.common.collect.MinMaxPriorityQueue
 -dontwarn sun.misc.Unsafe
