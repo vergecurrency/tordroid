@@ -57,6 +57,7 @@ android {
         implementation 'com.google.guava:guava:23.0' //TODO ToStringHelper update for 19.0+
         implementation 'com.google.code.findbugs:jsr305:3.0.2' // most recent as of 7/2023
         implementation 'com.madgag.spongycastle:core:1.58.0.0' // most recent as of 7/2023
+        implementation 'com.google.protobuf:protobuf-java:4.28.3' // most used as of 7/23/2024
         implementation 'com.google.protobuf:protobuf-java:4.29.3' // march2025
         implementation 'com.google.zxing:core:3.5.3' //most recent as of 7/23/2024
         implementation 'ch.acra:acra:4.11.1' // startpullingfromnewlocation
