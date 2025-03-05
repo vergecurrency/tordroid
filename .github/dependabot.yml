@@ -11,4 +11,4 @@ updates:
       - "/core"
       - "/"
     schedule:
-      interval: "weekly"
+      interval: "daily" # Check for updates daily
