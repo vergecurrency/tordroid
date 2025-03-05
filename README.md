@@ -1,5 +1,9 @@
-Verge Tor Wallet for Android
+Verge Tor Wallet for Android 
 ============================
+
+- Requires orbot to be running in background
+- App starts up with socks5 proxy on 127.0.0.1:9050
+- Current API 35
 
 <p align="left">
   <a href="https://github.com/vergecurrency/tordroid/actions/workflows/android.yml">
