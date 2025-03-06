@@ -1,7 +1,7 @@
 Verge Tor Wallet for Android 
 ============================
 
-- Requires orbot to be running in background
+- Requires orbot to be running in background (https://gitlab.com/guardianproject/orbot)
 - App starts up with socks5 proxy on 127.0.0.1:9050
 - Current API 35
 
