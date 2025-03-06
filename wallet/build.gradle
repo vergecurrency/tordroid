@@ -1,8 +1,8 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 34
-    buildToolsVersion '34.0.0'
+    compileSdkVersion 35
+    buildToolsVersion '35.0.0'
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -12,7 +12,7 @@ android {
 
     defaultConfig {
         applicationId "com.vergepay.wallet"
-        minSdk 31
+        minSdk 33
         targetSdkVersion 35
         compileSdkVersion 35
         ndkVersion "21.3.6528147" //shouldn't matter but gradle complains
@@ -57,7 +57,7 @@ android {
         implementation 'com.google.guava:guava:23.0' //TODO ToStringHelper update for 19.0+
         implementation 'com.google.code.findbugs:jsr305:3.0.2' // most recent as of 7/2023
         implementation 'com.madgag.spongycastle:core:1.58.0.0' // most recent as of 7/2023
-        implementation 'com.google.protobuf:protobuf-java:4.30.0' // march2025
+        implementation 'com.google.protobuf:protobuf-java:3.25.6' // march2025
         implementation 'com.google.zxing:core:3.5.3' // march2025
         implementation 'ch.acra:acra:4.11.1' // startpullingfromnewlocation
         implementation 'com.android.support:support-v4-preferencefragment:1.0.0@aar'
