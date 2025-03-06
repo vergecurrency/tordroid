@@ -12,11 +12,11 @@ android {
 
     defaultConfig {
         applicationId "com.vergepay.wallet"
-        minSdk 33
+        minSdk 31
         targetSdkVersion 35
         compileSdkVersion 35
         ndkVersion "21.3.6528147" //shouldn't matter but gradle complains
-        versionCode 20590
+        versionCode 20690
         versionName "v2.9"
         ndk {
             abiFilters 'armeabi-v7a', 'arm64-v8a', 'x86_64'
