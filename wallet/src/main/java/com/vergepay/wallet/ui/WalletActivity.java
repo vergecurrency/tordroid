@@ -1,11 +1,11 @@
 package com.vergepay.wallet.ui;
 
-
+import static com.vergepay.wallet.ui.NavDrawerItemType.ITEM_COIN;
+import static com.vergepay.wallet.ui.NavDrawerItemType.ITEM_OVERVIEW;
+import static com.vergepay.wallet.ui.NavDrawerItemType.ITEM_SECTION_TITLE;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.ActivityNotFoundException;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -13,12 +13,10 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.view.ActionMode;
 import android.view.Menu;
@@ -52,12 +50,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Nullable;
-
-import static com.vergepay.wallet.ui.NavDrawerItemType.ITEM_COIN;
-import static com.vergepay.wallet.ui.NavDrawerItemType.ITEM_OVERVIEW;
-import static com.vergepay.wallet.ui.NavDrawerItemType.ITEM_SECTION_TITLE;
-import static com.vergepay.wallet.ui.NavDrawerItemType.ITEM_TRADE;
-
 
 /**
  * @author John L. Jegutanis
@@ -664,6 +656,10 @@ final public class WalletActivity extends BaseWalletActivity implements
             return true;
         } else if (id == R.id.action_about) {
             startActivity(new Intent(WalletActivity.this, AboutActivity.class));
+            return true;
+        } else if (id == R.id.action_get_verge) {
+            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://vergecurrency.com/get-verge/"));
+            startActivity(browserIntent);
             return true;
         }
 

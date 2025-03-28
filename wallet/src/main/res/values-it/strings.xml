@@ -7,7 +7,8 @@
 	<string name="button_default">Default</string>
 	<string name="button_execute">Execute</string>
 	<string name="yes">Yes</string>
-    <string name="no">No</string>
+	<string name="no">No</string>
+	<string name="action_get_verge">Comprare Verge</string>
 	<string name="wallet_is_not_locked_message">Your wallet is not locked</string>
 	<string name="override_wallet_warning_title">Override existing wallet?</string>
     <string name="override_new_wallet_warning_message">If you create a new wallet, your existing wallet will be lost unless you backed up your <i>recovery phrase</i>.</string>

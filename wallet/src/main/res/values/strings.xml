@@ -13,6 +13,7 @@
     <string name="action_about">About</string>
     <string name="action_refresh">Refresh</string>
     <string name="action_sign_verify_message">Sign/verify message</string>
+    <string name="action_get_verge">Get Verge</string>
     <string name="action_account_details">Account details</string>
     <string name="action_exchange_history">Exchange history</string>
     <string name="action_new_address">New address</string>

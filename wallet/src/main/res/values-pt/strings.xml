@@ -8,6 +8,7 @@
     <string name="action_sweep_wallet">Varrer carteira</string>
     <string name="action_settings">Definições</string>
     <string name="action_about">Sobre</string>
+    <string name="action_get_verge">Comprar Moedas</string>
     <string name="action_refresh">Atualizar</string>
     <string name="action_sign_verify_message">Assinar/Verificar mensagem</string>
     <string name="action_account_details">Detalhes da conta</string>
