@@ -41,7 +41,7 @@ import javax.annotation.Nonnull;
  * @author Andreas Schildbach
  * @author John L. Jegutanis
  */
-public final class CurrencyTextView extends TextView {
+public final class CurrencyTextView extends android.support.v7.widget.AppCompatTextView {
     private ValueType type = null;
     private Value amount = null;
     private MonetaryFormat format = null;
