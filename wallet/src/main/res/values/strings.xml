@@ -113,7 +113,6 @@
     <string name="received_from">received from</string>
     <string name="get_tx_info_error">Could not get transaction information</string>
     <string name="disconnected_label">No connection</string>
-    <string name="connecting_label" translatable="false">Establishing Connection...</string>
     <string name="no_wallet_pocket_selected">No wallet account selected</string>
     <string name="get_tx_broadcast_error">Transaction broadcast error</string>
     <!-- Receive fragment -->
@@ -429,6 +428,5 @@ This disclaimer was amended for the last time on January 1st, 2016.</string>
 	<string name="touch_fingerprint_label">Scan your finger to unlock app</string>
     <string name="remove_app_lock">Remove app lock</string>
     <string name="https_vergecurrency_com_get_verge" translatable="false">https://vergecurrency.com/get-verge/</string>
-    <string name="network_connected" translatable="false">Network Connected</string>
 
 </resources>
