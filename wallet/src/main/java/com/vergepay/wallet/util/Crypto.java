@@ -51,12 +51,12 @@ import static org.spongycastle.crypto.tls.HashAlgorithm.md5;
 
 /**
  * This class encrypts and decrypts a string in a manner that is compatible with OpenSSL.
- *
+ * <p>
  * If you encrypt a string with this class you can decrypt it with the OpenSSL command: openssl enc -d -aes-256-cbc -a
  * -in cipher.txt -out plain.txt -pass pass:aTestPassword
- *
+ * <p>
  * where: cipher.txt = file containing the cipher text plain.txt - where you want the plaintext to be saved
- *
+ * <p>
  * substitute your password for "aTestPassword" or remove the "-pass" parameter to be prompted.
  *
  * @author jim

@@ -76,7 +76,7 @@ public class AvailableAccountsAdaptor extends BaseAdapter {
 
     /**
      * Create an adaptor that contains all accounts that are in the validTypes list.
-     *
+     * <p>
      * If includeTypes is true, it will also include any coin type that is in not in accounts but is
      * in the validTypes.
      */
@@ -93,7 +93,7 @@ public class AvailableAccountsAdaptor extends BaseAdapter {
 
     /**
      * Update the adaptor to include all accounts that are in the validTypes list.
-     *
+     * <p>
      * If includeTypes is true, it will also include any coin type that is in not in accounts but is
      * in the validTypes.
      */

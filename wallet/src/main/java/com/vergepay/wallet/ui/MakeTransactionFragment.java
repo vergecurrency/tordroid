@@ -437,7 +437,7 @@ public class MakeTransactionFragment extends Fragment {
 
     /**
      * Makes a call to ShapeShift about the time left for the trade
-     *
+     * <p>
      * Note: do not call this from the main thread!
      */
     @Nullable

@@ -90,7 +90,7 @@ public class FontFitTextView extends TextView {
     }
 
     @Override
-    /** {@inheritDoc} */
+    /* {@inheritDoc} */
     public void setText(CharSequence text, BufferType type) {
         final String DOUBLE_BYTE_WORDJOINER = "\u2060";
         String fixString = "";

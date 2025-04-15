@@ -15,8 +15,8 @@ import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 
-/**
- * @author John L. Jegutanis
+/*
+  @author John L. Jegutanis
  */
 
 

@@ -41,7 +41,7 @@ public abstract class MarketInfoPollTask extends TimerTask {
     /**
      * Makes a call to ShapeShift about the market info of a pair. If case of a problem, it will
      * retry 3 times and return null if there was an error.
-     *
+     * <p>
      * Note: do not call this from the main thread!
      */
     @Nullable

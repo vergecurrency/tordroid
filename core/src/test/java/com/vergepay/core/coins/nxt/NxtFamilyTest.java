@@ -1,7 +1,7 @@
 package com.vergepay.core.coins.nxt;
 
-/**
- * @author John L. Jegutanis
+/*
+  @author John L. Jegutanis
  */
 
 import static org.junit.Assert.assertArrayEquals;

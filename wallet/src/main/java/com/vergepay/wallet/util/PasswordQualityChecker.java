@@ -15,9 +15,9 @@ import java.util.Set;
 
 /**
  * @author John L. Jegutanis
- *
+ * <p>
  * This class checks the quality of the provided password, for example if it is too common.
- *
+ * <p>
  * The common passwords list is provided by Mark Burnett
  * https://xato.net/passwords/more-top-worst-passwords/
  */

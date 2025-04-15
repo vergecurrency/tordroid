@@ -60,7 +60,7 @@
     <string name="send">Enviar</string>
     <string name="trade">Cambiar</string>
     <string name="receive">Receber</string>
-    <string name="welcome_text">Bem vindo à carteira Verge TORdroid</string>
+    <string name="welcome_text">Bem-vindo à carteira Verge TORdroid</string>
     <string name="create_wallet">Criar uma nova carteira</string>
     <string name="restore_wallet">Restaurar uma carteira</string>
     <string name="override_wallet_warning_title">Substituir carteira existente?</string>
