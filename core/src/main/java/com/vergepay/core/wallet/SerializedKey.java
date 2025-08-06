@@ -84,6 +84,7 @@ public class SerializedKey implements Serializable {
         for (CoinType type : CoinID.getSupportedCoins()) {
             if (version == type.getDumpedPrivateKeyHeader()) {
                 isCompatible = true;
+                break;
             }
         }
         if (!isCompatible) {
