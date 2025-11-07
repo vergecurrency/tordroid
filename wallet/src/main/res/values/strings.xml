@@ -70,7 +70,7 @@
     <string name="trade">Exchange</string>
     <string name="receive">Receive</string>
     <!-- Welcome fragment -->
-    <string name="welcome_text">The Verge Android Wallet for TOR</string>
+    <string name="welcome_text">Verge Android Wallet (orbot required)</string>
     <string name="create_wallet">Create a new wallet</string>
     <string name="restore_wallet">Restore a wallet</string>
     <!-- Intro -->
