@@ -3,7 +3,22 @@ Verge Tor Wallet for Android
 
 - Requires orbot to be running in background (https://gitlab.com/guardianproject/orbot)
 - App starts up with socks5 proxy on 127.0.0.1:9050
-- Current API 35
+- Current API 36
+
+The Play store variants sandbox traffic more heavily, so Tordroid’s attempts to connect through Orbot fail.
+This is why Orbot works on physical devices but fails inside modern AVD images.
+The fix: Use a “Generic x86_64 – Android (AOSP)” system image, NOT Google Play
+This is the only consistent method that allows Orbot’s VPN mode or socks proxy to run without SELinux blocks.
+Use one of these AVD images:
+✅ API 30 (Android 11) – AOSP x86_64
+✅ API 29 (Android 10) – AOSP x86_64
+✅ API 28 (Android 9) – AOSP x86_64
+✅ API 23 (Android 6) – AOSP x86 (if you want super stable)
+
+Only the AOSP images have permissive-enough SELinux and permitted VPN API behavior.
+You must choose AOSP / “Android” (the plain one) — not:
+❌ Google Play
+❌ Google APIs
 
 <p align="left">
   <a href="https://github.com/vergecurrency/tordroid/actions/workflows/android.yml">
