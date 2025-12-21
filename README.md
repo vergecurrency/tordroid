@@ -26,6 +26,7 @@ You must choose AOSP / “Android” (the plain one) — not:<br>
   </a>
 </p>
 
+This app connects to a Verge Electrum Server.<br>
 Check the status of all XVG electrum servers here: <a href="https://1209k.com/bitcoin-eye/ele.php?chain=xvg" target="_blank">https://1209k.com/bitcoin-eye/ele.php?chain=xvg</a>
 
 ## Building the app
