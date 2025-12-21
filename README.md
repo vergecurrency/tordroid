@@ -26,6 +26,8 @@ You must choose AOSP / “Android” (the plain one) — not:<br>
   </a>
 </p>
 
+Check the status of all XVG electrum servers here: <a href="https://1209k.com/bitcoin-eye/ele.php?chain=xvg" target="_blank">https://1209k.com/bitcoin-eye/ele.php?chain=xvg</a>
+
 ## Building the app
 
 Install [Android Studio](https://developer.android.com/sdk/installing/studio.html). Once it is
