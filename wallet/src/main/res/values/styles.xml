@@ -96,12 +96,6 @@
         <item name="android:background">@drawable/generic_red_circle</item>
     </style>
 
-    <!-- PagerTabStrip style -->
-    <style name="PagerTabStrip" parent="NormalText">
-        <item name="android:background">@color/actionbar_bg</item>
-        <item name="android:textColor">@color/actionbar_fg</item>
-    </style>
-
     <!-- Widget amount style -->
     <style name="Amount" parent="NormalText">
         <item name="android:singleLine">true</item>
