@@ -11,13 +11,6 @@
              which is used to tint widgets -->
         <item name="colorAccent">@color/accent</item>
     </style>
-	
-	<style name="PagerTabStrip">
-    <item name="android:textColor">@color/white</item>
-    <item name="tabIndicatorColor">@color/colorAccent</item>
-    <item name="android:background">@color/primary_700</item>
-    </style>
-
 
     <style name="AppTheme" parent="Theme.AppCompat">
         <!-- colorPrimary is used for the default action bar background -->
@@ -94,6 +87,12 @@
 
     <style name="GenericCircleRed" parent="GenericCircle">
         <item name="android:background">@drawable/generic_red_circle</item>
+    </style>
+
+    <!-- PagerTabStrip style -->
+    <style name="PagerTabStrip" parent="NormalText">
+        <item name="android:background">@color/actionbar_bg</item>
+        <item name="android:textColor">@color/actionbar_fg</item>
     </style>
 
     <!-- Widget amount style -->
