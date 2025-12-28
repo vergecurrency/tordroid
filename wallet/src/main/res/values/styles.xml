@@ -15,7 +15,9 @@
 	<style name="PagerTabStrip">
     <item name="android:textColor">@color/white</item>
     <item name="tabIndicatorColor">@color/colorAccent</item>
-</style>
+    <item name="android:background">@color/primary_700</item>
+    </style>
+
 
     <style name="AppTheme" parent="Theme.AppCompat">
         <!-- colorPrimary is used for the default action bar background -->
