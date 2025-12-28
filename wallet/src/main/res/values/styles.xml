@@ -11,6 +11,11 @@
              which is used to tint widgets -->
         <item name="colorAccent">@color/accent</item>
     </style>
+	
+	<style name="PagerTabStrip">
+    <item name="android:textColor">@color/white</item>
+    <item name="tabIndicatorColor">@color/colorAccent</item>
+</style>
 
     <style name="AppTheme" parent="Theme.AppCompat">
         <!-- colorPrimary is used for the default action bar background -->

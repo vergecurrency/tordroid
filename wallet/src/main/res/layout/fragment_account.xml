@@ -26,8 +26,7 @@
     android:paddingTop="4dp"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingBottom="4dp"
-    android:textColor="@color/white"
-    android:tabIndicatorColor="@color/colorAccent"/>
+    android:textColor="@color/white"/>
 
     </android.support.v4.view.ViewPager>
 
