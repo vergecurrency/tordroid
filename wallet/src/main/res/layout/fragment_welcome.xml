@@ -18,14 +18,32 @@
             android:padding="@dimen/standard_margin"
             android:src="@drawable/intro_logo"/>
 
-        <TextView
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_weight="0"
-            android:gravity="center_vertical|center_horizontal"
-            android:text="@string/welcome_text"
-            android:textAppearance="?android:attr/textAppearanceLarge"/>
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/welcome_title"
+                android:textColor="@color/white"
+                android:textSize="34sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/quarter_standard_margin"
+                android:gravity="center"
+                android:text="@string/welcome_subtitle"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -55,6 +73,5 @@
         </LinearLayout>
     </LinearLayout>
 </FrameLayout>
-
 
 

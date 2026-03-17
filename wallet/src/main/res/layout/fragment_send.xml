@@ -22,6 +22,17 @@
             android:paddingRight="@dimen/activity_horizontal_margin"
             android:paddingTop="@dimen/activity_vertical_margin">
 
+            <TextView
+                style="@style/NormalText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/half_standard_margin"
+                android:layout_marginBottom="@dimen/activity_vertical_margin"
+                android:fontFamily="sans-serif-medium"
+                android:gravity="center"
+                android:text="@string/page_label_send_xvg"
+                android:textSize="20sp" />
+
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="match_parent"

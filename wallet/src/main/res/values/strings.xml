@@ -70,7 +70,8 @@
     <string name="trade">Exchange</string>
     <string name="receive">Receive</string>
     <!-- Welcome fragment -->
-    <string name="welcome_text">Verge Android Wallet (orbot required)</string>
+    <string name="welcome_title">Verge Tor Wallet</string>
+    <string name="welcome_subtitle">(requires Orbot/Tor running)</string>
     <string name="create_wallet">Create a new wallet</string>
     <string name="restore_wallet">Restore a wallet</string>
     <!-- Intro -->
@@ -100,6 +101,8 @@
     <string name="wallet_update_message">A new version of TORdroid is available, it contains new features and fixes.</string>
     <string name="pay_with">Send with</string>
     <string name="exchange_and_pay_title">Exchange and send</string>
+    <string name="page_label_receive_xvg">Receive $XVG</string>
+    <string name="page_label_send_xvg">Send $XVG</string>
     <!-- PayToDialog-->
     <!-- Ambiguous address means that the wallet cannot deduce the correct address coin type -->
     <string name="ambiguous_address_title">Ambiguous address</string>
