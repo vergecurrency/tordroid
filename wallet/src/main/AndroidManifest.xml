@@ -111,6 +111,7 @@
             android:windowSoftInputMode="stateAlwaysHidden"/>
         <activity
             android:name="com.vergepay.wallet.ui.AboutActivity"
+            android:parentActivityName="com.vergepay.wallet.ui.WalletActivity"
             android:label="@string/title_activity_about"
             android:theme="@style/AppTheme">
             <meta-data
@@ -119,6 +120,7 @@
         </activity>
         <activity
             android:name="com.vergepay.wallet.ui.AddCoinsActivity"
+            android:parentActivityName="com.vergepay.wallet.ui.WalletActivity"
             android:label="@string/title_activity_add_coins"
             android:theme="@style/AppTheme">
             <meta-data
@@ -132,6 +134,7 @@
         </activity>
         <activity
             android:name="com.vergepay.wallet.ui.ExchangeRatesActivity"
+            android:parentActivityName="com.vergepay.wallet.ui.WalletActivity"
             android:label="@string/title_activity_exchange_rates"
             android:theme="@style/AppTheme">
             <meta-data
@@ -145,6 +148,7 @@
         </activity>
         <activity
             android:name="com.vergepay.wallet.ui.SettingsActivity"
+            android:parentActivityName="com.vergepay.wallet.ui.WalletActivity"
             android:label="@string/title_activity_settings"
             android:theme="@style/AppTheme">
             <meta-data
@@ -153,6 +157,7 @@
         </activity>
         <activity
             android:name="com.vergepay.wallet.ui.ShowSeedActivity"
+            android:parentActivityName="com.vergepay.wallet.ui.SettingsActivity"
             android:label="@string/title_activity_show_seed"
             android:theme="@style/AppTheme">
             <meta-data
@@ -161,6 +166,7 @@
         </activity>
         <activity
             android:name="com.vergepay.wallet.ui.TradeActivity"
+            android:parentActivityName="com.vergepay.wallet.ui.WalletActivity"
             android:label="@string/title_activity_trade"
             android:theme="@style/AppTheme">
             <meta-data
@@ -169,6 +175,7 @@
         </activity>
         <activity
             android:name="com.vergepay.wallet.ui.ExchangeHistoryActivity"
+            android:parentActivityName="com.vergepay.wallet.ui.TradeActivity"
             android:label="@string/title_activity_exchange_history"
             android:theme="@style/AppTheme">
             <meta-data
@@ -197,6 +204,7 @@
         </activity>
         <activity
             android:name="com.vergepay.wallet.ui.FeesSettingsActivity"
+            android:parentActivityName="com.vergepay.wallet.ui.SettingsActivity"
             android:label="@string/title_activity_transaction_fees"
             android:theme="@style/AppTheme">
             <meta-data
@@ -206,6 +214,7 @@
 		<activity android:name="com.vergepay.wallet.ui.ApplockActivity" android:exported="false"/>
         <activity
             android:name="com.vergepay.wallet.ui.DebuggingActivity"
+            android:parentActivityName="com.vergepay.wallet.ui.SettingsActivity"
             android:label="@string/title_activity_debugging"
             android:theme="@style/AppTheme">
             <meta-data

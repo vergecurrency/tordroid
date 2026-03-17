@@ -266,6 +266,7 @@ final public class WalletActivity extends BaseWalletActivity implements
                             }
                         }
                     })
+                    .setNeutralButton("Tor is running", null)
                     .setNegativeButton("Exit", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
