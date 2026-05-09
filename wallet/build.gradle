@@ -38,7 +38,7 @@ android {
         meta {
             dimension "platform"
             minSdk 29
-            versionCode 26500
+            versionCode 26501
         }
     }
 
