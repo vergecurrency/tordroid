@@ -252,6 +252,10 @@
     <string name="sending_msg">Sending&#8230;</string>
     <string name="sent_msg">Sent! Please wait for transaction confirmation.</string>
     <string name="tx_already_broadcast">Money already sent</string>
+    <string name="status_sending_title">Sending</string>
+    <string name="status_sent_title">Sent</string>
+    <string name="status_attention_title">Attention</string>
+    <string name="status_error_title">Error</string>
     <string name="trade_expired">Exchange expired</string>
     <!-- %1$s is the time remaining e.g. ... in the next 8 minutes 35 seconds-->
     <string name="tx_confirm_timer_message">Please confirm this transaction in the next %1$s</string>

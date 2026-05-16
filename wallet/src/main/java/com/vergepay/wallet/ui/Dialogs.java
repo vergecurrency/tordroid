@@ -1,10 +1,16 @@
 package com.vergepay.wallet.ui;
 
 import android.app.Dialog;
-import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.TextView;
+
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.FragmentManager;
+
+import com.vergepay.wallet.R;
 
 import javax.annotation.Nullable;
 
@@ -52,9 +58,16 @@ public class Dialogs {
 
         @Override
         public Dialog onCreateDialog(Bundle savedInstanceState) {
-            ProgressDialog dialog = new ProgressDialog(getActivity());
-            dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-            dialog.setMessage(getArguments().getString(MESSAGE));
+            final View view = LayoutInflater.from(requireContext())
+                    .inflate(R.layout.dialog_progress_retro, null);
+
+            final TextView messageView = view.findViewById(R.id.progress_message);
+            messageView.setText(getArguments().getString(MESSAGE));
+
+            final AlertDialog dialog = new AlertDialog.Builder(requireContext(),
+                    R.style.AppAlertDialogTheme)
+                    .setView(view)
+                    .create();
             dialog.setCancelable(false);
             dialog.setCanceledOnTouchOutside(false);
             return dialog;

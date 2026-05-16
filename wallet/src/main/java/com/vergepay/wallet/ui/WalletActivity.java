@@ -848,20 +848,18 @@ final public class WalletActivity extends BaseWalletActivity implements
         protected void weakHandleMessage(WalletActivity ref, Message msg) {
             switch (msg.what) {
                 case TX_BROADCAST_OK:
-                    Toast.makeText(ref, ref.getString(R.string.sent_msg),
-                            Toast.LENGTH_LONG).show();
+                    RetroStatusToast.showSuccess(ref, ref.getString(R.string.sent_msg));
                     ref.goToBalance();
                     ref.resetSend();
                     break;
                 case TX_BROADCAST_ERROR:
-                    Toast.makeText(ref, ref.getString(R.string.get_tx_broadcast_error),
-                            Toast.LENGTH_LONG).show();
+                    RetroStatusToast.showError(ref, ref.getString(R.string.get_tx_broadcast_error));
                     ref.goToSend();
                     break;
                 case SET_URI:
                     if (ref.accountFragment == null) {
-                        Toast.makeText(ref, ref.getString(R.string.no_wallet_pocket_selected),
-                                Toast.LENGTH_LONG).show();
+                        RetroStatusToast.showWarning(ref,
+                                ref.getString(R.string.no_wallet_pocket_selected));
                     }
                     ref.accountFragment.sendToUri((CoinURI) msg.obj);
                     break;

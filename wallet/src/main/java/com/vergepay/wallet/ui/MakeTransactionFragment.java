@@ -324,7 +324,7 @@ public class MakeTransactionFragment extends Fragment {
             signAndBroadcastTask.execute();
         } else if (transactionBroadcast) {
             Dialogs.dismissAllowingStateLoss(getFragmentManager(), SIGNING_TRANSACTION_BUSY_DIALOG_TAG);
-            Toast.makeText(getActivity(), R.string.tx_already_broadcast, Toast.LENGTH_SHORT).show();
+            RetroStatusToast.showWarning(getActivity(), getString(R.string.tx_already_broadcast));
             if (listener != null) {
                 listener.onSignResult(error, exchangeEntry);
             }

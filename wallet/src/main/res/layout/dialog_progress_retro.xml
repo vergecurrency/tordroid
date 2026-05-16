@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/panel_bg"
+    android:orientation="vertical"
+    android:paddingLeft="24dp"
+    android:paddingTop="22dp"
+    android:paddingRight="24dp"
+    android:paddingBottom="20dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Processing"
+        android:textAllCaps="true"
+        android:textColor="@color/accent_alt"
+        android:textSize="12sp"
+        android:fontFamily="sans-serif-condensed"
+        android:letterSpacing="0.16" />
+
+    <TextView
+        android:id="@+id/progress_message"
+        style="@style/NormalText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:lineSpacingExtra="2dp"
+        android:textColor="@color/text_primary"
+        android:textSize="17sp" />
+
+    <ProgressBar
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_marginTop="18dp"
+        android:indeterminate="true"
+        android:indeterminateTint="@color/accent_alt"
+        android:indeterminateTintMode="src_in" />
+
+</LinearLayout>

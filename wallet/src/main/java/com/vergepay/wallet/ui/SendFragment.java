@@ -823,23 +823,28 @@ public class SendFragment extends WalletFragment {
 
                 if (error == null) {
                     persistResolvedDomainContact();
-                    Toast.makeText(getActivity(), R.string.sending_msg, Toast.LENGTH_SHORT).show();
+                    RetroStatusToast.showInfo(getActivity(), getString(R.string.sending_msg));
                     if (listener != null) listener.onTransactionBroadcastSuccess(account, null);
                 } else {
                     if (error instanceof InsufficientMoneyException) {
-                        Toast.makeText(getActivity(), R.string.amount_error_not_enough_money_plain, Toast.LENGTH_LONG).show();
+                        RetroStatusToast.showError(getActivity(),
+                                getString(R.string.amount_error_not_enough_money_plain));
                     } else if (error instanceof NoSuchPocketException) {
-                        Toast.makeText(getActivity(), R.string.no_such_pocket_error, Toast.LENGTH_LONG).show();
+                        RetroStatusToast.showError(getActivity(),
+                                getString(R.string.no_such_pocket_error));
                     } else if (error instanceof KeyCrypterException) {
-                        Toast.makeText(getActivity(), R.string.password_failed, Toast.LENGTH_LONG).show();
+                        RetroStatusToast.showError(getActivity(),
+                                getString(R.string.password_failed));
                     } else if (error instanceof IOException) {
-                        Toast.makeText(getActivity(), R.string.send_coins_error_network, Toast.LENGTH_LONG).show();
+                        RetroStatusToast.showError(getActivity(),
+                                getString(R.string.send_coins_error_network));
                     } else if (error instanceof Wallet.DustySendRequested) {
-                        Toast.makeText(getActivity(), R.string.send_coins_error_dust, Toast.LENGTH_LONG).show();
+                        RetroStatusToast.showError(getActivity(),
+                                getString(R.string.send_coins_error_dust));
                     } else {
                         log.error("An unknown error occurred while sending coins", error);
                         String errorMessage = getString(R.string.send_coins_error, error.getMessage());
-                        Toast.makeText(getActivity(), errorMessage, Toast.LENGTH_LONG).show();
+                        RetroStatusToast.showError(getActivity(), errorMessage);
                     }
                     if (listener != null) listener.onTransactionBroadcastFailure(account, null);
                 }
