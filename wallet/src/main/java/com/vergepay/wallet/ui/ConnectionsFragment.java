@@ -139,6 +139,11 @@ public class ConnectionsFragment extends Fragment
                 getConnectionTypeSummary(ServerAddress.Protocol.ELECTRUMX,
                         ServerAddress.Transport.SSL_TLS),
                 connectedEndpoint, activelyConnected, selectedProfile, fallbackConnected);
+        addConnectionRow(getString(R.string.pref_connection_option_electrumx_onion_host1),
+                Configuration.PREFS_VALUE_VERGE_CONNECTION_ELECTRUMX_HOST1,
+                getConnectionTypeSummary(ServerAddress.Protocol.ELECTRUMX,
+                        ServerAddress.Transport.PLAIN_TCP),
+                connectedEndpoint, activelyConnected, selectedProfile, fallbackConnected);
 
         List<String> customIds = new ArrayList<>(getConfiguration().getVergeCustomConnectionIds());
         Collections.sort(customIds);

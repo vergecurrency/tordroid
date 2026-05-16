@@ -115,6 +115,8 @@ public class Constants {
     private static final String VERGE_ELECTRUM_CLOUD_HOST = "electrum-verge.cloud";
     private static final String VERGE_ELECTRUMX_CLOUD_HOST = "electrumx-verge.cloud";
 
+    private static final String VERGE_ELECTRUMX_ONION_HOST1 = "j24ru5qhxuzw3iq6kxhwpxdg4ulzipziflbxsysmo6znsv4i4vaiqmid.onion";
+
     private static final List<CoinAddress> BASE_COINS_SERVERS = ImmutableList.of(
             new CoinAddress(BitcoinMain.get(),      new ServerAddress("btc-cce-1.verge.net", 5001),
                                                     new ServerAddress("btc-cce-2.verge.net", 5001)),
@@ -166,6 +168,11 @@ public class Constants {
                 ServerAddress.Protocol.ELECTRUMX,
                 ServerAddress.Transport.SSL_TLS,
                 Configuration.PREFS_VALUE_VERGE_CONNECTION_ELECTRUMX_CLOUD_SSL.equals(selectedProfile));
+        addVergeServer(pool, VERGE_ELECTRUMX_ONION_HOST1, VERGE_TCP_PORT,
+                ServerAddress.Protocol.ELECTRUMX,
+                ServerAddress.Transport.PLAIN_TCP,
+                Configuration.PREFS_VALUE_VERGE_CONNECTION_ELECTRUMX_HOST1.equals(selectedProfile));
+
 
         if (config != null) {
             List<String> customIds = new ArrayList<>(config.getVergeCustomConnectionIds());
