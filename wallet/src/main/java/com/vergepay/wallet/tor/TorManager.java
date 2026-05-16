@@ -242,6 +242,12 @@ public class TorManager {
             }
             broadcastStatus(Constants.TOR_STATUS_READY);
         } else if (TorService.STATUS_STARTING.equals(status)) {
+            synchronized (lock) {
+                if (ready) {
+                    log.info("Ignoring late STARTING status after Tor is already ready");
+                    return;
+                }
+            }
             broadcastStatus(Constants.TOR_STATUS_STARTING);
         } else if (TorService.STATUS_STOPPING.equals(status) || TorService.STATUS_OFF.equals(status)) {
             boolean waitingForRestart;

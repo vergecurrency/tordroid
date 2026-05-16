@@ -95,12 +95,6 @@ public class ConnectionsFragment extends Fragment
             reloadConnections();
             return;
         }
-
-        if (Configuration.PREFS_KEY_VERGE_CONNECTION_PROFILE.equals(key)) {
-            syncConnectionList();
-            updateConnectionStatusHeader();
-            reloadConnections();
-        }
     }
 
     private void syncConnectionList() {
@@ -188,13 +182,6 @@ public class ConnectionsFragment extends Fragment
             stateView.setTextColor(ContextCompat.getColor(requireContext(), R.color.fg_ok));
             stateView.setVisibility(View.VISIBLE);
             connectButton.setVisibility(View.GONE);
-        } else if (isSelected) {
-            stateView.setText(R.string.pref_connection_connecting);
-            stateView.setTextColor(ContextCompat.getColor(requireContext(), R.color.accent_alt));
-            stateView.setVisibility(View.VISIBLE);
-            connectButton.setVisibility(View.VISIBLE);
-            connectButton.setEnabled(false);
-            connectButton.setText(R.string.pref_connection_selected);
         } else if (isSelected && fallbackConnected) {
             stateView.setText(R.string.pref_connection_fallback_active);
             stateView.setTextColor(ContextCompat.getColor(requireContext(), R.color.text_secondary));
@@ -203,6 +190,13 @@ public class ConnectionsFragment extends Fragment
             connectButton.setEnabled(true);
             connectButton.setText(R.string.button_connect);
             connectButton.setOnClickListener(v -> selectConnection(connectionId));
+        } else if (isSelected) {
+            stateView.setText(R.string.pref_connection_connecting);
+            stateView.setTextColor(ContextCompat.getColor(requireContext(), R.color.accent_alt));
+            stateView.setVisibility(View.VISIBLE);
+            connectButton.setVisibility(View.VISIBLE);
+            connectButton.setEnabled(false);
+            connectButton.setText(R.string.pref_connection_selected);
         } else {
             stateView.setVisibility(View.GONE);
             connectButton.setVisibility(View.VISIBLE);
@@ -285,6 +279,9 @@ public class ConnectionsFragment extends Fragment
         }
 
         configuration.setVergeConnectionProfile(connectionId);
+        syncConnectionList();
+        updateConnectionStatusHeader();
+        reloadConnections();
     }
 
     private String matchBuiltInConnection(String host, int port, ServerAddress.Transport transport) {
@@ -393,7 +390,7 @@ public class ConnectionsFragment extends Fragment
 
     private String getSelectedOrConnectedEndpoint() {
         String connectedEndpoint = getConnectedEndpoint();
-        if (!TextUtils.isEmpty(connectedEndpoint) && isActivelyConnected()) {
+        if (!TextUtils.isEmpty(connectedEndpoint)) {
             return connectedEndpoint;
         }
 

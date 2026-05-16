@@ -82,6 +82,8 @@ public class Configuration {
     private static final int PREFS_DEFAULT_BTC_PRECISION = 2;
 
     private static final Logger log = LoggerFactory.getLogger(Configuration.class);
+    @Nullable
+    private String sessionVergeConnectionProfile;
 
     public Configuration(final SharedPreferences prefs) {
         this.prefs = prefs;
@@ -117,8 +119,7 @@ public class Configuration {
 
         String vergeConnection = prefs.getString(PREFS_KEY_VERGE_CONNECTION_PROFILE, null);
         if (PREFS_VALUE_VERGE_CONNECTION_ELECTRUMX_TOR.equals(vergeConnection)) {
-            prefs.edit().putString(PREFS_KEY_VERGE_CONNECTION_PROFILE,
-                    PREFS_VALUE_VERGE_CONNECTION_ELECTRUMX_CLOUD).apply();
+            prefs.edit().remove(PREFS_KEY_VERGE_CONNECTION_PROFILE).apply();
         }
     }
 
@@ -256,22 +257,24 @@ public class Configuration {
         return prefs.getBoolean(PREFS_KEY_MANUAL_RECEIVING_ADDRESSES, false);
     }
 
-    @NonNull
+    @Nullable
     public String getVergeConnectionProfile() {
-        String storedValue = prefs.getString(PREFS_KEY_VERGE_CONNECTION_PROFILE,
-                PREFS_VALUE_VERGE_CONNECTION_ELECTRUMX_CLOUD);
-        if (PREFS_VALUE_VERGE_CONNECTION_ELECTRUMX_TOR.equals(storedValue)) {
-            return PREFS_VALUE_VERGE_CONNECTION_ELECTRUMX_CLOUD;
+        if (PREFS_VALUE_VERGE_CONNECTION_ELECTRUMX_TOR.equals(sessionVergeConnectionProfile)) {
+            return null;
         }
-        return storedValue;
+        return sessionVergeConnectionProfile;
     }
 
     public void setVergeConnectionProfile(@NonNull String connectionProfile) {
         String normalizedProfile = connectionProfile;
         if (PREFS_VALUE_VERGE_CONNECTION_ELECTRUMX_TOR.equals(normalizedProfile)) {
-            normalizedProfile = PREFS_VALUE_VERGE_CONNECTION_ELECTRUMX_CLOUD;
+            normalizedProfile = null;
         }
-        prefs.edit().putString(PREFS_KEY_VERGE_CONNECTION_PROFILE, normalizedProfile).apply();
+        sessionVergeConnectionProfile = normalizedProfile;
+    }
+
+    public void clearVergeConnectionProfile() {
+        sessionVergeConnectionProfile = null;
     }
 
     @NonNull
