@@ -153,6 +153,7 @@
     <string name="pref_connection_option_electrum_cloud_ssl">electrum-verge.cloud:50002</string>
     <string name="pref_connection_option_electrumx_cloud">electrumx-verge.cloud:50001</string>
     <string name="pref_connection_option_electrumx_cloud_ssl">electrumx-verge.cloud:50002</string>
+    <string name="pref_connection_option_electrumx_onion_host1">j24ru5qhxuzw3iq6kxhwpxdg4ulzipziflbxsysmo6znsv4i4vaiqmid.onion:50001</string>
     <string name="pref_connection_selected">Selected</string>
     <string name="pref_connection_connected">Connected now</string>
     <string name="pref_connection_connecting">Connecting now</string>

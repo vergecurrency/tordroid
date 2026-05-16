@@ -68,6 +68,7 @@ public class Configuration {
     public static final String PREFS_VALUE_VERGE_CONNECTION_ELECTRUMX_CLOUD = "electrumx_cloud";
     public static final String PREFS_VALUE_VERGE_CONNECTION_ELECTRUMX_CLOUD_SSL = "electrumx_cloud_ssl";
     public static final String PREFS_VALUE_VERGE_CONNECTION_ELECTRUMX_TOR = "electrumx_tor";
+    public static final String PREFS_VALUE_VERGE_CONNECTION_ELECTRUMX_HOST1 = "electrumX_host1";
     public static final String PREFS_KEY_META_STARTUP_TARGET = "meta_startup_target";
     public static final String PREFS_VALUE_META_STARTUP_DISABLED = "disabled";
     public static final String PREFS_VALUE_META_STARTUP_GLANCE = "glance";
